@@ -1,18 +1,24 @@
-Fil rouge Boilerplate
+Depôt du projet TenGUI
 =====================
 
-Ce dépôt fournit les éléments de base pour les projets du fil rouge.
+Ce projet developpé dans le cadre du fil-rouge EBM est un système pour augementer l'interactivité enrtre les élèves et leur professeur.
+
+Pour l'instant il ne comprend que les fichier de bases creant un environnement de travail sain.
+
+
+Contient
+========
 
 Il comprend :
-- un backend en NodeJS et Express
-- un frontend en React
 
-## Mode d'emploi
+    un backend en NodeJS et Express
+    un frontend en React
 
-1. `git clone https://github.com/EBM2018/fil-rouge-boilerplate.git`
-2. Créer un dépôt pour votre projet à l'adresse https://github.com/organizations/EBM2018/repositories/new
-3. Récupérer l'URL du projet, accessible depuis le bouton "Clone or download"
-4. `git remote add upstream https://github.com/EBM2018/fil-rouge-boilerplate.git`
-5. `git remote set-url origin <adresse de votre dépôt récupérée à l'étape 3>` (exemple : `git remote set-url origin https://github.com/EBM2018/mon-super-projet.git`)
+Mode d'emploi
+=============
+
+    git clone https://github.com/EBM2018/TenuGUI.git
+    'npm install' dans les dossiers 'backend' et 'frontend'
+    'npm start' dans les dossiers 'backend' et 'frontend', pour lancer.
 
 N'hésitez pas à demander de l'aide ! Bonne chance :)
