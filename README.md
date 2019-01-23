@@ -16,6 +16,7 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Exécuter ```git clone https://github.com/EBM2018/TenuGUI.git```
 * Installer ```npm```
 * Exécuter ```npm install``` à la racine pour installer les dépendances front-end et back-end
+* Copier-coller ```.env.example``` du dossier ```frontend``` en le renommant ```.env``` et configurer ses variables d'environnement 
 * Exécuter ```npm start``` à la racine pour servir le front-end et le back-end
 
 # Licence

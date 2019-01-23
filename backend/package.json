@@ -1,7 +1,7 @@
 {
-  "name": "filrouge-boilerplate-backend",
-  "version": "1.0.0",
-  "description": "Un squelette de projet backend pour le fil rouge de l'option EBM 2018-2019",
+  "name": "tenugui-backend",
+  "version": "0.1.0",
+  "description": "Dynamize your learning process",
   "main": "index.js",
   "scripts": {
     "start": "dotenv nodemon src/index.js",
@@ -19,7 +19,7 @@
     "url": "/api",
     "sampleUrl": "http://localhost:4000/api"
   },
-  "author": "",
+  "author": "tenuteam",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
