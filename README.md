@@ -1,24 +1,23 @@
-Depôt du projet TenGUI
-=====================
+# TenuGUI
 
-Ce projet developpé dans le cadre du fil-rouge EBM est un système pour augementer l'interactivité enrtre les élèves et leur professeur.
+TenuGUI est une application web cherchant à dynamiser le déroulement d'un enseignement ou d'une formation.  
+Cette application propose :
+* La création d'activités incitant l'interaction entre professeur et apprenants, par exemple :
+    * Des quizz
+    * Des icebreakers
+    * Des nuages de mots
+    * Des témoins d'avancement sur un exercice
+* La remontée de feedback des apprenants vers le professeur
 
-Pour l'instant il ne comprend que les fichier de bases creant un environnement de travail sain.
+Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'architecture du [boilerplate de l'option](https://github.com/EBM2018/filrouge-boilerplate).
 
+# Utilisation
 
-Contient
-========
+* Exécuter ```git clone https://github.com/EBM2018/TenuGUI.git```
+* Installer ```npm```
+* Exécuter ```npm install``` dans les dossiers ```frontend``` et ```backend``` pour installer les dépendances
+* Exécuter ```npm start``` dans les dossiers ```frontend``` et ```backend``` pour servir l'application
 
-Il comprend :
+# Licence
 
-    un backend en NodeJS et Express
-    un frontend en React
-
-Mode d'emploi
-=============
-
-    git clone https://github.com/EBM2018/TenuGUI.git
-    'npm install' dans les dossiers 'backend' et 'frontend'
-    'npm start' dans les dossiers 'backend' et 'frontend', pour lancer.
-
-N'hésitez pas à demander de l'aide ! Bonne chance :)
+Code mis à disposition selon la Licence MIT.
