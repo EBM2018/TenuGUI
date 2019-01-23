@@ -15,7 +15,8 @@
     "boilerplate"
   ],
   "apidoc": {
-    "title": "ApiDoc pour le projet Boilerplate",
+    "name": "TenuGUI",
+    "title": "ApiDoc | TenuGUI",
     "url": "/api",
     "sampleUrl": "http://localhost:4000/api"
   },
