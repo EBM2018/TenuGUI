@@ -20,4 +20,4 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 
 # Licence
 
-Code mis à disposition selon la Licence MIT.
+Code mis à disposition selon la [Licence MIT](./LICENSE).
