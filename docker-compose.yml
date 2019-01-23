@@ -11,7 +11,7 @@ services:
       local:
       ebm-filrouge:
         aliases:
-          - filrouge-boilerplate
+          - tengui
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:tenugui.ebm.nymous.io"
