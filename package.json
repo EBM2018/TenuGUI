@@ -1,7 +1,7 @@
 {
-  "name": "filrouge-boilerplate",
-  "version": "1.0.0",
-  "description": "Fil rouge Boilerplate =====================",
+  "name": "tenugui",
+  "version": "0.1.0",
+  "description": "Dynamize your learning process",
   "main": "index.js",
   "scripts": {
     "start": "concurrently --kill-others \"cd backend && npm start\" \"cd frontend && npm start\"",
@@ -10,11 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EBM2018/filrouge-boilerplate.git"
+    "url": "git+https://github.com/EBM2018/TenuGUI.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "learning", "school"
+  ],
+  "author": "tenuteam",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/EBM2018/filrouge-boilerplate/issues"
   },
