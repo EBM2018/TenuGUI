@@ -10,11 +10,16 @@ export default class Layout extends React.PureComponent {
     render() {
         return (
             <div>
-                <header>My Overkill Morpion</header>
+                <head>
+                    <title> TenuGUI </title>
+                </head>
+                <header>
+                    header
+                </header>
                 <main>
                     {this.props.children}
                 </main>
-                <footer>© 2019</footer>
+                <footer>footer</footer>
             </div>
         );
     }

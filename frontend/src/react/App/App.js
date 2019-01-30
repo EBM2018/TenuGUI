@@ -12,7 +12,8 @@ import Home from '../Home/Home.js';
 
 class App extends Component {
   render() {
-    return (<Layout>
+    return (
+        <Layout>
             <BrowserRouter>
                 <Switch>
                     <Route
