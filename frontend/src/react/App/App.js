@@ -31,6 +31,11 @@ class App extends Component {
                         path="/Fishtanks"
                         component={Fishtanks}
                     />
+                    <Route
+                        exact
+                        path="/Test"
+                        component={Test}
+                    />
                 </Switch>
             </BrowserRouter>
         </Layout>
