@@ -6,6 +6,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"cd backend && npm start\" \"cd frontend && npm start\"",
     "install": "concurrently \"cd backend && npm install\" \"cd frontend && npm install\"",
+    "jsdoc": "./node_modules/.bin/jsdoc -c ./jsdoc.config.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
