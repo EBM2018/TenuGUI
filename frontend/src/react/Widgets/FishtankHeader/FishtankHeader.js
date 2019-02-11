@@ -1,14 +1,15 @@
 import React from 'react';
 
-import './NameHeader.css';
+import './FishtankHeader.css';
 
 import PropTypes from 'prop-types';
 
-export default class NameHeader extends React.PureComponent {
+export default class FishtankHeader extends React.PureComponent {
 
     static propTypes = {
         subject: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
+        my: PropTypes.string,
     };
 
 
@@ -16,7 +17,7 @@ export default class NameHeader extends React.PureComponent {
         return (
             <div id='NameHeader'>
                 <div>
-                    Aquarium : {this.props.subject}
+                    {this.props.my} Aquarium : {this.props.subject}
                 </div>
                 <div>
                     Séance ouverte le {this.props.date}

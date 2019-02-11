@@ -7,7 +7,8 @@ import Layout from "../Layout/Layout";
 
 import Test from '../../test.js';
 import Dashboard from '../Dashboard/Dashboard.js';
-import Fishtanks from '../Fishtanks/Fishtanks.js';
+import Fishtank from '../Fishtank/Fishtank.js';
+import FishtankAdmin from '../FishtankAdmin/FishtankAdmin.js';
 import Home from '../Home/Home.js';
 
 class App extends Component {
@@ -28,13 +29,18 @@ class App extends Component {
                     />
                     <Route
                         exact
-                        path="/Fishtanks"
-                        component={Fishtanks}
+                        path="/Fishtank"
+                        component={Fishtank}
                     />
                     <Route
                         exact
                         path="/Test"
                         component={Test}
+                    />
+                    <Route
+                        exact
+                        path="/FishtankAdmin"
+                        component={FishtankAdmin}
                     />
                 </Switch>
             </BrowserRouter>

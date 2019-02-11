@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './Layout.css';
 
-import Header from '../Widget/Header/Header.js';
-import UserAccountWidget from '../Widget/UserAccountWidget/UserAccountWidget.js';
+import Header from '../Widgets/Header/Header.js';
+import UserAccountWidget from '../Widgets/UserAccountWidget/UserAccountWidget.js';
 
 export default class Layout extends React.PureComponent {
     static propTypes = {
