@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 //import ListSpeed from './ListSpeed/ListSpeed.js';
 //import ListAccuracy from './ListAccuracy/ListAccuracy.js';
 
+import {fct_Student_question,fct_Student_speed_up,fct_Student_speed_down,fct_Student_not_understand,fct_Student_stop} from '../../../service/Fishtank/Fishtank.js';
+
 export default class ButtonLayout extends React.PureComponent {
 
     speedUp = () => {
@@ -25,7 +27,7 @@ export default class ButtonLayout extends React.PureComponent {
         return (
             <d>
                 <div id='ButtonLayoutContainer'>
-                    <button id='AskQuestion'>
+                    <button id='AskQuestion' onClick={fct_Student_question}>
                         Posez votre question
                     </button>
 
@@ -33,10 +35,10 @@ export default class ButtonLayout extends React.PureComponent {
                     <b className="dropdown">
                         <button className="dropbtn"> Changement de Rythme</button>
                         <c className="dropdown-content">
-                            <a href="#" onClick={this.speedUp}>Demander d'aller plus vite</a>
-                            <a href="#" onClick={this.speedDown}>Demander d'aller moins vite</a>
-                            <a href="#" onClick={this.dontUnderstand}>Je ne comprends plus rien</a>
-                            <a href="#" onClick={this.plsStop}>Demander une pause</a>
+                            <a href="#" onClick={fct_Student_speed_up}>Demander d'aller plus vite</a>
+                            <a href="#" onClick={fct_Student_speed_down}>Demander d'aller moins vite</a>
+                            <a href="#" onClick={fct_Student_not_understand}>Je ne comprends plus rien</a>
+                            <a href="#" onClick={fct_Student_stop}>Demander une pause</a>
                         </c>
                     </b>
 
