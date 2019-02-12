@@ -6,22 +6,24 @@ import MyActivity from './MyActivity/MyActivity.js';
 import MyActions from './MyActions/MyActions.js';
 import MyDescription from './MyDescription/MyDescription.js';
 
-import {fct_start_fishtank} from "../../service/Dashboard/Dashboard.js"
-
 export default class Dashboard extends React.PureComponent {
+
+    fct_start_fishtank = () => {
+        this.props.history.push('/FishtankAdmin');
+    };
 
     render() {
         return (
             <>
                 <div>
                     <> Ma Bibliothéque </>
-                    <button id={'buttonStartFishtank'} onClick={fct_start_fishtank}> Démarrer une séance </button>
+                    <button id={'buttonStartFishtank'} onClick={this.fct_start_fishtank}> Démarrer une séance </button>
                 </div>
                 <div id ='dashboardContainer'>
-                    <firstColumn id="firstColumn">
+                    <a id="firstColumn">
                         <MyActivity/>
                         <MyActions/>
-                    </firstColumn>
+                    </a>
                     <a id={"C"}> </a>
                     <MyDescription id="flex"/>
                 </div>

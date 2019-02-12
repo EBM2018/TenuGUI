@@ -13,29 +13,27 @@ export default class ButtonLayout extends React.PureComponent {
 
     render() {
         return (
-            <d>
-                <div id='ButtonLayoutContainer'>
-                    <button id='AskUnderstanding' onClick={fct_Action_ask_understanding}>
-                        Vous avez compris ?
-                    </button>
+            <div id='ButtonLayoutContainer'>
+                <button id='AskUnderstanding' onClick={fct_Action_ask_understanding}>
+                    Vous avez compris ?
+                </button>
 
-                    <button id='AskSummary' onClick={fct_Action_ask_summary}>
-                        Faites un résumé
-                    </button>
+                <button id='AskSummary' onClick={fct_Action_ask_summary}>
+                    Faites un résumé
+                </button>
 
-                    <button id='AskPosition' onClick={fct_Action_ask_position}>
-                        Vous en êtes où ?
-                    </button>
+                <button id='AskPosition' onClick={fct_Action_ask_position}>
+                    Vous en êtes où ?
+                </button>
 
-                    <button id='AskAttention' onClick={fct_Action_ask_attention}>
-                        Votre attention svp !
-                    </button>
+                <button id='AskAttention' onClick={fct_Action_ask_attention}>
+                    Votre attention svp !
+                </button>
 
-                    <button id='Reboot' onClick={fct_Action_reboot}>
-                        Reboost
-                    </button>
-                </div>
-            </d>
+                <button id='Reboot' onClick={fct_Action_reboot}>
+                    Reboost
+                </button>
+            </div>
         );
     }
 }

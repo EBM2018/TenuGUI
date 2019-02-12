@@ -6,7 +6,7 @@ export default class Command extends React.PureComponent {
 
     render() {
         return (
-            <d>
+            <div>
                 <div id={'title'}> Mon fils rouge </div>
 
                 <div id='ButtonLayoutContainer'>
@@ -22,7 +22,7 @@ export default class Command extends React.PureComponent {
                         Feedback
                     </button>
                 </div>
-            </d>
+            </div>
         );
     }
 }
