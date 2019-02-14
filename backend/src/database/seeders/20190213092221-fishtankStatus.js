@@ -3,11 +3,11 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('FishtankStatuses', [{
-            name: 'Ongoing'
+            name: 'ONGOING'
         }, {
-            name: 'Finished'
+            name: 'FINISHED'
         }, {
-            name: 'Expired'
+            name: 'EXPIRED'
         }], {});
     },
 
