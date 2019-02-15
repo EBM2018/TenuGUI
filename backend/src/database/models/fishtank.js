@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
     const Fishtank = sequelize.define('Fishtank', {
         ownerId: DataTypes.INTEGER,
@@ -8,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
         updatedAt: false
     });
-    Fishtank.associate = function(models) {
-        // associations can be defined here
+    Fishtank.associate = (models) => {
+        Fishtank.belongsTo(models.FishtankStatus, {foreignKey: 'statusId'})
     };
     return Fishtank;
 };
