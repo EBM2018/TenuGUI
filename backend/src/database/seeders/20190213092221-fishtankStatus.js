@@ -12,6 +12,7 @@ module.exports = {
     },
 
     down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('FishtankStatuses', null, {});
+        return queryInterface.bulkDelete('FishtankStatuses', null, {})
+            .then(() => queryInterface.sequelize.query("ALTER TABLE FishtankStatuses AUTO_INCREMENT = 1"));
     }
 };
