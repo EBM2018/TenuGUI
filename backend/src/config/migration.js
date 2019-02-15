@@ -1,1 +1,1 @@
-module.exports = require(__dirname)['database'];
+module.exports = require('.').database;

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const router = new Router({mergeParams: true});
+const router = new Router({ mergeParams: true });
 
 /**
  * @api {get} /fishtanks/:id/interactions Get fishtank interactions

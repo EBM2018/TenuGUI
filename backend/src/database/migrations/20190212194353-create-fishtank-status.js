@@ -1,25 +1,19 @@
-'use strict';
-
 module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('FishtankStatuses', {
-            id: {
-                allowNull: false,
-                autoIncrement: true,
-                primaryKey: true,
-                type: Sequelize.INTEGER
-            },
-            name: {
-                allowNull: false,
-                type: Sequelize.STRING,
-                validate: {
-                    isAlpha: true,
-                    isUppercase: true
-                }
-            }
-        });
+  up: (queryInterface, Sequelize) => queryInterface.createTable('FishtankStatuses', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
     },
-    down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('FishtankStatuses');
-    }
+    name: {
+      allowNull: false,
+      type: Sequelize.STRING,
+      validate: {
+        isAlpha: true,
+        isUppercase: true,
+      },
+    },
+  }),
+  down: queryInterface => queryInterface.dropTable('FishtankStatuses'),
 };
