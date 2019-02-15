@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const FishtankController = require('../../controllers/fishtank.js');
 
 const router = new Router();
 
@@ -12,6 +13,15 @@ const router = new Router();
  *     Fishtanks list:
  */
 router.get('/', (req, res) => res.send('Fishtanks list:'));
+
+/**
+ * @api {post} /fishtanks Post fishtank
+ * @apiName PostFishtanks
+ * @apiDescription This URL receives new fishtank declarations
+ * @apiSuccessExample {html} Success-Response:
+ *     HTTP/1.1 200 OK
+ */
+router.post('/', FishtankController.create);
 
 /**
  * @api {get} /fishtanks/:id Gets fishtank data
