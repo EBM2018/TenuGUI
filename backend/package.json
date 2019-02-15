@@ -27,15 +27,19 @@
     "cors": "^2.8.5",
     "dotenv-cli": "^1.4.0",
     "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "mysql2": "^1.6.5",
     "puppeteer": "^1.12.2",
     "sequelize": "^4.42.0",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {
+    "@types/sequelize": "^4.27.36",
     "apidoc": "^0.17.7",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "sequelize-cli": "^5.4.0"
   }
 }

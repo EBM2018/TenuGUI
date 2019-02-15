@@ -16,7 +16,12 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Exécuter ```git clone https://github.com/EBM2018/TenuGUI.git```
 * Installer ```npm```
 * Exécuter ```npm install``` à la racine pour installer les dépendances front-end et back-end
-* Copier-coller ```.env.example``` du dossier ```frontend``` en le renommant ```.env``` et configurer ses variables d'environnement 
+* Mettre en place une base de données ```MariaDB``` s'appelant ```TenuGUI``` hébergée localement
+* Créer un fichier ```.env``` dans le dossier ```backend```
+    * Utiliser le fichier ```.env.example``` comme template
+    * Le remplir avec ses propres paramètres
+* Exécuter ```sequelize db:migrate``` dans le dossier ```backend``` pour migrer la base de données
+* Exécuter ```sequelize db:seed:all``` dans le dossier ```backend``` pour peupler la base de données
 * Exécuter ```npm start``` à la racine pour servir le front-end et le back-end
 
 # Licence
