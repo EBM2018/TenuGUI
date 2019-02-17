@@ -11,4 +11,7 @@ module.exports = {
     res.status(201).send();
   },
   read: (req, res) => res.send(`Hello, ${req.params.id}!`),
+  edit: (req, res) => {
+    res.send('Success');
+  },
 };

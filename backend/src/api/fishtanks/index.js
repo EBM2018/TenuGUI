@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const FishtankController = require('../../controllers/fishtank.js');
+const FishtankMiddlewares = require('../../middlewares/fishtank.js');
 
 const router = new Router();
 
@@ -26,6 +27,20 @@ router.post('/', FishtankController.create);
  Hello, 1!
  */
 router.get('/:id', FishtankController.read);
+
+/**
+ * @api {patch} /fishtanks/:id Edit Fishtank data
+ * @apiName PatchFishtank
+ * @apiGroup Fishtanks
+ * @apiDescription This URL receives edition requests for a given fishtank
+ * @apiParam  {Integer} id Number identifying the fishtank
+ * @apiParamExample  {String} Request-Example:
+ id: 1
+ * @apiSuccessExample {html} Success-Response:
+ HTTP/1.1 200 OK
+ Hello, 1!
+ */
+router.patch('/:id', ...FishtankMiddlewares.edit, FishtankController.edit);
 
 router.use('/:id/interactions', require('./fishtankInteractions'));
 
