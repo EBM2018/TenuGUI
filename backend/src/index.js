@@ -1,6 +1,7 @@
 const path = require('path');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
 
 const app = express();
@@ -8,6 +9,7 @@ const server = require('http').Server(app);
 
 const config = require('./config');
 
+app.use(bodyParser.json());
 app.use('/api', require('./api'));
 
 app.use(serveStatic('./public'));
