@@ -1,4 +1,4 @@
-const { Fishtank, FishtankStatus } = require('../../../database/models');
+const { Fishtank, FishtankStatus } = require('../../../../database/models/index');
 
 /* Schemas don't support multiple custom rules yet so
  * these are written in the right format for schemas
