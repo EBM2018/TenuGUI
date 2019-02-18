@@ -11,7 +11,7 @@ module.exports = {
       const fishtank = await Fishtank.findByPk(value);
       return fishtank !== null;
     },
-    errorMessage: 'doesn\'t exist',
+    errorMessage: "doesn't exist",
   },
   isOngoing: {
     options: async (value) => {
