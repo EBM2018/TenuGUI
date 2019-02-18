@@ -8,9 +8,11 @@ module.exports = {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
+    // TODO: Should send an id or token for joining/interacting
     res.status(201).send();
   },
-  read: (req, res) => res.send(`Hello, ${req.params.id}!`),
+  // TODO: Should send basic Fishtank info along with current activity info
+  read: (req, res) => res.send([]),
   edit: (req, res) => {
     if (req.body.type === Fishtank.editionTypes.FINISH) {
       Fishtank.findByPk(req.params.id)

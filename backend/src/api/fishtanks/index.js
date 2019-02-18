@@ -9,7 +9,7 @@ const router = new Router();
  * @apiName PostFishtanks
  * @apiGroup Fishtanks
  * @apiDescription This URL receives new fishtank declarations
- * @apiSuccessExample {html} Success-Response:
+ * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 201 OK
  */
 router.post('/', FishtankController.create);
@@ -22,9 +22,9 @@ router.post('/', FishtankController.create);
  * @apiParam  {Integer} id Number identifying the fishtank
  * @apiParamExample  {String} Request-Example:
  id: 1
- * @apiSuccessExample {html} Success-Response:
+ * @apiSuccessExample {json} Success-Response:
  HTTP/1.1 200 OK
- Hello, 1!
+ []
  */
 router.get('/:id', FishtankController.read);
 
@@ -35,10 +35,9 @@ router.get('/:id', FishtankController.read);
  * @apiDescription This URL receives edition requests for a given fishtank
  * @apiParam  {Integer} id Number identifying the fishtank
  * @apiParamExample  {String} Request-Example:
- id: 1
- * @apiSuccessExample {html} Success-Response:
+ type: 1
+ * @apiSuccessExample {json} Success-Response:
  HTTP/1.1 200 OK
- Hello, 1!
  */
 router.patch('/:id', ...FishtankMiddlewares.edit, FishtankController.edit);
 
