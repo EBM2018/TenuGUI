@@ -1,43 +1,45 @@
 const { Router } = require('express');
 const FishtankController = require('../../controllers/fishtank.js');
+const FishtankMiddlewares = require('../../middlewares/fishtank.js');
 
 const router = new Router();
 
 /**
- * @api {get} /fishtanks Get fishtanks
- * @apiName GetFishtanks
- * @apiGroup Static Pages
- * @apiDescription This URL displays the current list of fishtanks
- * @apiSuccessExample {html} Success-Response:
- *     HTTP/1.1 200 OK
- *     Fishtanks list:
- */
-router.get('/', (req, res) => res.send('Fishtanks list:'));
-
-/**
- * @api {post} /fishtanks Post fishtank
+ * @api {post} /fishtanks Create Fishtank
  * @apiName PostFishtanks
+ * @apiGroup Fishtanks
  * @apiDescription This URL receives new fishtank declarations
- * @apiSuccessExample {html} Success-Response:
- *     HTTP/1.1 200 OK
+ * @apiSuccessExample {json} Success-Response:
+ * HTTP/1.1 201 OK
  */
 router.post('/', FishtankController.create);
 
 /**
- * @api {get} /fishtanks/:id Gets fishtank data
+ * @api {get} /fishtanks/:id Request Fishtank data
  * @apiName GetFishtank
- * @apiGroup Static Pages
+ * @apiGroup Fishtanks
  * @apiDescription This URL displays data about a given fishtank
- *
  * @apiParam  {Integer} id Number identifying the fishtank
  * @apiParamExample  {String} Request-Example:
  id: 1
- *
- * @apiSuccessExample {html} Success-Response:
+ * @apiSuccessExample {json} Success-Response:
  HTTP/1.1 200 OK
- Hello, 1!
+ []
  */
-router.get('/:id', (req, res) => res.send(`Hello, ${req.params.id}!`));
+router.get('/:id', FishtankController.read);
+
+/**
+ * @api {patch} /fishtanks/:id Edit Fishtank data
+ * @apiName PatchFishtank
+ * @apiGroup Fishtanks
+ * @apiDescription This URL receives edition requests for a given fishtank
+ * @apiParam  {Integer} id Number identifying the fishtank
+ * @apiParamExample  {String} Request-Example:
+ type: 1
+ * @apiSuccessExample {json} Success-Response:
+ HTTP/1.1 200 OK
+ */
+router.patch('/:id', ...FishtankMiddlewares.edit, FishtankController.edit);
 
 router.use('/:id/interactions', require('./fishtankInteractions'));
 
