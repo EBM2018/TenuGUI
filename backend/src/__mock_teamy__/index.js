@@ -20,15 +20,16 @@ const getUser = (token) => {
 };
 
 module.exports = {
-  isAuthenticated: () => true, // TODO: Harass Teamy
-  getUserId: (token) => {
+  isAuthenticated: async () => true, // TODO: Harass Teamy
+  getUserId: async (token) => {
     const user = getUser(token);
     if (user !== null) return user.id;
     return null;
   },
-  getShoalId: (token) => {
+  getShoalId: async (token) => {
     const user = getUser(token);
     if (user !== null) return user.shoalId;
     return null;
   },
+  isValidShoal: async () => true,
 };

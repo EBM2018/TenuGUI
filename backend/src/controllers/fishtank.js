@@ -1,15 +1,16 @@
 const { Fishtank, FishtankStatus } = require('../database/models');
+const { getUserId } = require('../__mock_teamy__');
 
 module.exports = {
-  create: (req, res) => {
+  create: async (req, res) => {
     Fishtank.create({
-      ownerId: 0,
-      shoalId: 0,
+      ownerId: await getUserId(req.body.token),
+      shoalId: req.body.shoalId,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
-    });
-    // TODO: Should send an id or token for joining/interacting
-    res.status(201).send();
+    }).then(fishtank => res.status(201).send({
+      fishtankId: fishtank.id,
+    }));
   },
   // TODO: Should send basic Fishtank info along with current activity info
   read: (req, res) => res.send([]),

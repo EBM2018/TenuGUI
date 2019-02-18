@@ -5,6 +5,14 @@ const checkCustomRules = require('./validation/customRules/checkers/fishtank.js'
 const bail = require('./validation/errorHandler.js');
 
 module.exports = {
+  create: [
+    Auth.isAuthenticated,
+    bail(403),
+    checkSchema(ValidationSchema.create),
+    bail(422),
+    Auth.isValidShoal,
+    bail(422),
+  ],
   edit: [
     Auth.isAuthenticated,
     bail(403),
