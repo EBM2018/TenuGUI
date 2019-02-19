@@ -1,5 +1,7 @@
 const path = require('path');
-require('dotenv').config(); // custom process.env attributes will be undefined without this line from Sequelize cli perspective
+
+if (process.env.NODE_ENV === 'testing') require('dotenv').config({ path: './.env.testing' });
+else require('dotenv').config(); // custom process.env attributes will be undefined without this line from Sequelize cli perspective
 
 module.exports = {
     "config": path.resolve('./src/config', 'migration.js'),
