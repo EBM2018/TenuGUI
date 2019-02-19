@@ -8,6 +8,7 @@
     "prod": "dotenv node src/index.js",
     "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\"",
     "test": "eslint src/",
+    "jest": "dotenv jest",
     "apidoc": "apidoc -i src/ -o doc/"
   },
   "keywords": [
@@ -39,7 +40,9 @@
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "jest": "^24.1.0",
     "nodemon": "^1.18.9",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "supertest": "^3.4.2"
   }
 }
