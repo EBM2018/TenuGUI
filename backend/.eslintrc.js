@@ -6,4 +6,12 @@ module.exports = {
     "rules": {
         "no-console": 0
     },
+  "overrides": [
+    {
+      "files": ["*.test.js"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 };
