@@ -1,10 +1,9 @@
 const { Fishtank, FishtankStatus } = require('../database/models');
-const { getUserId } = require('../__mock_teamy__');
 
 module.exports = {
   create: async (req, res) => {
     Fishtank.create({
-      ownerId: await getUserId(req.body.token),
+      ownerId: req.user.id,
       shoalId: req.body.shoalId,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
