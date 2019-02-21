@@ -15,13 +15,10 @@ describe('Fishtank creation validation', () => {
     auth = require('../../../middlewares/authentication/');
     sinon.stub(auth, 'validateAuthentication')
       .callsFake(authFaker.validate(validUsers));
-
-    // after you can create app:
     app = require('../../../');
   });
 
   afterEach(() => {
-    // restore original method
     auth.validateAuthentication.restore();
   });
 
