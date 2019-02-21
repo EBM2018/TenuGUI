@@ -22,17 +22,12 @@ describe('Fishtank creation validation', () => {
     auth.validateAuthentication.restore();
   });
 
-  test('It should accept a valid request', (done) => {
-    request(app)
-      .post('/api/fishtanks')
-      .send({
-        shoalId: 5,
-        token: validUsers[0].token,
-      })
-      .set('Content-Type', 'application/json')
-      .then((response) => {
-        expect(response.statusCode).toBe(201);
-        done();
-      });
-  });
+  test('It should accept a valid request', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      shoalId: 5,
+      token: validUsers[0].token,
+    })
+    .set('Content-Type', 'application/json')
+    .expect(201));
 });
