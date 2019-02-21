@@ -1,5 +1,6 @@
 .idea/
-.env
+.env*
+!.env.example
 doc/
 .vscode/*
 !.vscode/extensions.json
