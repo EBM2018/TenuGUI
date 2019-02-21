@@ -9,8 +9,11 @@ module.exports = {
   "overrides": [
     {
       "files": ["*.test.js"],
+      "env": {
+        "jest": true,
+      },
       "rules": {
-        "no-undef": "off"
+        "global-require": "off", // Stubs have to happen before require statements
       }
     }
   ]
