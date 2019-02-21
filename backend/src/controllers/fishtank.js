@@ -1,7 +1,7 @@
 const { Fishtank, FishtankStatus } = require('../database/models');
 
 module.exports = {
-  create: async (req, res) => {
+  create: (req, res) => {
     Fishtank.create({
       ownerId: req.user.id,
       shoalId: req.body.shoalId,
