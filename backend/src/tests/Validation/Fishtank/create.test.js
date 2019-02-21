@@ -1,6 +1,7 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const authFaker = require('../../Fakers/authentication.js');
+const models = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
@@ -20,6 +21,7 @@ describe('Fishtank creation validation', () => {
 
   afterEach(() => {
     auth.validateAuthentication.restore();
+    models.sequelize.close();
   });
 
   test('It should accept a valid request', () => request(app)
