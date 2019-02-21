@@ -12,7 +12,7 @@ const router = new Router();
  * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 201 OK
  */
-router.post('/', FishtankController.create);
+router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
 
 /**
  * @api {get} /fishtanks/:id Request Fishtank data

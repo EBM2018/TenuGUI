@@ -1,10 +1,23 @@
 const { Fishtank } = require('../../../database/models');
 
 module.exports = {
+  create: {
+    shoalId: {
+      in: ['body'],
+      isInt: {
+        options: true,
+        errorMessage: 'must be an integer',
+      },
+      toInt: true,
+    },
+  },
   edit: {
     id: {
       in: ['params'],
-      isInt: true,
+      isInt: {
+        options: true,
+        errorMessage: 'must be an integer',
+      },
       toInt: true,
     },
     type: {

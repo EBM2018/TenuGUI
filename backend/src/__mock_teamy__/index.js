@@ -11,24 +11,13 @@ const teamyUsers = [{
   shoalId: 99999,
 }];
 
-const getUser = (token) => {
-  for (let i = 0; i < teamyUsers.length; i += 1) {
-    const user = teamyUsers[i];
-    if (user.token === token) return user;
-  }
-  return null;
-};
-
 module.exports = {
-  isAuthenticated: () => true, // TODO: Harass Teamy
-  getUserId: (token) => {
-    const user = getUser(token);
-    if (user !== null) return user.id;
+  getUser: async (token) => {
+    for (let i = 0; i < teamyUsers.length; i += 1) {
+      const user = teamyUsers[i];
+      if (user.token === token) return user;
+    }
     return null;
   },
-  getShoalId: (token) => {
-    const user = getUser(token);
-    if (user !== null) return user.shoalId;
-    return null;
-  },
+  isValidShoal: async () => true,
 };

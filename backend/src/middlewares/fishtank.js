@@ -1,18 +1,27 @@
 const { checkSchema } = require('express-validator/check');
-const Auth = require('./validation/customRules/checkers/auth');
+const User = require('./validation/customRules/common/user.js');
+const Shoal = require('./validation/customRules/common/shoal.js');
 const ValidationSchema = require('./validation/schemas/fishtank.js');
-const checkCustomRules = require('./validation/customRules/checkers/fishtank.js');
+const CustomRules = require('./validation/customRules/fishtank.js');
 const bail = require('./validation/errorHandler.js');
 
 module.exports = {
+  create: [
+    User.isAuthenticated,
+    bail(403),
+    checkSchema(ValidationSchema.create),
+    bail(422),
+    Shoal.isValid,
+    bail(422),
+  ],
   edit: [
-    Auth.isAuthenticated,
+    User.isAuthenticated,
     bail(403),
     checkSchema(ValidationSchema.edit),
     bail(422),
-    checkCustomRules.edit,
+    CustomRules.edit,
     bail(422),
-    Auth.isOwner,
+    User.isOwner,
     bail(403),
   ],
 };
