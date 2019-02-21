@@ -13,16 +13,32 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 
 # Utilisation
 
-* Exécuter ```git clone https://github.com/EBM2018/TenuGUI.git```
-* Installer ```npm```
-* Exécuter ```npm install``` à la racine pour installer les dépendances front-end et back-end
-* Mettre en place une base de données ```MariaDB``` s'appelant ```TenuGUI``` hébergée localement
-* Créer un fichier ```.env``` dans le dossier ```backend```
-    * Utiliser le fichier ```.env.example``` comme template
+* Exécuter `git clone https://github.com/EBM2018/TenuGUI.git`
+* Installer `npm`
+* Exécuter `npm install` à la racine pour installer les dépendances front-end et back-end
+* Mettre en place une base de données `MariaDB` s'appelant `TenuGUI` hébergée localement
+* Créer un fichier `.env` dans le dossier `backend`
+    * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
-* Exécuter ```sequelize db:migrate``` dans le dossier ```backend``` pour migrer la base de données
-* Exécuter ```sequelize db:seed:all``` dans le dossier ```backend``` pour peupler la base de données
-* Exécuter ```npm start``` à la racine pour servir le front-end et le back-end
+* Exécuter `sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
+* Exécuter `sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
+* Exécuter `npm start` à la racine pour servir le front-end et le back-end
+
+# Tests
+
+## Front-end
+
+* Exécuter `npm run test` dans le dossier `frontend`
+
+## Back-end
+
+* Mettre en place une base de données `MariaDB` s'appelant `TenuGUI-test` hébergée localement
+* Créer un fichier `.env.testing` dans le dossier `backend`
+    * Utiliser le fichier `.env.example` comme template
+    * Le remplir avec ses propres paramètres
+* Exécuter `NODE_ENV=testing sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
+* Exécuter `NODE_ENV=testing sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
+* Exécuter `npm run test` dans le dossier `backend`
 
 # Licence
 
