@@ -31,7 +31,7 @@ script:
   # Backend
   - cd backend
   - npm test
-  - npm run jest
+  #- npm run jest
   - npm run apidoc
   - cd ..
 
