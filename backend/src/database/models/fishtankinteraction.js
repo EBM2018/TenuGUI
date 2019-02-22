@@ -8,8 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     updatedAt: false,
   });
-  FishtankInteraction.associate = () => {
-    // associations can be defined here
+
+  FishtankInteraction.associate = (models) => {
+    FishtankInteraction.belongsTo(models.Fishtank, { foreignKey: 'fishtankId' });
   };
+
   return FishtankInteraction;
 };
