@@ -7,6 +7,12 @@ module.exports = {
     name: 'EXPIRED',
   }], {}),
 
-  down: queryInterface => queryInterface.bulkDelete('FishtankStatuses', null, {})
-    .then(() => queryInterface.sequelize.query('ALTER TABLE FishtankStatuses AUTO_INCREMENT = 1')),
+  down: queryInterface => queryInterface.sequelize.transaction(
+    t => queryInterface.bulkDelete('FishtankStatuses', null, { transaction: t })
+      .then(
+        () => queryInterface.sequelize.query(
+          'ALTER TABLE FishtankStatuses AUTO_INCREMENT = 1', { transaction: t },
+        ),
+      ),
+  ),
 };

@@ -7,6 +7,12 @@ module.exports = {
     name: 'FEEDBACK_SUBMIT',
   }], {}),
 
-  down: queryInterface => queryInterface.bulkDelete('FishtankInteractionTypes', null, {})
-    .then(() => queryInterface.sequelize.query('ALTER TABLE FishtankInteractionTypes AUTO_INCREMENT = 1')),
+  down: queryInterface => queryInterface.sequelize.transaction(
+    t => queryInterface.bulkDelete('FishtankInteractionTypes', null, { transaction: t })
+      .then(
+        () => queryInterface.sequelize.query(
+          'ALTER TABLE FishtankInteractionTypes AUTO_INCREMENT = 1', { transaction: t },
+        ),
+      ),
+  ),
 };

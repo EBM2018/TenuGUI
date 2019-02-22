@@ -10,6 +10,8 @@ module.exports = {
     onUpdate: 'cascade',
   }),
 
-  down: queryInterface => queryInterface.removeConstraint('FishtankInteractions', 'fk_fishtank_interaction')
-    .then(() => queryInterface.removeIndex('FishtankInteractions', 'fk_fishtank_interaction')),
+  down: queryInterface => queryInterface.sequelize.transaction(
+    t => queryInterface.removeConstraint('FishtankInteractions', 'fk_fishtank_interaction', { transaction: t })
+      .then(() => queryInterface.removeIndex('FishtankInteractions', 'fk_fishtank_interaction', { transaction: t })),
+  ),
 };
