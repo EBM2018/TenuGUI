@@ -7,8 +7,8 @@
     "start": "dotenv nodemon src/index.js",
     "prod": "dotenv node src/index.js",
     "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\"",
-    "test": "eslint src/",
-    "jest": "dotenv -e .env.testing jest",
+    "lint": "eslint src/",
+    "test": "dotenv -e .env.testing jest",
     "apidoc": "apidoc -i src/ -o doc/"
   },
   "keywords": [
