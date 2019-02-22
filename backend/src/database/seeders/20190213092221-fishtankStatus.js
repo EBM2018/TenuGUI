@@ -1,4 +1,5 @@
 module.exports = {
+  // TODO: I guess I could check if the data already exists before adding it again
   up: queryInterface => queryInterface.bulkInsert('FishtankStatuses', [{
     name: 'ONGOING',
   }, {
