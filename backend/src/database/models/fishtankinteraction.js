@@ -10,8 +10,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   FishtankInteraction.associate = (models) => {
-    FishtankInteraction.belongsTo(models.Fishtank, { foreignKey: 'fishtankId' });
-    FishtankInteraction.belongsTo(models.FishtankInteractionType, { foreignKey: 'typeId' });
+    FishtankInteraction.belongsTo(models.Fishtank, {
+      foreignKey: 'fishtankId',
+      as: 'fishtank',
+    });
+    FishtankInteraction.belongsTo(models.FishtankInteractionType, {
+      foreignKey: 'typeId',
+      as: 'type',
+    });
   };
 
   return FishtankInteraction;

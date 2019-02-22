@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Fishtank.associate = (models) => {
-    Fishtank.belongsTo(models.FishtankStatus, { foreignKey: 'statusId' });
+    Fishtank.belongsTo(models.FishtankStatus, {
+      foreignKey: 'statusId',
+      as: 'status',
+    });
   };
 
   Fishtank.editionTypes = {
