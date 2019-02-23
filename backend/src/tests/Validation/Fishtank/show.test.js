@@ -10,6 +10,10 @@ const validUsers = [{
   id: 1,
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im11cmFzYWlzZ3JlYXR0aG8ifQ.p4PpEK6QQukfVrSQdsJsY1QIrQzY7OEFtmdN_JPrRgY',
 }];
+const invalidUsers = [{
+  id: 2,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg',
+}];
 
 describe('Fishtank retrieval validation', () => {
   let app;
@@ -81,5 +85,65 @@ describe('Fishtank retrieval validation', () => {
         createdAt: fishtank.createdAt,
         status: { name: fishtank.getDataValue('status').name },
       });
+  });
+
+  /* Token validation */
+  test('It should reject an empty request', async () => {
+    const fishtank = await models.Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: models.FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+
+    return request(app)
+      .get(`/api/fishtanks/${fishtank.id}`)
+      .send({})
+      .set('Content-Type', 'application/json')
+      .expect(403);
+  });
+
+  test('It should reject a request with a non-JWT token', async () => {
+    const fishtank = await models.Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: models.FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+    return request(app)
+      .get(`/api/fishtanks/${fishtank.id}`)
+      .send({
+        token: 'test',
+      })
+      .set('Content-Type', 'application/json')
+      .expect(403);
+  });
+
+  test('It should reject a request with an invalid token', async () => {
+    const fishtank = await models.Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: models.FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+    return request(app)
+      .get(`/api/fishtanks/${fishtank.id}`)
+      .send({
+        token: invalidUsers[0].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(403);
+  });
+
+  /* Fishtank validation */
+  test('It should reject a request with an invalid fishtank id', async () => {
+    const maxFishtankId = await models.Fishtank.max('id');
+    return request(app)
+      .get(`/api/fishtanks/${maxFishtankId + 1}`)
+      .send({
+        token: validUsers[0].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(422);
   });
 });
