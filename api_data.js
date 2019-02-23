@@ -2,10 +2,10 @@ define({ "api": [
   {
     "type": "get",
     "url": "/fishtanks/:id",
-    "title": "Request Fishtank data",
+    "title": "Show Fishtank",
     "name": "GetFishtank",
     "group": "Fishtanks",
-    "description": "<p>This URL displays data about a given fishtank</p>",
+    "description": "<p>Returns a JSON containing data on a given fishtank</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -14,14 +14,14 @@ define({ "api": [
             "type": "Integer",
             "optional": false,
             "field": "id",
-            "description": "<p>Number identifying the fishtank</p>"
+            "description": "<p>id of a fishtank</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "id: 1",
+          "content": "id: 2",
           "type": "String"
         }
       ]
@@ -30,7 +30,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n[]",
+          "content": "HTTP/1.1 200 OK\n{\n\"createdAt\": \"23/02/2019 00:06:40\",\n\"id\": 2,\n\"ownerId\": 2,\n\"shoalId\": 5,\n\"status\": {\n  \"name\": \"ONGOING\"\n}\n}",
           "type": "json"
         }
       ]
@@ -47,10 +47,10 @@ define({ "api": [
   {
     "type": "patch",
     "url": "/fishtanks/:id",
-    "title": "Edit Fishtank data",
+    "title": "Update Fishtank data",
     "name": "PatchFishtank",
     "group": "Fishtanks",
-    "description": "<p>This URL receives edition requests for a given fishtank</p>",
+    "description": "<p>Updates a fishtank's settings</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -59,7 +59,7 @@ define({ "api": [
             "type": "Integer",
             "optional": false,
             "field": "id",
-            "description": "<p>Number identifying the fishtank</p>"
+            "description": "<p>id of a fishtank</p>"
           }
         ]
       },
@@ -95,12 +95,23 @@ define({ "api": [
     "title": "Create Fishtank",
     "name": "PostFishtanks",
     "group": "Fishtanks",
-    "description": "<p>This URL receives new fishtank declarations</p>",
+    "description": "<p>Creates a new fishtank and returns a JSON containing its id</p>",
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "fishtankId",
+            "description": "<p>id of the new fishtank</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK",
+          "content": "HTTP/1.1 201 OK\n{\n  \"fishtankId\": 3\n}",
           "type": "json"
         }
       ]
