@@ -5,8 +5,8 @@ module.exports = {
     shoalId: {
       in: ['body'],
       isInt: {
-        options: true,
-        errorMessage: 'must be an integer',
+        options: { min: 1 },
+        errorMessage: 'must be a positive integer',
       },
       toInt: true,
     },
@@ -15,8 +15,8 @@ module.exports = {
     id: {
       in: ['params'],
       isInt: {
-        options: true,
-        errorMessage: 'must be an integer',
+        options: { min: 1 },
+        errorMessage: 'must be a positive integer',
       },
       toInt: true,
     },
@@ -25,16 +25,16 @@ module.exports = {
     id: {
       in: ['params'],
       isInt: {
-        options: true,
-        errorMessage: 'must be an integer',
+        options: { min: 1 },
+        errorMessage: 'must be a positive integer',
       },
       toInt: true,
     },
     type: {
       in: ['body'],
       isInt: {
-        options: true,
-        errorMessage: 'must be an integer',
+        options: { min: 1 },
+        errorMessage: 'must be a positive integer',
       },
       isIn: {
         options: [Object.values(Fishtank.editionTypes).map(x => x.toString())],
