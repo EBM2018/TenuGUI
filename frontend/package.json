@@ -12,7 +12,16 @@
     "react-scripts": "2.1.3",
     "superagent": "^4.1.0"
   },
-  "proxy": "http://localhost:4000",
+  "proxy": {
+    "/socket": {
+      // Your compatible WebSocket server
+      "target": "ws://<socket_url>",
+      // Tell http-proxy-middleware that this is a WebSocket proxy.
+      // Also allows you to proxy WebSocket requests without an additional HTTP request
+      // https://github.com/chimurai/http-proxy-middleware#external-websocket-upgrade
+      "ws": true
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
