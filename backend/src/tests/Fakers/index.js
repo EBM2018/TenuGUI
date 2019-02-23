@@ -15,6 +15,13 @@ const isValidShoal = (validShoals = []) => async (shoalId) => {
   return false;
 };
 
+const isUserPartOfShoal = (shoalUsers = []) => async (userId) => {
+  for (let i = 0; i < shoalUsers.length; i += 1) {
+    if (userId === shoalUsers[i].id) return true;
+  }
+  return false;
+};
+
 module.exports = {
-  addUser, isValidShoal,
+  addUser, isValidShoal, isUserPartOfShoal,
 };
