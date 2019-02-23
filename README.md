@@ -38,7 +38,8 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
     * Le remplir avec ses propres paramètres
 * Exécuter `NODE_ENV=testing sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
 * Exécuter `NODE_ENV=testing sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
-* Exécuter `npm run test` dans le dossier `backend`
+* Exécuter `npm run test` dans le dossier `backend` pour lancer les tests
+* Exécuter `npm run lint` dans le dossier `backend` pour lancer le linter
 
 # Licence
 

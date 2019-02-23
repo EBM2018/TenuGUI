@@ -20,6 +20,7 @@ module.exports = {
       dialect: process.env.DB_CONNECTION,
       port: process.env.DB_PORT,
       operatorsAliases: false,
+      logging: false,
     },
   },
 };
