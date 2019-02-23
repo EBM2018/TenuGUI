@@ -20,4 +20,5 @@ module.exports = {
     return null;
   },
   isValidShoal: async () => true,
+  isUserPartOfShoal: async () => true,
 };
