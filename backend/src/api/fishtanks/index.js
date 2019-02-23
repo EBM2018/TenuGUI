@@ -4,6 +4,8 @@ const FishtankMiddlewares = require('../../middlewares/fishtank.js');
 
 const router = new Router();
 
+router.use('/:id/interactions', require('./fishtankInteractions'));
+
 /**
  * @api {post} /fishtanks Create Fishtank
  * @apiName PostFishtanks
@@ -38,7 +40,7 @@ router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
  * }
 }
  */
-router.get('/:id', FishtankController.read);
+router.get('/:id', ...FishtankMiddlewares.read, FishtankController.read);
 
 /**
  * @api {patch} /fishtanks/:id Edit Fishtank data
@@ -52,7 +54,5 @@ router.get('/:id', FishtankController.read);
  * HTTP/1.1 200 OK
  */
 router.patch('/:id', ...FishtankMiddlewares.edit, FishtankController.edit);
-
-router.use('/:id/interactions', require('./fishtankInteractions'));
 
 module.exports = router;

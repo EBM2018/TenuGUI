@@ -11,6 +11,16 @@ module.exports = {
       toInt: true,
     },
   },
+  read: {
+    id: {
+      in: ['params'],
+      isInt: {
+        options: true,
+        errorMessage: 'must be an integer',
+      },
+      toInt: true,
+    },
+  },
   edit: {
     id: {
       in: ['params'],

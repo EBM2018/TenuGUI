@@ -14,6 +14,12 @@ module.exports = {
     Shoal.isValid,
     bail(422),
   ],
+  read: [
+    User.isAuthenticated,
+    bail(403),
+    checkSchema(ValidationSchema.read),
+    bail(422),
+  ],
   edit: [
     User.isAuthenticated,
     bail(403),
