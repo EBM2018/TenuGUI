@@ -1,7 +1,7 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const faker = require('../../Fakers/index.js');
-const models = require('../../../database/models');
+const { sequelize } = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
@@ -35,7 +35,7 @@ describe('Fishtank creation validation', () => {
   });
 
   afterAll(() => {
-    models.sequelize.close();
+    sequelize.close();
   });
 
   test('It should accept a valid request', () => request(app)

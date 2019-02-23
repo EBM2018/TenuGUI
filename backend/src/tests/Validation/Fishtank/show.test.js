@@ -1,7 +1,7 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const faker = require('../../Fakers/index.js');
-const models = require('../../../database/models');
+const { sequelize, Fishtank, FishtankStatus } = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
@@ -36,14 +36,14 @@ describe('Fishtank retrieval validation', () => {
   });
 
   afterAll(() => {
-    models.sequelize.close();
+    sequelize.close();
   });
 
   test('It should accept a valid request from a user part of the fishtank\'s shoal', async () => {
-    const fishtank = await models.Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
-      statusId: models.FishtankStatus.ONGOING,
+      statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
     fishtank.setDataValue('status', await fishtank.getStatus());
@@ -64,10 +64,10 @@ describe('Fishtank retrieval validation', () => {
   });
 
   test('It should accept a valid request from the fishtank owner', async () => {
-    const fishtank = await models.Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[1].id,
       shoalId: 0,
-      statusId: models.FishtankStatus.ONGOING,
+      statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
     fishtank.setDataValue('status', await fishtank.getStatus());
@@ -89,10 +89,10 @@ describe('Fishtank retrieval validation', () => {
 
   /* Token validation */
   test('It should reject an empty request', async () => {
-    const fishtank = await models.Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
-      statusId: models.FishtankStatus.ONGOING,
+      statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
@@ -104,10 +104,10 @@ describe('Fishtank retrieval validation', () => {
   });
 
   test('It should reject a request with a non-JWT token', async () => {
-    const fishtank = await models.Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
-      statusId: models.FishtankStatus.ONGOING,
+      statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
     return request(app)
@@ -120,10 +120,10 @@ describe('Fishtank retrieval validation', () => {
   });
 
   test('It should reject a request with an invalid token', async () => {
-    const fishtank = await models.Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
-      statusId: models.FishtankStatus.ONGOING,
+      statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
     return request(app)
@@ -137,7 +137,7 @@ describe('Fishtank retrieval validation', () => {
 
   /* Fishtank validation */
   test('It should reject a request with an invalid fishtank id', async () => {
-    const maxFishtankId = await models.Fishtank.max('id');
+    const maxFishtankId = await Fishtank.max('id');
     return request(app)
       .get(`/api/fishtanks/${maxFishtankId + 1}`)
       .send({
