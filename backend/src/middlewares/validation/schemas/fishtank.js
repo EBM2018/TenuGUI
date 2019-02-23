@@ -11,7 +11,7 @@ module.exports = {
       toInt: true,
     },
   },
-  read: {
+  show: {
     id: {
       in: ['params'],
       isInt: {
@@ -21,7 +21,7 @@ module.exports = {
       toInt: true,
     },
   },
-  edit: {
+  update: {
     id: {
       in: ['params'],
       isInt: {

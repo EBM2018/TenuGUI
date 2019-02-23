@@ -14,7 +14,7 @@ module.exports = {
       .catch(() => res.status(500).send());
   },
 
-  read: (req, res) => {
+  show: (req, res) => {
     Fishtank.findByPk(req.params.id, {
       attributes: ['id', 'ownerId', 'shoalId', 'createdAt'], // TODO: Add request processor that adds closedAt field when dealing with a finished fishtank
       include: [{
@@ -27,7 +27,7 @@ module.exports = {
       .catch(() => res.status(500).send());
   },
 
-  edit: (req, res) => {
+  update: (req, res) => {
     if (req.body.type === Fishtank.editionTypes.FINISH) {
       Fishtank.findByPk(req.params.id)
         .then(fishtank => fishtank.update({

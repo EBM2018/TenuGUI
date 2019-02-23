@@ -14,22 +14,22 @@ module.exports = {
     Shoal.isValid,
     bail(422),
   ],
-  read: [
+  show: [
     User.isAuthenticated,
     bail(403),
-    checkSchema(ValidationSchema.read),
+    checkSchema(ValidationSchema.show),
     bail(422),
-    CustomRules.read,
+    CustomRules.show,
     bail(422),
     User.hasAccess,
     bail(403),
   ],
-  edit: [
+  update: [
     User.isAuthenticated,
     bail(403),
-    checkSchema(ValidationSchema.edit),
+    checkSchema(ValidationSchema.update),
     bail(422),
-    CustomRules.edit,
+    CustomRules.update,
     bail(422),
     User.isOwner,
     bail(403),

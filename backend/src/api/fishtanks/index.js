@@ -21,7 +21,7 @@ router.use('/:id/interactions', require('./fishtankInteractions'));
 router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
 
 /**
- * @api {get} /fishtanks/:id Get Fishtank
+ * @api {get} /fishtanks/:id Show Fishtank
  * @apiName GetFishtank
  * @apiGroup Fishtanks
  * @apiDescription Returns a JSON containing data on a given fishtank
@@ -40,10 +40,10 @@ router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
  * }
 }
  */
-router.get('/:id', ...FishtankMiddlewares.read, FishtankController.read);
+router.get('/:id', ...FishtankMiddlewares.show, FishtankController.show);
 
 /**
- * @api {patch} /fishtanks/:id Edit Fishtank data
+ * @api {patch} /fishtanks/:id Update Fishtank data
  * @apiName PatchFishtank
  * @apiGroup Fishtanks
  * @apiDescription This URL receives edition requests for a given fishtank
@@ -53,6 +53,6 @@ router.get('/:id', ...FishtankMiddlewares.read, FishtankController.read);
  * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 200 OK
  */
-router.patch('/:id', ...FishtankMiddlewares.edit, FishtankController.edit);
+router.patch('/:id', ...FishtankMiddlewares.update, FishtankController.update);
 
 module.exports = router;
