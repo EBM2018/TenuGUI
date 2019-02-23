@@ -11,8 +11,20 @@ module.exports = {
       fishtankId: fishtank.id,
     }));
   },
-  // TODO: Should send basic Fishtank info along with current activity info
-  read: (req, res) => res.send([]),
+
+  read: (req, res) => {
+    Fishtank.findByPk(req.params.id, {
+      attributes: ['id', 'ownerId', 'shoalId', 'createdAt'], // TODO: Add request processor that adds closedAt field when dealing with a finished fishtank
+      include: [{
+        model: FishtankStatus,
+        attributes: ['name'],
+        as: 'status',
+      }],
+    })
+      .then(fishtank => res.status(200).send(fishtank))
+      .catch(() => res.status(500).send());
+  },
+
   edit: (req, res) => {
     if (req.body.type === Fishtank.editionTypes.FINISH) {
       Fishtank.findByPk(req.params.id)
