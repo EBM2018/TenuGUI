@@ -146,4 +146,22 @@ describe('Fishtank retrieval validation', () => {
       .set('Content-Type', 'application/json')
       .expect(422);
   });
+
+  /* User validation */
+  test('It should reject a request from a user with no rights over the desired fishtank', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+
+    return request(app)
+      .get(`/api/fishtanks/${fishtank.id}`)
+      .send({
+        token: validUsers[1].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(403);
+  });
 });
