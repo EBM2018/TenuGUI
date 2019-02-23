@@ -1,6 +1,6 @@
 const request = require('supertest');
 const sinon = require('sinon');
-const authFaker = require('../../Fakers/authentication.js');
+const authFaker = require('../../Fakers/index.js');
 const models = require('../../../database/models');
 
 const validUsers = [{
@@ -16,21 +16,21 @@ const invalidShoals = [7];
 
 describe('Fishtank creation validation', () => {
   let app;
-  let auth;
+  let requestLoader;
   let mockTeamy;
 
   beforeEach(() => {
-    auth = require('../../../middlewares/authentication/');
+    requestLoader = require('../../../middlewares/requestLoading/');
     mockTeamy = require('../../../__mock_teamy__');
-    sinon.stub(auth, 'validateAuthentication')
-      .callsFake(authFaker.validateAuthentication(validUsers));
+    sinon.stub(requestLoader, 'addUser')
+      .callsFake(authFaker.addUser(validUsers));
     sinon.stub(mockTeamy, 'isValidShoal')
       .callsFake(authFaker.isValidShoal(validShoals));
     app = require('../../../');
   });
 
   afterEach(() => {
-    auth.validateAuthentication.restore();
+    requestLoader.addUser.restore();
     mockTeamy.isValidShoal.restore();
     models.sequelize.close();
   });

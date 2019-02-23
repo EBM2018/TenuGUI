@@ -1,4 +1,4 @@
-const validateAuthentication = (validUsers = []) => async (value, { req }) => {
+const addUser = (validUsers = []) => async (value, { req }) => {
   for (let i = 0; i < validUsers.length; i += 1) {
     if (value === validUsers[i].token) {
       req.user = validUsers[i];
@@ -16,5 +16,5 @@ const isValidShoal = (validShoals = []) => async (shoalId) => {
 };
 
 module.exports = {
-  validateAuthentication, isValidShoal,
+  addUser, isValidShoal,
 };
