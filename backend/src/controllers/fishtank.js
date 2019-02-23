@@ -7,9 +7,11 @@ module.exports = {
       shoalId: req.body.shoalId,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
-    }).then(fishtank => res.status(201).send({
-      fishtankId: fishtank.id,
-    }));
+    })
+      .then(fishtank => res.status(201).send({
+        fishtankId: fishtank.id,
+      }))
+      .catch(() => res.status(500).send());
   },
 
   read: (req, res) => {
@@ -32,7 +34,8 @@ module.exports = {
           statusId: FishtankStatus.FINISHED,
           closedAt: Date.now(),
         }))
-        .then(() => res.status(200).send());
+        .then(() => res.status(200).send())
+        .catch(() => res.status(500).send());
     } else res.status(400).send();
   },
 };
