@@ -19,6 +19,10 @@ module.exports = {
     bail(403),
     checkSchema(ValidationSchema.read),
     bail(422),
+    CustomRules.read,
+    bail(422),
+    User.hasAccess,
+    bail(403),
   ],
   edit: [
     User.isAuthenticated,
