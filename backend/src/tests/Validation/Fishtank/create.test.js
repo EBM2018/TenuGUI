@@ -1,6 +1,6 @@
 const request = require('supertest');
 const sinon = require('sinon');
-const authFaker = require('../../Fakers/index.js');
+const faker = require('../../Fakers/index.js');
 const models = require('../../../database/models');
 
 const validUsers = [{
@@ -23,9 +23,9 @@ describe('Fishtank creation validation', () => {
     requestLoader = require('../../../middlewares/requestLoading/');
     mockTeamy = require('../../../__mock_teamy__');
     sinon.stub(requestLoader, 'addUser')
-      .callsFake(authFaker.addUser(validUsers));
+      .callsFake(faker.addUser(validUsers));
     sinon.stub(mockTeamy, 'isValidShoal')
-      .callsFake(authFaker.isValidShoal(validShoals));
+      .callsFake(faker.isValidShoal(validShoals));
     app = require('../../../');
   });
 
