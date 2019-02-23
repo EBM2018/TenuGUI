@@ -46,8 +46,8 @@ router.get('/:id', ...FishtankMiddlewares.show, FishtankController.show);
  * @api {patch} /fishtanks/:id Update Fishtank data
  * @apiName PatchFishtank
  * @apiGroup Fishtanks
- * @apiDescription This URL receives edition requests for a given fishtank
- * @apiParam  {Integer} id Number identifying the fishtank
+ * @apiDescription Updates a fishtank's settings
+ * @apiParam  {Integer} id id of a fishtank
  * @apiParamExample  {String} Request-Example:
  * type: 1
  * @apiSuccessExample {json} Success-Response:
