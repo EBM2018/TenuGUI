@@ -32,6 +32,9 @@ describe('Fishtank creation validation', () => {
   afterEach(() => {
     requestLoader.addUser.restore();
     mockTeamy.isValidShoal.restore();
+  });
+
+  afterAll(() => {
     models.sequelize.close();
   });
 
