@@ -24,7 +24,6 @@
     "express-validator": "^5.3.1",
     "moment": "^2.24.0",
     "mysql2": "^1.6.5",
-    "puppeteer": "^1.12.2",
     "sequelize": "^4.42.0",
     "serve-static": "^1.13.2"
   },
@@ -36,6 +35,7 @@
     "eslint-plugin-import": "^2.14.0",
     "jest": "^24.1.0",
     "nodemon": "^1.18.9",
+    "puppeteer": "^1.12.2",
     "sequelize-cli": "^5.4.0",
     "sinon": "^7.2.4",
     "supertest": "^3.4.2"
