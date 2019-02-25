@@ -10,8 +10,8 @@ services:
       - DB_HOST=mariadb
       - DB_PORT=3306
       - DB_DATABASE=TenuGUI
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=Tenuguy
+      - DB_PASSWORD=${MYSQL_PASSWORD}
     networks:
       local:
       ebm-filrouge:
@@ -25,6 +25,12 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
   mariadb:
     image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: TenuGUI
+      MYSQL_USER: Tenuguy
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
       - local
 
