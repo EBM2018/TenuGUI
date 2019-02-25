@@ -1,9 +1,9 @@
 const { Router } = require('express');
+const RootController = require('../controllers/');
 
 const router = new Router();
 
-// TODO: Should be a glossary for available routes
-router.get('/', (req, res) => res.send('Hello, I am APIGUI!'));
+router.get('/', RootController.routes);
 
 router.use('/fishtanks', require('./fishtanks'));
 
