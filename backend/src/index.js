@@ -10,8 +10,6 @@ const server = require('http').Server(app);
 const Umzug = require('umzug');
 const umzugConfig = require('./config/umzug.js');
 
-const umzug = new Umzug(umzugConfig);
-
 const config = require('./config');
 
 app.use(bodyParser.json());
@@ -30,6 +28,9 @@ if (process.env.NODE_ENV !== 'testing') {
   });
 }
 
-umzug.up().then(() => console.log('Database migrated')); // Execute pending migrations
+const umzugMig = new Umzug(umzugConfig('migrations'));
+umzugMig.up().then(() => console.log('Database migrated')); // Execute pending migrations
+const umzugSed = new Umzug(umzugConfig('seeders'));
+umzugSed.up().then(() => console.log('Database seeded')); // Execute pending seeders
 
 module.exports = server;

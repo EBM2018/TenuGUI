@@ -1,6 +1,6 @@
 const { sequelize } = require('../database/models');
 
-module.exports = {
+module.exports = subPath => ({
   storage: 'sequelize',
   storageOptions: {
     sequelize,
@@ -10,7 +10,7 @@ module.exports = {
   downName: 'down',
   migrations: {
     params: [sequelize.getQueryInterface(), sequelize.constructor],
-    path: 'src/database/migrations',
+    path: `src/database/${subPath}`,
     pattern: /\.js$/,
   },
-};
+});
