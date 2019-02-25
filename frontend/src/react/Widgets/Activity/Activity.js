@@ -83,15 +83,19 @@ export default class Activity extends React.PureComponent {
 
     render() {
         var inputs = [];
-        for (var i=0;i<this.state.rowCount; i++) {
+        for (var i=0;i<data_json.Question.length; i++) {
             inputs.push( data_json.Question[i].text );
         }
+
+        //console.log(inputs)
 
         return (
             <div>
                 <a> {data_json.name} </a>
                 {inputs.map(function (result) {
-                    return <InputRow key={result} />;
+                    return <Act_text_field
+                        text={result} 
+                    />;
                 })}
                 <div>
                     <button>
