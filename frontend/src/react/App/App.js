@@ -5,7 +5,7 @@ import './App.css';
 
 import Layout from "../Layout/Layout";
 
-import Test from '../../test.js';
+import Machin from '../../machin.js';
 import Dashboard from '../Dashboard/Dashboard.js';
 import Fishtank from '../Fishtank/Fishtank.js';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin.js';
@@ -35,7 +35,7 @@ class App extends Component {
                     <Route
                         exact
                         path="/Test"
-                        component={Test}
+                        component={Machin}
                     />
                     <Route
                         exact
