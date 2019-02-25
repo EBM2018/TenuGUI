@@ -1,35 +1,100 @@
 const request = require('supertest');
 const sinon = require('sinon');
-const authFaker = require('../../Fakers/authentication.js');
-const models = require('../../../database/models');
+const faker = require('../../Fakers/index.js');
+const { sequelize } = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlUmFuZG9tIn0.RhXPI2fUIfjgFQR4JIxeM9ElQsRVagT_XgonQbd5uvk',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InJlaW11YmVzdGdpcmwifQ.mQuD55X_12rMliQbUhsZmO12WFhsduEkXoaTJ5R8-YQ',
 }];
+const invalidUsers = [{
+  id: 1,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg',
+}];
+const validShoals = [5];
+const invalidShoals = [7];
 
 describe('Fishtank creation validation', () => {
   let app;
-  let auth;
+  let requestLoader;
+  let mockTeamy;
 
   beforeEach(() => {
-    auth = require('../../../middlewares/authentication/');
-    sinon.stub(auth, 'validateAuthentication')
-      .callsFake(authFaker.validate(validUsers));
+    requestLoader = require('../../../middlewares/requestLoading/');
+    mockTeamy = require('../../../__mock_teamy__');
+    sinon.stub(requestLoader, 'addUser')
+      .callsFake(faker.addUser(validUsers));
+    sinon.stub(mockTeamy, 'isValidShoal')
+      .callsFake(faker.isValidShoal(validShoals));
     app = require('../../../');
   });
 
   afterEach(() => {
-    auth.validateAuthentication.restore();
-    models.sequelize.close();
+    requestLoader.addUser.restore();
+    mockTeamy.isValidShoal.restore();
+  });
+
+  afterAll(() => {
+    sequelize.close();
   });
 
   test('It should accept a valid request', () => request(app)
     .post('/api/fishtanks')
     .send({
-      shoalId: 5,
+      shoalId: validShoals[0],
       token: validUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(201));
+    .expect(201)); // TODO : Add response body test
+
+  test('It should reject an empty request', () => request(app)
+    .post('/api/fishtanks')
+    .send({})
+    .set('Content-Type', 'application/json')
+    .expect(403));
+
+  /* Token validation */
+  test('It should reject a request without a token', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      shoalId: validShoals[0],
+    })
+    .set('Content-Type', 'application/json')
+    .expect(403));
+
+  test('It should reject a request with a non-JWT token', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      shoalId: validShoals[0],
+      token: 'test',
+    })
+    .set('Content-Type', 'application/json')
+    .expect(403));
+
+  test('It should reject a request with an invalid token', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      shoalId: validShoals[0],
+      token: invalidUsers[0].token,
+    })
+    .set('Content-Type', 'application/json')
+    .expect(403));
+
+  /* Shoal validation */
+  test('It should reject a request without a shoal id', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      token: validUsers[0].token,
+    })
+    .set('Content-Type', 'application/json')
+    .expect(422));
+
+  test('It should reject a request with an invalid shoal id', () => request(app)
+    .post('/api/fishtanks')
+    .send({
+      shoalId: invalidShoals[0],
+      token: validUsers[0].token,
+    })
+    .set('Content-Type', 'application/json')
+    .expect(422));
 });

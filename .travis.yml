@@ -30,7 +30,8 @@ script:
 
   # Backend
   - cd backend
-  - npm test
+  - npm run lint
+  #- npm run test
   - npm run apidoc
   - cd ..
 

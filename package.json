@@ -19,10 +19,6 @@
   ],
   "author": "tenuteam",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/EBM2018/filrouge-boilerplate/issues"
-  },
-  "homepage": "https://github.com/EBM2018/filrouge-boilerplate#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
     "jsdoc": "^3.5.5"
