@@ -41,6 +41,14 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Exécuter `npm run test` dans le dossier `backend` pour lancer les tests
 * Exécuter `npm run lint` dans le dossier `backend` pour lancer le linter
 
+# Déploiement local
+
+* [Installer Docker CE](https://docs.docker.com/install/)
+* [Installer docker-compose](https://docs.docker.com/compose/install/)
+* Compléter les variables d'environnement `MYSQL_PASSWORD` et `MYSQL_ROOT_PASSWORD` du fichier `.env` du dossier `backend`
+* Éxécuter `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
+    * À tuer et relancer à chaque modification du code source
+
 # Licence
 
 Code mis à disposition selon la [Licence MIT](./LICENSE).
