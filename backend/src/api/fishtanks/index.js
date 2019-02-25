@@ -31,14 +31,14 @@ router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
  * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 200 OK
  * {
- * "createdAt": "23/02/2019 00:06:40",
- * "id": 2,
- * "ownerId": 2,
- * "shoalId": 5,
- * "status": {
- *   "name": "ONGOING"
+ *   "createdAt": "23/02/2019 00:06:40",
+ *   "id": 2,
+ *   "ownerId": 2,
+ *   "shoalId": 5,
+ *   "status": {
+ *     "name": "ONGOING"
+ *   }
  * }
-}
  */
 router.get('/:id', ...FishtankMiddlewares.show, FishtankController.show);
 

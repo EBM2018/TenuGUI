@@ -2,6 +2,7 @@ const request = require('supertest');
 const sinon = require('sinon');
 const faker = require('../../Fakers/index.js');
 const { sequelize, Fishtank, FishtankStatus } = require('../../../database/models');
+const { getRequestUrlInTests } = require('../../../services/formatter.js');
 
 const validUsers = [{
   id: 0,
@@ -54,12 +55,18 @@ describe('Fishtank retrieval validation', () => {
         token: validUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(200, {
-        id: fishtank.id,
-        ownerId: fishtank.ownerId,
-        shoalId: fishtank.shoalId,
-        createdAt: fishtank.createdAt,
-        status: { name: fishtank.getDataValue('status').name },
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toEqual({
+          fishtank: {
+            id: fishtank.id,
+            ownerId: fishtank.ownerId,
+            shoalId: fishtank.shoalId,
+            createdAt: fishtank.createdAt,
+            status: { name: fishtank.getDataValue('status').name },
+          },
+          interactions: `${getRequestUrlInTests(res)}/api/fishtanks/${fishtank.id}/interactions`,
+        });
       });
   });
 
@@ -78,12 +85,18 @@ describe('Fishtank retrieval validation', () => {
         token: validUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(200, {
-        id: fishtank.id,
-        ownerId: fishtank.ownerId,
-        shoalId: fishtank.shoalId,
-        createdAt: fishtank.createdAt,
-        status: { name: fishtank.getDataValue('status').name },
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toEqual({
+          fishtank: {
+            id: fishtank.id,
+            ownerId: fishtank.ownerId,
+            shoalId: fishtank.shoalId,
+            createdAt: fishtank.createdAt,
+            status: { name: fishtank.getDataValue('status').name },
+          },
+          interactions: `${getRequestUrlInTests(res)}/api/fishtanks/${fishtank.id}/interactions`,
+        });
       });
   });
 

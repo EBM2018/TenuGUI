@@ -1,4 +1,5 @@
 const { Fishtank, FishtankStatus } = require('../database/models');
+const { getRequestUrl } = require('../services/formatter.js');
 
 module.exports = {
   create: (req, res) => {
@@ -10,6 +11,7 @@ module.exports = {
     })
       .then(fishtank => res.status(201).send({
         fishtankId: fishtank.id,
+        url: `${getRequestUrl(req)}/api/fishtanks/${fishtank.id}`,
       }))
       .catch(() => res.status(500).send());
   },
@@ -23,7 +25,10 @@ module.exports = {
         as: 'status',
       }],
     })
-      .then(fishtank => res.status(200).send(fishtank))
+      .then(fishtank => res.status(200).send({
+        fishtank,
+        interactions: `${getRequestUrl(req)}/api/fishtanks/${req.params.id}/interactions`,
+      }))
       .catch(() => res.status(500).send());
   },
 

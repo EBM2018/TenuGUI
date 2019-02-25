@@ -45,7 +45,7 @@ describe('Fishtank creation validation', () => {
       token: validUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(201));
+    .expect(201)); // TODO : Add response body test
 
   test('It should reject an empty request', () => request(app)
     .post('/api/fishtanks')
