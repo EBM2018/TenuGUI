@@ -3,7 +3,7 @@ const RootController = require('../controllers/');
 
 const router = new Router();
 
-router.get('/', RootController.routes);
+router.get('/', RootController.show);
 
 router.use('/fishtanks', require('./fishtanks'));
 
