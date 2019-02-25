@@ -7,6 +7,11 @@ const serveStatic = require('serve-static');
 const app = express();
 const server = require('http').Server(app);
 
+const Umzug = require('umzug');
+const umzugConfig = require('./config/umzug.js');
+
+const umzug = new Umzug(umzugConfig);
+
 const config = require('./config');
 
 app.use(bodyParser.json());
@@ -24,5 +29,7 @@ if (process.env.NODE_ENV !== 'testing') {
     else console.log(`Listening on port ${config.app.port}`);
   });
 }
+
+umzug.up().then(() => console.log('Database migrated')); // Execute pending migrations
 
 module.exports = server;
