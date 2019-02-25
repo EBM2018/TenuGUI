@@ -44,7 +44,7 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * [Installer Docker CE](https://docs.docker.com/install/)
 * [Installer docker-compose](https://docs.docker.com/compose/install/)
 * Compléter les variables d'environnement `MYSQL_PASSWORD` et `MYSQL_ROOT_PASSWORD` du fichier `.env` du dossier `backend`
-* Éxécuter `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
+* Exécuter `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
     * À tuer et relancer à chaque modification du code source
 
 # Licence
