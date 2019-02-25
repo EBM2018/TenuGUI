@@ -28,13 +28,13 @@
     "serve-static": "^1.13.2"
   },
   "devDependencies": {
-    "@types/sequelize": "^4.27.36",
+    "@types/sequelize": "^4.27.37",
     "apidoc": "^0.17.7",
-    "eslint": "^5.12.1",
+    "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^2.16.0",
     "jest": "^24.1.0",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.18.10",
     "puppeteer": "^1.12.2",
     "sequelize-cli": "^5.4.0",
     "sinon": "^7.2.4",
