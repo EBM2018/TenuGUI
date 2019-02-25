@@ -20,8 +20,6 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Créer un fichier `.env` dans le dossier `backend`
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
-* Exécuter `sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
-* Exécuter `sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
 * Exécuter `npm start` à la racine pour servir le front-end et le back-end
 
 # Tests
