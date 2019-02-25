@@ -25,7 +25,8 @@
     "moment": "^2.24.0",
     "mysql2": "^1.6.5",
     "sequelize": "^4.42.0",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "umzug": "^2.2.0"
   },
   "devDependencies": {
     "@types/sequelize": "^4.27.37",
