@@ -12,6 +12,7 @@ services:
       - DB_DATABASE=TenuGUI
       - DB_USERNAME=Tenuguy
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_LOGGING=false
     networks:
       local:
       ebm-filrouge:

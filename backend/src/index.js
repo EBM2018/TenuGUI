@@ -6,12 +6,14 @@ const serveStatic = require('serve-static');
 
 const app = express();
 const server = require('http').Server(app);
+const helmet = require('helmet');
 
 const Umzug = require('umzug');
 const umzugConfig = require('./config/umzug.js');
 
 const config = require('./config');
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use('/api', require('./api'));
 
@@ -28,6 +30,7 @@ if (process.env.NODE_ENV !== 'testing') {
   });
 }
 
+// TODO: Move server listening after migrations with a proper promises chain
 const umzugMig = new Umzug(umzugConfig('migrations'));
 umzugMig.up().then(() => console.log('Database migrated')); // Execute pending migrations
 const umzugSed = new Umzug(umzugConfig('seeders'));

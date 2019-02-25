@@ -10,5 +10,6 @@ module.exports = {
     dialect: process.env.DB_CONNECTION,
     port: process.env.DB_PORT,
     operatorsAliases: false,
+    logging: process.env.DB_LOGGING === 'true' ? console.log : false,
   },
 };
