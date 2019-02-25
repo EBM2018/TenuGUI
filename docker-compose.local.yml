@@ -13,6 +13,7 @@ services:
     - DB_DATABASE=TenuGUI
     - DB_USERNAME=Tenuguy
     - DB_PASSWORD=${MYSQL_PASSWORD}
+    - DB_LOGGING=true
     networks:
       local:
     ports:
