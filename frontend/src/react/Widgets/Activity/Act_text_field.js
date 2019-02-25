@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default class Act_text_field extends React.PureComponent {
 
     static propTypes = {
+        id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired
     };
 

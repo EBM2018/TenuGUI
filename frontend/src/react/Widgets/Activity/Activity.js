@@ -72,7 +72,8 @@ var data_json_null =
 export default class Activity extends React.PureComponent {
 
     state = {
-        data: data_json
+        data: data_json,
+        index: 0
     }
 
     swap = () => { // pour des test à la con
@@ -85,28 +86,32 @@ export default class Activity extends React.PureComponent {
     }
 
     send = () => { // pour des test à la con
+        {this.state.data.Question.map(function (ques) {
+        })}
         this.setState({data: data_json_null})
     }
+
+    
 
     render() {
         return (
             <div>
                 <a> {this.state.data.name} </a>
-                {this.state.data.Question.map(function (ques) {
+                {this.state.data.Question.map(function (ques, index) {
                     if(ques.type === "field"){
                         return <Act_text_field
+                            id={index}
                             text={ques.text}
                         />;
                     }
                     if(ques.type === "check"){
                         return <Act_text_check
+                            id={index}
                             text={ques.text}
                             list_reponse={ques.reponse}
                         />;
-
-                        //console.log(data_json.Question[index].reponse)
-                        //console.log(typeof data_json.Question[index].reponse)
                     }
+                    this.setState({index: index});
                 })}
                 <div>
                     <button onClick={this.send}>
@@ -117,19 +122,3 @@ export default class Activity extends React.PureComponent {
         );
     }
 }
-/*
-<Act_text_field
-    text={data_json.Question[0].text}/>
-<Act_text_field
-    text={data_json.Question[1].text}/>
-<Act_text_field
-    text={data_json.Question[2].text}/>
-<Act_text_field
-    text={data_json.Question[3].text}/>
-<input type="checkbox" id="myCheck" />{data_json.Question[4].reponse[0].rep}
-
-<Act_text_check
-    text={data_json.Question[4].text}
-    reponse={data_json.Question[4].reponse}
-/>
-*/

@@ -5,6 +5,7 @@ import CheckBox from "./CheckBox.js";
 export default class Act_text_check extends React.PureComponent {
 
     static propTypes = {
+        id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         list_reponse: PropTypes.object
     };
