@@ -1,0 +1,15 @@
+#dashboardContainer {
+    display: flex;
+}
+
+#firstColumn {
+    width: 30%;
+}
+
+#C {
+    border-right: 6px solid #61dafb;
+}
+
+#buttonStartFishtank {
+    float:right;
+}
