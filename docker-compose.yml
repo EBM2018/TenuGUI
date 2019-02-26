@@ -34,8 +34,13 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
       - local
+    volumes:
+      - mariadb-volume:/var/lib/mysql
 
 networks:
   local:
   ebm-filrouge:
     external: true
+
+volumes:
+  mariadb-volume:
