@@ -5,22 +5,25 @@ import CheckBox from "./CheckBox.js";
 export default class Act_text_check extends React.PureComponent {
 
     static propTypes = {
-        id: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
-        list_reponse: PropTypes.object
+        text: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired,
+        list_reponse: PropTypes.array
     };
 
     render() {
         var inputs = [];
         for (var i=0;i<this.props.list_reponse.length; i++) {
-            inputs.push( i );
+            inputs.push(this.props.list_reponse[i].rep );
         }
 
         return (
             <div id={"container reponse"}>
-                {inputs.map(function (reponse) {
-                    console.log(reponse)
+                <div> {this.props.text} </div>
+                {inputs.map(function (reponse, index) {
                     return <CheckBox
+                                key={index}
                                 reponse={reponse}
                             />;
                 })}

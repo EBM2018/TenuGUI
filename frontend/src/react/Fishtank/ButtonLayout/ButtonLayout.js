@@ -25,7 +25,7 @@ export default class ButtonLayout extends React.PureComponent {
 
     render() {
         return (
-            <d>
+            <a>
                 <div id='ButtonLayoutContainer'>
                     <button id='AskQuestion' onClick={fct_Student_question}>
                         Posez votre question
@@ -34,29 +34,29 @@ export default class ButtonLayout extends React.PureComponent {
 
                     <b className="dropdown">
                         <button className="dropbtn"> Changement de Rythme</button>
-                        <c className="dropdown-content">
-                            <a href="#" onClick={fct_Student_speed_up}>Demander d'aller plus vite</a>
-                            <a href="#" onClick={fct_Student_speed_down}>Demander d'aller moins vite</a>
-                            <a href="#" onClick={fct_Student_not_understand}>Je ne comprends plus rien</a>
-                            <a href="#" onClick={fct_Student_stop}>Demander une pause</a>
-                        </c>
+                        <b className="dropdown-content">
+                            <b href="#" onClick={fct_Student_speed_up}>Demander d'aller plus vite</b>
+                            <b href="#" onClick={fct_Student_speed_down}>Demander d'aller moins vite</b>
+                            <b href="#" onClick={fct_Student_not_understand}>Je ne comprends plus rien</b>
+                            <b href="#" onClick={fct_Student_stop}>Demander une pause</b>
+                        </b>
                     </b>
 
 
                     <b className="dropdown">
                         <button className="dropbtn"> Précision
                         </button>
-                        <c className="dropdown-content">
-                            <a href="#" onClick={this.speedUp}>Demander d'aller plus vite 2</a>
-                            <a href="#" onClick={this.speedDown}>Demander d'aller moins vite 2</a>
-                            <a href="#" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</a>
-                            <a href="#" onClick={this.plsStop}>Demander une pause 2</a>
-                        </c>
+                        <b className="dropdown-content">
+                            <b href="#" onClick={this.speedUp}>Demander d'aller plus vite 2</b>
+                            <b href="#" onClick={this.speedDown}>Demander d'aller moins vite 2</b>
+                            <b href="#" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</b>
+                            <b href="#" onClick={this.plsStop}>Demander une pause 2</b>
+                        </b>
                     </b>
 
                 </div>
                 <div id={'clean'}></div>
-            </d>
+            </a>
         );
     }
 }

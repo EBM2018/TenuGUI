@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 export default class CheckBox extends React.PureComponent {
 
     static propTypes = {
-        reponse: PropTypes.string.isRequired
+        reponse: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired
     };
 
     render() {
