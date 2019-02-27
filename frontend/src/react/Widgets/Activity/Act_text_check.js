@@ -1,32 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Act_text_field from "./Act_text_field";
+import CheckBox from './CheckBox.js';
 
 export default class Act_text_check extends React.PureComponent {
-
     static propTypes = {
-        text: PropTypes.string.isRequired,
-        reponse: PropTypes.string.isRequired
+      text: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      list_reponse: PropTypes.array,
     };
 
-    remplir = (data_reponse) => {
-        var container = document.getElementById("container reponse");
-
-        for (var i = 0; i < data_reponse.length; i++) {
-            container.innerHTML += <Act_text_field
-                text={data_json.Question[i].text}
-            />;
-        }
-    }
-
-    componentDidMount = () => {
-        this.remplir(this.state.reponse)
-    }
-
     render() {
-        return (
-            <div id={"container reponse"}>
-            </div>
-        );
+      const inputs = [];
+      for (let i = 0; i < this.props.list_reponse.length; i++) {
+        inputs.push(this.props.list_reponse[i].rep);
+      }
+
+      return (
+        <div id="container reponse">
+          <div>
+            {' '}
+            {this.props.text}
+            {' '}
+          </div>
+          {inputs.map((reponse, index) => (
+            <CheckBox
+              key={index}
+              reponse={reponse}
+            />
+          ))}
+        </div>
+      );
     }
 }
