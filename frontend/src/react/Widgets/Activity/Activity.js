@@ -1,31 +1,44 @@
 import React from 'react';
 
 import './Activity.css';
-import Act_text_field from './Act_text_field';
-import Act_text_check from './Act_text_check';
+import PropTypes from 'prop-types';
+import ActTextField from './ActTextField';
+import ActTextCheck from './ActTextCheck';
 
-const data_json = {
+const dataJson = {
   name: 'Questionnaire_name',
   Question: [
     {
       type: 'field',
+      id_question: '0',
       text: "Qu'est ce que tu as appris ?",
-      user_reponse: '',
     },
     {
       type: 'field',
+      id_question: '0',
       text: "Qu'est ce qui t'as étonné ?",
-      user_reponse: '',
     },
     {
       type: 'field',
+      id_question: '0',
       text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
-      user_reponse: '',
     },
     {
       type: 'field',
+      id_question: '0',
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
-      user_reponse: '',
+    },
+    {
+      type: 'check',
+      id_question: '0',
+      text: 'Cb tu notes ce cour ?',
+      reponse: [
+        { rep: '1' },
+        { rep: '2' },
+        { rep: '3' },
+        { rep: '4' },
+        { rep: '5' },
+      ],
     },
   ],
 };
@@ -46,28 +59,28 @@ const data_json = {
     }
 */
 
-const data_json_2 = {
+const dataJson2 = {
   name: 'Questionnaire_name_2',
   Question: [
     {
       type: 'field',
+      id_question: '0',
       text: "Qu'est ce que tu as appris ?",
-      user_reponse: 'ini',
     },
     {
       type: 'check',
+      id_question: '0',
       text: 'Cb tu notes ce cour ?',
       reponse: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
       ],
-      user_reponse: 'ini',
     },
   ],
 };
 
-const data_json_null = {
+const dataJsonNull = {
   name: 'No_activity',
   Question: [
   ],
@@ -76,33 +89,33 @@ const data_json_null = {
 
 export default class Activity extends React.PureComponent {
     state = {
-      data: data_json,
+      data: dataJson,
     };
 
     send = () => { // pour des test à la con
-      console.log('send');
-      // console.log(React.Children.count())
-      // console.log(this.props.children)
-      // console.log(this.textInput.current)
-      // console.log(this.textInput.current.children)
       const object = this.refs.Progress1;
 
+      var stringToJSON = '{ userReponse: [';
 
       for (let i = 0; i < object.childElementCount - 2; i++) {
-        // var ref_element = "element" + i
-        // console.log(ref_element)
         const arg = this.refs[`element${i}`];
-        console.log(arg.state);
-        console.log(arg.state.user_reponse);
+        stringToJSON += ' { id: ';
 
-        /*
-            console.log(object.children[i])
-            console.log(object.children[i].state)
-            console.log(object.children[i].children[1].children[0].attributes)
-            console.log(object.children[i].children[1].children[0].value)
-            */
+        stringToJSON += (this.state.data.Question[i].id_question);
+
+        stringToJSON += ' { reponse: ';
+
+        stringToJSON += (arg.state.user_reponse);
+
+        stringToJSON += ' }';
       }
-
+      stringToJSON += '] };';
+      /*
+      console.log(stringToJSON);
+      var newJSON = JSON.(stringToJSON);
+        console.log(newJSON);
+        console.log(newJSON.userReponse[2].reponse);
+      */
       /*
         this.props.children.forEach(
             this.props.children,
@@ -111,15 +124,9 @@ export default class Activity extends React.PureComponent {
         */
       /*
         this.setState({
-                data: data_json_null
+                data: dataJsonNull
         });
         */
-    };
-
-    updateResponse = (response, id) => {
-      const new_data = this.state.data;
-      new_data.Question[id].user_reponse = response;
-      this.setState({ data: new_data });
     };
 
     render() {
@@ -131,24 +138,19 @@ export default class Activity extends React.PureComponent {
             {' '}
           </a>
           {this.state.data.Question.map((ques, index) => {
-            console.log(ques.type);
-            console.log(`index ${index}`);
-            console.log(`index ${typeof index}`);
-
             if (ques.type === 'field') {
               return (
-                <Act_text_field
+                <ActTextField
                   ref={`element${index}`}
                   key={index}
                   id={index}
                   text={ques.text}
-                  user_reponse={ques.user_reponse}
                 />
               );
             }
             if (ques.type === 'check') {
               return (
-                <Act_text_check
+                <ActTextCheck
                   ref={`element${index}`}
                   key={index}
                   text={ques.text}

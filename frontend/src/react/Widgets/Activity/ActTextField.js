@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Act_text_field extends React.PureComponent {
+export default class ActTextField extends React.PureComponent {
     static propTypes = {
       id: PropTypes.number.isRequired,
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
-      ]).isRequired,
-      user_reponse: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
-      fct: PropTypes.func,
+      ]).isRequired
     };
 
     state = {
-      user_reponse: 'ini',
+      user_reponse: '',
     }
 
     updateInputValue = (evt) => {
