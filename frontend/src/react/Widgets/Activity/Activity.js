@@ -28,7 +28,10 @@ let data_json =
                 "type": "field",
                 "text":"Qu'est ce que tu voudrais avoir moins ou en moins ?",
                 "user_reponse": ""
-            },
+            }
+        ]
+    }
+    /*,
             {
                 "type": "check",
                 "text": "Cb tu notes ce cour ?",
@@ -43,7 +46,7 @@ let data_json =
             }
         ]
     }
-
+*/
 
 let data_json_2 =
     {
