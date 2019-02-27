@@ -23,21 +23,21 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-(async () => {
-  const umzugMig = new Umzug(umzugConfig('migrations'));
-  await umzugMig.up(); // Execute pending migrations
-  console.log('Database migrated');
+if (process.env.NODE_ENV !== 'testing') {
+  (async () => {
+    const umzugMig = new Umzug(umzugConfig('migrations'));
+    await umzugMig.up(); // Execute pending migrations
+    console.log('Database migrated');
 
-  const umzugSed = new Umzug(umzugConfig('seeders'));
-  await umzugSed.up(); // Execute pending seeders
-  console.log('Database seeded');
+    const umzugSed = new Umzug(umzugConfig('seeders'));
+    await umzugSed.up(); // Execute pending seeders
+    console.log('Database seeded');
 
-  if (process.env.NODE_ENV !== 'testing') {
     server.listen(config.app.port, (err) => {
       if (err) console.error(err);
       else console.log(`Listening on port ${config.app.port}`);
     });
-  }
-})();
+  })();
+}
 
 module.exports = server;
