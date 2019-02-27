@@ -1,21 +1,15 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
-import Activity from '../../Widgets/Activity/Activity.js';
+import Activity from '../../Widgets/Activity/Activity';
 
 export default class ActivityContainer extends React.PureComponent {
-
-
-    render() {
-        return (
-            <div>
-
-                ActivityContainer
-                <Activity/>
-                End
-
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        ActivityContainer
+        <Activity />
+        End
+      </div>
+    );
+  }
 }

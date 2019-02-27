@@ -1,33 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './FishtankAdmin.css';
 
-import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader.js';
-import ButtonLayout from './ButtonLayout/ButtonLayout.js';
-import Command from './Command/Command.js';
-import Preview from './Preview/Preview.js';
-import Notification from './Notification/Notification.js';
+import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
+import ButtonLayout from './ButtonLayout/ButtonLayout';
+import Command from './Command/Command';
+import Preview from './Preview/Preview';
+import Notification from './Notification/Notification';
 
 export default class FishtankAdmin extends React.PureComponent {
+  render() {
+    return (
+      <>
+        <FishtankHeader
+          subject="EBM example"
+          date="some date"
+          my="Mon"
+        />
+        <ButtonLayout />
+        <div id="container">
+          <Command id="firstColumn" />
 
-    render() {
-        return (
-            <>
-                <FishtankHeader
-                    subject={'EBM example'}
-                    date={'some date'}
-                    my={'Mon'}
-                />
-                <ButtonLayout/>
-                <div id={'container'}>
-                    <Command id={'firstColumn'}/>
+          <Preview id="secondColumn" />
 
-                    <Preview id={'secondColumn'}/>
-
-                    <Notification/>
-                </div>
-            </>
-        );
-    }
+          <Notification />
+        </div>
+      </>
+    );
+  }
 }
