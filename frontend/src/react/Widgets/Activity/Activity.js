@@ -30,7 +30,7 @@ const dataJson = {
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
-      type: 'checkMult',
+      type: 'check',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
       reponse: [
@@ -91,31 +91,27 @@ const dataJsonNull = {
 export default class Activity extends React.PureComponent {
     state = {
       data: dataJson,
-      toEdit: false,
     };
 
     send = () => { // pour des test à la con
-      if (this.state.toEdit) {
-        const object = this.refs.Progress1;
+      const object = this.refs.Progress1;
 
-        let stringToJSON = '{ userReponse: [';
+      let stringToJSON = '{ userReponse: [';
 
-        for (let i = 0; i < object.childElementCount - 2; i++) {
-          const arg = this.refs[`element${i}`];
-          stringToJSON += ' { id: ';
+      for (let i = 0; i < object.childElementCount - 2; i++) {
+        const arg = this.refs[`element${i}`];
+        stringToJSON += ' { id: ';
 
-          stringToJSON += (this.state.data.Question[i].id_question);
+        stringToJSON += (this.state.data.Question[i].id_question);
 
-          stringToJSON += ' { reponse: ';
+        stringToJSON += ' { reponse: ';
 
-          stringToJSON += (arg.state.user_reponse);
+        stringToJSON += (arg.state.user_reponse);
 
-          stringToJSON += ' }';
-        }
-        stringToJSON += '] };';
-      } else {
-        console.log(this.state.data);
+        stringToJSON += ' }';
       }
+      stringToJSON += '] };';
+      console.log(stringToJSON);
       // console.log(stringToJSON);
       /*
       console.log(stringToJSON);

@@ -42,13 +42,13 @@ export default class ActTextCheck extends React.PureComponent {
             {this.props.text}
           </div>
           {inputs.map((reponse, index) => (
-            <CheckBox
-              ref={`elementCheck${index}`}
-              key={index}
-              id={index}
-              reponse={reponse}
-              fctChecked={this.fctChecked}
-            />
+              <CheckBox
+                  ref={`elementCheck${index}`}
+                  key={index}
+                  id={index}
+                  reponse={reponse}
+                  fctChecked={this.fctChecked}
+              />
           ))}
         </div>
       );
