@@ -95,21 +95,19 @@ export default class ActivityEditor extends React.PureComponent {
 
     send = () => { // pour des test à la con
       console.log(this.state.data);
-      console.log(this.state.data.Question[0].text);
+      console.log(this.state.data.Question[4].text);
     };
 
     editJsonQuestion = (index, newQuestion) => {
-      var newJSON = this.state.data;
-      //newJson.Question[index].text = newQuestion;
-      this.setState({ data: dataJson });
+      const newJ = this.state.data;
+      newJ.Question[index].text = newQuestion;
+      this.setState({ data: newJ });
     };
 
     editJsonReponse = (index, nbReponse, newReponse) => {
-      /*
-      var newJSON = this.state.data;
-      newJson.Question[index].reponse[nbReponse].rep = newReponse;
-      this.setState({ data: newJson });
-      */
+      const newJ = this.state.data;
+      newJ.Question[index].reponse[nbReponse].rep = newReponse;
+      this.setState({ data: newJ });
     };
 
     render() {
@@ -135,8 +133,11 @@ export default class ActivityEditor extends React.PureComponent {
                 <ActTextCheckEditor
                   ref={`element${index}`}
                   key={index}
+                  id={index}
                   text={ques.text}
                   list_reponse={ques.reponse}
+                  editQuestion={this.editJsonQuestion}
+                  editReponse={this.editJsonReponse}
                 />
               );
             }
@@ -145,8 +146,11 @@ export default class ActivityEditor extends React.PureComponent {
                 <ActTextCheckMultEditor
                   ref={`element${index}`}
                   key={index}
+                  id={index}
                   text={ques.text}
                   list_reponse={ques.reponse}
+                  editQuestion={this.editJsonQuestion}
+                  editReponse={this.editJsonReponse}
                 />
               );
             }

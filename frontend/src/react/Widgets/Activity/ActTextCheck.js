@@ -4,6 +4,7 @@ import CheckBox from './CheckBox';
 
 export default class ActTextCheck extends React.PureComponent {
     static propTypes = {
+      id: PropTypes.number.isRequired,
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -42,13 +43,13 @@ export default class ActTextCheck extends React.PureComponent {
             {this.props.text}
           </div>
           {inputs.map((reponse, index) => (
-              <CheckBox
-                  ref={`elementCheck${index}`}
-                  key={index}
-                  id={index}
-                  reponse={reponse}
-                  fctChecked={this.fctChecked}
-              />
+            <CheckBox
+              ref={`elementCheck${index}`}
+              key={index}
+              id={index}
+              reponse={reponse}
+              fctChecked={this.fctChecked}
+            />
           ))}
         </div>
       );

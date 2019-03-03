@@ -4,6 +4,7 @@ import CheckBox from './CheckBox';
 
 export default class ActTextCheckMult extends React.PureComponent {
     static propTypes = {
+      id: PropTypes.number.isRequired,
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,

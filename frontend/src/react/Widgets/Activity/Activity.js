@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
+import ActTextFieldEditor from "../ActivityEditor/ActTextFieldEditor";
 
 const dataJson = {
   name: 'Questionnaire_name',
@@ -154,6 +155,7 @@ export default class Activity extends React.PureComponent {
                 <ActTextCheck
                   ref={`element${index}`}
                   key={index}
+                  id={index}
                   text={ques.text}
                   list_reponse={ques.reponse}
                 />
@@ -164,6 +166,7 @@ export default class Activity extends React.PureComponent {
                 <ActTextCheckMult
                   ref={`element${index}`}
                   key={index}
+                  id={index}
                   text={ques.text}
                   list_reponse={ques.reponse}
                 />

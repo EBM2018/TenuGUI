@@ -4,6 +4,7 @@ import CheckBoxEditor from './CheckBoxEditor';
 
 export default class ActTextCheckMultEditor extends React.PureComponent {
     static propTypes = {
+      id: PropTypes.number.isRequired,
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -12,6 +13,17 @@ export default class ActTextCheckMultEditor extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
+      editQuestion: PropTypes.func.isRequired,
+      editReponse: PropTypes.func.isRequired,
+    };
+
+    state = {
+      text: this.props.text,
+    };
+
+    changeText = (event) => {
+      this.setState({ text: event.target.value });
+      this.props.editQuestion(this.props.id, event.target.value);
     };
 
     render() {
@@ -22,18 +34,17 @@ export default class ActTextCheckMultEditor extends React.PureComponent {
 
       return (
         <div id="container reponse" ref="checkContainer">
-            <div>
-              <textarea>
-                {this.props.text}
-              </textarea>
-            </div>
+          <div>
+            <textarea onChange={this.changeText} value={this.state.text} />
+          </div>
           {inputs.map((reponse, index) => (
             <CheckBoxEditor
               ref={`elementCheck${index}`}
               key={index}
               id={index}
+              id_container={this.props.id}
               reponse={reponse}
-              fctChecked={this.fctChecked}
+              editReponse={this.props.editReponse}
             />
           ))}
         </div>
