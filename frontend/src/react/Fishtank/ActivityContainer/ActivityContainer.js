@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ActivityEditor from '../../Widgets/Activity/Activity';
+import ActivityEditor from '../../Widgets/ActivityEditor/ActivityEditor';
 
 export default class ActivityContainer extends React.PureComponent {
   render() {

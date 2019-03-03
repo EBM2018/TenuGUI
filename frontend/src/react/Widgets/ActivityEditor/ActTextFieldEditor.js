@@ -8,30 +8,30 @@ export default class ActTextFieldEditor extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
+      editQuestion: PropTypes.func.isRequired,
+    };
+    state = {
+        text: this.props.text,
+    }
+
+    changeText = (event) => {
+      // this.props.text = event.target.value;
+      // this.props.editQuestion(this.props.id, event.target.value);
+      // console.log(this.refs.textQuestion.value);
+      console.log(event.target.value);
+      this.setState({text: event.target.value});
+      this.props.editQuestion(this.props.id, event.target.value);
     };
 
-    state = {
-      user_reponse: '',
-    }
-
-    updateInputValue = (evt) => {
-      this.setState({
-        user_reponse: evt.target.value,
-      });
-    }
-
-    getResponse = () => this.state.user_reponse
 
     render() {
       return (
         <div ref="inside">
-          <textarea>
-            {this.props.text}
-          </textarea>
+          <textarea ref="textQuestion" onChange={this.changeText} value={this.state.text} />
           <div>
             <input id="input_response" type="text" onChange={this.updateInputValue} />
           </div>
         </div>
       );
-    }
+    };
 }

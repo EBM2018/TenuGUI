@@ -14,22 +14,6 @@ export default class ActTextCheckEditor extends React.PureComponent {
       ]).isRequired,
     };
 
-    state = {
-      user_reponse: [],
-    };
-
-    fctChecked = (index_checked, reponse_checked) => {
-      const object = this.refs.checkContainer;
-      for (let i = 0; i < (object.childElementCount - 1) / 2; i++) {
-        if (i == index_checked - 1) {
-          this.setState({ user_reponse: reponse_checked });
-        } else {
-          const checkrefered = this.refs[`elementCheck${i}`];
-          checkrefered.unCheck();
-        }
-      }
-    };
-
     render() {
       const inputs = [];
       for (let i = 0; i < this.props.list_reponse.length; i++) {
@@ -38,9 +22,11 @@ export default class ActTextCheckEditor extends React.PureComponent {
 
       return (
         <div id="container reponse" ref="checkContainer">
-          <textarea>
-            {this.props.text}
-          </textarea>
+            <div>
+              <textarea>
+                {this.props.text}
+              </textarea>
+            </div>
           {inputs.map((reponse, index) => (
               <CheckBoxEditor
                   ref={`elementCheck${index}`}

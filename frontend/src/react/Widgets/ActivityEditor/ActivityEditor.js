@@ -94,42 +94,22 @@ export default class ActivityEditor extends React.PureComponent {
     };
 
     send = () => { // pour des test à la con
-      const object = this.refs.Progress1;
+      console.log(this.state.data);
+      console.log(this.state.data.Question[0].text);
+    };
 
-      let stringToJSON = '{ userReponse: [';
+    editJsonQuestion = (index, newQuestion) => {
+      var newJSON = this.state.data;
+      //newJson.Question[index].text = newQuestion;
+      this.setState({ data: dataJson });
+    };
 
-      for (let i = 0; i < object.childElementCount - 2; i++) {
-        const arg = this.refs[`element${i}`];
-        stringToJSON += ' { id: ';
-
-        stringToJSON += (this.state.data.Question[i].id_question);
-
-        stringToJSON += ' { reponse: ';
-
-        stringToJSON += (arg.state.user_reponse);
-
-        stringToJSON += ' }';
-      }
-      stringToJSON += '] };';
-      console.log(stringToJSON);
-      // console.log(stringToJSON);
+    editJsonReponse = (index, nbReponse, newReponse) => {
       /*
-      console.log(stringToJSON);
-      var newJSON = JSON.(stringToJSON);
-        console.log(newJSON);
-        console.log(newJSON.userReponse[2].reponse);
+      var newJSON = this.state.data;
+      newJson.Question[index].reponse[nbReponse].rep = newReponse;
+      this.setState({ data: newJson });
       */
-      /*
-        this.props.children.forEach(
-            this.props.children,
-            x => x
-        )
-        */
-      /*
-        this.setState({
-                data: dataJsonNull
-        });
-        */
     };
 
     render() {
@@ -146,6 +126,7 @@ export default class ActivityEditor extends React.PureComponent {
                   key={index}
                   id={index}
                   text={ques.text}
+                  editQuestion={this.editJsonQuestion}
                 />
               );
             }
