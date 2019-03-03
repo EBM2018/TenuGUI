@@ -40,10 +40,7 @@ export default class ActTextCheckMult extends React.PureComponent {
       return (
         <div id="container reponse" ref="checkContainer">
           <div>
-            {' '}
             {this.props.text}
-            {' '}
-            mult
           </div>
           {inputs.map((reponse, index) => (
             <CheckBox

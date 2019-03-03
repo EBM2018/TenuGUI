@@ -39,9 +39,7 @@ export default class ActTextCheck extends React.PureComponent {
       return (
         <div id="container reponse" ref="checkContainer">
           <div>
-            {' '}
             {this.props.text}
-            {' '}
           </div>
           {inputs.map((reponse, index) => (
             <CheckBox

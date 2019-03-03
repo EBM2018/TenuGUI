@@ -30,9 +30,7 @@ export default class CheckBox extends React.PureComponent {
         <>
           <input ref="checkbox" type="checkbox" onChange={this.fctCheckedLoc} />
           <label>
-            {' '}
             {this.props.reponse}
-            {' '}
           </label>
         </>
       );

@@ -91,26 +91,32 @@ const dataJsonNull = {
 export default class Activity extends React.PureComponent {
     state = {
       data: dataJson,
+      toEdit: false,
     };
 
     send = () => { // pour des test à la con
-      const object = this.refs.Progress1;
+      if (this.state.toEdit) {
+        const object = this.refs.Progress1;
 
-      let stringToJSON = '{ userReponse: [';
+        let stringToJSON = '{ userReponse: [';
 
-      for (let i = 0; i < object.childElementCount - 2; i++) {
-        const arg = this.refs[`element${i}`];
-        stringToJSON += ' { id: ';
+        for (let i = 0; i < object.childElementCount - 2; i++) {
+          const arg = this.refs[`element${i}`];
+          stringToJSON += ' { id: ';
 
-        stringToJSON += (this.state.data.Question[i].id_question);
+          stringToJSON += (this.state.data.Question[i].id_question);
 
-        stringToJSON += ' { reponse: ';
+          stringToJSON += ' { reponse: ';
 
-        stringToJSON += (arg.state.user_reponse);
+          stringToJSON += (arg.state.user_reponse);
 
-        stringToJSON += ' }';
+          stringToJSON += ' }';
+        }
+        stringToJSON += '] };';
+      } else {
+        console.log(this.state.data);
       }
-      stringToJSON += '] };';
+      // console.log(stringToJSON);
       /*
       console.log(stringToJSON);
       var newJSON = JSON.(stringToJSON);
@@ -134,9 +140,7 @@ export default class Activity extends React.PureComponent {
       return (
         <div ref="Progress1">
           <a>
-            {' '}
             {this.state.data.name}
-            {' '}
           </a>
           {this.state.data.Question.map((ques, index) => {
             if (ques.type === 'field') {
