@@ -4,6 +4,7 @@ import './Activity.css';
 import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
+import ActTextCheckMult from './ActTextCheckMult';
 
 const dataJson = {
   name: 'Questionnaire_name',
@@ -29,7 +30,7 @@ const dataJson = {
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
-      type: 'check',
+      type: 'checkMult',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
       reponse: [
@@ -95,7 +96,7 @@ export default class Activity extends React.PureComponent {
     send = () => { // pour des test à la con
       const object = this.refs.Progress1;
 
-      var stringToJSON = '{ userReponse: [';
+      let stringToJSON = '{ userReponse: [';
 
       for (let i = 0; i < object.childElementCount - 2; i++) {
         const arg = this.refs[`element${i}`];
@@ -151,6 +152,16 @@ export default class Activity extends React.PureComponent {
             if (ques.type === 'check') {
               return (
                 <ActTextCheck
+                  ref={`element${index}`}
+                  key={index}
+                  text={ques.text}
+                  list_reponse={ques.reponse}
+                />
+              );
+            }
+            if (ques.type === 'checkMult') {
+              return (
+                <ActTextCheckMult
                   ref={`element${index}`}
                   key={index}
                   text={ques.text}

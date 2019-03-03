@@ -11,6 +11,7 @@ export class DashboardMyActivity {
       console.log('Open "Feedback".');
     };
 }
+/*
 export class DashboardMyActions {
     static askUnderstanding = () => {
       console.log('Open "Ask if they understand".');
@@ -32,3 +33,4 @@ export class DashboardMyActions {
       console.log('Open "Ask where ther are".');
     };
 }
+*/

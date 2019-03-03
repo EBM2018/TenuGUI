@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CheckBox from './CheckBox';
 
-export default class ActTextCheck extends React.PureComponent {
+export default class ActTextCheckMult extends React.PureComponent {
     static propTypes = {
       text: PropTypes.oneOfType([
         PropTypes.string,
@@ -15,20 +15,23 @@ export default class ActTextCheck extends React.PureComponent {
     };
 
     state = {
-      user_reponse: [],
-    };
+      user_reponse: '',
+    }
 
     fctChecked = (index_checked, reponse_checked) => {
       const object = this.refs.checkContainer;
+      const new_reponse = [];
       for (let i = 0; i < (object.childElementCount - 1) / 2; i++) {
-        if (i == index_checked - 1) {
-          this.setState({ user_reponse: reponse_checked });
-        } else {
-          const checkrefered = this.refs[`elementCheck${i}`];
-          checkrefered.unCheck();
+        const checkrefered = this.refs[`elementCheck${i}`];
+        if (checkrefered.isChecked) {
+          new_reponse.push(i);
+            console.log(i);
         }
+          //checkrefered.unCheck();
       }
-    };
+      this.setState({ user_reponse: new_reponse });
+      console.log(new_reponse);
+    }
 
     render() {
       const inputs = [];
@@ -42,6 +45,7 @@ export default class ActTextCheck extends React.PureComponent {
             {' '}
             {this.props.text}
             {' '}
+            mult
           </div>
           {inputs.map((reponse, index) => (
             <CheckBox

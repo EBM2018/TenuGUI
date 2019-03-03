@@ -17,6 +17,10 @@ export default class CheckBox extends React.PureComponent {
       }
     }
 
+    isChecked = () => {
+      return this.refs.checkbox.checked;
+    }
+
     unCheck = () => {
       this.refs.checkbox.checked = false;
     }

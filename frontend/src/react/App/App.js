@@ -9,6 +9,7 @@ import Machin from '../../machin';
 import Dashboard from '../Dashboard/Dashboard';
 import Fishtank from '../Fishtank/Fishtank';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin';
+import ActivityEditor from '../ActivityEditor/ActivityEditor';
 import Home from '../Home/Home';
 
 class App extends Component {
@@ -41,6 +42,11 @@ class App extends Component {
               exact
               path="/FishtankAdmin"
               component={FishtankAdmin}
+            />
+            <Route
+              exact
+              path="/ActivityEditor"
+              component={ActivityEditor}
             />
           </Switch>
         </BrowserRouter>
