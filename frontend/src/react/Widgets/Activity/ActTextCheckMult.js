@@ -23,11 +23,9 @@ export default class ActTextCheckMult extends React.PureComponent {
       const new_reponse = [];
       for (let i = 0; i < (object.childElementCount - 1) / 2; i++) {
         const checkrefered = this.refs[`elementCheck${i}`];
-        if (checkrefered.isChecked) {
+        if (checkrefered.isChecked()) {
           new_reponse.push(i);
-            console.log(i);
         }
-          //checkrefered.unCheck();
       }
       this.setState({ user_reponse: new_reponse });
       console.log(new_reponse);
