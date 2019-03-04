@@ -2,7 +2,7 @@ const { param } = require('express-validator/check');
 const requestLoader = require('../../requestLoading');
 const { FishtankStatus } = require('../../../database/models');
 
-const isOngoing = (value, { req }) => req.fishtank.statusId === FishtankStatus.ONGOING;
+const isOngoing = (value, { req }) => req.locals.fishtank.statusId === FishtankStatus.ONGOING;
 
 module.exports = {
   show: param('fishtankId').custom(requestLoader.addFishtank)
