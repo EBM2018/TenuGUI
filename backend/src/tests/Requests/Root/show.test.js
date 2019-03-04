@@ -9,6 +9,7 @@ describe('Routes retrieval', () => {
     .expect((res) => {
       expect(res.body).toEqual({
         fishtanks: `${getRequestUrlInTests(res)}/api/fishtanks`,
+        users: `${getRequestUrlInTests(res)}/api/users`,
       });
     }));
 });

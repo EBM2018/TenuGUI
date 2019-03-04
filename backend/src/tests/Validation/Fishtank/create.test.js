@@ -51,7 +51,7 @@ describe('Fishtank creation validation', () => {
     .post('/api/fishtanks')
     .send({})
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   /* Token validation */
   test('It should reject a request without a token', () => request(app)
@@ -60,7 +60,7 @@ describe('Fishtank creation validation', () => {
       shoalId: validShoals[0],
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   test('It should reject a request with a non-JWT token', () => request(app)
     .post('/api/fishtanks')
@@ -69,7 +69,7 @@ describe('Fishtank creation validation', () => {
       token: 'test',
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   test('It should reject a request with an invalid token', () => request(app)
     .post('/api/fishtanks')
@@ -78,7 +78,7 @@ describe('Fishtank creation validation', () => {
       token: invalidUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   /* Shoal validation */
   test('It should reject a request without a shoal id', () => request(app)

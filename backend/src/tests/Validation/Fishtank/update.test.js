@@ -62,7 +62,7 @@ describe('Fishtank creation validation', () => {
     request(app).post('/api/fishtanks')
       .send({})
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   /* Token validation */
@@ -79,7 +79,7 @@ describe('Fishtank creation validation', () => {
         type: Fishtank.editionTypes.FINISH,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request without a non-JWT token', async () => {
@@ -96,7 +96,7 @@ describe('Fishtank creation validation', () => {
         token: 'test',
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request with an invalid token', async () => {
@@ -113,7 +113,7 @@ describe('Fishtank creation validation', () => {
         token: invalidUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   /* User validation */
@@ -131,7 +131,7 @@ describe('Fishtank creation validation', () => {
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   /* Type validation */

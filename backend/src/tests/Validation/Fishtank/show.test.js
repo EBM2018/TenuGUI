@@ -113,7 +113,7 @@ describe('Fishtank retrieval validation', () => {
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({})
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request with a non-JWT token', async () => {
@@ -129,7 +129,7 @@ describe('Fishtank retrieval validation', () => {
         token: 'test',
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request with an invalid token', async () => {
@@ -145,7 +145,7 @@ describe('Fishtank retrieval validation', () => {
         token: invalidUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   /* Fishtank validation */
@@ -175,6 +175,6 @@ describe('Fishtank retrieval validation', () => {
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 });
