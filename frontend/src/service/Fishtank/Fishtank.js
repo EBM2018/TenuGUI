@@ -1,19 +1,21 @@
-export const fct_Student_question = () => {
-  console.log('Student ask a question.');
-};
+export class StudentFishtank {
+    static askQuestion = () => {
+      console.log('Student ask a question.');
+    };
 
-export const fct_Student_speed_up = () => {
-  console.log('Student want to accelerate.');
-};
+    static askSpeedUp = () => {
+      console.log('Student want to accelerate.');
+    };
 
-export const fct_Student_speed_down = () => {
-  console.log('Student want to slow down.');
-};
+    static askSpeedDown = () => {
+      console.log('Student want to slow down.');
+    };
 
-export const fct_Student_not_understand = () => {
-  console.log('Student do not understand.');
-};
+    static notUnderstand = () => {
+      console.log('Student do not understand.');
+    };
 
-export const fct_Student_stop = () => {
-  console.log('Student want to stop.');
-};
+    static askStop = () => {
+      console.log('Student want to stop.');
+    };
+}

@@ -7,7 +7,7 @@ import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
 
 export default class Dashboard extends React.PureComponent {
-    fct_start_fishtank = () => {
+    todoStartFishtank = () => { // TODO : change this shit
       this.props.history.push('/FishtankAdmin');
     };
 
@@ -16,7 +16,7 @@ export default class Dashboard extends React.PureComponent {
         <>
           <div>
             <> Ma Bibliothéque </>
-            <button id="buttonStartFishtank" onClick={this.fct_start_fishtank}> Démarrer une séance </button>
+            <button id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
           </div>
           <div id="dashboardContainer">
             <a id="firstColumn">
