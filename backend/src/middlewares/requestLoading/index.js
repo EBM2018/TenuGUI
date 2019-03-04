@@ -1,4 +1,4 @@
-const { Fishtank } = require('../../database/models');
+const { Fishtank, FishtankInteractionType } = require('../../database/models');
 const { getUser } = require('../../__mock_teamy__');
 
 const loadRequestWith = (req, key, value) => {
@@ -17,6 +17,12 @@ module.exports = {
     const user = await getUser(id);
     if (user == null) return false;
     loadRequestWith(req, 'user', user);
+    return true;
+  },
+  addFishtankInteractionType: async (id, { req }) => {
+    const fishtankInteractionType = await FishtankInteractionType.findByPk(id);
+    if (fishtankInteractionType == null) return false;
+    loadRequestWith(req, 'fishtankInteractionType', fishtankInteractionType);
     return true;
   },
   loadRequestWith,
