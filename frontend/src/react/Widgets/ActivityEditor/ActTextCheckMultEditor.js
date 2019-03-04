@@ -9,10 +9,7 @@ export default class ActTextCheckMultEditor extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      list_reponse: PropTypes.arrayOf([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
+      list_reponse: PropTypes.array.isRequired,
       editQuestion: PropTypes.func.isRequired,
       editCheckBox: PropTypes.func.isRequired,
       deleteHim: PropTypes.func.isRequired,

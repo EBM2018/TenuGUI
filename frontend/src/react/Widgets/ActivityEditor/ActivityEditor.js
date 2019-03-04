@@ -217,7 +217,7 @@ export default class ActivityEditor extends React.PureComponent {
                   text={ques.text}
                   list_reponse={ques.reponse}
                   editQuestion={this.editJsonQuestion}
-                  editReponse={this.editJsonReponse}
+                  editCheckBox={this.editJsonReponse}
                   deleteHim={this.deleteQuestion}
                   newCheckBox={this.newCheckBox}
                   deleteCheckBox={this.deleteCheckBoc}
@@ -233,7 +233,7 @@ export default class ActivityEditor extends React.PureComponent {
                   text={ques.text}
                   list_reponse={ques.reponse}
                   editQuestion={this.editJsonQuestion}
-                  editReponse={this.editJsonReponse}
+                  editCheckBox={this.editJsonReponse}
                   deleteHim={this.deleteQuestion}
                   newCheckBox={this.newCheckBox}
                   deleteCheckBox={this.deleteCheckBoc}

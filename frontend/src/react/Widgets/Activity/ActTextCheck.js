@@ -9,10 +9,7 @@ export default class ActTextCheck extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      list_reponse: PropTypes.arrayOf([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
+      list_reponse: PropTypes.array.isRequired,
     };
 
     state = {
