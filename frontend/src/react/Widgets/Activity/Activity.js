@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
-import ActTextFieldEditor from "../ActivityEditor/ActTextFieldEditor";
+import ActTextField from "../ActivityEditor/ActTextField";
 
 const dataJson = {
   name: 'Questionnaire_name',
