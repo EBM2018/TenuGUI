@@ -12,7 +12,7 @@ module.exports = {
     bail(422),
     ...CustomRules.create,
     bail(422),
-    User.hasAccess,
+    User.hasAccess, // TODO: Owner should not be able to make emergency press
     bail(401),
   ],
   show: [
