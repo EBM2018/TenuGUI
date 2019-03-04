@@ -37,5 +37,12 @@ module.exports = {
     return users;
   },
   isValidShoal: async () => true,
-  isUserPartOfShoal: async () => true,
+  isUserPartOfShoal: async (userId, shoalId) => {
+    for (let i = 0; i < teamyUsers.length; i += 1) {
+      if (teamyUsers[i].id === userId) {
+        return teamyUsers[i].shoalId === shoalId;
+      }
+    }
+    return false;
+  },
 };
