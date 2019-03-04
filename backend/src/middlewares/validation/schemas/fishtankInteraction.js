@@ -8,12 +8,6 @@ module.exports = {
       },
       toInt: true,
     },
-    payload: {
-      in: ['body'],
-      isJSON: {
-        errorMessage: 'must be an object',
-      },
-    },
   },
   show: {},
 };
