@@ -1,16 +1,43 @@
+const { formatDate } = require('../../services/formatter.js');
+
 module.exports = (sequelize, DataTypes) => {
   const Fishtank = sequelize.define('Fishtank', {
-    ownerId: DataTypes.INTEGER,
-    shoalId: DataTypes.INTEGER,
-    statusId: DataTypes.INTEGER,
-    closedAt: DataTypes.DATE,
+    ownerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    shoalId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    statusId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      get() {
+        return formatDate(this.getDataValue('createdAt'));
+      },
+    },
+    closedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      get() {
+        return formatDate(this.getDataValue('closedAt'));
+      },
+    },
   }, {
     timestamps: true,
     updatedAt: false,
   });
 
   Fishtank.associate = (models) => {
-    Fishtank.belongsTo(models.FishtankStatus, { foreignKey: 'statusId' });
+    Fishtank.belongsTo(models.FishtankStatus, {
+      foreignKey: 'statusId',
+      as: 'status',
+    });
   };
 
   Fishtank.editionTypes = {

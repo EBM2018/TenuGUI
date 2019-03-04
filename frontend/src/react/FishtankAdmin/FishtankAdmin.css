@@ -1,0 +1,13 @@
+#container {
+    display: flex;
+}
+
+#firstColumn {
+    width: 30%;
+    border-right: 6px solid #61dafb;
+}
+
+#secondColumn {
+    width: 30%;
+    border-right: 6px solid #61dafb;
+}
