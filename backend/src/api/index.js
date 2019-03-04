@@ -6,5 +6,6 @@ const router = new Router();
 router.get('/', RootController.show);
 
 router.use('/fishtanks', require('./fishtanks'));
+router.use('/users', require('./users'));
 
 module.exports = router;
