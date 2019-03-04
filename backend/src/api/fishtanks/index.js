@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const FishtankController = require('../../controllers/fishtank.js');
-const FishtankMiddlewares = require('../../middlewares/fishtank.js');
+const Controller = require('../../controllers/fishtank.js');
+const Middlewares = require('../../middlewares/fishtank.js');
 
 const router = new Router();
 
@@ -18,7 +18,7 @@ router.use('/:fishtankId/interactions', require('./fishtankInteractions'));
  *   "fishtankId": 3
  * }
  */
-router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
+router.post('/', ...Middlewares.create, Controller.create);
 
 /**
  * @api {get} /fishtanks/:fishtankId Show Fishtank
@@ -40,7 +40,7 @@ router.post('/', ...FishtankMiddlewares.create, FishtankController.create);
  *   }
  * }
  */
-router.get('/:fishtankId', ...FishtankMiddlewares.show, FishtankController.show);
+router.get('/:fishtankId', ...Middlewares.show, Controller.show);
 
 /**
  * @api {patch} /fishtanks/:id Update Fishtank data
@@ -53,6 +53,6 @@ router.get('/:fishtankId', ...FishtankMiddlewares.show, FishtankController.show)
  * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 200 OK
  */
-router.patch('/:fishtankId', ...FishtankMiddlewares.update, FishtankController.update);
+router.patch('/:fishtankId', ...Middlewares.update, Controller.update);
 
 module.exports = router;
