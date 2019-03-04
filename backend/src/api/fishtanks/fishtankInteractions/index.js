@@ -1,7 +1,9 @@
 const { Router } = require('express');
+const Controller = require('../../../controllers/fishtankInteraction.js');
+const Middlewares = require('../../../middlewares/fishtankInteraction.js');
 
 const router = new Router({ mergeParams: true });
 
-// TODO: websocket-y stuff
-router.get('/', (req, res) => res.send(`Fishtank ${req.params.id} interactions :`));
+router.post('/', ...Middlewares.create, Controller.create);
+
 module.exports = router;
