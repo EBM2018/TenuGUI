@@ -5,7 +5,7 @@ import Home from "../react/Home/Home";
 
 test('Home renders as expected', () => {
     const component = renderer
-        .create(<Home/>,);
+        .create(<Home/>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
