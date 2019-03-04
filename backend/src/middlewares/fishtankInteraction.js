@@ -5,10 +5,6 @@ const CustomRules = require('./validation/customRules/fishtankInteraction.js');
 const bail = require('./validation/errorHandler.js');
 
 module.exports = {
-  create: [],
-};
-
-module.exports = {
   create: [
     User.isAuthenticated,
     bail(401),
