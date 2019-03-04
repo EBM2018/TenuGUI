@@ -12,12 +12,7 @@ export default class CheckBoxEditor extends React.PureComponent {
       editReponse: PropTypes.func.isRequired,
     };
 
-    state = {
-      reponse: this.props.reponse,
-    };
-
     changeText = (event) => {
-      this.setState({ reponse: event.target.value });
       this.props.editReponse(this.props.id_container, this.props.id, event.target.value);
     };
 
@@ -25,7 +20,7 @@ export default class CheckBoxEditor extends React.PureComponent {
       return (
         <>
           <input ref="checkbox" type="checkbox" />
-          <textarea onChange={this.changeText} value={this.state.reponse} />
+          <textarea onChange={this.changeText} value={this.props.reponse} />
         </>
       );
     }

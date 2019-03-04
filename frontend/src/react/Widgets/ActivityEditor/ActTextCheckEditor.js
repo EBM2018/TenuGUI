@@ -14,17 +14,33 @@ export default class ActTextCheckEditor extends React.PureComponent {
         PropTypes.number,
       ]).isRequired,
       editQuestion: PropTypes.func.isRequired,
-      editReponse: PropTypes.func.isRequired,
-    };
-
-    state = {
-      text: this.props.text,
+      editCheckBox: PropTypes.func.isRequired,
+      deleteHim: PropTypes.func.isRequired,
+      newCheckBox: PropTypes.func.isRequired,
+      deleteCheckBox: PropTypes.func.isRequired,
     };
 
     changeText = (event) => {
-      this.setState({ text: event.target.value });
-      console.log(`${this.props.id} / ${event.target.value}`);
       this.props.editQuestion(this.props.id, event.target.value);
+    };
+
+    clickDelete = () => {
+      this.props.deleteHim(this.props.id);
+    };
+
+    editCheckBoxLoc = (a, b, c) => { // juste to force update the component
+      this.props.editCheckBox(a, b, c);
+      this.forceUpdate();
+    };
+
+    newCheckBoxLoc = () => {
+      this.props.newCheckBox(this.props.id);
+      this.forceUpdate();
+    };
+
+    deleteCheckBoxLoc = () => {
+      this.props.deleteCheckBox(this.props.id);
+      this.forceUpdate();
     };
 
     render() {
@@ -36,7 +52,8 @@ export default class ActTextCheckEditor extends React.PureComponent {
       return (
         <div id="container reponse" ref="checkContainer">
           <div>
-            <textarea onChange={this.changeText} value={this.state.text} />
+            <textarea onChange={this.changeText} value={this.props.text} />
+            <button onClick={this.clickDelete}> Delete </button>
           </div>
           {inputs.map((reponse, index) => (
             <CheckBoxEditor
@@ -45,9 +62,11 @@ export default class ActTextCheckEditor extends React.PureComponent {
               id={index}
               id_container={this.props.id}
               reponse={reponse}
-              editReponse={this.props.editReponse}
+              editReponse={this.editCheckBoxLoc}
             />
           ))}
+          <button onClick={this.newCheckBoxLoc}> New Checkbox </button>
+          <button onClick={this.deleteCheckBoxLoc}> Delete last Checkbox </button>
         </div>
       );
     }

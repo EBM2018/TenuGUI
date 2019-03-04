@@ -87,6 +87,40 @@ const dataJsonNull = {
   ],
 };
 
+const dataField = {
+  type: 'field',
+  id_question: '',
+  text: '',
+};
+
+const dataCheck = {
+  type: 'check',
+  id_question: '',
+  text: '',
+  reponse: [
+    { rep: '' },
+    { rep: '' },
+    { rep: '' },
+    { rep: '' },
+  ],
+};
+
+const dataCheckMult = {
+  type: 'checkMult',
+  id_question: '',
+  text: '',
+  reponse: [
+    { rep: '' },
+    { rep: '' },
+    { rep: '' },
+    { rep: '' },
+  ],
+};
+
+const dataReponse = {
+  rep: '',
+};
+
 
 export default class ActivityEditor extends React.PureComponent {
     state = {
@@ -102,12 +136,57 @@ export default class ActivityEditor extends React.PureComponent {
       const newJ = this.state.data;
       newJ.Question[index].text = newQuestion;
       this.setState({ data: newJ });
+      this.forceUpdate();
     };
 
     editJsonReponse = (index, nbReponse, newReponse) => {
       const newJ = this.state.data;
       newJ.Question[index].reponse[nbReponse].rep = newReponse;
+      console.log(newJ.Question[index].reponse[nbReponse].rep);
       this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    newQuestionTextField = () => {
+      const newJ = this.state.data;
+      newJ.Question.push(dataField);
+      this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    newQuestionCheck = () => {
+      const newJ = this.state.data;
+      newJ.Question.push(dataCheck);
+      this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    newQuestionCheckMult = () => {
+      const newJ = this.state.data;
+      newJ.Question.push(dataCheckMult);
+      this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    deleteQuestion = (index) => {
+      const newJ = this.state.data;
+      newJ.Question.splice(index, 1);
+      this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    newCheckBox = (index) => {
+      const newJ = this.state.data;
+      newJ.Question[index].reponse.push(dataReponse);
+      this.setState({ data: newJ });
+      this.forceUpdate();
+    };
+
+    deleteCheckBoc = (index) => {
+      const newJ = this.state.data;
+      newJ.Question[index].reponse.splice(newJ.Question[index].reponse.length - 1, 1);
+      this.setState({ data: newJ });
+      this.forceUpdate();
     };
 
     render() {
@@ -125,6 +204,7 @@ export default class ActivityEditor extends React.PureComponent {
                   id={index}
                   text={ques.text}
                   editQuestion={this.editJsonQuestion}
+                  deleteHim={this.deleteQuestion}
                 />
               );
             }
@@ -138,6 +218,9 @@ export default class ActivityEditor extends React.PureComponent {
                   list_reponse={ques.reponse}
                   editQuestion={this.editJsonQuestion}
                   editReponse={this.editJsonReponse}
+                  deleteHim={this.deleteQuestion}
+                  newCheckBox={this.newCheckBox}
+                  deleteCheckBox={this.deleteCheckBoc}
                 />
               );
             }
@@ -151,13 +234,27 @@ export default class ActivityEditor extends React.PureComponent {
                   list_reponse={ques.reponse}
                   editQuestion={this.editJsonQuestion}
                   editReponse={this.editJsonReponse}
+                  deleteHim={this.deleteQuestion}
+                  newCheckBox={this.newCheckBox}
+                  deleteCheckBox={this.deleteCheckBoc}
                 />
               );
             }
           })}
           <div>
+            <button onClick={this.newQuestionTextField}>
+                  Add new Question with Text Field
+            </button>
+            <button onClick={this.newQuestionCheck}>
+                  Add new Question with Checkbox
+            </button>
+            <button onClick={this.newQuestionCheckMult}>
+                  Add new Question with Checkbox (multiple choice)
+            </button>
+          </div>
+          <div>
             <button onClick={this.send}>
-              Send
+                    Send
             </button>
           </div>
         </div>
