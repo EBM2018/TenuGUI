@@ -6,14 +6,14 @@ const { getRequestUrlInTests } = require('../../../services/formatter.js');
 
 const validUsers = [{
   id: 0,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InJlaW11YmVzdGdpcmwifQ.mQuD55X_12rMliQbUhsZmO12WFhsduEkXoaTJ5R8-YQ',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InJlaW11YmVzdGdpcmwifQ.mQuD55X_12rMliQbUhsZmO12WFhsduEkXoaTJ5R8-YQ', // A valid user from Teamy who is always part of tested shoals and owns most of this suite's fishtanks
 }, {
   id: 1,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im11cmFzYWlzZ3JlYXR0aG8ifQ.p4PpEK6QQukfVrSQdsJsY1QIrQzY7OEFtmdN_JPrRgY',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im11cmFzYWlzZ3JlYXR0aG8ifQ.p4PpEK6QQukfVrSQdsJsY1QIrQzY7OEFtmdN_JPrRgY', // A valid user from Teamy who is never part of tested shoals
 }];
 const invalidUsers = [{
   id: 2,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg', // An invalid user according to Teamy
 }];
 
 describe('Fishtank retrieval validation', () => {
@@ -113,7 +113,7 @@ describe('Fishtank retrieval validation', () => {
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({})
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request with a non-JWT token', async () => {
@@ -129,7 +129,7 @@ describe('Fishtank retrieval validation', () => {
         token: 'test',
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   test('It should reject a request with an invalid token', async () => {
@@ -145,7 +145,7 @@ describe('Fishtank retrieval validation', () => {
         token: invalidUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 
   /* Fishtank validation */
@@ -175,6 +175,6 @@ describe('Fishtank retrieval validation', () => {
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(403);
+      .expect(401);
   });
 });

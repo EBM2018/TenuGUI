@@ -41,5 +41,16 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  FishtankInteraction.getFormattedInteractions = async fishtankId => ({
+    emergencyPressesCount: await FishtankInteraction.count(
+      {
+        where: {
+          fishtankId,
+          typeId: sequelize.models.FishtankInteractionType.EMERGENCY_PRESS,
+        },
+      },
+    ),
+  });
+
   return FishtankInteraction;
 };
