@@ -19,6 +19,20 @@ module.exports = {
     }
     return null;
   },
+  getUsers: async () => {
+    const users = [];
+    for (let i = 0; i < teamyUsers.length; i += 1) {
+      const user = teamyUsers[i];
+      const userKeys = Object.keys(user);
+      const userInfo = {};
+      for (let j = 0; j < userKeys.length; j += 1) {
+        const userKey = userKeys[j];
+        if (userKey !== 'token') userInfo[userKey] = user[userKey];
+      }
+      users.push(userInfo);
+    }
+    return users;
+  },
   isValidShoal: async () => true,
   isUserPartOfShoal: async () => true,
 };
