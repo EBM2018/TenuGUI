@@ -12,4 +12,8 @@ module.exports = {
       .then(() => console.log('ping owner')) // TODO: ping owner w/ websockets
       .catch(() => res.status(500).send());
   },
+  show: (req, res) => {
+    FishtankInteraction.getFormattedInteractions(req.locals.fishtank.id)
+      .then(interactions => res.status(200).send(interactions));
+  },
 };
