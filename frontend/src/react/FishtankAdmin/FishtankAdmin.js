@@ -7,6 +7,7 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
+import ActivityEditor from "../Widgets/ActivityEditor/ActivityEditor";
 
 export default class FishtankAdmin extends React.PureComponent {
   render() {
@@ -24,7 +25,9 @@ export default class FishtankAdmin extends React.PureComponent {
           <Preview id="secondColumn" />
 
           <Notification />
+
         </div>
+          <ActivityEditor />
       </>
     );
   }
