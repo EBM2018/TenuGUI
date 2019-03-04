@@ -122,7 +122,7 @@ const dataReponse = {
 };
 
 
-export default class ActivityEditor extends React.PureComponent {
+export default class Activity extends React.PureComponent {
     state = {
       data: dataJson,
     };
