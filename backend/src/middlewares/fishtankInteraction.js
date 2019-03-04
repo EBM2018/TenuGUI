@@ -19,4 +19,14 @@ module.exports = {
     User.hasAccess,
     bail(401),
   ],
+  show: [
+    User.isAuthenticated,
+    bail(401),
+    checkSchema(ValidationSchema.show),
+    bail(422),
+    ...CustomRules.show,
+    bail(422),
+    User.isOwner,
+    bail(401),
+  ],
 };
