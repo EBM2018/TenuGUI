@@ -1,6 +1,7 @@
 const path = require('path');
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
 
@@ -13,6 +14,7 @@ const umzugConfig = require('./config/umzug.js');
 
 const config = require('./config');
 
+app.use(cors()); // TODO: Configure CORS
 app.use(helmet());
 app.use(bodyParser.json());
 app.use('/api', require('./api'));
