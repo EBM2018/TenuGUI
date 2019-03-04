@@ -1,27 +1,13 @@
 
 import React from 'react';
-import Link from '../Link.react.js';
 import renderer from 'react-test-renderer';
+import Home from "../react/Home/Home";
 
-test('link changes the class when hovered', () => {
+test('Home renders as expected', () => {
     const component = renderer
-        .create(<Link page="http://www.facebook.com">Facebook</Link>,);
+        .create(<Home/>,);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-    // manually trigger the callback
-    tree.props.onMouseEnter();
-    // re-rendering
-    tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
-
-    // manually trigger the callback
-    tree.props.onMouseLeave();
-    // re-rendering
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-
 });
 test ('derp',()=>{
     expect('True').toBeTruthy;
