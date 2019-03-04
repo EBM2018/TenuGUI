@@ -1,10 +1,25 @@
 const { Router } = require('express');
-const RootController = require('../controllers/');
+const Controller = require('../controllers/');
 
 const router = new Router();
 
-router.get('/', RootController.show);
+/**
+ * @api {get} / Show routes
+ * @apiName GetRoutes
+ * @apiGroup Routes
+ * @apiDescription Show the basic API routes
+ * @apiSuccess {String} fishtanks URL to access fishtanks
+ * @apiSuccess {String} users URL to access users
+ * @apiSuccessExample {json} Success-Response:
+ * HTTP/1.1 201 OK
+ *   {
+ *     "fishtanks": "/api/fishtanks",
+ *     "users": "/api/users",
+ *   }
+ */
+router.get('/', Controller.show);
 
 router.use('/fishtanks', require('./fishtanks'));
+router.use('/users', require('./users'));
 
 module.exports = router;

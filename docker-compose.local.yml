@@ -5,25 +5,25 @@ services:
     build:
       context: .
     depends_on:
-    - mariadb
+      - mariadb
     environment:
-    - DB_CONNECTION=mysql
-    - DB_HOST=mariadb
-    - DB_PORT=3306
-    - DB_DATABASE=TenuGUI
-    - DB_USERNAME=Tenuguy
-    - DB_PASSWORD=${MYSQL_PASSWORD}
-    - DB_LOGGING=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=TenuGUI
+      - DB_USERNAME=Tenuguy
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_LOGGING=true
     networks:
       local:
     ports:
-    - 4000:4000
+      - 4000:4000
     labels:
-    - "traefik.enable=true"
-    - "traefik.frontend.rule=Host:tenugui.ebm.nymous.io"
-    - "traefik.port=4000"
-    - "traefik.network=ebm-filrouge"
-    - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:tenugui.ebm.nymous.io"
+      - "traefik.port=4000"
+      - "traefik.network=ebm-filrouge"
+      - "com.centurylinklabs.watchtower.enable=true"
   mariadb:
     image: mariadb
     restart: always
@@ -33,7 +33,7 @@ services:
       MYSQL_USER: Tenuguy
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
-    - local
+      - local
 
 networks:
   local:

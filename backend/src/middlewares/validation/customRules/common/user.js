@@ -2,10 +2,10 @@ const { body } = require('express-validator/check');
 const requestLoader = require('../../../requestLoading');
 const { isUserPartOfShoal } = require('../../../../__mock_teamy__');
 
-const isOwner = (value, { req }) => req.fishtank.ownerId === req.user.id;
+const isOwner = (value, { req }) => req.locals.fishtank.ownerId === req.locals.user.id;
 
-const hasAccess = (value, { req }) => req.user.id === req.fishtank.ownerId
-  || isUserPartOfShoal(req.user.id, req.fishtank.shoalId);
+const hasAccess = (value, { req }) => req.locals.user.id === req.locals.fishtank.ownerId
+  || isUserPartOfShoal(req.locals.user.id, req.locals.fishtank.shoalId);
 
 module.exports = {
   isAuthenticated: body('token').exists()
