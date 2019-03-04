@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'testing') {
   (async () => {
     const umzugMig = new Umzug(umzugConfig('migrations'));
     await umzugMig.up(); // Execute pending migrations
-    console.log('Database migrated');
+    console.log('Database migrated'); // TODO: Indicate if changes were made
 
     const umzugSed = new Umzug(umzugConfig('seeders'));
     await umzugSed.up(); // Execute pending seeders
