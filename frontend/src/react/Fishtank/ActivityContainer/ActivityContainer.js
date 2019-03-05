@@ -1,16 +1,14 @@
 import React from 'react';
 
-import ActivityEditor from '../../Widgets/ActivityEditor/ActivityEditor';
+// import ActivityEditor from '../../Widgets/ActivityEditor/ActivityEditor';
 import Activity from '../../Widgets/Activity/Activity';
 
-export default class ActivityContainer extends React.PureComponent {
-  render() {
-    return (
-      <div>
-        ActivityContainer
-        <Activity />
-        End
-      </div>
-    );
-  }
-}
+const ActivityContainer = () => (
+  <div>
+    ActivityContainer
+    <Activity />
+    End
+  </div>
+);
+
+export default ActivityContainer;

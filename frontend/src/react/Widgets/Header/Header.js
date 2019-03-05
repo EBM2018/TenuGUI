@@ -1,11 +1,9 @@
 import React from 'react';
 
-export default class Header extends React.PureComponent {
-  render() {
-    return (
-      <a>
-        Header
-      </a>
-    );
-  }
-}
+const Header = () => (
+  <a>
+    Header
+  </a>
+);
+
+export default Header;

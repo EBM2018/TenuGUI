@@ -1,4 +1,5 @@
 const { FishtankInteraction } = require('../database/models');
+const { emitNewInteraction } = require('../websocket');
 
 module.exports = {
   create: (req, res) => {
@@ -8,8 +9,11 @@ module.exports = {
       typeId: req.body.type,
       payload: {},
     })
-      .then(() => res.status(201).send())
-      .then(() => console.log('ping owner')) // TODO: ping owner w/ websockets
+      .then((fishtankInteraction) => {
+        res.status(201).send();
+        return fishtankInteraction;
+      })
+      .then(fishtankInteraction => emitNewInteraction(fishtankInteraction.fishtankId))
       .catch(() => res.status(500).send());
   },
   show: (req, res) => {

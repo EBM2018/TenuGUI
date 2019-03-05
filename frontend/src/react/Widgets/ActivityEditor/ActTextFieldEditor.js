@@ -13,18 +13,21 @@ export default class ActTextFieldEditor extends React.PureComponent {
     };
 
     clickDelete = () => {
-      this.props.deleteHim(this.props.id);
+      const { deleteHim, id } = this.props;
+      deleteHim(id);
     };
 
     changeText = (event) => {
-      this.props.editQuestion(this.props.id, event.target.value);
+      const { editQuestion, id } = this.props;
+      editQuestion(id, event.target.value);
     };
 
     render() {
+      const { text } = this.props;
       return (
         <div ref="inside">
-          <textarea onChange={this.changeText} value={this.props.text} />
-          <button onClick={this.clickDelete}> Delete </button>
+          <textarea onChange={this.changeText} value={text} />
+          <button type="button" onClick={this.clickDelete}> Delete </button>
           <div>
             <input id="input_response" type="text" onChange={this.updateInputValue} />
           </div>

@@ -5,18 +5,20 @@ import './Dashboard.css';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
+import { createFishtank } from '../../service/API/requests';
 
 export default class Dashboard extends React.PureComponent {
-    todoStartFishtank = () => { // TODO : change this shit
-      this.props.history.push('/FishtankAdmin');
+    todoStartFishtank = async () => { // TODO : change this shit
+      const { history } = this.props;
+      createFishtank(() => history.push('/FishtankAdmin'));
     };
 
     render() {
       return (
         <>
           <div>
-            <> Ma Bibliothéque </>
-            <button id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
+            <> Ma Bibliothèque </>
+            <button type="button" id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
           </div>
           <div id="dashboardContainer">
             <a id="firstColumn">

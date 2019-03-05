@@ -13,18 +13,19 @@ export default class FishtankHeader extends React.PureComponent {
 
 
     render() {
+      const { my, subject, date } = this.props;
       return (
         <div id="NameHeader">
           <div>
-            {this.props.my}
+            {my}
             {' '}
 Aquarium :
-            {this.props.subject}
+            {subject}
           </div>
           <div>
                     Séance ouverte le
             {' '}
-            {this.props.date}
+            {date}
           </div>
         </div>
       );

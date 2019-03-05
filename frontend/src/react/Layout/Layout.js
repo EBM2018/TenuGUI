@@ -7,22 +7,23 @@ import Header from '../Widgets/Header/Header';
 import UserAccountWidget from '../Widgets/UserAccountWidget/UserAccountWidget';
 
 export default class Layout extends React.PureComponent {
-    static propTypes = {
-      children: PropTypes.node.isRequired,
-    };
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 
-    render() {
-      return (
-        <div>
-          <div id="header">
-            <Header />
-            <UserAccountWidget />
-          </div>
-          <main>
-            {this.props.children}
-          </main>
-          <footer>footer</footer>
+  render() {
+    const { children } = this.props;
+    return (
+      <div>
+        <div id="header">
+          <Header />
+          <UserAccountWidget />
         </div>
-      );
-    }
+        <main>
+          {children}
+        </main>
+        <footer>footer</footer>
+      </div>
+    );
+  }
 }

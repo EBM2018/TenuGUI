@@ -23,6 +23,7 @@
     "@types/react-dom": "^16.8.2",
     "@types/react-router": "^4.4.4",
     "@types/react-router-dom": "^4.3.1",
+    "@types/socket.io-client": "^1.4.32",
     "eslint-config-airbnb": "^17.1.0"
   },
   "dependencies": {

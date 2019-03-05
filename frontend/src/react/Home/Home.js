@@ -5,11 +5,12 @@ export default class Home extends React.PureComponent {
     connectionFixture = () => {
       console.log(document.getElementById('name').value);
 
+      const { history } = this.props;
       if (document.getElementById('name').value === 'BDH') {
-        this.props.history.push('/Dashboard');
+        history.push('/Dashboard');
       }
       if (document.getElementById('name').value === 'Batou') {
-        this.props.history.push('/Fishtank');
+        history.push('/Fishtank');
       }
     };
 
@@ -21,7 +22,7 @@ export default class Home extends React.PureComponent {
           <div>
             Se connecter en tant que :
             <input id="name" type="text" />
-            <button onClick={this.connectionFixture}> Connexion </button>
+            <button type="submit" onClick={this.connectionFixture}> Connexion </button>
           </div>
         </>
       );

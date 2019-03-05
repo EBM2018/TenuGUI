@@ -9,7 +9,7 @@ export default class ActTextCheckEditor extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      list_reponse: PropTypes.array.isRequired,
+      listResponse: PropTypes.array.isRequired,
       editQuestion: PropTypes.func.isRequired,
       editCheckBox: PropTypes.func.isRequired,
       deleteHim: PropTypes.func.isRequired,
@@ -18,52 +18,58 @@ export default class ActTextCheckEditor extends React.PureComponent {
     };
 
     changeText = (event) => {
-      this.props.editQuestion(this.props.id, event.target.value);
+      const { editQuestion, id } = this.props;
+      editQuestion(id, event.target.value);
     };
 
     clickDelete = () => {
-      this.props.deleteHim(this.props.id);
+      const { deleteHim, id } = this.props;
+      deleteHim(id);
     };
 
     editCheckBoxLoc = (a, b, c) => { // juste to force update the component
-      this.props.editCheckBox(a, b, c);
+      const { editCheckBox } = this.props;
+      editCheckBox(a, b, c);
       this.forceUpdate();
     };
 
     newCheckBoxLoc = () => {
-      this.props.newCheckBox(this.props.id);
+      const { newCheckBox, id } = this.props;
+      newCheckBox(id);
       this.forceUpdate();
     };
 
     deleteCheckBoxLoc = () => {
-      this.props.deleteCheckBox(this.props.id);
+      const { deleteCheckBox, id } = this.props;
+      deleteCheckBox(id);
       this.forceUpdate();
     };
 
     render() {
       const inputs = [];
-      for (let i = 0; i < this.props.list_reponse.length; i++) {
-        inputs.push(this.props.list_reponse[i].rep);
+      const { listResponse, text, id } = this.props;
+      for (let i = 0; i < listResponse.length; i += 1) {
+        inputs.push(listResponse[i].rep);
       }
 
       return (
         <div id="container reponse" ref="checkContainer">
           <div>
-            <textarea onChange={this.changeText} value={this.props.text} />
-            <button onClick={this.clickDelete}> Delete </button>
+            <textarea onChange={this.changeText} value={text} />
+            <button type="button" onClick={this.clickDelete}> Delete </button>
           </div>
-          {inputs.map((reponse, index) => (
+          {inputs.map((response, index) => (
             <CheckBoxEditor
               ref={`elementCheck${index}`}
               key={index}
               id={index}
-              id_container={this.props.id}
-              reponse={reponse}
-              editReponse={this.editCheckBoxLoc}
+              idContainer={id}
+              response={response}
+              editResponse={this.editCheckBoxLoc}
             />
           ))}
-          <button onClick={this.newCheckBoxLoc}> New Checkbox </button>
-          <button onClick={this.deleteCheckBoxLoc}> Delete last Checkbox </button>
+          <button type="button" onClick={this.newCheckBoxLoc}> New Checkbox </button>
+          <button type="button" onClick={this.deleteCheckBoxLoc}> Delete last Checkbox </button>
         </div>
       );
     }

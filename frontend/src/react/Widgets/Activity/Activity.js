@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Activity.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
@@ -33,7 +33,7 @@ const dataJson = {
       type: 'check',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
-      reponse: [
+      response: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
@@ -72,7 +72,7 @@ const dataJson2 = {
       type: 'check',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
-      reponse: [
+      response: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
@@ -89,95 +89,98 @@ const dataJsonNull = {
 
 
 export default class Activity extends React.PureComponent {
-    state = {
-      data: dataJson,
-    };
+  state = {
+    data: dataJson,
+  };
 
-    send = () => { // pour des test à la con
-      const object = this.refs.Progress1;
+  send = () => { // pour des test à la con
+    const object = this.refs.Progress1;
+    const { data } = this.state;
 
-      let stringToJSON = '{ userReponse: [';
+    let stringToJSON = '{ userReponse: [';
 
-      for (let i = 0; i < object.childElementCount - 2; i++) {
-        const arg = this.refs[`element${i}`];
-        stringToJSON += ' { id: ';
+    for (let i = 0; i < object.childElementCount - 2; i += 1) {
+      const arg = this.refs[`element${i}`];
+      stringToJSON += ' { id: ';
 
-        stringToJSON += (this.state.data.Question[i].id_question);
+      stringToJSON += (data.Question[i].id_question);
 
-        stringToJSON += ' { reponse: ';
+      stringToJSON += ' { reponse: ';
 
-        stringToJSON += (arg.state.user_reponse);
+      stringToJSON += (arg.state.userResponse);
 
-        stringToJSON += ' }';
-      }
-      stringToJSON += '] };';
-      console.log(stringToJSON);
-      // console.log(stringToJSON);
-      /*
-      console.log(stringToJSON);
-      var newJSON = JSON.(stringToJSON);
-        console.log(newJSON);
-        console.log(newJSON.userReponse[2].reponse);
-      */
-      /*
-        this.props.children.forEach(
-            this.props.children,
-            x => x
-        )
-        */
-      /*
-        this.setState({
-                data: dataJsonNull
-        });
-        */
-    };
-
-    render() {
-      return (
-        <div ref="Progress1">
-          <a>
-            {this.state.data.name}
-          </a>
-          {this.state.data.Question.map((ques, index) => {
-            if (ques.type === 'field') {
-              return (
-                <ActTextField
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                />
-              );
-            }
-            if (ques.type === 'check') {
-              return (
-                <ActTextCheck
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                  list_reponse={ques.reponse}
-                />
-              );
-            }
-            if (ques.type === 'checkMult') {
-              return (
-                <ActTextCheckMult
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                  list_reponse={ques.reponse}
-                />
-              );
-            }
-          })}
-          <div>
-            <button onClick={this.send}>
-              Send
-            </button>
-          </div>
-        </div>
-      );
+      stringToJSON += ' }';
     }
+    stringToJSON += '] };';
+    console.log(stringToJSON);
+    // console.log(stringToJSON);
+    /*
+    console.log(stringToJSON);
+    var newJSON = JSON.(stringToJSON);
+      console.log(newJSON);
+      console.log(newJSON.userReponse[2].reponse);
+    */
+    /*
+      this.props.children.forEach(
+          this.props.children,
+          x => x
+      )
+      */
+    /*
+      this.setState({
+              data: dataJsonNull
+      });
+      */
+  };
+
+  render() {
+    const { data } = this.state;
+    return (
+      <div ref="Progress1">
+        <a>
+          {data.name}
+        </a>
+        {data.Question.map((ques, index) => {
+          if (ques.type === 'field') {
+            return (
+              <ActTextField
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+              />
+            );
+          }
+          if (ques.type === 'check') {
+            return (
+              <ActTextCheck
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+                listResponse={ques.response}
+              />
+            );
+          }
+          if (ques.type === 'checkMult') {
+            return (
+              <ActTextCheckMult
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+                listResponse={ques.response}
+              />
+            );
+          }
+          return (<></>);
+        })}
+        <div>
+          <button type="submit" onClick={this.send}>
+            Send
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
