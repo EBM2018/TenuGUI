@@ -34,8 +34,8 @@ describe('Fishtank creation validation', () => {
     mockTeamy.isValidShoal.restore();
   });
 
-  afterAll(() => {
-    sequelize.close();
+  afterAll(async () => {
+    await sequelize.close();
   });
 
   test('It should accept a valid request', () => request(app)

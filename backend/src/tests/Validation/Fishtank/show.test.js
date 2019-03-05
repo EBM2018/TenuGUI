@@ -36,8 +36,8 @@ describe('Fishtank retrieval validation', () => {
     mockTeamy.isUserPartOfShoal.restore();
   });
 
-  afterAll(() => {
-    sequelize.close();
+  afterAll(async () => {
+    await sequelize.close();
   });
 
   test('It should accept a valid request from a user part of the fishtank\'s shoal', async () => {
