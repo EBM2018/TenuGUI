@@ -36,14 +36,14 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should accept a valid finish request', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: validUsers[0].token,
@@ -53,14 +53,14 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should reject an empty request', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({})
       .set('Content-Type', 'application/json')
       .expect(401);
@@ -68,14 +68,14 @@ describe('Fishtank creation validation', () => {
 
   /* Token validation */
   test('It should reject a request without a token', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: Fishtank.editionTypes.FINISH,
       })
@@ -84,14 +84,14 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should reject a request without a non-JWT token', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: 'test',
@@ -101,14 +101,14 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should reject a request with an invalid token', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: invalidUsers[0].token,
@@ -119,14 +119,14 @@ describe('Fishtank creation validation', () => {
 
   /* User validation */
   test('It should reject a request from a user that doesn\'t own the fishtank', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: validUsers[1].token,
@@ -137,14 +137,14 @@ describe('Fishtank creation validation', () => {
 
   /* Type validation */
   test('It should reject a request without a type', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         token: validUsers[1].token,
       })
@@ -153,14 +153,14 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should reject a request an non-numeric type', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: 'test',
         token: validUsers[1].token,
@@ -170,7 +170,7 @@ describe('Fishtank creation validation', () => {
   });
 
   test('It should reject a request with an invalid type', async () => {
-    await Fishtank.create({
+    const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,
       shoalId: 0,
       statusId: FishtankStatus.ONGOING,
@@ -179,7 +179,7 @@ describe('Fishtank creation validation', () => {
 
     const invalidType = Math.max(...Object.values(Fishtank.editionTypes)) + 1;
 
-    return request(app).post('/api/fishtanks')
+    return request(app).patch(`/api/fishtanks/${fishtank.id}`)
       .send({
         type: invalidType,
         token: validUsers[1].token,
