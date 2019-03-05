@@ -12,15 +12,19 @@ const helmet = require('helmet');
 const Umzug = require('umzug');
 const umzugConfig = require('./config/umzug.js');
 
+const api = require('./api');
 const config = require('./config');
+const io = require('./websocket').init(server);
+const { handleSocketConnection } = require('./websocket');
 
 app.use(cors()); // TODO: Configure CORS
 app.use(helmet());
 app.use(bodyParser.json());
-app.use('/api', require('./api'));
 
+io.on('connection', handleSocketConnection);
+
+app.use('/api', api);
 app.use(serveStatic('./public'));
-
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
