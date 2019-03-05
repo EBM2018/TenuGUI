@@ -4,8 +4,9 @@ const { sequelize } = require('../../../database/models');
 const { getRequestUrlInTests } = require('../../../services/formatter.js');
 
 describe('Routes retrieval', () => {
-  afterAll(async () => {
+  afterAll(async (done) => {
     await sequelize.close();
+    done();
   });
 
   test('It should answer with a list of API urls', () => request(app)

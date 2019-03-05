@@ -30,8 +30,9 @@ describe('Fishtank creation validation', () => {
     requestLoader.addUser.restore();
   });
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     await sequelize.close();
+    done();
   });
 
   test('It should accept a valid finish request', async () => {
