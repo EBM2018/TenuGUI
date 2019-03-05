@@ -11,6 +11,8 @@ import Fishtank from '../Fishtank/Fishtank';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin';
 import Home from '../Home/Home';
 
+import '../../ws-client';
+
 class App extends Component {
   render() {
     return (
