@@ -25,6 +25,7 @@ script:
   - cd frontend
   - npm test -- --coverage
   - ./node_modules/.bin/codecov
+  - npm run lint
   - npm run build
   - cd ..
 
