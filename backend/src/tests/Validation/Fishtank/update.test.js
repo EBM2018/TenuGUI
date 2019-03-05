@@ -43,7 +43,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: validUsers[0].token,
@@ -60,7 +60,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({})
       .set('Content-Type', 'application/json')
       .expect(401);
@@ -75,7 +75,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: Fishtank.editionTypes.FINISH,
       })
@@ -91,7 +91,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: 'test',
@@ -108,7 +108,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: invalidUsers[0].token,
@@ -126,7 +126,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: Fishtank.editionTypes.FINISH,
         token: validUsers[1].token,
@@ -144,7 +144,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         token: validUsers[1].token,
       })
@@ -160,7 +160,7 @@ describe('Fishtank creation validation', () => {
       closedAt: null,
     });
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: 'test',
         token: validUsers[1].token,
@@ -179,7 +179,7 @@ describe('Fishtank creation validation', () => {
 
     const invalidType = Math.max(...Object.values(Fishtank.editionTypes)) + 1;
 
-    request(app).post('/api/fishtanks')
+    return request(app).post('/api/fishtanks')
       .send({
         type: invalidType,
         token: validUsers[1].token,
