@@ -19,6 +19,8 @@ before_script:
   - mysql -e "grant all on tenutest.* to 'tenudev'@'localhost';"
   - cd backend
   - npm ci
+  - sequelize db:migrate
+  - sequelize db:seed:all
   - cd ../frontend
   - npm ci
   - npm i codecov
