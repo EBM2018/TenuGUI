@@ -7,7 +7,7 @@ services:
   - docker
   - mysql
 addons:
-  mariadb: '10.3.13'
+  mariadb: '10.3'
 
 env:
   - NODE_ENV=testing
