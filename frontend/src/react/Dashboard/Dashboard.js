@@ -6,7 +6,8 @@ import './Dashboard.css';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
-import { moveToSocketsNamespaceForFishtank } from '../../ws-client';
+import { moveSocketToFishtankNamespace } from '../../ws-client';
+import { handleNewInteractionEmission } from '../../service/API/requests';
 
 export default class Dashboard extends React.PureComponent {
     todoStartFishtank = async () => { // TODO : change this shit
@@ -18,7 +19,13 @@ export default class Dashboard extends React.PureComponent {
           shoalId: 1,
         })
         .set('Accept', 'application/json')
-        .then(res => moveToSocketsNamespaceForFishtank(res.body.fishtankId))
+        .then((res) => {
+          const socket = moveSocketToFishtankNamespace(res.body.fishtankId);
+          socket.on('newInteraction', async () => {
+            const fishtankInteractions = await handleNewInteractionEmission(res.body.fishtankId);
+            console.log(fishtankInteractions);
+          });
+        })
         .then(() => history.push('/FishtankAdmin'));
     };
 
