@@ -7,14 +7,9 @@ const init = (server) => {
   return io;
 };
 
-const handleSocketConnection = (socket) => {
-  console.log('connected');
-  socket.emit('bonjour');
-};
-
 const createSocketsNameSpaceForFishtank = (fishtankId) => {
   const newFishtankSocketsNamespace = io.of(`/fishtank-${fishtankId}`);
-  newFishtankSocketsNamespace.on('connection', () => console.log('now we private'));
+  newFishtankSocketsNamespace.on('connection', () => console.log(`Created namespace for fishtank ${fishtankId}`));
 };
 
 
@@ -54,5 +49,5 @@ module.exports = {
 */
 
 module.exports = {
-  init, handleSocketConnection, createSocketsNameSpaceForFishtank,
+  init, createSocketsNameSpaceForFishtank,
 };

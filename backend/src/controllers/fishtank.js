@@ -1,5 +1,6 @@
 const { Fishtank, FishtankStatus } = require('../database/models');
 const { getRequestUrl } = require('../services/formatter.js');
+const { createSocketsNameSpaceForFishtank } = require('../websocket');
 
 module.exports = {
   create: (req, res) => {
@@ -9,10 +10,16 @@ module.exports = {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     })
-      .then(fishtank => res.status(201).send({
-        fishtankId: fishtank.id,
-        url: `${getRequestUrl(req)}/api/fishtanks/${fishtank.id}`,
-      }))
+      .then((fishtank) => {
+        res.status(201).send({
+          fishtankId: fishtank.id,
+          url: `${getRequestUrl(req)}/api/fishtanks/${fishtank.id}`,
+        });
+        return fishtank;
+      })
+      .then((fishtank) => {
+        createSocketsNameSpaceForFishtank(fishtank.id);
+      })
       .catch(() => res.status(500).send());
   },
 
