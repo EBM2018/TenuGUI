@@ -36,8 +36,9 @@ describe('Fishtank creation validation', () => {
     mockTeamy.isUserPartOfShoal.restore();
   });
 
-  afterAll(() => {
-    sequelize.close();
+  afterAll(async (done) => {
+    await sequelize.close();
+    done();
   });
 
   test('It should accept a valid emergency press', async () => {
