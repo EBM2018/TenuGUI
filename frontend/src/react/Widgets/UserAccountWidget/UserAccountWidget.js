@@ -1,11 +1,9 @@
 import React from 'react';
 
-export default class UserAccountWidget extends React.PureComponent {
-  render() {
-    return (
-      <a>
-        UserAccountWidget
-      </a>
-    );
-  }
-}
+const UserAccountWidget = () => (
+  <a>
+    UserAccountWidget
+  </a>
+);
+
+export default UserAccountWidget;

@@ -2,33 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class ActTextField extends React.PureComponent {
-    static propTypes = {
-      id: PropTypes.number.isRequired,
-      text: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
-      editQuestion: PropTypes.func.isRequired,
-      deleteHim: PropTypes.func.isRequired,
-    };
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+    text: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    editQuestion: PropTypes.func.isRequired,
+    deleteHim: PropTypes.func.isRequired,
+  };
 
-    clickDelete = () => {
-      this.props.deleteHim(this.props.id);
-    };
+  clickDelete = () => {
+    const { deleteHim, id } = this.props;
+    deleteHim(id);
+  };
 
-    changeText = (event) => {
-      this.props.editQuestion(this.props.id, event.target.value);
-    };
+  changeText = (event) => {
+    const { editQuestion, id } = this.props;
+    editQuestion(id, event.target.value);
+  };
 
-    render() {
-      return (
-        <div ref="inside">
-          <textarea onChange={this.changeText} value={this.props.text} />
-          <button onClick={this.clickDelete}> Delete </button>
-          <div>
-            <input id="input_response" type="text" onChange={this.updateInputValue} />
-          </div>
+  render() {
+    const { text } = this.props;
+    return (
+      <div ref="inside">
+        <textarea onChange={this.changeText} value={text} />
+        <button type="button" onClick={this.clickDelete}> Delete </button>
+        <div>
+          <input id="input_response" type="text" onChange={this.updateInputValue} />
         </div>
-      );
-    }
+      </div>
+    );
+  }
 }

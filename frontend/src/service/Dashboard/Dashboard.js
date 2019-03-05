@@ -5,7 +5,7 @@ export const StartNewFishtank = () => {
 export class DashboardMyActivity {
     static openActivity = () => {
       console.log('Open an activity.');
-    }
+    };
 
     static openFeedbackActivity = () => {
       console.log('Open "Feedback".');

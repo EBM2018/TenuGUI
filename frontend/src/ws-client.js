@@ -6,14 +6,7 @@ const moveToSocketsNamespaceForFishtank = (fishtankId) => {
   socket.disconnect();
   socket = io.connect(`/fishtank-${fishtankId}`);
 };
-
 /*
-// Une fois connecté on se met sur le bon namespace
-const connectionEvent = (fishtankId) => {
-  socket.disconnect();
-  socket = io.connect(`/${fishtankId}`);
-};
-
 // Lors de l'evenement de login
 // TODO Yousbaff envoie/récupère les infos de log
 const loginEvent = (logInfo) => {

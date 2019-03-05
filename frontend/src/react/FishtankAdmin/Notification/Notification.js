@@ -1,13 +1,11 @@
 import React from 'react';
 
-export default class Notification extends React.PureComponent {
-  render() {
-    return (
-      <>
-        <div> Notification élèves </div>
+const Notification = () => (
+  <>
+    <div> Notification élèves </div>
 
-        <div id="ListNotification" />
-      </>
-    );
-  }
-}
+    <div id="ListNotification" />
+  </>
+);
+
+export default Notification;

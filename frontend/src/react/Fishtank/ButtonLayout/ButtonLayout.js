@@ -24,40 +24,39 @@ export default class ButtonLayout extends React.PureComponent {
 
     render() {
       return (
-        <a>
+        <div>
           <div id="ButtonLayoutContainer">
-            <button id="AskQuestion" onClick={StudentFishtank.askQuestion}>
-                        Posez votre question
+            <button type="button" id="AskQuestion" onClick={StudentFishtank.askQuestion}>
+              Posez votre question
             </button>
 
+            <div className="dropdown">
+              <button type="button" className="dropbtn"> Changement de Rythme</button>
+              <div className="dropdown-content">
+                <a href="#" onClick={StudentFishtank.askSpeedUp}>Demander d aller plus vite</a>
+                <a href="#" onClick={StudentFishtank.askSpeedDown}>Demander d aller moins vite</a>
+                <a href="#" onClick={StudentFishtank.notUnderstand}>Je ne comprends plus rien</a>
+                <a href="#" onClick={StudentFishtank.askStop}>Demander une pause</a>
+              </div>
+            </div>
 
-            <b className="dropdown">
-              <button className="dropbtn"> Changement de Rythme</button>
-              <b className="dropdown-content">
-                <b href="#" onClick={StudentFishtank.askSpeedUp}>Demander d aller plus vite</b>
-                <b href="#" onClick={StudentFishtank.askSpeedDown}>Demander d aller moins vite</b>
-                <b href="#" onClick={StudentFishtank.notUnderstand}>Je ne comprends plus rien</b>
-                <b href="#" onClick={StudentFishtank.askStop}>Demander une pause</b>
-              </b>
-            </b>
 
-
-            <b className="dropdown">
-              <button className="dropbtn">
+            <div className="dropdown">
+              <button type="button" className="dropbtn">
                 {' '}
 Précision
               </button>
-              <b className="dropdown-content">
-                <b href="#" onClick={this.speedUp}>Demander d aller plus vite 2</b>
-                <b href="#" onClick={this.speedDown}>Demander d aller moins vite 2</b>
-                <b href="#" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</b>
-                <b href="#" onClick={this.plsStop}>Demander une pause 2</b>
-              </b>
-            </b>
+              <div className="dropdown-content">
+                <a href="#" onClick={this.speedUp}>Demander d aller plus vite 2</a>
+                <a href="#" onClick={this.speedDown}>Demander d aller moins vite 2</a>
+                <a href="#" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</a>
+                <a href="#" onClick={this.plsStop}>Demander une pause 2</a>
+              </div>
+            </div>
 
           </div>
           <div id="clean" />
-        </a>
+        </div>
       );
     }
 }

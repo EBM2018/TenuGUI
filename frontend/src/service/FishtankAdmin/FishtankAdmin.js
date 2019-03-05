@@ -11,6 +11,7 @@ export class CommandFishtankAdmin {
       console.log('Ask for a feedback.');
     };
 }
+
 export class ActionsFishtankAdmin {
     static askUnderstanding = () => {
       console.log('Open "Ask if they understand".');

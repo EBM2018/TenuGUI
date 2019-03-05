@@ -10,6 +10,7 @@ import { moveToSocketsNamespaceForFishtank } from '../../ws-client';
 
 export default class Dashboard extends React.PureComponent {
     todoStartFishtank = async () => { // TODO : change this shit
+      const { history } = this.props;
       request
         .post('/api/fishtanks')
         .send({
@@ -18,15 +19,15 @@ export default class Dashboard extends React.PureComponent {
         })
         .set('Accept', 'application/json')
         .then(res => moveToSocketsNamespaceForFishtank(res.body.fishtankId))
-        .then(() => this.props.history.push('/FishtankAdmin'));
+        .then(() => history.push('/FishtankAdmin'));
     };
 
     render() {
       return (
         <>
           <div>
-            <> Ma Bibliothéque </>
-            <button id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
+            <> Ma Bibliothèque </>
+            <button type="button" id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
           </div>
           <div id="dashboardContainer">
             <a id="firstColumn">

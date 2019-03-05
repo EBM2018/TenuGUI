@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Activity.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
@@ -33,7 +33,7 @@ const dataJson = {
       type: 'check',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
-      reponse: [
+      response: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
@@ -72,7 +72,7 @@ const dataJson2 = {
       type: 'check',
       id_question: '0',
       text: 'Cb tu notes ce cour ?',
-      reponse: [
+      response: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
@@ -97,7 +97,7 @@ const dataCheck = {
   type: 'check',
   id_question: '',
   text: '',
-  reponse: [
+  response: [
     { rep: '' },
     { rep: '' },
     { rep: '' },
@@ -109,7 +109,7 @@ const dataCheckMult = {
   type: 'checkMult',
   id_question: '',
   text: '',
-  reponse: [
+  response: [
     { rep: '' },
     { rep: '' },
     { rep: '' },
@@ -123,141 +123,144 @@ const dataReponse = {
 
 
 export default class Activity extends React.PureComponent {
-    state = {
-      data: dataJson,
-    };
+  state = {
+    data: dataJson,
+  };
 
-    send = () => { // pour des test à la con
-      console.log(this.state.data);
-      console.log(this.state.data.Question[4].text);
-    };
+  send = () => { // pour des test à la con
+    const { data } = this.state;
+    console.log(data);
+    console.log(data.Question[4].text);
+  };
 
-    editJsonQuestion = (index, newQuestion) => {
-      const newJ = this.state.data;
-      newJ.Question[index].text = newQuestion;
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  editJsonQuestion = (index, newQuestion) => {
+    const { data } = this.state;
+    data.Question[index].text = newQuestion;
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    editJsonReponse = (index, nbReponse, newReponse) => {
-      const newJ = this.state.data;
-      newJ.Question[index].reponse[nbReponse].rep = newReponse;
-      console.log(newJ.Question[index].reponse[nbReponse].rep);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  editJsonResponse = (index, nbReponse, newReponse) => {
+    const { data } = this.state;
+    data.Question[index].response[nbReponse].rep = newReponse;
+    console.log(data.Question[index].response[nbReponse].rep);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    newQuestionTextField = () => {
-      const newJ = this.state.data;
-      newJ.Question.push(dataField);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  newQuestionTextField = () => {
+    const { data } = this.state;
+    data.Question.push(dataField);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    newQuestionCheck = () => {
-      const newJ = this.state.data;
-      newJ.Question.push(dataCheck);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  newQuestionCheck = () => {
+    const { data } = this.state;
+    data.Question.push(dataCheck);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    newQuestionCheckMult = () => {
-      const newJ = this.state.data;
-      newJ.Question.push(dataCheckMult);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  newQuestionCheckMult = () => {
+    const { data } = this.state;
+    data.Question.push(dataCheckMult);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    deleteQuestion = (index) => {
-      const newJ = this.state.data;
-      newJ.Question.splice(index, 1);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  deleteQuestion = (index) => {
+    const { data } = this.state;
+    data.Question.splice(index, 1);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    newCheckBox = (index) => {
-      const newJ = this.state.data;
-      newJ.Question[index].reponse.push(dataReponse);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  newCheckBox = (index) => {
+    const { data } = this.state;
+    data.Question[index].response.push(dataReponse);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    deleteCheckBoc = (index) => {
-      const newJ = this.state.data;
-      newJ.Question[index].reponse.splice(newJ.Question[index].reponse.length - 1, 1);
-      this.setState({ data: newJ });
-      this.forceUpdate();
-    };
+  deleteCheckBoc = (index) => {
+    const { data } = this.state;
+    data.Question[index].response.splice(data.Question[index].response.length - 1, 1);
+    this.setState({ data });
+    this.forceUpdate();
+  };
 
-    render() {
-      return (
-        <div ref="Progress1">
-          <a>
-            {this.state.data.name}
-          </a>
-          {this.state.data.Question.map((ques, index) => {
-            if (ques.type === 'field') {
-              return (
-                <ActTextField
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                  editQuestion={this.editJsonQuestion}
-                  deleteHim={this.deleteQuestion}
-                />
-              );
-            }
-            if (ques.type === 'check') {
-              return (
-                <ActTextCheck
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                  list_reponse={ques.reponse}
-                  editQuestion={this.editJsonQuestion}
-                  editCheckBox={this.editJsonReponse}
-                  deleteHim={this.deleteQuestion}
-                  newCheckBox={this.newCheckBox}
-                  deleteCheckBox={this.deleteCheckBoc}
-                />
-              );
-            }
-            if (ques.type === 'checkMult') {
-              return (
-                <ActTextCheckMult
-                  ref={`element${index}`}
-                  key={index}
-                  id={index}
-                  text={ques.text}
-                  list_reponse={ques.reponse}
-                  editQuestion={this.editJsonQuestion}
-                  editCheckBox={this.editJsonReponse}
-                  deleteHim={this.deleteQuestion}
-                  newCheckBox={this.newCheckBox}
-                  deleteCheckBox={this.deleteCheckBoc}
-                />
-              );
-            }
-          })}
-          <div>
-            <button onClick={this.newQuestionTextField}>
-                  Add new Question with Text Field
-            </button>
-            <button onClick={this.newQuestionCheck}>
-                  Add new Question with Checkbox
-            </button>
-            <button onClick={this.newQuestionCheckMult}>
-                  Add new Question with Checkbox (multiple choice)
-            </button>
-          </div>
-          <div>
-            <button onClick={this.send}>
-                    Send
-            </button>
-          </div>
+  render() {
+    const { data } = this.state;
+    return (
+      <div ref="Progress1">
+        <a>
+          {data.name}
+        </a>
+        {data.Question.map((ques, index) => {
+          if (ques.type === 'field') {
+            return (
+              <ActTextField
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+                editQuestion={this.editJsonQuestion}
+                deleteHim={this.deleteQuestion}
+              />
+            );
+          }
+          if (ques.type === 'check') {
+            return (
+              <ActTextCheck
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+                listResponse={ques.response}
+                editQuestion={this.editJsonQuestion}
+                editCheckBox={this.editJsonResponse}
+                deleteHim={this.deleteQuestion}
+                newCheckBox={this.newCheckBox}
+                deleteCheckBox={this.deleteCheckBoc}
+              />
+            );
+          }
+          if (ques.type === 'checkMult') {
+            return (
+              <ActTextCheckMult
+                ref={`element${index}`}
+                key={index}
+                id={index}
+                text={ques.text}
+                listResponse={ques.response}
+                editQuestion={this.editJsonQuestion}
+                editCheckBox={this.editJsonResponse}
+                deleteHim={this.deleteQuestion}
+                newCheckBox={this.newCheckBox}
+                deleteCheckBox={this.deleteCheckBoc}
+              />
+            );
+          }
+          return (<></>);
+        })}
+        <div>
+          <button type="button" onClick={this.newQuestionTextField}>
+            Add new Question with Text Field
+          </button>
+          <button type="button" onClick={this.newQuestionCheck}>
+            Add new Question with Checkbox
+          </button>
+          <button type="button" onClick={this.newQuestionCheckMult}>
+            Add new Question with Checkbox (multiple choice)
+          </button>
         </div>
-      );
-    }
+        <div>
+          <button type="button" onClick={this.send}>
+            Send
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
