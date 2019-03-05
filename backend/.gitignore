@@ -1,5 +1,6 @@
 .idea/
 .env*
+!.env.testing
 !.env.example
 doc/
 .vscode/*

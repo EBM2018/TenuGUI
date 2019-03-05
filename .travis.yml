@@ -5,9 +5,18 @@ cache: npm
 
 services:
   - docker
+  - mysql
+addons:
+  mariadb: '10.3.13'
+
+env:
+  - NODE_ENV=testing
 
 before_script:
   - set -e
+  - mysql -e 'create database tenutest'
+  - mysql -e "create user 'tenudev'@'localhost' IDENTIFIED BY 'hamzaoutai';"
+  - mysql -e "grant all on tenutest.* to 'tenudev'@'localhost';"
   - cd backend
   - npm ci
   - cd ../frontend
