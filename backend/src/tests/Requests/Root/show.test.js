@@ -1,8 +1,13 @@
 const request = require('supertest');
 const app = require('../../..');
+const { sequelize } = require('../../../database/models');
 const { getRequestUrlInTests } = require('../../../services/formatter.js');
 
 describe('Routes retrieval', () => {
+  afterAll(async () => {
+    await sequelize.close();
+  });
+
   test('It should answer with a list of API urls', () => request(app)
     .get('/api')
     .expect(200)
