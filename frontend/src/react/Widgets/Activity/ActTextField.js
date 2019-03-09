@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export default class ActTextField extends React.PureComponent {
   static propTypes = {
-    id: PropTypes.number.isRequired,
     text: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
@@ -28,10 +27,8 @@ export default class ActTextField extends React.PureComponent {
   render() {
     const { text } = this.props;
     return (
-      <div ref="inside">
-        <a>
-          {text}
-        </a>
+      <div>
+        {text}
         <div>
           <input id="input_response" type="text" onChange={this.updateInputValue} />
         </div>

@@ -4,20 +4,27 @@ import CheckBox from './CheckBox';
 
 export default class ActTextCheckMult extends React.PureComponent {
   static propTypes = {
-    id: PropTypes.number.isRequired,
     text: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
     ]).isRequired,
-    listResponse: PropTypes.array.isRequired,
+    listResponse: PropTypes.arrayOf([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
   };
 
   state = {
     userResponse: '',
   };
 
+  constructor() {
+    super();
+    this.activityContainer = React.createRef();
+  }
+
   fctChecked = (indexChecked, responseChecked) => {
-    const object = this.refs.checkContainer;
+    const object = this.activityContainer.current;
     const newResponse = [];
     for (let i = 0; i < (object.childElementCount - 1) / 2; i += 1) {
       const checkrefered = this.refs[`elementCheck${i}`];
@@ -37,14 +44,13 @@ export default class ActTextCheckMult extends React.PureComponent {
     }
 
     return (
-      <div id="container reponse" ref="checkContainer">
+      <div id="container reponse" ref={this.activityContainer}>
         <div>
           {text}
         </div>
         {inputs.map((response, index) => (
           <CheckBox
             ref={`elementCheck${index}`}
-            key={index}
             id={index}
             response={response}
             fctChecked={this.fctChecked}

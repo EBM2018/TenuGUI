@@ -43,23 +43,7 @@ const dataJson = {
     },
   ],
 };
-/* ,
-            {
-                "type": "check",
-                "text": "Cb tu notes ce cour ?",
-                "reponse":[
-                    {"rep": "1"},
-                    {"rep": "2"},
-                    {"rep": "3"},
-                    {"rep": "4"},
-                    {"rep": "5"}
-                ],
-                "user_reponse": ""
-            }
-        ]
-    }
-*/
-
+/*
 const dataJson2 = {
   name: 'Questionnaire_name_2',
   Question: [
@@ -80,27 +64,35 @@ const dataJson2 = {
     },
   ],
 };
-
+*/
+/*
 const dataJsonNull = {
   name: 'No_activity',
   Question: [
   ],
 };
-
+*/
 
 export default class Activity extends React.PureComponent {
   state = {
     data: dataJson,
   };
 
+  constructor() {
+    super();
+    this.activityContainer = React.createRef();
+  }
+
   send = () => { // pour des test à la con
-    const object = this.refs.Progress1;
+    const object = this.activityContainer.current;
     const { data } = this.state;
 
     let stringToJSON = '{ userReponse: [';
 
-    for (let i = 0; i < object.childElementCount - 2; i += 1) {
+    for (let i = 0; i < object.childElementCount - 1; i += 1) {
+      // const arg = object.children[i];
       const arg = this.refs[`element${i}`];
+      // const arg = this.actRefs[`element${i}`].current;
       stringToJSON += ' { id: ';
 
       stringToJSON += (data.Question[i].id_question);
@@ -113,40 +105,25 @@ export default class Activity extends React.PureComponent {
     }
     stringToJSON += '] };';
     console.log(stringToJSON);
-    // console.log(stringToJSON);
     /*
-    console.log(stringToJSON);
-    var newJSON = JSON.(stringToJSON);
-      console.log(newJSON);
-      console.log(newJSON.userReponse[2].reponse);
+    this.setState({
+      data: dataJsonNull,
+    });
     */
-    /*
-      this.props.children.forEach(
-          this.props.children,
-          x => x
-      )
-      */
-    /*
-      this.setState({
-              data: dataJsonNull
-      });
-      */
   };
 
   render() {
     const { data } = this.state;
     return (
-      <div ref="Progress1">
-        <a>
-          {data.name}
-        </a>
+      <div ref={this.activityContainer}>
+        {data.name}
+
         {data.Question.map((ques, index) => {
+          // this.actRefs[`elementTest${index}`] = React.createRef();
           if (ques.type === 'field') {
             return (
               <ActTextField
                 ref={`element${index}`}
-                key={index}
-                id={index}
                 text={ques.text}
               />
             );
@@ -155,8 +132,6 @@ export default class Activity extends React.PureComponent {
             return (
               <ActTextCheck
                 ref={`element${index}`}
-                key={index}
-                id={index}
                 text={ques.text}
                 listResponse={ques.response}
               />
@@ -166,8 +141,6 @@ export default class Activity extends React.PureComponent {
             return (
               <ActTextCheckMult
                 ref={`element${index}`}
-                key={index}
-                id={index}
                 text={ques.text}
                 listResponse={ques.response}
               />

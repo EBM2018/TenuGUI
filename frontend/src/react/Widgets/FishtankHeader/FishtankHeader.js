@@ -11,6 +11,9 @@ export default class FishtankHeader extends React.PureComponent {
       my: PropTypes.string,
     };
 
+    static defaultProps = {
+      my: '',
+    };
 
     render() {
       const { my, subject, date } = this.props;

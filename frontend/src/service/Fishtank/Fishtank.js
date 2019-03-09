@@ -19,3 +19,9 @@ export class StudentFishtank {
       console.log('Student want to stop.');
     };
 }
+
+export class futurFct { // TODO: get rid of this
+    static something = () => {
+      console.log('tochange');
+    };
+}

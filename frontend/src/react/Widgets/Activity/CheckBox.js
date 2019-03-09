@@ -11,27 +11,30 @@ export default class CheckBox extends React.PureComponent {
     fctChecked: PropTypes.func.isRequired,
   };
 
+  constructor() {
+    super();
+    this.checkBox = React.createRef();
+  }
+
   fctCheckedLoc = () => {
-    if (this.refs.checkbox.checked) {
+    if (this.checkBox.current.checked) {
       const { id, response, fctChecked } = this.props;
       fctChecked(id + 1, response);
     }
   };
 
-  isChecked = () => this.refs.checkbox.checked;
+  isChecked = () => this.checkBox.current.checked;
 
   unCheck = () => {
-    this.refs.checkbox.checked = false;
+    this.checkBox.current.checked = false;
   };
 
   render() {
     const { response } = this.props;
     return (
       <>
-        <input ref="checkbox" type="checkbox" onChange={this.fctCheckedLoc} />
-        <label>
-          {response}
-        </label>
+        <input ref={this.checkBox} type="checkbox" onChange={this.fctCheckedLoc} />
+        {response}
       </>
     );
   }
