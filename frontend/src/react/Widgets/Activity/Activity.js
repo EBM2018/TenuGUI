@@ -11,27 +11,27 @@ const dataJson = {
   Question: [
     {
       type: 'field',
-      idQuestion: '0',
+      idQuestion: '1',
       text: "Qu'est ce que tu as appris ?",
     },
     {
       type: 'field',
-      idQuestion: '0',
+      idQuestion: '2',
       text: "Qu'est ce qui t'as étonné ?",
     },
     {
       type: 'field',
-      idQuestion: '0',
+      idQuestion: '3',
       text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
     },
     {
       type: 'field',
-      idQuestion: '0',
+      idQuestion: '4',
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
       type: 'check',
-      idQuestion: '0',
+      idQuestion: '5',
       text: 'Cb tu notes ce cour ?',
       response: [
         { rep: '1' },
@@ -43,95 +43,129 @@ const dataJson = {
     },
   ],
 };
-/*
-const dataJsonNull = {
-  name: 'No_activity',
-  Question: [
-  ],
-};
-*/
 
 export default class Activity extends React.PureComponent {
-  state = {
-    data: dataJson,
-  };
+    state = {
+      data: dataJson,
+      userReponse: {
+        Question: [
+        ],
+      },
+    };
 
-  constructor() {
-    super();
-    this.activityContainer = React.createRef();
-  }
-
-  send = () => { // pour des test à la con
-    const object = this.activityContainer.current;
-    const { data } = this.state;
-
-    let stringToJSON = '{ userReponse: [';
-
-    for (let i = 0; i < object.childElementCount - 1; i += 1) {
-      // const arg = object.children[i];
-      const arg = this.refs[`element${i}`];
-      // const arg = this.actRefs[`element${i}`].current;
-      stringToJSON += ' { id: ';
-
-      stringToJSON += (data.Question[i].id_question);
-
-      stringToJSON += ' { reponse: ';
-
-      stringToJSON += (arg.state.userResponse);
-
-      stringToJSON += ' }';
+    componentWillMount() {
+      const newUserReponse = {
+        Question: [
+        ],
+      };
+      const { data } = this.state;
+      for (let i = 0; i < data.Question.length; i += 1) {
+        const modDataOneResponse = {
+          id: 0,
+          response: '',
+        };
+        modDataOneResponse.id = data.Question[i].idQuestion;
+        newUserReponse.Question.push(modDataOneResponse);
+      }
+      this.setState({ userReponse: newUserReponse });
     }
-    stringToJSON += '] };';
-    console.log(stringToJSON);
-    /*
-    this.setState({
-      data: dataJsonNull,
-    });
-    */
-  };
 
-  render() {
-    const { data } = this.state;
-    return (
-      <div ref={this.activityContainer}>
-        {data.name}
+    send = () => { // pour des test à la con
+      const { userReponse } = this.state;
+      console.log(userReponse.Question);
+    };
 
-        {data.Question.map((ques, index) => {
-          // this.actRefs[`elementTest${index}`] = React.createRef();
-          if (ques.type === 'field') {
-            return (
-              <ActTextField
-                ref={`element${index}`}
-                text={ques.text}
-              />
-            );
-          }
-          if (ques.type === 'check') {
-            return (
-              <ActTextCheck
-                ref={`element${index}`}
-                text={ques.text}
-                listResponse={ques.response}
-              />
-            );
-          }
-          if (ques.type === 'checkMult') {
-            return (
-              <ActTextCheckMult
-                ref={`element${index}`}
-                text={ques.text}
-                listResponse={ques.response}
-              />
-            );
-          }
-          return (<></>);
-        })}
+    editResponse = (index, newResponse) => {
+      const { userReponse } = this.state;
+      userReponse.Question[index].response = newResponse;
+      this.setState({ userReponse });
+      this.forceUpdate();
+    };
+
+    render() {
+      const { data } = this.state;
+      return (
         <div>
-          <button type="submit" onClick={this.send}>
-            Send
-          </button>
+          {data.name}
+          {data.Question.map((ques, index) => {
+            if (ques.type === 'field') {
+              return (
+                <ActTextField
+                  id={index}
+                  text={ques.text}
+                  editResponse={this.editResponse}
+                />
+              );
+            }
+            if (ques.type === 'check') {
+              const { userReponse } = this.state;
+              return (
+                <ActTextCheck
+                  id={index}
+                  text={ques.text}
+                  listTextResponse={ques.response}
+                  response={userReponse.Question[index]}
+                  editResponse={this.editResponse}
+                />
+              );
+            }
+            if (ques.type === 'checkMult') {
+              const { userReponse } = this.state;
+              return (
+                <ActTextCheckMult
+                  id={index}
+                  text={ques.text}
+                  listTextResponse={ques.response}
+                  response={userReponse.Question[index]}
+                  editResponse={this.editResponse}
+                />
+              );
+            }
+            return (<></>);
+          })}
+
+          <div>
+            <button type="submit" onClick={this.send}>
+                    Send
+            </button>
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 }
+/*
+          {data.Question.map((ques, index) => {
+            if (ques.type === 'field') {
+              return (
+                <ActTextField
+                  id={index}
+                  text={ques.text}
+                />
+              );
+            }
+            if (ques.type === 'check') {
+              return (
+                <ActTextCheck
+                  id={index}
+                  text={ques.text}
+                  listResponse={ques.response}
+                />
+              );
+            }
+            if (ques.type === 'checkMult') {
+              return (
+                <ActTextCheckMult
+                  id={index}
+                  text={ques.text}
+                  listResponse={ques.response}
+                />
+              );
+            }
+            return (<></>);
+          })}
+          <div>
+            <button type="submit" onClick={this.send}>
+                        Send
+            </button>
+          </div>
+          */

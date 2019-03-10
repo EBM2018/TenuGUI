@@ -1,38 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class ActTextField extends React.PureComponent {
-  static propTypes = {
-    text: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]).isRequired,
-  };
+export default class ActTextFieldEditor extends React.PureComponent {
+    static propTypes = {
+      id: PropTypes.number.isRequired,
+      text: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      editResponse: PropTypes.func.isRequired,
+    };
 
-  state = {
-    userResponse: '',
-  };
+    updateInputValue = (event) => {
+      const { editResponse, id } = this.props;
+      editResponse(id, event.target.value);
+    };
 
-  updateInputValue = (evt) => {
-    this.setState({
-      userResponse: evt.target.value,
-    });
-  };
-
-  getResponse = () => {
-    const { userResponse } = this.state;
-    return userResponse;
-  };
-
-  render() {
-    const { text } = this.props;
-    return (
-      <div>
-        {text}
+    render() {
+      const { text } = this.props;
+      return (
         <div>
-          <input id="input_response" type="text" onChange={this.updateInputValue} />
+          {text}
+          <div>
+            <input id="input_response" type="text" onChange={this.updateInputValue} />
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 }

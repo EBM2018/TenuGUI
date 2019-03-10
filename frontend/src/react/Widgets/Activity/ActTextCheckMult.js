@@ -2,61 +2,88 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CheckBox from './CheckBox';
 
-export default class ActTextCheckMult extends React.PureComponent {
-  static propTypes = {
-    text: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]).isRequired,
-    listResponse: PropTypes.arrayOf([
-      PropTypes.string,
-      PropTypes.number,
-    ]).isRequired,
-  };
+export default class ActTextCheck extends React.PureComponent {
+    static propTypes = {
+      id: PropTypes.number.isRequired,
+      text: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      listTextResponse: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      response: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      editResponse: PropTypes.func.isRequired,
+    };
 
-  state = {
-    userResponse: '',
-  };
+    state = {
+      checkState: [],
+    }
 
-  constructor() {
-    super();
-    this.activityContainer = React.createRef();
-  }
+    constructor() {
+      super();
+      this.activityContainer = React.createRef();
+    }
 
-  fctChecked = (indexChecked, responseChecked) => {
-    const object = this.activityContainer.current;
-    const newResponse = [];
-    for (let i = 0; i < (object.childElementCount - 1) / 2; i += 1) {
-      const checkrefered = this.refs[`elementCheck${i}`];
-      if (checkrefered.isChecked()) {
-        newResponse.push(i);
+    componentWillMount() {
+      const newCheckState = [];
+      const { listTextResponse } = this.props;
+      for (let i = 0; i < listTextResponse.length; i += 1) {
+        newCheckState.push(false);
       }
-    }
-    this.setState({ userResponse: newResponse });
-    console.log(newResponse);
-  }
-
-  render() {
-    const inputs = [];
-    const { listResponse, text } = this.props;
-    for (let i = 0; i < listResponse.length; i += 1) {
-      inputs.push(listResponse[i].rep);
+      this.setState({ checkState: newCheckState });
     }
 
-    return (
-      <div id="container reponse" ref={this.activityContainer}>
-        <div>
-          {text}
+    fctChecked = (index) => {
+      const { checkState } = this.state;
+      const { editResponse, id } = this.props;
+      if (checkState[index] === true) {
+        checkState[index] = false;
+      } else {
+        checkState[index] = true;
+      }
+      this.setState({ checkState });
+      editResponse(id, this.findResponse());
+    };
+
+    findResponse = () => {
+      const newResponse = [];
+      const { checkState } = this.state;
+      const { listTextResponse } = this.props;
+      for (let i = 0; i < checkState.length; i += 1) {
+        if (checkState[i] === true) {
+          newResponse.push(listTextResponse[i].rep);
+        }
+      }
+      return newResponse;
+    }
+
+    render() {
+      const inputs = [];
+      const { listTextResponse, text } = this.props;
+      for (let i = 0; i < listTextResponse.length; i += 1) {
+        inputs.push(listTextResponse[i].rep);
+      }
+
+      const { checkState } = this.state;
+      return (
+        <div id="container reponse" ref={this.activityContainer}>
+          <div>
+            {text}
+          </div>
+          {inputs.map((response, index) => (
+            <CheckBox
+              id={index}
+              response={response}
+              check={checkState[index]}
+              fctChecked={this.fctChecked}
+            />
+          ))}
         </div>
-        {inputs.map((response, index) => (
-          <CheckBox
-            ref={`elementCheck${index}`}
-            id={index}
-            response={response}
-            fctChecked={this.fctChecked}
-          />
-        ))}
-      </div>
-    );
-  }
+      );
+    }
 }
