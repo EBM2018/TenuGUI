@@ -21,7 +21,7 @@ export default class CheckBoxEditor extends React.PureComponent {
       const { response } = this.props;
       return (
         <>
-          <input ref="checkbox" type="checkbox" />
+          <input type="checkbox" />
           <textarea onChange={this.changeText} value={response} />
         </>
       );

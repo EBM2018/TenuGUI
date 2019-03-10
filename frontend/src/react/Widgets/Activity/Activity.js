@@ -11,27 +11,27 @@ const dataJson = {
   Question: [
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu as appris ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce qui t'as étonné ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
       type: 'check',
-      id_question: '0',
+      idQuestion: '0',
       text: 'Cb tu notes ce cour ?',
       response: [
         { rep: '1' },
@@ -43,28 +43,6 @@ const dataJson = {
     },
   ],
 };
-/*
-const dataJson2 = {
-  name: 'Questionnaire_name_2',
-  Question: [
-    {
-      type: 'field',
-      id_question: '0',
-      text: "Qu'est ce que tu as appris ?",
-    },
-    {
-      type: 'check',
-      id_question: '0',
-      text: 'Cb tu notes ce cour ?',
-      response: [
-        { rep: '1' },
-        { rep: '2' },
-        { rep: '3' },
-      ],
-    },
-  ],
-};
-*/
 /*
 const dataJsonNull = {
   name: 'No_activity',

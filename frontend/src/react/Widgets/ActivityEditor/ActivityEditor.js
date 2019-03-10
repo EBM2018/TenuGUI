@@ -11,27 +11,27 @@ const dataJson = {
   Question: [
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu as appris ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce qui t'as étonné ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '0',
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
       type: 'check',
-      id_question: '0',
+      idQuestion: '0',
       text: 'Cb tu notes ce cour ?',
       response: [
         { rep: '1' },
@@ -43,59 +43,16 @@ const dataJson = {
     },
   ],
 };
-/* ,
-            {
-                "type": "check",
-                "text": "Cb tu notes ce cour ?",
-                "reponse":[
-                    {"rep": "1"},
-                    {"rep": "2"},
-                    {"rep": "3"},
-                    {"rep": "4"},
-                    {"rep": "5"}
-                ],
-                "user_reponse": ""
-            }
-        ]
-    }
-*/
-
-const dataJson2 = {
-  name: 'Questionnaire_name_2',
-  Question: [
-    {
-      type: 'field',
-      id_question: '0',
-      text: "Qu'est ce que tu as appris ?",
-    },
-    {
-      type: 'check',
-      id_question: '0',
-      text: 'Cb tu notes ce cour ?',
-      response: [
-        { rep: '1' },
-        { rep: '2' },
-        { rep: '3' },
-      ],
-    },
-  ],
-};
-
-const dataJsonNull = {
-  name: 'No_activity',
-  Question: [
-  ],
-};
 
 const dataField = {
   type: 'field',
-  id_question: '',
+  idQuestion: '',
   text: '',
 };
 
 const dataCheck = {
   type: 'check',
-  id_question: '',
+  idQuestion: '',
   text: '',
   response: [
     { rep: '' },
@@ -107,7 +64,7 @@ const dataCheck = {
 
 const dataCheckMult = {
   type: 'checkMult',
-  id_question: '',
+  idQuestion: '',
   text: '',
   response: [
     { rep: '' },
@@ -122,7 +79,7 @@ const dataResponse = {
 };
 
 
-export default class Activity extends React.PureComponent {
+export default class ActivityEditor extends React.PureComponent {
   state = {
     data: dataJson,
   };
@@ -190,19 +147,22 @@ export default class Activity extends React.PureComponent {
     this.forceUpdate();
   };
 
+  changeTitle = (event) => {
+    const { data } = this.state;
+    data.name = event.target.value;
+    this.setState({ data });
+    this.forceUpdate();
+  }
+
   render() {
     const { data } = this.state;
     return (
-      <div ref="Progress1">
-        <a>
-          {data.name}
-        </a>
+      <div>
+        <textarea onChange={this.changeTitle} value={data.name} />
         {data.Question.map((ques, index) => {
           if (ques.type === 'field') {
             return (
               <ActTextFieldEditor
-                ref={`element${index}`}
-                key={index}
                 id={index}
                 text={ques.text}
                 editQuestion={this.editJsonQuestion}
@@ -213,8 +173,6 @@ export default class Activity extends React.PureComponent {
           if (ques.type === 'check') {
             return (
               <ActTextCheckEditor
-                ref={`element${index}`}
-                key={index}
                 id={index}
                 text={ques.text}
                 listResponse={ques.response}
@@ -229,8 +187,6 @@ export default class Activity extends React.PureComponent {
           if (ques.type === 'checkMult') {
             return (
               <ActTextCheckMultEditor
-                ref={`element${index}`}
-                key={index}
                 id={index}
                 text={ques.text}
                 listResponse={ques.response}

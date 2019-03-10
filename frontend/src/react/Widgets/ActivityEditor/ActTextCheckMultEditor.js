@@ -9,7 +9,10 @@ export default class ActTextCheckMultEditor extends React.PureComponent {
       PropTypes.string,
       PropTypes.number,
     ]).isRequired,
-    listResponse: PropTypes.array.isRequired,
+    listResponse: PropTypes.arrayOf([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
     editQuestion: PropTypes.func.isRequired,
     editCheckBox: PropTypes.func.isRequired,
     deleteHim: PropTypes.func.isRequired,
@@ -53,15 +56,13 @@ export default class ActTextCheckMultEditor extends React.PureComponent {
     }
 
     return (
-      <div id="container reponse" ref="checkContainer">
+      <div id="container reponse">
         <div>
           <textarea onChange={this.changeText} value={text} />
           <button type="button" onClick={this.clickDelete}> Delete </button>
         </div>
         {inputs.map((response, index) => (
           <CheckBoxEditor
-            ref={`elementCheck${index}`}
-            key={index}
             id={index}
             idContainer={id}
             response={response}
