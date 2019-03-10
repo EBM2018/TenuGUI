@@ -71,8 +71,8 @@ export default class Activity extends React.PureComponent {
     }
 
     send = () => { // pour des test à la con
-      const { userReponse } = this.state;
-      console.log(userReponse.Question);
+      // const { userReponse } = this.state;
+      // alert(userReponse.Question);
     };
 
     editResponse = (index, newResponse) => {
@@ -98,25 +98,21 @@ export default class Activity extends React.PureComponent {
               );
             }
             if (ques.type === 'check') {
-              const { userReponse } = this.state;
               return (
                 <ActTextCheck
                   id={index}
                   text={ques.text}
                   listTextResponse={ques.response}
-                  response={userReponse.Question[index]}
                   editResponse={this.editResponse}
                 />
               );
             }
             if (ques.type === 'checkMult') {
-              const { userReponse } = this.state;
               return (
                 <ActTextCheckMult
                   id={index}
                   text={ques.text}
                   listTextResponse={ques.response}
-                  response={userReponse.Question[index]}
                   editResponse={this.editResponse}
                 />
               );

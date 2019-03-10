@@ -85,9 +85,8 @@ export default class ActivityEditor extends React.PureComponent {
   };
 
   send = () => { // pour des test à la con
-    const { data } = this.state;
-    console.log(data);
-    console.log(data.Question[4].text);
+    // const { data } = this.state;
+    // alert(data);
   };
 
   editJsonQuestion = (index, newQuestion) => {
@@ -100,7 +99,6 @@ export default class ActivityEditor extends React.PureComponent {
   editJsonResponse = (index, nbResponse, newResponse) => {
     const { data } = this.state;
     data.Question[index].response[nbResponse].rep = newResponse;
-    console.log(data.Question[index].response[nbResponse].rep);
     this.setState({ data });
     this.forceUpdate();
   };

@@ -13,10 +13,6 @@ export default class ActTextCheck extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      response: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]).isRequired,
       editResponse: PropTypes.func.isRequired,
     };
 

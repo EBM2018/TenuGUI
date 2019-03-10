@@ -1,27 +1,27 @@
 export class StudentFishtank {
     static askQuestion = () => {
-      console.log('Student ask a question.');
+      // alert('Student ask a question.');
     };
 
     static askSpeedUp = () => {
-      console.log('Student want to accelerate.');
+      // alert('Student want to accelerate.');
     };
 
     static askSpeedDown = () => {
-      console.log('Student want to slow down.');
+      // alert('Student want to slow down.');
     };
 
     static notUnderstand = () => {
-      console.log('Student do not understand.');
+      // alert('Student do not understand.');
     };
 
     static askStop = () => {
-      console.log('Student want to stop.');
+      // alert('Student want to stop.');
     };
 }
 
 export class futurFct { // TODO: get rid of this
     static something = () => {
-      console.log('tochange');
+      // alert('tochange');
     };
 }

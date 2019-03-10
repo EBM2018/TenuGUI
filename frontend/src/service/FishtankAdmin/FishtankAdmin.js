@@ -1,35 +1,35 @@
 export class CommandFishtankAdmin {
     static startActivity = () => {
-      console.log('Start an activity.');
+      // alert('Start an activity.');
     };
 
     static askSummary = () => {
-      console.log('Ask for a summary.');
+      // alert('Ask for a summary.');
     };
 
     static askFeedback = () => {
-      console.log('Ask for a feedback.');
+      // alert('Ask for a feedback.');
     };
 }
 
 export class ActionsFishtankAdmin {
     static askUnderstanding = () => {
-      console.log('Open "Ask if they understand".');
+      // alert('Open "Ask if they understand".');
     };
 
     static askAttention = () => {
-      console.log('Open "Ask for attention".');
+      // alert('Open "Ask for attention".');
     };
 
     static askSummary = () => {
-      console.log('Open "Ask for a summary".');
+      // alert('Open "Ask for a summary".');
     };
 
     static askReboot = () => {
-      console.log('Open "Reboot".');
+      // alert('Open "Reboot".');
     };
 
     static askPosition = () => {
-      console.log('Open "Ask where ther are".');
+      // alert('Open "Ask where ther are".');
     };
 }

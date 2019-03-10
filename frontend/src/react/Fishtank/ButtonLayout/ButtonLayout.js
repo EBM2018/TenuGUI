@@ -7,19 +7,19 @@ import { StudentFishtank } from '../../../service/Fishtank/Fishtank';
 
 export default class ButtonLayout extends React.PureComponent {
     speedUp = () => {
-      console.log(1);
+      // console.log(1);
     };
 
     speedDown = () => {
-      console.log(2);
+      // console.log(2);
     };
 
     dontUnderstand = () => {
-      console.log(3);
+      // console.log(3);
     };
 
     plsStop = () => {
-      console.log(4);
+      // console.log(4);
     };
 
     render() {
