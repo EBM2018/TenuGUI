@@ -33,10 +33,10 @@ export default class ButtonLayout extends React.PureComponent {
             <div className="dropdown">
               <button type="button" className="dropbtn"> Changement de Rythme</button>
               <div className="dropdown-content">
-                <button type="button" id="buttonList" onClick={StudentFishtank.askSpeedUp}>Demander d aller plus vite</button>
-                <button type="button" id="buttonList" onClick={StudentFishtank.askSpeedDown}>Demander d aller moins vite</button>
-                <button type="button" id="buttonList" onClick={StudentFishtank.notUnderstand}>Je ne comprends plus rien</button>
-                <button type="button" id="buttonList" onClick={StudentFishtank.askStop}>Demander une pause</button>
+                <button type="button" className="buttonList" onClick={StudentFishtank.askSpeedUp}>Demander d aller plus vite</button>
+                <button type="button" className="buttonList" onClick={StudentFishtank.askSpeedDown}>Demander d aller moins vite</button>
+                <button type="button" className="buttonList" onClick={StudentFishtank.notUnderstand}>Je ne comprends plus rien</button>
+                <button type="button" className="buttonList" onClick={StudentFishtank.askStop}>Demander une pause</button>
               </div>
             </div>
 
@@ -46,10 +46,10 @@ export default class ButtonLayout extends React.PureComponent {
                 Précision
               </button>
               <div className="dropdown-content">
-                <button type="button" id="buttonList" onClick={this.speedUp}>Demander d aller plus vite 2</button>
-                <button type="button" id="buttonList" onClick={this.speedDown}>Demander d aller moins vite 2</button>
-                <button type="button" id="buttonList" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</button>
-                <button type="button" id="buttonList" onClick={this.plsStop}>Demander une pause 2</button>
+                <button type="button" className="buttonList" onClick={this.speedUp}>Demander d aller plus vite 2</button>
+                <button type="button" className="buttonList" onClick={this.speedDown}>Demander d aller moins vite 2</button>
+                <button type="button" className="buttonList" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</button>
+                <button type="button" className="buttonList" onClick={this.plsStop}>Demander une pause 2</button>
               </div>
             </div>
 

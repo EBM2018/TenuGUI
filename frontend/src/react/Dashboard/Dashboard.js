@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { withRouter } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ import './Dashboard.css';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
-// import { createFishtank } from '../../service/API/requests';
+import { createFishtank } from '../../service/API/requests';
 
 const ButtonChange = withRouter(({ history }) => (
   <button
@@ -19,14 +20,26 @@ const ButtonChange = withRouter(({ history }) => (
 ));
 
 export default class Dashboard extends React.PureComponent {
-    uselessFct = () => {} // TODO : change this, logic for new fishtank
+    static propTypes = {
+      history: PropTypes.object,
+    }
+
+    uselessFct = () => {}
+
+    // TODO : change this, logic for new fishtank
+    todoStartFishtank = async () => { // TODO : change this shit
+      const { history } = this.props;
+      createFishtank(() => history.push('/FishtankAdmin'));
+    };
 
     render() {
       return (
         <>
           <div>
             <> Ma Bibliothèque </>
-            <ButtonChange onClick={this.uselessFct} />
+            <button type="button" onClick={this.todoStartFishtank}>
+                Start Fishtank
+            </button>
           </div>
           <div id="dashboardContainer">
             <p id="firstColumn">

@@ -39,7 +39,7 @@
     z-index: 1;
 }
 
-.dropdown-content #buttonList {
+.dropdown-content .buttonList {
     float: none;
     color: black;
     padding: 12px 16px;
@@ -48,7 +48,7 @@
     text-align: left;
 }
 
-.dropdown-content #buttonList:hover {
+.dropdown-content .buttonList:hover {
     background-color: aquamarine;
 }
 
