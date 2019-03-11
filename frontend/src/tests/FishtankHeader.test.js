@@ -8,7 +8,7 @@ test ('derp',()=>{
 });
 test('does this render', ()=> {
     const component=renderer
-        .create(<FishtankHeader/>);
+        .create(<FishtankHeader date={"12/03/2019"} subject={"Testing in JS"}/>);
     let tree=component.toJSON();
     expect(tree).toMatchSnapshot();
 });
