@@ -5,14 +5,14 @@ const { sequelize } = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InJlaW11YmVzdGdpcmwifQ.mQuD55X_12rMliQbUhsZmO12WFhsduEkXoaTJ5R8-YQ',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InJlaW11YmVzdGdpcmwifQ.mQuD55X_12rMliQbUhsZmO12WFhsduEkXoaTJ5R8-YQ', // A valid user from Teamy
 }];
 const invalidUsers = [{
   id: 1,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg', // An invalid user according to Teamy
 }];
-const validShoals = [5];
-const invalidShoals = [7];
+const validShoals = [5]; // A valid shoal according to Teamy
+const invalidShoals = [7]; // An invalid shoal according to Teamy
 
 describe('Fishtank creation validation', () => {
   let app;
@@ -34,8 +34,9 @@ describe('Fishtank creation validation', () => {
     mockTeamy.isValidShoal.restore();
   });
 
-  afterAll(() => {
-    sequelize.close();
+  afterAll(async (done) => {
+    await sequelize.close();
+    done();
   });
 
   test('It should accept a valid request', () => request(app)
@@ -45,13 +46,13 @@ describe('Fishtank creation validation', () => {
       token: validUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(201));
+    .expect(201)); // TODO : Add response body test
 
   test('It should reject an empty request', () => request(app)
     .post('/api/fishtanks')
     .send({})
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   /* Token validation */
   test('It should reject a request without a token', () => request(app)
@@ -60,7 +61,7 @@ describe('Fishtank creation validation', () => {
       shoalId: validShoals[0],
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   test('It should reject a request with a non-JWT token', () => request(app)
     .post('/api/fishtanks')
@@ -69,7 +70,7 @@ describe('Fishtank creation validation', () => {
       token: 'test',
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   test('It should reject a request with an invalid token', () => request(app)
     .post('/api/fishtanks')
@@ -78,7 +79,7 @@ describe('Fishtank creation validation', () => {
       token: invalidUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(403));
+    .expect(401));
 
   /* Shoal validation */
   test('It should reject a request without a shoal id', () => request(app)

@@ -1,0 +1,4 @@
+#actionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}

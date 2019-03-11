@@ -1,0 +1,67 @@
+#ButtonLayoutContainer {
+    background-color: #61dafb;
+    overflow: auto;
+}
+
+#clean {
+    clear:both;
+}
+
+#AskQuestion {
+    float: left;
+}
+
+.dropdown {
+    overflow: hidden;
+    float: left;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar #buttonList:hover, .dropdown:hover .dropbtn {
+    background-color: blue;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #61dafb;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content .buttonList {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content .buttonList:hover {
+    background-color: aquamarine;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*
+#buttonList {
+    background:none!important;
+    color:inherit;
+    font: inherit;
+    padding: 12px 16px;
+    cursor: pointer;
+    background:none!important;
+}
+*/

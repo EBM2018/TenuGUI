@@ -1,7 +1,9 @@
+const { loadRequestWith } = require('../../middlewares/requestLoading');
+
 const addUser = (validUsers = []) => async (value, { req }) => {
   for (let i = 0; i < validUsers.length; i += 1) {
     if (value === validUsers[i].token) {
-      req.user = validUsers[i];
+      loadRequestWith(req, 'user', validUsers[i]);
       return true;
     }
   }

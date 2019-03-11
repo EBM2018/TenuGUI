@@ -3,10 +3,16 @@ version: "3"
 services:
   web:
     image: ebm2018/tenugui:latest
-    # depends_on:
-    #   - mongodb
+    depends_on:
+      - mariadb
     environment:
-      - MONGODB_URI=mongodb://mongodb/tenugui
+      - DB_CONNECTION=mysql
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=TenuGUI
+      - DB_USERNAME=Tenuguy
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_LOGGING=false
     networks:
       local:
       ebm-filrouge:
@@ -18,12 +24,23 @@ services:
       - "traefik.port=4000"
       - "traefik.network=ebm-filrouge"
       - "com.centurylinklabs.watchtower.enable=true"
-  # mongodb:
-  #   image: mongo
-  #   networks:
-  #     - local
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: TenuGUI
+      MYSQL_USER: Tenuguy
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - local
+    volumes:
+      - mariadb-volume:/var/lib/mysql
 
 networks:
   local:
   ebm-filrouge:
     external: true
+
+volumes:
+  mariadb-volume:

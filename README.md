@@ -20,8 +20,6 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Créer un fichier `.env` dans le dossier `backend`
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
-* Exécuter `sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
-* Exécuter `sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
 * Exécuter `npm start` à la racine pour servir le front-end et le back-end
 
 # Tests
@@ -32,14 +30,24 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 
 ## Back-end
 
+* Installer `MariaDB` dans une version supérieure ou égale à 10.2.7
 * Mettre en place une base de données `MariaDB` s'appelant `TenuGUI-test` hébergée localement
 * Créer un fichier `.env.testing` dans le dossier `backend`
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
+* Installer globalement `sequelize-cli` (`npm install -g sequelize-cli`) sinon remplacer les appels à `sequelize` par `node_modules/.bin/sequelize` dans les étapes suivantes
 * Exécuter `NODE_ENV=testing sequelize db:migrate` dans le dossier `backend` pour migrer la base de données
 * Exécuter `NODE_ENV=testing sequelize db:seed:all` dans le dossier `backend` pour peupler la base de données
 * Exécuter `npm run test` dans le dossier `backend` pour lancer les tests
 * Exécuter `npm run lint` dans le dossier `backend` pour lancer le linter
+
+# Déploiement local
+
+* [Installer Docker CE](https://docs.docker.com/install/)
+* [Installer docker-compose](https://docs.docker.com/compose/install/)
+* Compléter les variables d'environnement `MYSQL_PASSWORD` et `MYSQL_ROOT_PASSWORD` du fichier `.env` du dossier `backend`
+* Exécuter `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
+    * À tuer et relancer à chaque modification du code source
 
 # Licence
 
