@@ -9,21 +9,21 @@ const Preview = () => (
     <div id="subtitle">
       Description
     </div>
-    <div id={'paragraphe', 'description'}>
+    <div className="paragraphe" id="description">
       blabla
     </div>
 
     <div id="subtitle">
       Effet
     </div>
-    <div id={'paragraphe', 'effect'}>
+    <div className="paragraphe" id="effect">
       blabla
     </div>
 
     <div id="subtitle">
       Affichage
     </div>
-    <div id={'paragraphe', 'display'}>
+    <div className="paragraphe" id="display">
       blabla
     </div>
   </d>

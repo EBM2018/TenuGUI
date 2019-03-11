@@ -1,14 +1,14 @@
 export const StartNewFishtank = () => {
-  console.log('Fishtank starting.');
+  // alert('Fishtank starting.');
 };
 
 export class DashboardMyActivity {
     static openActivity = () => {
-      console.log('Open an activity.');
+      // alert('Open an activity.');
     };
 
     static openFeedbackActivity = () => {
-      console.log('Open "Feedback".');
+      // alert('Open "Feedback".');
     };
 }
 /*

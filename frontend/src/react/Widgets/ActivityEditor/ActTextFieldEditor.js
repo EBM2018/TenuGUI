@@ -25,7 +25,7 @@ export default class ActTextFieldEditor extends React.PureComponent {
     render() {
       const { text } = this.props;
       return (
-        <div ref="inside">
+        <div>
           <textarea onChange={this.changeText} value={text} />
           <button type="button" onClick={this.clickDelete}> Delete </button>
           <div>

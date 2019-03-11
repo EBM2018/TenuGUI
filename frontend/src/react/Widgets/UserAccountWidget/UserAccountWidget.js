@@ -1,9 +1,9 @@
 import React from 'react';
 
 const UserAccountWidget = () => (
-  <a>
+  <p>
     UserAccountWidget
-  </a>
+  </p>
 );
 
 export default UserAccountWidget;
