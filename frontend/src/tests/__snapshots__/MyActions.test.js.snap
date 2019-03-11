@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does this render 1`] = `
+Array [
+  <div>
+    Mes Actions
+  </div>,
+  <div
+    id="actionsContainer"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Vous avez Compris ?
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Votre attention svp !
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Faites un résumé
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Reboot
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Vous en êtes où ?
+    </button>
+  </div>,
+]
+`;

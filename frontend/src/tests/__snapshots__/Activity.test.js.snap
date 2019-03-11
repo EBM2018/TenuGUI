@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does this render 1`] = `
+<div>
+  <a>
+     
+    Questionnaire_name
+     
+  </a>
+  <div>
+    <a>
+       
+      Qu'est ce que tu as appris ?
+       
+    </a>
+    <div>
+      <input
+        id="input_response"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div>
+    <a>
+       
+      Qu'est ce qui t'as étonné ?
+       
+    </a>
+    <div>
+      <input
+        id="input_response"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div>
+    <a>
+       
+      Qu'est ce que tu voudrais avoir plus ou en plus ?
+       
+    </a>
+    <div>
+      <input
+        id="input_response"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div>
+    <a>
+       
+      Qu'est ce que tu voudrais avoir moins ou en moins ?
+       
+    </a>
+    <div>
+      <input
+        id="input_response"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    id="container reponse"
+  >
+    <div>
+       
+      Cb tu notes ce cour ?
+       
+    </div>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      1
+       
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      2
+       
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      3
+       
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      4
+       
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      5
+       
+    </label>
+  </div>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;

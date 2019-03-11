@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<a>
+  <div
+    id="ButtonLayoutContainer"
+  >
+    <button
+      id="AskQuestion"
+      onClick={[Function]}
+    >
+      Posez votre question
+    </button>
+    <b
+      className="dropdown"
+    >
+      <button
+        className="dropbtn"
+      >
+         Changement de Rythme
+      </button>
+      <b
+        className="dropdown-content"
+      >
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander d aller plus vite
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander d aller moins vite
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Je ne comprends plus rien
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander une pause
+        </b>
+      </b>
+    </b>
+    <b
+      className="dropdown"
+    >
+      <button
+        className="dropbtn"
+      >
+         
+        Précision
+      </button>
+      <b
+        className="dropdown-content"
+      >
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander d aller plus vite 2
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander d aller moins vite 2
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Je ne comprends plus rien 2
+        </b>
+        <b
+          href="#"
+          onClick={[Function]}
+        >
+          Demander une pause 2
+        </b>
+      </b>
+    </b>
+  </div>
+  <div
+    id="clean"
+  />
+</a>
+`;

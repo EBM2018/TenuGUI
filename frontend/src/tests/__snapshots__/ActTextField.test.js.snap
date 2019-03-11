@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActTextField behaves as expected 1`] = `
+<div>
+  <a>
+     
+    This is a test
+     
+  </a>
+  <div>
+    <input
+      id="input_response"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+</div>
+`;

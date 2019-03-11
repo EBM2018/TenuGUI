@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does this render 1`] = `
+<div>
+  <div
+    id="title"
+  >
+     Mon fils rouge 
+  </div>
+  <div
+    id="ButtonLayoutContainer"
+  >
+    <button
+      id="Start"
+      onClick={[Function]}
+    >
+      Ouverture
+    </button>
+    <button
+      id="AskSummary"
+      onClick={[Function]}
+    >
+      Faites un résumé
+    </button>
+    <button
+      id="AskFeedback"
+      onClick={[Function]}
+    >
+      Feedback
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does this render 1`] = `
+<div
+  id="container reponse"
+>
+  <div>
+     
+    maybe
+     
+  </div>
+  <input
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label>
+     
+     
+  </label>
+  <input
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label>
+     
+     
+  </label>
+</div>
+`;

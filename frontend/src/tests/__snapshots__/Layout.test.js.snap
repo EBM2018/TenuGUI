@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders correctly 1`] = `
+<div>
+  <div
+    id="header"
+  >
+    <a>
+      Header
+    </a>
+    <a>
+      UserAccountWidget
+    </a>
+  </div>
+  <main>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label>
+       
+      42
+       
+    </label>
+  </main>
+  <footer>
+    footer
+  </footer>
+</div>
+`;

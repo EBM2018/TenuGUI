@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does this render 1`] = `
+Array [
+  <div
+    id="NameHeader"
+  >
+    <div>
+       
+      Aquarium :
+      EBM example
+    </div>
+    <div>
+      Séance ouverte le
+       
+      some date
+    </div>
+  </div>,
+  <a>
+    <div
+      id="ButtonLayoutContainer"
+    >
+      <button
+        id="AskQuestion"
+        onClick={[Function]}
+      >
+        Posez votre question
+      </button>
+      <b
+        className="dropdown"
+      >
+        <button
+          className="dropbtn"
+        >
+           Changement de Rythme
+        </button>
+        <b
+          className="dropdown-content"
+        >
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander d aller plus vite
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander d aller moins vite
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Je ne comprends plus rien
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander une pause
+          </b>
+        </b>
+      </b>
+      <b
+        className="dropdown"
+      >
+        <button
+          className="dropbtn"
+        >
+           
+          Précision
+        </button>
+        <b
+          className="dropdown-content"
+        >
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander d aller plus vite 2
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander d aller moins vite 2
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Je ne comprends plus rien 2
+          </b>
+          <b
+            href="#"
+            onClick={[Function]}
+          >
+            Demander une pause 2
+          </b>
+        </b>
+      </b>
+    </div>
+    <div
+      id="clean"
+    />
+  </a>,
+  <div>
+    ActivityContainer
+    <div>
+      <a>
+         
+        Questionnaire_name
+         
+      </a>
+      <div>
+        <a>
+           
+          Qu'est ce que tu as appris ?
+           
+        </a>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <a>
+           
+          Qu'est ce qui t'as étonné ?
+           
+        </a>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <a>
+           
+          Qu'est ce que tu voudrais avoir plus ou en plus ?
+           
+        </a>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <a>
+           
+          Qu'est ce que tu voudrais avoir moins ou en moins ?
+           
+        </a>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        id="container reponse"
+      >
+        <div>
+           
+          Cb tu notes ce cour ?
+           
+        </div>
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label>
+           
+          1
+           
+        </label>
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label>
+           
+          2
+           
+        </label>
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label>
+           
+          3
+           
+        </label>
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label>
+           
+          4
+           
+        </label>
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label>
+           
+          5
+           
+        </label>
+      </div>
+      <div>
+        <button
+          onClick={[Function]}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+    End
+  </div>,
+]
+`;

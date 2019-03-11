@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders as expected 1`] = `
+Array [
+  "wwww Home",
+  <a
+    href="/"
+  >
+     lien 
+  </a>,
+  <div>
+    Se connecter en tant que :
+    <input
+      id="name"
+      type="text"
+    />
+    <button
+      onClick={[Function]}
+    >
+       Connexion 
+    </button>
+  </div>,
+]
+`;
