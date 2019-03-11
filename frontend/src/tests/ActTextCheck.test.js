@@ -7,7 +7,7 @@ test ('derp',()=>{
 });
 test('does this render', ()=> {
     const component=renderer
-        .create(<ActTextCheck list_reponse={"yes"} text={"maybe"}/>);
+        .create(<ActTextCheck list_reponse={["yes",2]} text={"maybe"}/>);
     let tree=component.toJSON();
     expect(tree).toMatchSnapshot();
 });
