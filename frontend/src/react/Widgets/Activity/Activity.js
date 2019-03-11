@@ -5,6 +5,7 @@ import './Activity.css';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
+import index from '../../../service/Websockets';
 
 const dataJson = {
   name: 'Questionnaire_name',
@@ -91,6 +92,7 @@ export default class Activity extends React.PureComponent {
             if (ques.type === 'field') {
               return (
                 <ActTextField
+                  key={ques.idQuestion}
                   id={index}
                   text={ques.text}
                   editResponse={this.editResponse}
@@ -100,6 +102,7 @@ export default class Activity extends React.PureComponent {
             if (ques.type === 'check') {
               return (
                 <ActTextCheck
+                  key={ques.idQuestion}
                   id={index}
                   text={ques.text}
                   listTextResponse={ques.response}
@@ -110,6 +113,7 @@ export default class Activity extends React.PureComponent {
             if (ques.type === 'checkMult') {
               return (
                 <ActTextCheckMult
+                  key={ques.idQuestion}
                   id={index}
                   text={ques.text}
                   listTextResponse={ques.response}
