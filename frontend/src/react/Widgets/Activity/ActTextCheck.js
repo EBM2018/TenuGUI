@@ -17,7 +17,7 @@ export default class ActTextCheck extends React.PureComponent {
 
     state = {
         user_reponse: '',
-    }
+    };
 
     fctChecked = (index_checked, reponse_checked) => {
       const object = this.refs.checkContainer;
@@ -29,7 +29,7 @@ export default class ActTextCheck extends React.PureComponent {
             checkrefered.unCheck();
         }
       }
-    }
+    };
 
     render() {
       var inputs = [];
