@@ -5,7 +5,7 @@ import './Activity.css';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
-import index from '../../../service/Websockets';
+// import index from '../../../service/Websockets';
 
 const dataJson = {
   name: 'Questionnaire_name',
@@ -55,7 +55,11 @@ export default class Activity extends React.PureComponent {
     };
 
     componentWillMount() {
-      const newUserReponse = {
+      this.genereateJSONUserResponse();
+    }
+
+    genereateJSONUserResponse = () => {
+      const newUserResponse = {
         Question: [
         ],
       };
@@ -66,9 +70,9 @@ export default class Activity extends React.PureComponent {
           response: '',
         };
         modDataOneResponse.id = data.Question[i].idQuestion;
-        newUserReponse.Question.push(modDataOneResponse);
+        newUserResponse.Question.push(modDataOneResponse);
       }
-      this.setState({ userReponse: newUserReponse });
+      this.setState({ userReponse: newUserResponse });
     }
 
     send = () => { // pour des test à la con
@@ -76,9 +80,9 @@ export default class Activity extends React.PureComponent {
       // alert(userReponse.Question);
     };
 
-    editResponse = (index, newResponse) => {
+    editResponse = (indexQuestion, newResponse) => {
       const { userReponse } = this.state;
-      userReponse.Question[index].response = newResponse;
+      userReponse.Question[indexQuestion].response = newResponse;
       this.setState({ userReponse });
       this.forceUpdate();
     };
@@ -133,39 +137,3 @@ export default class Activity extends React.PureComponent {
       );
     }
 }
-/*
-          {data.Question.map((ques, index) => {
-            if (ques.type === 'field') {
-              return (
-                <ActTextField
-                  id={index}
-                  text={ques.text}
-                />
-              );
-            }
-            if (ques.type === 'check') {
-              return (
-                <ActTextCheck
-                  id={index}
-                  text={ques.text}
-                  listResponse={ques.response}
-                />
-              );
-            }
-            if (ques.type === 'checkMult') {
-              return (
-                <ActTextCheckMult
-                  id={index}
-                  text={ques.text}
-                  listResponse={ques.response}
-                />
-              );
-            }
-            return (<></>);
-          })}
-          <div>
-            <button type="submit" onClick={this.send}>
-                        Send
-            </button>
-          </div>
-          */
