@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 import './Dashboard.css';
 
@@ -8,9 +10,19 @@ import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
 import { createFishtank } from '../../service/API/requests';
 
-export default class Dashboard extends React.PureComponent {
+class Dashboard extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
+      cookies: instanceOf(Cookies).isRequired,
+    }
+
+    componentWillMount() {
+      const { cookies } = this.props;
+      const userJSON = cookies.get('userJSON');
+      if ((userJSON === undefined) || (userJSON.shoalId !== undefined)) {
+        const { history } = this.props;
+        history.push('/');
+      }
     }
 
     // TODO : change this, logic for new fishtank
@@ -41,6 +53,9 @@ export default class Dashboard extends React.PureComponent {
       );
     }
 }
+
+
+export default withCookies(Dashboard);
 // <button type="button" id="buttonStartFishtank"
 // onClick={() => {history.push('/FishtankAdmin')}}>
 // Démarrer une séance </button>

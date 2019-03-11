@@ -1,3 +1,5 @@
+import { sendNewInteractionEmission } from '../API/requests';
+
 export const StartNewFishtank = () => {
   // alert('Fishtank starting.');
 };
