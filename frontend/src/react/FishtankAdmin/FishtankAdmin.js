@@ -7,7 +7,6 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
-import ActivityEditor from '../Widgets/ActivityEditor/ActivityEditor';
 
 const FishtankAdmin = () => (
   <>
@@ -25,7 +24,6 @@ const FishtankAdmin = () => (
       <Notification />
 
     </div>
-    <ActivityEditor />
   </>
 );
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import './Dashboard.css';
 
@@ -10,21 +8,10 @@ import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
 import { createFishtank } from '../../service/API/requests';
 
-const ButtonChange = withRouter(({ history }) => (
-  <button
-    type="button"
-    onClick={() => { history.push('/FishtankAdmin'); }}
-  >
-        Démarrer une séance
-  </button>
-));
-
 export default class Dashboard extends React.PureComponent {
     static propTypes = {
-      history: PropTypes.object,
+      history: ReactRouterPropTypes.history.isRequired,
     }
-
-    uselessFct = () => {}
 
     // TODO : change this, logic for new fishtank
     todoStartFishtank = async () => { // TODO : change this shit
