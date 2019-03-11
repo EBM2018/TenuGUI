@@ -6,6 +6,11 @@ const request = require('superagent');
 // TODO: Explore the API to get the routes (instead of hard coding them in the front end)
 // TODO: Handle errors
 
+/*
+shoalId = nb du groupe
+token = token de connection
+ */
+
 const handleNewInteractionEmission = fishtankId => request
   .get(`/api/fishtanks/${fishtankId}/interactions`)
   .query({
@@ -29,5 +34,16 @@ export const createFishtank = callback => request
     });
   })
   .then(callback);
+
+export const showFishtank = id => request
+  .get(`/api/fishtanks/${id}`)
+  .send({
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
+  })
+  .set('Accept', 'application/json')
+  .then(res => res.body);
+
+
+
 
 export default {};
