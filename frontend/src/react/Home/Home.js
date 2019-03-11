@@ -1,25 +1,8 @@
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { instanceOf } from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { getUserFixture } from '../../service/API/requests';
-
-const ButtonChange = withRouter(({ history }) => (
-  <button
-    type="button"
-    onClick={() => {
-      if (document.getElementById('name').value === 'BDH') {
-        history.push('/Dashboard');
-      }
-      if (document.getElementById('name').value === 'Batou') {
-        history.push('/Fishtank');
-      }
-    }}
-  >
-        Connexion
-  </button>
-));
 
 class Home extends React.PureComponent {
     static propTypes = {

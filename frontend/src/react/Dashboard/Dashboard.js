@@ -54,8 +54,4 @@ class Dashboard extends React.PureComponent {
     }
 }
 
-
 export default withCookies(Dashboard);
-// <button type="button" id="buttonStartFishtank"
-// onClick={() => {history.push('/FishtankAdmin')}}>
-// Démarrer une séance </button>

@@ -10,7 +10,6 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
-import Fishtank from '../Fishtank/Fishtank';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
