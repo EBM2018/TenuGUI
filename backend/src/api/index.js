@@ -21,5 +21,6 @@ router.get('/', Controller.show);
 
 router.use('/fishtanks', require('./fishtanks'));
 router.use('/users', require('./users'));
+router.use('/login', require('./login'));
 
 module.exports = router;
