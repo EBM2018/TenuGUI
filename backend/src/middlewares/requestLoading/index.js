@@ -13,8 +13,8 @@ module.exports = {
     loadRequestWith(req, 'fishtank', fishtank);
     return true;
   },
-  addUser: async (id, { req }) => {
-    const user = await getUser(id);
+  addUser: async (token, { req }) => {
+    const user = await getUser(token);
     if (user == null) return false;
     loadRequestWith(req, 'user', user);
     return true;
