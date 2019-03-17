@@ -22,6 +22,13 @@ module.exports = {
     }
     return null;
   },
+  getUserToken: async (id) => { // sent after valid "authentication"
+    for (let i = 0; i < teamyUsers.length; i += 1) {
+      const user = teamyUsers[i];
+      if (user.id === id) return user.token;
+    }
+    return null;
+  },
   getUsers: async () => {
     const users = [];
     for (let i = 0; i < teamyUsers.length; i += 1) {
