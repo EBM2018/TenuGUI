@@ -5,6 +5,7 @@ module.exports = {
     res.status(200).send({
       fishtanks: `${getRequestUrl(req)}/api/fishtanks`,
       users: `${getRequestUrl(req)}/api/users`,
+      login: `${getRequestUrl(req)}/api/login`,
     });
   },
 };
