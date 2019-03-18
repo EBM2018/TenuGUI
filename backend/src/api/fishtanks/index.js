@@ -5,6 +5,7 @@ const Middlewares = require('../../middlewares/fishtank.js');
 const router = new Router();
 
 router.use('/:fishtankId/interactions', require('./fishtankInteractions'));
+router.use('/interactions/types', require('./fishtankInteractionTypes'));
 
 /**
  * @api {post} /fishtanks Create Fishtank
