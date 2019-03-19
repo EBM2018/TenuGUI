@@ -124,6 +124,7 @@ describe('Fishtank retrieval validation', () => {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
+
     return request(app)
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({
@@ -140,6 +141,7 @@ describe('Fishtank retrieval validation', () => {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
+
     return request(app)
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({
