@@ -1,7 +1,7 @@
 const request = require('supertest');
 const sinon = require('sinon');
 const faker = require('../../Fakers/index.js');
-const { sequelize } = require('../../../database/models');
+const { sequelize, Fishtank } = require('../../../database/models');
 
 const validUsers = [{
   id: 0,
@@ -39,14 +39,22 @@ describe('Fishtank creation validation', () => {
     done();
   });
 
-  test('It should accept a valid request', () => request(app)
-    .post('/api/fishtanks')
-    .send({
-      shoalId: validShoals[0],
-      token: validUsers[0].token,
-    })
-    .set('Content-Type', 'application/json')
-    .expect(201)); // TODO : Add response body test
+  test('It should accept a valid request', async () => {
+    const maxFishtankId = await Fishtank.max('id');
+    request(app)
+      .post('/api/fishtanks')
+      .send({
+        shoalId: validShoals[0],
+        token: validUsers[0].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(201)
+      .expect((res) => {
+        expect(res.body).toEqual({
+          id: maxFishtankId + 1,
+        });
+      });
+  });
 
   test('It should reject an empty request', () => request(app)
     .post('/api/fishtanks')
