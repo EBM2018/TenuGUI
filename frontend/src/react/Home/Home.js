@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Button from 'react-bulma-components/lib/components/button';
 
 const ButtonChange = withRouter(({ history }) => (
-  <button
+  <Button
+    color="test"
     type="button"
     onClick={() => {
       if (document.getElementById('name').value === 'BDH') {
@@ -14,7 +16,7 @@ const ButtonChange = withRouter(({ history }) => (
     }}
   >
         Connexion
-  </button>
+  </Button>
 ));
 
 export default class Home extends React.PureComponent {
