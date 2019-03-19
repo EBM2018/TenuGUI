@@ -3,7 +3,7 @@ const socketIo = require('socket.io');
 let io;
 
 const matchSocketWithUser = (socket) => {
-  let socketUser; // info de la socket courrante
+  let socketUser; // info de la socket courrante, represente l'utilisateur
   /**
      * Catches a `socket.emit('login', token)` sent when the user authentication success response
      * is received by the front-end
@@ -13,7 +13,7 @@ const matchSocketWithUser = (socket) => {
     // TODO: Verify token validity, retrieve user data, match socket to user id
     // Set userType variable
     // MAJ socketUser en fonction de ce qui est renvoyé
-    matchUserWithRoom(socket, userType);
+    matchUserWithRoom(socket, socketUser);
   });
 
   // TODO :  disconnectUser
@@ -40,11 +40,11 @@ const emitNewInteraction = (fishtankId) => {
 };
 
 // Assign specific room to user
-const matchUserWithRoom = (socket, userType) => {
-  if (userType === 'owner') {
+const matchUserWithRoom = (socket, socketUser) => {
+  if (socketUser.userType === 'owner') {
     socket.join('ownerRoom');
     addOwnerEvent(socket);
-  } else if (userType === 'student') {
+  } else if (socketUser.userType === 'student') {
     socket.join('studentRoom');
     socketUser.stopButton = false;
     addStudentEvent(socket);
