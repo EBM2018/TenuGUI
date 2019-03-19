@@ -39,6 +39,13 @@ module.exports = {
       .catch(() => res.status(500).send());
   },
 
+  index: (req, res) => {
+    Fishtank.getShoalFishtanks(req.locals.user.shoalId)
+      .then((fishtanks) => {
+        res.status(200).send(fishtanks);
+      });
+  },
+
   update: (req, res) => {
     if (req.body.type === Fishtank.editionTypes.FINISH) {
       Fishtank.findByPk(req.locals.fishtank.id)

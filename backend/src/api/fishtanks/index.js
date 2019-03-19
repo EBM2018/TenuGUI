@@ -7,6 +7,9 @@ const router = new Router();
 router.use('/:fishtankId/interactions', require('./fishtankInteractions'));
 router.use('/interactions/types', require('./fishtankInteractionTypes'));
 
+
+router.get('/', Middlewares.index, Controller.index);
+
 /**
  * @api {post} /fishtanks Create Fishtank
  * @apiName PostFishtanks
