@@ -1,4 +1,5 @@
 const socketIo = require('socket.io');
+const { getUser } = require('../__mock_teamy__');
 
 let io;
 
@@ -15,6 +16,7 @@ const addStudentEvent = (socket) => {
 // Fonction qui ajoute les evenement sur un socket Owner
 const addOwnerEvent = (socket) => {
   socket.on('startActivity', (activity) => {
+    console.log(activity);
     // TODO Ajout des valeurs propres a l'activité
     // TODO Ajout des events propre à l'activité
   });
@@ -39,11 +41,11 @@ const matchSocketWithUser = (socket) => {
      * Catches a `socket.emit('login', token)` sent when the user authentication success response
      * is received by the front-end
      */
-  socket.on('login', (token) => {
+  socket.on('login', async (token) => {
     console.log(token);
-    // TODO: Verify token validity, retrieve user data, match socket to user id
-    // Set userType variable
-    // MAJ socketUser en fonction de ce qui est renvoyé
+    // Verify token validity, retrieve user data, match socket to user id
+    socketUser = await getUser(token);
+    socketUser.userType = ((socketUser.shoalId) ? 'student' : 'owner'); // si shoalId est defini c'est un etudiant
     matchUserWithRoom(socket, socketUser);
   });
 
