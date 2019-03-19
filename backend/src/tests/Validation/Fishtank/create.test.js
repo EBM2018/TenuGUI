@@ -41,7 +41,7 @@ describe('Fishtank creation validation', () => {
 
   test('It should accept a valid request', async () => {
     const maxFishtankId = await Fishtank.max('id');
-    request(app)
+    return request(app)
       .post('/api/fishtanks')
       .send({
         shoalId: validShoals[0],
