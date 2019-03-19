@@ -37,17 +37,23 @@ class Home extends React.PureComponent {
       const nameInput = document.getElementById('name').value;
       const userJSON = this.getUserInJSON(nameInput, dataUser);
       const { history } = this.props;
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
+      // const token =
+      // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+      // .eyJ0b2tlbiI6InByb2YifQ
+      // .DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
 
-      console.log(userJSON);
-      const token2 = await getUserTokenFixture(userJSON.id);
-      console.log(token2);
+      const repToken = await getUserTokenFixture(userJSON.id);
+      console.log(repToken);
+      console.log(repToken.token);
+      userJSON.token = repToken.token;
+
+      this.setCookie(userJSON);
 
       if (userJSON.shoalId === undefined) {
-        this.setCookie(userJSON, token);
+        // this.setCookie(userJSON, repToken.token);
         history.push('/Dashboard');
       } else {
-        this.setCookie(userJSON, token);
+        // this.setCookie(userJSON, repToken.token);
         history.push('/Fishtank');
       }
     };

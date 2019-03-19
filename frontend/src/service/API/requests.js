@@ -54,15 +54,26 @@ export const showFishtank = fishtankId => request
   .set('Accept', 'application/json')
   .then(res => res.body);
 
+export const getFishtank = token => request
+  .get('/api/fishtanks')
+  .send({
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
+  })
+  .set('Accept', 'application/json')
+  .set('token', token)
+  .then(res => res.body);
+
 export const getUserFixture = () => request
   .get('/api/users')
   .set('Accept', 'application/json')
   .then(res => res.body);
 
 export const getUserTokenFixture = id => request
-  .get('/api/users')
+  .post('/api/login')
   .set('Accept', 'application/json')
-  .set('id', id)
+  // .set('id', id)
+  .send({ id })
   .then(res => res.body);
+
 
 export default {};

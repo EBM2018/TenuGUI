@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import ActivityContainer from './ActivityContainer/ActivityContainer';
-import { createSocketFishtank } from '../../service/API/requests';
+import { createSocketFishtank, getFishtank } from '../../service/API/requests';
 
 const fixtureFishtankId = 130;
 
@@ -24,12 +24,21 @@ class Fishtank extends React.PureComponent {
     componentWillMount() {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
+      console.log(userJSON);
       if (userJSON === undefined) {
         const { history } = this.props;
+        console.log('retour');
         history.push('/');
       } else {
-        createSocketFishtank(fixtureFishtankId, this.fishtankInteractionsStudent);
+        this.connectToFishtank();
       }
+    }
+
+    connectToFishtank = async () => {
+      const { cookies } = this.props;
+      const userJSON = cookies.get('userJSON');
+      const FishtankId = await getFishtank(userJSON.token);
+      createSocketFishtank(FishtankId, this.fishtankInteractionsStudent);
     }
 
     fishtankInteractionsStudent = (socket) => {
