@@ -27,7 +27,6 @@ const matchUserWithRoom = (socket, socketUser) => {
     addOwnerEvent(socket);
   } else if (socketUser.userType === 'student') {
     socket.join('studentRoom');
-    socketUser.stopButton = false;
     addStudentEvent(socket);
   } else {
     socket.join('spectateRoom');
