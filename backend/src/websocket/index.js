@@ -2,6 +2,32 @@ const socketIo = require('socket.io');
 
 let io;
 
+const addStudentEvent = (socket) => {
+  socket.on('stopButton', () => {
+    const stopNumber = stopButtonNumber();
+    // envoyer une alert via le socket du prof/admin
+    io.to('adminRoom').emit('alertButton', stopNumber);
+  });
+};
+
+const addOwnerEvent = (socket) => {
+
+};
+
+// Assign specific room to user
+const matchUserWithRoom = (socket, socketUser) => {
+  if (socketUser.userType === 'owner') {
+    socket.join('ownerRoom');
+    addOwnerEvent(socket);
+  } else if (socketUser.userType === 'student') {
+    socket.join('studentRoom');
+    socketUser.stopButton = false;
+    addStudentEvent(socket);
+  } else {
+    socket.join('spectateRoom');
+  }
+};
+
 const matchSocketWithUser = (socket) => {
   let socketUser; // info de la socket courrante, represente l'utilisateur
   /**
@@ -37,32 +63,6 @@ const createSocketsNameSpaceForFishtank = (fishtankId) => {
 
 const emitNewInteraction = (fishtankId) => {
   io.of(`/fishtank-${fishtankId}`).emit('newInteraction');
-};
-
-// Assign specific room to user
-const matchUserWithRoom = (socket, socketUser) => {
-  if (socketUser.userType === 'owner') {
-    socket.join('ownerRoom');
-    addOwnerEvent(socket);
-  } else if (socketUser.userType === 'student') {
-    socket.join('studentRoom');
-    socketUser.stopButton = false;
-    addStudentEvent(socket);
-  } else {
-    socket.join('spectateRoom');
-  }
-};
-
-const addOwnerEvent = (socket) => {
-
-};
-
-const addStudentEvent = (socket) => {
-  socket.on('stopButton', () => {
-    const stopNumber = stopButtonNumber();
-    // envoyer une alert via le socket du prof/admin
-    io.to('adminRoom').emit('alertButton', stopNumber);
-  });
 };
 
 module.exports = {
