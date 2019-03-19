@@ -2,16 +2,22 @@ const socketIo = require('socket.io');
 
 let io;
 
+// Fonction qui ajoute les evenement sur un socket Student
 const addStudentEvent = (socket) => {
   socket.on('stopButton', () => {
-    const stopNumber = stopButtonNumber();
+    // TODO : Faire une fonction qui renvoi le nombre de personne ayant appuyé sur le stop button
+    const stopNumber = 1;
     // envoyer une alert via le socket du prof/admin
     io.to('adminRoom').emit('alertButton', stopNumber);
   });
 };
 
+// Fonction qui ajoute les evenement sur un socket Owner
 const addOwnerEvent = (socket) => {
-
+  socket.on('startActivity', (activity) => {
+    // TODO Ajout des valeurs propres a l'activité
+    // TODO Ajout des events propre à l'activité
+  });
 };
 
 // Assign specific room to user
@@ -42,8 +48,9 @@ const matchSocketWithUser = (socket) => {
     matchUserWithRoom(socket, socketUser);
   });
 
-  // TODO :  disconnectUser
-  socket.on('disconnect', disconnectUser);
+  socket.on('disconnect', () => {
+    console.log('Au revoir');
+  });
 };
 
 const init = (server) => {
