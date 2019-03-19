@@ -21,7 +21,11 @@ class FishtankAdmin extends React.PureComponent {
     }
 
     state = {
-      alert: 0,
+      nbAskQuestion: 0,
+      nbAskSpeedUp: 0,
+      nbAskSpeedDown: 0,
+      nbNotUnderstand: 0,
+      nbAskStop: 0,
     }
 
     componentWillMount() {
@@ -38,19 +42,45 @@ class FishtankAdmin extends React.PureComponent {
     }
 
     fishtankInteractionsTeacher = (socket) => {
-      if (socket === '1') {
-        let { alert } = this.state;
-        alert += 1;
-        this.setState({ alert });
+      if (socket.type === 1) {
+        let { nbAskQuestion } = this.state;
+        nbAskQuestion += 1;
+        this.setState({ nbAskQuestion });
+      }
+      if (socket.type === 2) {
+        let { nbAskSpeedUp } = this.state;
+        nbAskSpeedUp += 1;
+        this.setState({ nbAskSpeedUp });
+      }
+      if (socket.type === 3) {
+        let { nbAskSpeedDown } = this.state;
+        nbAskSpeedDown += 1;
+        this.setState({ nbAskSpeedDown });
+      }
+      if (socket.type === 4) {
+        let { nbNotUnderstand } = this.state;
+        nbNotUnderstand += 1;
+        this.setState({ nbNotUnderstand });
+      }
+      if (socket.type === 5) {
+        let { nbAskStop } = this.state;
+        nbAskStop += 1;
+        this.setState({ nbAskStop });
       }
     }
 
     changeNbAlert = (newNb) => {
-      this.setState({ alert: newNb });
+      this.setState({ nbAskStop: newNb });
     }
 
     render() {
-      const { alert } = this.state;
+      const {
+        nbAskQuestion,
+        nbAskSpeedUp,
+        nbAskSpeedDown,
+        nbNotUnderstand,
+        nbAskStop,
+      } = this.state;
       const { infoFishtank } = this.props;
       return (
         <>
@@ -72,7 +102,11 @@ class FishtankAdmin extends React.PureComponent {
             />
 
             <Notification
-              nbAlert={alert}
+              nbAskQuestion={nbAskQuestion}
+              nbAskSpeedUp={nbAskSpeedUp}
+              nbAskSpeedDown={nbAskSpeedDown}
+              nbNotUnderstand={nbNotUnderstand}
+              nbAskStop={nbAskStop}
               changeNbAlert={this.changeNbAlert}
             />
 

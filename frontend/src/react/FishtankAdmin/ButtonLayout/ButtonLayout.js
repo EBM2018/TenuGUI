@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import './ButtonLayout.css';
 import { ActionsFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
-import {StudentFishtank} from "../../../service/Fishtank/Fishtank";
 
 // import ListSpeed from './ListSpeed/ListSpeed.js';
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js';
@@ -21,35 +20,35 @@ class ButtonLayout extends React.PureComponent {
           <button
             type="button"
             id="AskUnderstanding"
-            onClick={() => { StudentFishtank.askUnderstanding(fishtankId); }}
+            onClick={() => { ActionsFishtankAdmin.askUnderstanding(fishtankId); }}
           >
                     Vous avez compris ?
           </button>
           <button
             type="button"
             id="AskSummary"
-            onClick={() => { StudentFishtank.askSummary(fishtankId); }}
+            onClick={() => { ActionsFishtankAdmin.askSummary(fishtankId); }}
           >
                     Faites un résumé
           </button>
           <button
             type="button"
             id="AskPosition"
-            onClick={ActionsFishtankAdmin.askPosition}
+            onClick={() => { ActionsFishtankAdmin.askPosition(fishtankId); }}
           >
                     Vous en êtes où ?
           </button>
           <button
             type="button"
             id="AskAttention"
-            onClick={ActionsFishtankAdmin.askAttention}
+            onClick={() => { ActionsFishtankAdmin.askAttention(fishtankId); }}
           >
                     Votre attention svp !
           </button>
           <button
             type="button"
             id="Reboot"
-            onClick={ActionsFishtankAdmin.askReboot}
+            onClick={() => { ActionsFishtankAdmin.askReboost(fishtankId); }}
           >
                     Reboost
           </button>

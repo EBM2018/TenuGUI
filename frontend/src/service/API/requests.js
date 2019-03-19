@@ -59,4 +59,10 @@ export const getUserFixture = () => request
   .set('Accept', 'application/json')
   .then(res => res.body);
 
+export const getUserTokenFixture = id => request
+  .get('/api/users')
+  .set('Accept', 'application/json')
+  .set('id', id)
+  .then(res => res.body);
+
 export default {};

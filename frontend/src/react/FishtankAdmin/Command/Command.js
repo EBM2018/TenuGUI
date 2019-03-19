@@ -9,6 +9,7 @@ class Command extends React.PureComponent {
     }
 
     render() {
+      const { fishtankId } = this.props;
       return (
         <div>
           <div id="title"> Mon fils rouge </div>
@@ -17,21 +18,21 @@ class Command extends React.PureComponent {
             <button
               type="button"
               id="Start"
-              onClick={CommandFishtankAdmin.startActivity}
+              onClick={() => { CommandFishtankAdmin.startActivity(fishtankId); }}
             >
         Ouverture
             </button>
             <button
               type="button"
               id="AskSummary"
-              onClick={CommandFishtankAdmin.askSummary}
+              onClick={() => { CommandFishtankAdmin.askSummary(fishtankId); }}
             >
         Faites un résumé
             </button>
             <button
               type="button"
               id="AskFeedback"
-              onClick={CommandFishtankAdmin.askFeedback}
+              onClick={() => { CommandFishtankAdmin.askFeedback(fishtankId); }}
             >
         Feedback
             </button>

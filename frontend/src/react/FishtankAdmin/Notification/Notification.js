@@ -1,20 +1,22 @@
 import React from 'react';
-import { instanceOf } from 'prop-types';
-import { Cookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 
 class Notification extends React.PureComponent {
     static propTypes = {
-      nbAlert: PropTypes.number.isRequired,
+      nbAskQuestion: PropTypes.number.isRequired,
+      nbAskSpeedUp: PropTypes.number.isRequired,
+      nbAskSpeedDown: PropTypes.number.isRequired,
+      nbNotUnderstand: PropTypes.number.isRequired,
+      nbAskStop: PropTypes.number.isRequired,
       changeNbAlert: PropTypes.func.isRequired,
     }
 
 
     add = () => {
-      let { nbAlert } = this.props;
+      let { nbAskStop } = this.props;
       const { changeNbAlert } = this.props;
-      nbAlert += 1;
-      changeNbAlert(nbAlert);
+      nbAskStop += 1;
+      changeNbAlert(nbAskStop);
     }
 
     reset = () => {
@@ -23,15 +25,43 @@ class Notification extends React.PureComponent {
     }
 
     render() {
-      const { nbAlert } = this.props;
+      const {
+        nbAskQuestion,
+        nbAskSpeedUp,
+        nbAskSpeedDown,
+        nbNotUnderstand,
+        nbAskStop,
+      } = this.props;
       return (
         <>
           <div> Notification élèves</div>
 
           <div id="ListNotification">
-              Nombre de demande d'arret d'urgence =
-            {' '}
-            {nbAlert}
+            <div>
+                  Nombre de question =
+              {' '}
+              {nbAskQuestion}
+            </div>
+            <div>
+                  Nombre de demande d'accélerer =
+              {' '}
+              {nbAskSpeedUp}
+            </div>
+            <div>
+                  Nombre de demande de ralentir =
+              {' '}
+              {nbAskSpeedDown}
+            </div>
+            <div>
+                  Nombre de personne largué =
+              {' '}
+              {nbNotUnderstand}
+            </div>
+            <div>
+                  Nombre de demande d'arret d'urgence =
+              {' '}
+              {nbAskStop}
+            </div>
           </div>
           <button type="button" onClick={this.add}> +1 </button>
           <button type="button" onClick={this.reset}> reset </button>

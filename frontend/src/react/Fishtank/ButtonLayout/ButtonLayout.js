@@ -15,8 +15,8 @@ class ButtonLayout extends React.PureComponent {
 
     speedUp = () => {
       // console.log(1);
-      // const { fishtankId } = this.props;
-      // sendNewInteractionEmission(fishtankId, 2, 'speedUp');
+      const { fishtankId } = this.props;
+      sendNewInteractionEmission(fishtankId, 2, 'speedUp');
     };
 
     speedDown = () => {
@@ -36,12 +36,21 @@ class ButtonLayout extends React.PureComponent {
       return (
         <div>
           <div id="ButtonLayoutContainer">
-            <button type="button" id="AskQuestion" onClick={StudentFishtank.askQuestion}>
+            <button
+              type="button"
+              id="AskQuestion"
+              onClick={StudentFishtank.askQuestion}
+            >
               Posez votre question
             </button>
 
             <div className="dropdown">
-              <button type="button" className="dropbtn"> Changement de Rythme</button>
+              <button
+                type="button"
+                className="dropbtn"
+              >
+                Changement de Rythme
+              </button>
               <div className="dropdown-content">
                 <button
                   type="button"

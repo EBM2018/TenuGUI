@@ -33,11 +33,6 @@ class Dashboard extends React.PureComponent {
         changeInfo(res);
         history.push('/FishtankAdmin');
       });
-      /*
-      const res = await createFishtank();
-      changeInfo(res);
-      history.push('/FishtankAdmin');
-      */
     };
 
     render() {

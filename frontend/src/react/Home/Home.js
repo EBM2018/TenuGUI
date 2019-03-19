@@ -2,7 +2,7 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-import { getUserFixture } from '../../service/API/requests';
+import { getUserFixture, getUserTokenFixture } from '../../service/API/requests';
 
 class Home extends React.PureComponent {
     static propTypes = {
@@ -31,13 +31,6 @@ class Home extends React.PureComponent {
       return null;
     };
 
-    userIsTeacher = (userJSON) => {
-      if (userJSON.shoalId === undefined) {
-        return true;
-      }
-      return false;
-    };
-
     // TODO : change this, logic for new fishtank
     todoConnection = async () => { // TODO : change this shit
       const dataUser = await getUserFixture();
@@ -47,6 +40,8 @@ class Home extends React.PureComponent {
       const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
 
       console.log(userJSON);
+      const token2 = await getUserTokenFixture(userJSON.id);
+      console.log(token2);
 
       if (userJSON.shoalId === undefined) {
         this.setCookie(userJSON, token);
