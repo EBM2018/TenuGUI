@@ -3,14 +3,21 @@ const socketIo = require('socket.io');
 let io;
 
 const matchSocketWithUser = (socket) => {
+  let socketUser; // info de la socket courrante
   /**
-   * Catches a `socket.emit('login', token)` sent when the user authentication success response
-   * is received by the front-end
-   */
+     * Catches a `socket.emit('login', token)` sent when the user authentication success response
+     * is received by the front-end
+     */
   socket.on('login', (token) => {
     console.log(token);
     // TODO: Verify token validity, retrieve user data, match socket to user id
+    // Set userType variable
+    // MAJ socketUser en fonction de ce qui est renvoyé
+    matchUserWithRoom(socket, userType);
   });
+
+  // TODO :  disconnectUser
+  socket.on('disconnect', disconnectUser);
 };
 
 const init = (server) => {
@@ -30,6 +37,32 @@ const createSocketsNameSpaceForFishtank = (fishtankId) => {
 
 const emitNewInteraction = (fishtankId) => {
   io.of(`/fishtank-${fishtankId}`).emit('newInteraction');
+};
+
+// Assign specific room to user
+const matchUserWithRoom = (socket, userType) => {
+  if (userType === 'owner') {
+    socket.join('ownerRoom');
+    addOwnerEvent(socket);
+  } else if (userType === 'student') {
+    socket.join('studentRoom');
+    socketUser.stopButton = false;
+    addStudentEvent(socket);
+  } else {
+    socket.join('spectateRoom');
+  }
+};
+
+const addOwnerEvent = (socket) => {
+
+};
+
+const addStudentEvent = (socket) => {
+  socket.on('stopButton', () => {
+    const stopNumber = stopButtonNumber();
+    // envoyer une alert via le socket du prof/admin
+    io.to('adminRoom').emit('alertButton', stopNumber);
+  });
 };
 
 module.exports = {
