@@ -2,6 +2,12 @@ const io = require('socket.io-client');
 
 let socket = io.connect('/');
 
+socket.on('alertButton', (stopNumber) => {
+  let s = ''; // variable pour l'orthograpahe :p
+  if (stopNumber > 1) s = 's';
+  alert(`${stopNumber} personne${s} ont appuyé sur le bouton stop !!`); // une alerte est envoyé sur le
+});
+
 export const authenticateSocket = () => {
   // TODO: Retrieve token in cookies
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
