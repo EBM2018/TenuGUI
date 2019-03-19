@@ -40,12 +40,7 @@ module.exports = {
   },
 
   index: (req, res) => {
-    Fishtank.findAll({
-      attributes: ['id'],
-      where: {
-        shoalId: req.locals.user.shoalId,
-      },
-    })
+    Fishtank.getShoalFishtanks(req.locals.user.shoalId)
       .then((fishtanks) => {
         res.status(200).send(fishtanks);
       });
