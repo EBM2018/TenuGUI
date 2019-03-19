@@ -37,7 +37,12 @@ describe('Login validation', () => {
       id: validUsers[0].id,
     })
     .set('Content-Type', 'application/json')
-    .expect(200));
+    .expect(200)
+    .expect((res) => {
+      expect(res.body).toEqual({
+        token: validUsers[0].token,
+      });
+    }));
 
   test('It should reject a request without an id', () => request(app)
     .post('/api/login')
