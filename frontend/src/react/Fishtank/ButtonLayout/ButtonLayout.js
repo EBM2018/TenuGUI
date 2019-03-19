@@ -1,13 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './ButtonLayout.css';
 import { StudentFishtank } from '../../../service/Fishtank/Fishtank';
 // import ListSpeed from './ListSpeed/ListSpeed.js';
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js';
 
-export default class ButtonLayout extends React.PureComponent {
+import { sendNewInteractionEmission } from '../../../service/API/requests';
+
+class ButtonLayout extends React.PureComponent {
+    static propTypes = {
+      fishtankId: PropTypes.number.isRequired,
+    }
+
     speedUp = () => {
       // console.log(1);
+      // const { fishtankId } = this.props;
+      // sendNewInteractionEmission(fishtankId, 2, 'speedUp');
     };
 
     speedDown = () => {
@@ -23,6 +32,7 @@ export default class ButtonLayout extends React.PureComponent {
     };
 
     render() {
+      const { fishtankId } = this.props;
       return (
         <div>
           <div id="ButtonLayoutContainer">
@@ -33,10 +43,34 @@ export default class ButtonLayout extends React.PureComponent {
             <div className="dropdown">
               <button type="button" className="dropbtn"> Changement de Rythme</button>
               <div className="dropdown-content">
-                <button type="button" className="buttonList" onClick={StudentFishtank.askSpeedUp}>Demander d aller plus vite</button>
-                <button type="button" className="buttonList" onClick={StudentFishtank.askSpeedDown}>Demander d aller moins vite</button>
-                <button type="button" className="buttonList" onClick={StudentFishtank.notUnderstand}>Je ne comprends plus rien</button>
-                <button type="button" className="buttonList" onClick={StudentFishtank.askStop}>Demander une pause</button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={() => { StudentFishtank.askSpeedUp(fishtankId); }}
+                >
+                    Demander d aller plus vite
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={() => { StudentFishtank.askSpeedDown(fishtankId); }}
+                >
+                    Demander d aller moins vite
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={() => { StudentFishtank.notUnderstand(fishtankId); }}
+                >
+                    Je ne comprends plus rien
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={() => { StudentFishtank.askStop(fishtankId); }}
+                >
+                    Demander une pause
+                </button>
               </div>
             </div>
 
@@ -46,10 +80,34 @@ export default class ButtonLayout extends React.PureComponent {
                 Précision
               </button>
               <div className="dropdown-content">
-                <button type="button" className="buttonList" onClick={this.speedUp}>Demander d aller plus vite 2</button>
-                <button type="button" className="buttonList" onClick={this.speedDown}>Demander d aller moins vite 2</button>
-                <button type="button" className="buttonList" onClick={this.dontUnderstand}>Je ne comprends plus rien 2</button>
-                <button type="button" className="buttonList" onClick={this.plsStop}>Demander une pause 2</button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={this.speedUp}
+                >
+                    Demander d aller plus vite 2
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={this.speedDown}
+                >
+                    Demander d aller moins vite 2
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={this.dontUnderstand}
+                >
+                    Je ne comprends plus rien 2
+                </button>
+                <button
+                  type="button"
+                  className="buttonList"
+                  onClick={this.plsStop}
+                >
+                    Demander une pause 2
+                </button>
               </div>
             </div>
 
@@ -59,3 +117,5 @@ export default class ButtonLayout extends React.PureComponent {
       );
     }
 }
+
+export default ButtonLayout;

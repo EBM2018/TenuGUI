@@ -8,6 +8,9 @@ import './Fishtank.css';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import ActivityContainer from './ActivityContainer/ActivityContainer';
+import { createSocketFishtank } from '../../service/API/requests';
+
+const fixtureFishtankId = 130;
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -21,7 +24,13 @@ class Fishtank extends React.PureComponent {
       if (userJSON === undefined) {
         const { history } = this.props;
         history.push('/');
+      } else {
+        createSocketFishtank(fixtureFishtankId, this.fishtankInteractionsStudent);
       }
+    }
+
+    fishtankInteractionsStudent = (socket) => {
+
     }
 
     render() {
@@ -31,8 +40,12 @@ class Fishtank extends React.PureComponent {
             subject="EBM example"
             date="some date"
           />
-          <ButtonLayout />
-          <ActivityContainer />
+          <ButtonLayout
+            fishtankId={fixtureFishtankId}
+          />
+          <ActivityContainer
+            fishtankId={fixtureFishtankId}
+          />
         </>
       );
     }

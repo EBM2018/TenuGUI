@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 import './Dashboard.css';
 
+import PropTypes from 'prop-types';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
@@ -13,22 +13,31 @@ import { createFishtank } from '../../service/API/requests';
 class Dashboard extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
-      cookies: instanceOf(Cookies).isRequired,
+      cookies: PropTypes.instanceOf(Cookies).isRequired,
+      changeInfo: PropTypes.func.isRequired,
     }
 
     componentWillMount() {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
-      if ((userJSON === undefined) || (userJSON.shoalId !== undefined)) {
+      if (userJSON === undefined || userJSON.shoalId !== undefined) {
         const { history } = this.props;
         history.push('/');
       }
     }
 
     // TODO : change this, logic for new fishtank
-    todoStartFishtank = async () => { // TODO : change this shit
-      const { history } = this.props;
-      createFishtank(() => history.push('/FishtankAdmin'));
+    todoStartFishtank = async () => {
+      const { history, changeInfo } = this.props;
+      await createFishtank().then((res) => {
+        changeInfo(res);
+        history.push('/FishtankAdmin');
+      });
+      /*
+      const res = await createFishtank();
+      changeInfo(res);
+      history.push('/FishtankAdmin');
+      */
     };
 
     render() {
