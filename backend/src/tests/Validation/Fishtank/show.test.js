@@ -124,6 +124,7 @@ describe('Fishtank retrieval validation', () => {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
+
     return request(app)
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({
@@ -140,6 +141,7 @@ describe('Fishtank retrieval validation', () => {
       statusId: FishtankStatus.ONGOING,
       closedAt: null,
     });
+
     return request(app)
       .get(`/api/fishtanks/${fishtank.id}`)
       .send({
@@ -153,7 +155,7 @@ describe('Fishtank retrieval validation', () => {
   test('It should reject a request with an invalid fishtank id', async () => {
     const maxFishtankId = await Fishtank.max('id');
     return request(app)
-      .get(`/api/fishtanks/${maxFishtankId + 1}`)
+      .get(`/api/fishtanks/${maxFishtankId + 1000}`)
       .send({
         token: validUsers[0].token,
       })

@@ -26,7 +26,8 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 
 ## Front-end
 
-* Exécuter `npm run test` dans le dossier `frontend`
+* Exécuter `npm run test` dans le dossier `frontend` pour lancer les tests
+* Exécuter `npm run lint` dans le dossier `frontend` pour lancer le linter
 
 ## Back-end
 
