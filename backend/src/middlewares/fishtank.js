@@ -24,6 +24,10 @@ module.exports = {
     User.hasAccess,
     bail(401),
   ],
+  index: [
+    User.isAuthenticated,
+    bail(401),
+  ],
   update: [
     User.isAuthenticated,
     bail(401),

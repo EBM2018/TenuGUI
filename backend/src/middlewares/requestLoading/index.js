@@ -1,5 +1,5 @@
 const { Fishtank, FishtankInteractionType } = require('../../database/models');
-const { getUser } = require('../../__mock_teamy__');
+const { getUser, getUserToken } = require('../../__mock_teamy__');
 
 const loadRequestWith = (req, key, value) => {
   if (req.locals == null) req.locals = {};
@@ -13,10 +13,16 @@ module.exports = {
     loadRequestWith(req, 'fishtank', fishtank);
     return true;
   },
-  addUser: async (id, { req }) => {
-    const user = await getUser(id);
+  addUser: async (token, { req }) => {
+    const user = await getUser(token);
     if (user == null) return false;
     loadRequestWith(req, 'user', user);
+    return true;
+  },
+  addUserById: async (id, { req }) => {
+    const token = await getUserToken(id);
+    if (token == null) return false;
+    loadRequestWith(req, 'user', { token });
     return true;
   },
   addFishtankInteractionType: async (id, { req }) => {

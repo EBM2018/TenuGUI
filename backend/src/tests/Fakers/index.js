@@ -10,6 +10,17 @@ const addUser = (validUsers = []) => async (value, { req }) => {
   return false;
 };
 
+
+const addUserById = (validUsers = []) => async (value, { req }) => {
+  for (let i = 0; i < validUsers.length; i += 1) {
+    if (value === validUsers[i].id) {
+      loadRequestWith(req, 'user', { token: validUsers[i].token });
+      return true;
+    }
+  }
+  return false;
+};
+
 const isValidShoal = (validShoals = []) => async (shoalId) => {
   for (let i = 0; i < validShoals.length; i += 1) {
     if (shoalId === validShoals[i]) return true;
@@ -25,5 +36,5 @@ const isUserPartOfShoal = (shoalUsers = []) => async (userId) => {
 };
 
 module.exports = {
-  addUser, isValidShoal, isUserPartOfShoal,
+  addUser, addUserById, isValidShoal, isUserPartOfShoal,
 };

@@ -2,6 +2,7 @@ const request = require('supertest');
 const sinon = require('sinon');
 const faker = require('../../Fakers/index.js');
 const { sequelize } = require('../../../database/models');
+const { getRequestUrlInTests } = require('../../../services/formatter.js');
 
 const validUsers = [{
   id: 0,
@@ -46,7 +47,11 @@ describe('Fishtank creation validation', () => {
       token: validUsers[0].token,
     })
     .set('Content-Type', 'application/json')
-    .expect(201)); // TODO : Add response body test
+    .expect(201)
+    .expect((res) => {
+      expect(res.body.url)
+        .toEqual(`${getRequestUrlInTests(res)}/api/fishtanks/${res.body.fishtankId}`);
+    }));
 
   test('It should reject an empty request', () => request(app)
     .post('/api/fishtanks')

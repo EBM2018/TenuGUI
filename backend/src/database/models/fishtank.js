@@ -40,6 +40,20 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Fishtank.getOngoingShoalFishtanks = async (shoalId) => {
+    const fishtanks = await Fishtank.findAll({
+      attributes: ['id'],
+      where: {
+        shoalId,
+        statusId: sequelize.models.FishtankStatus.ONGOING,
+      },
+    });
+
+    const fishtankIds = [];
+    for (let i = 0; i < fishtanks.length; i += 1) fishtankIds.push(fishtanks[i].id);
+    return { fishtankIds };
+  };
+
   Fishtank.editionTypes = {
     CHANGE_SETTINGS: 0,
     FINISH: 1,

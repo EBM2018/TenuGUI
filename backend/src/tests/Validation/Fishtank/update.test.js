@@ -49,7 +49,10 @@ describe('Fishtank creation validation', () => {
         token: validUsers[0].token,
       })
       .set('Content-Type', 'application/json')
-      .expect(200);
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toEqual({});
+      });
   });
 
   test('It should reject an empty request', async () => {

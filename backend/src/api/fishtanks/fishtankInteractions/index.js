@@ -35,6 +35,9 @@ router.post('/', ...Middlewares.create, Controller.create);
  * @apiSuccess {Object} payload payload of the fishtank interaction
  * @apiSuccessExample {json} Success-Response:
  * HTTP/1.1 201 OK
+ *   {
+ *     "emergencyPresses": 11
+ *   }
  */
 router.get('/', ...Middlewares.show, Controller.show);
 
