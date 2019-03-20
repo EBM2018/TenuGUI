@@ -1,6 +1,31 @@
 [
   {
     "type": "get",
+    "url": "/fishtanks/interactions/types",
+    "title": "Get fishtank interactions types",
+    "name": "GetFishtankInteractionTypes",
+    "group": "FishtankInteractions",
+    "description": "<p>Returns a JSON containing a list of fishtank interaction types</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n  {\n    \"ACTIVITY_SUBMIT\": 1,\n    \"EMERGENCY_PRESS\": 2\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/fishtanks/fishtankInteractionTypes/index.js",
+    "groupTitle": "FishtankInteractions",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/fishtanks/interactions/types"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/fishtanks/:fishtankId/interactions",
     "title": "Get fishtank's interactions",
     "name": "GetFishtankInteractions",
@@ -48,7 +73,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK",
+          "content": "HTTP/1.1 201 OK\n  {\n    \"emergencyPresses\": 11\n  }",
           "type": "json"
         }
       ]
