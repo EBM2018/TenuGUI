@@ -8,6 +8,10 @@ socket.on('alertButton', (stopNumber) => {
   alert(`${stopNumber} personne${s} ont appuyé sur le bouton stop !!`); // une alerte est envoyé sur le
 });
 
+socket.on('ping', (message) => {
+  alert(message);
+});
+
 export const authenticateSocket = () => {
   // TODO: Retrieve token in cookies
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
