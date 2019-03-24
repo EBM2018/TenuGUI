@@ -84,5 +84,5 @@ const pingAdminFromFishtank = (fishtankId) => {
 };
 
 module.exports = {
-  init, createSocketsNameSpaceForFishtank, emitNewInteraction,
+  init, createSocketsNameSpaceForFishtank, emitNewInteraction, pingStudentsFromFishtank, pingAdminFromFishtank,
 };
