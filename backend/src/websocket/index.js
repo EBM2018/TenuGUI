@@ -75,6 +75,14 @@ const emitNewInteraction = (fishtankId) => {
   io.of(`/fishtank-${fishtankId}`).emit('newInteraction');
 };
 
+const pingStudentsFromFishtank = (fishtankId) => {
+  io.of(`/fishtank-${fishtankId}`).to('studentRoom').emit('ping', "Hello student");
+};
+
+const pingAdminFromFishtank = (fishtankId) => {
+  io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('ping', "Hello owner");
+};
+
 module.exports = {
   init, createSocketsNameSpaceForFishtank, emitNewInteraction,
 };
