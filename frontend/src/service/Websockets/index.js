@@ -8,7 +8,7 @@ socket.on('alertButton', (stopNumber) => {
   alert(`${stopNumber} personne${s} ont appuyé sur le bouton stop !!`); // une alerte est envoyé sur le
 });
 
-socket.on('ping', (message) => {
+socket.on('showMessage', (message) => {
   alert(message);
 });
 
