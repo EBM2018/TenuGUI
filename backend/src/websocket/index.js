@@ -5,7 +5,7 @@ let io;
 
 // Fonction qui ajoute les evenement sur un socket Student
 const addStudentEvent = (socket, socketUser) => {
-  let fishtankId = socketUser.fishtank;
+  const fishtankId = socketUser.fishtank;
   io.of(`/fishtank-${fishtankId}`).to('studentRoom').emit('setToStudentRoom');
   socket.on('stopButton', () => {
     // TODO : Faire une fonction qui renvoi le nombre de personne ayant appuyé sur le stop button
@@ -17,7 +17,7 @@ const addStudentEvent = (socket, socketUser) => {
 
 // Fonction qui ajoute les evenement sur un socket Owner
 const addOwnerEvent = (socket, socketUser) => {
-  let fishtankId = socketUser.fishtank;
+  const fishtankId = socketUser.fishtank;
   io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('setToOwnerRoom');
 };
 
@@ -83,5 +83,9 @@ const pingAdminFromFishtank = (fishtankId, message) => {
 };
 
 module.exports = {
-  init, createSocketsNameSpaceForFishtank, emitNewInteraction, pingStudentsFromFishtank, pingAdminFromFishtank,
+  init,
+  createSocketsNameSpaceForFishtank,
+  emitNewInteraction,
+  pingStudentsFromFishtank,
+  pingAdminFromFishtank,
 };
