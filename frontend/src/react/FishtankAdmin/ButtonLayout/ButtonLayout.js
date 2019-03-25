@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './ButtonLayout.css';
 import { ActionsFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
+import { StudentFishtank } from '../../../service/Fishtank/Fishtank';
 
 // import ListSpeed from './ListSpeed/ListSpeed.js';
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js';
@@ -48,9 +49,10 @@ class ButtonLayout extends React.PureComponent {
           <button
             type="button"
             id="Reboot"
-            onClick={() => { ActionsFishtankAdmin.askReboost(fishtankId); }}
+              // onClick={() => { ActionsFishtankAdmin.askReboost(fishtankId); }}
+            onClick={() => { StudentFishtank.askStop(fishtankId); }}
           >
-                    Reboost
+                    Test Stop
           </button>
         </div>
       );

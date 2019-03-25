@@ -63,8 +63,8 @@ class Notification extends React.PureComponent {
               {nbAskStop}
             </div>
           </div>
-          <button type="button" onClick={this.add}> +1 </button>
-          <button type="button" onClick={this.reset}> reset </button>
+          <button type="button" onClick={this.add} hidden> +1 </button>
+          <button type="button" onClick={this.reset} hidden> reset </button>
 
         </>
       );

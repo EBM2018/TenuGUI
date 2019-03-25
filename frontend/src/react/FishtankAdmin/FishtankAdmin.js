@@ -38,31 +38,32 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         createSocketFishtank(infoFishtank.body.fishtankId, this.fishtankInteractionsTeacher);
+        console.log(`connexion : ${infoFishtank.body.fishtankId}`);
       }
     }
 
     fishtankInteractionsTeacher = (socket) => {
-      if (socket.type === 1) {
+      if (socket.type === 991) {
         let { nbAskQuestion } = this.state;
         nbAskQuestion += 1;
         this.setState({ nbAskQuestion });
       }
-      if (socket.type === 2) {
+      if (socket.type === 992) {
         let { nbAskSpeedUp } = this.state;
         nbAskSpeedUp += 1;
         this.setState({ nbAskSpeedUp });
       }
-      if (socket.type === 3) {
+      if (socket.type === 4) {
         let { nbAskSpeedDown } = this.state;
         nbAskSpeedDown += 1;
         this.setState({ nbAskSpeedDown });
       }
-      if (socket.type === 4) {
+      if (socket.type === 994) {
         let { nbNotUnderstand } = this.state;
         nbNotUnderstand += 1;
         this.setState({ nbNotUnderstand });
       }
-      if (socket.type === 5) {
+      if (socket.type === 2) {
         let { nbAskStop } = this.state;
         nbAskStop += 1;
         this.setState({ nbAskStop });

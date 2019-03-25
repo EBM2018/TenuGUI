@@ -10,6 +10,7 @@ import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import ActivityContainer from './ActivityContainer/ActivityContainer';
 import { createSocketFishtank, getFishtank } from '../../service/API/requests';
+import ActTextField from '../Widgets/Activity/Activity';
 
 const fixtureFishtankId = 130;
 
@@ -17,8 +18,11 @@ class Fishtank extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
       cookies: instanceOf(Cookies).isRequired,
-      infoFishtank: PropTypes.func.isRequired,
-      changeInfo: PropTypes.func.isRequired,
+    }
+
+    state = {
+      connected: false,
+      fishtankId: undefined,
     }
 
     componentWillMount() {
@@ -30,7 +34,12 @@ class Fishtank extends React.PureComponent {
         console.log('retour');
         history.push('/');
       } else {
-        this.connectToFishtank();
+        try {
+          this.connectToFishtank();
+          this.setState({ connected: true });
+        } catch {
+          console.log('pas de Fishtank');
+        }
       }
     }
 
@@ -39,6 +48,17 @@ class Fishtank extends React.PureComponent {
       const userJSON = cookies.get('userJSON');
       const FishtankId = await getFishtank(userJSON.token);
       createSocketFishtank(FishtankId, this.fishtankInteractionsStudent);
+      this.setState({ fishtankId: FishtankId });
+      console.log(`connexion : ${FishtankId}`);
+    }
+
+    tryConnexion = () => {
+      try {
+        this.connectToFishtank();
+        this.setState({ connected: true });
+      } catch {
+        console.log('pas de Fishtank');
+      }
     }
 
     fishtankInteractionsStudent = (socket) => {
@@ -69,6 +89,7 @@ class Fishtank extends React.PureComponent {
     }
 
     render() {
+      const { connected, fishtankId } = this.state;
       return (
         <>
           <FishtankHeader
@@ -76,10 +97,17 @@ class Fishtank extends React.PureComponent {
             date="some date"
           />
           <ButtonLayout
-            fishtankId={fixtureFishtankId}
+            fishtankId={fishtankId}
           />
+          <button
+            type="button"
+            onClick={this.tryConnexion}
+            hidden={connected}
+          >
+              Chercher un Fishtank
+          </button>
           <ActivityContainer
-            fishtankId={fixtureFishtankId}
+            fishtankId={fishtankId}
           />
         </>
       );
