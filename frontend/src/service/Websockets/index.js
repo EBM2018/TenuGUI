@@ -2,6 +2,10 @@ const io = require('socket.io-client');
 
 let socket = io.connect('/');
 
+socket.on('showMessage', (message) => {
+    alert(message);
+});
+
 socket.on('alertButton', (stopNumber) => {
   let s = ''; // variable pour l'orthograpahe :p
   if (stopNumber > 1) s = 's';
