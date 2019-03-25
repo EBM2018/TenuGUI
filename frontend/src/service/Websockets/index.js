@@ -8,6 +8,18 @@ const addStudentEventListener = (currentSocket) => {
     if (stopNumber > 1) s = 's';
     alert(`${stopNumber} personne${s} ont appuyé sur le bouton stop !!`); // une alerte est envoyé sur le
   });
+
+  currentSocket.on('VousAvezCompris', () => {
+    // TODO fonction pour gerer cette event
+  });
+
+  currentSocket.on('faitesResume', () => {
+    // TODO fonction pour gerer cette event
+  });
+
+  currentSocket.on('vousEnEtesOu', () => {
+    // TODO fonction pour gerer cette event
+  });
 };
 
 const addOwnerEventListener = (currentSocket) => {
