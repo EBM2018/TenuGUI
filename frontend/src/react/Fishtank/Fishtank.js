@@ -8,11 +8,9 @@ import './Fishtank.css';
 import PropTypes from 'prop-types';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
-import ActivityContainer from './ActivityContainer/ActivityContainer';
+//import ActivityContainer from './ActivityContainer/ActivityContainer';
+import Activity from '../Widgets/Activity/Activity';
 import { createSocketFishtank, getFishtank } from '../../service/API/requests';
-import ActTextField from '../Widgets/Activity/Activity';
-
-const fixtureFishtankId = 130;
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -91,7 +89,30 @@ class Fishtank extends React.PureComponent {
     render() {
       const { connected, fishtankId } = this.state;
       return (
-        <>
+        <div className="bg-img bg-color">
+          <FishtankHeader
+            subject="EBM example"
+            date="some date"
+          />
+          <ButtonLayout
+            fishtankId={fishtankId}
+          />
+          <button
+            type="button"
+            onClick={this.tryConnexion}
+            hidden={connected}
+          >
+                  Chercher un Fishtank
+          </button>
+          <Activity
+            fishtankId={fishtankId}
+          />
+        </div>
+      );
+    }
+}
+/*
+<>
           <FishtankHeader
             subject="EBM example"
             date="some date"
@@ -110,8 +131,5 @@ class Fishtank extends React.PureComponent {
             fishtankId={fishtankId}
           />
         </>
-      );
-    }
-}
-
+ */
 export default withCookies(Fishtank);

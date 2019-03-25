@@ -1,7 +1,4 @@
 import React from 'react';
-
-import './MyActivity.css';
-
 import { DashboardMyActivity } from '../../../service/Dashboard/Dashboard';
 
 const MyActivity = () => (

@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import './ActivityEditor.css';
 // import PropTypes from 'prop-types';
 import ActTextFieldEditor from './ActTextFieldEditor';
 import ActTextCheckEditor from './ActTextCheckEditor';
@@ -74,20 +74,41 @@ const dataCheckMult = {
   ],
 };
 
+
+const dataNull = {
+  name: 'Questionnaire_name',
+  Question: [
+  ],
+};
+
+const abstractNull = {
+  name: 'Questionnaire_name',
+  abstract: '',
+};
+
 const dataResponse = {
   rep: '',
 };
 
-
 export default class ActivityEditor extends React.PureComponent {
+  static propTypes = {
+    close: PropTypes.func.isRequired,
+  }
+
   state = {
-    data: dataJson,
+    data: dataNull,
+    abstract: abstractNull,
   };
 
   send = () => { // pour des test à la con
     // const { data } = this.state;
     // alert(data);
   };
+
+  close = () => {
+    const { close } = this.props;
+    close();
+  }
 
   editJsonQuestion = (index, newQuestion) => {
     const { data } = this.state;
@@ -146,17 +167,26 @@ export default class ActivityEditor extends React.PureComponent {
   };
 
   changeTitle = (event) => {
-    const { data } = this.state;
+    const { data, abstract } = this.state;
     data.name = event.target.value;
-    this.setState({ data });
+    abstract.name = event.target.value;
+    this.setState({ data, abstract });
     this.forceUpdate();
-  }
+  };
+
+  changeTitle = (event) => {
+    const { abstract } = this.state;
+    abstract.abstract = event.target.value;
+    this.setState({ abstract });
+    this.forceUpdate();
+  };
 
   render() {
-    const { data } = this.state;
+    const { data, abstract } = this.state;
     return (
       <div>
         <textarea onChange={this.changeTitle} value={data.name} />
+        <textarea onChange={this.changeDescription} value={abstract.abstract} />
         {data.Question.map((ques, index) => {
           if (ques.type === 'field') {
             return (
@@ -211,7 +241,12 @@ export default class ActivityEditor extends React.PureComponent {
         </div>
         <div>
           <button type="submit" onClick={this.send}>
-            Send
+            Enregistrer
+          </button>
+        </div>
+        <div>
+          <button type="submit" onClick={this.close}>
+            Quitter
           </button>
         </div>
       </div>

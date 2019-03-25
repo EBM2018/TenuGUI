@@ -33,8 +33,8 @@ class Notification extends React.PureComponent {
         nbAskStop,
       } = this.props;
       return (
-        <>
-          <div> Notification élèves</div>
+        <div className="column is-3">
+          <h2 className="is-h2 add15-margin-top">Notification élèves</h2>
 
           <div id="ListNotification">
             <div>
@@ -66,7 +66,7 @@ class Notification extends React.PureComponent {
           <button type="button" onClick={this.add} hidden> +1 </button>
           <button type="button" onClick={this.reset} hidden> reset </button>
 
-        </>
+        </div>
       );
     }
 }

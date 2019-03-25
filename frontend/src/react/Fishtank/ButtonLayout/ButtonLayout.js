@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './ButtonLayout.css';
+
 import { StudentFishtank } from '../../../service/Fishtank/Fishtank';
 // import ListSpeed from './ListSpeed/ListSpeed.js';
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js';
@@ -34,94 +35,117 @@ class ButtonLayout extends React.PureComponent {
     render() {
       const { fishtankId } = this.props;
       return (
-        <div>
-          <div id="ButtonLayoutContainer">
-            <button
-              type="button"
-              id="AskQuestion"
-              onClick={StudentFishtank.askQuestion}
-            >
-              Posez votre question
-            </button>
+        <div className="bg-color">
+          <div className="columns add-margin ">
+            <div className="column is-3">
+              <div className="field">
+                <p className="control has-icons-left has-icons-right">
+                  <input className="input" type="text" placeholder="Posez votre question" />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-hand-point-up" />
+                  </span>
+                </p>
+              </div>
+            </div>
 
-            <div className="dropdown">
-              <button
-                type="button"
-                className="dropbtn"
-              >
-                Changement de Rythme
-              </button>
+            <div className="column is-3 has-text-left dropdown">
+              <p className="control has-icons-left has-icons-right">
+                <button className="button is-info is-inverted is-fullwidth" type="button" name="button">
+                        Changement de rythme
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-music" />
+                </span>
+              </p>
               <div className="dropdown-content">
                 <button
                   type="button"
-                  className="buttonList"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
                   onClick={() => { StudentFishtank.askSpeedUp(fishtankId); }}
                 >
-                    Demander d aller plus vite
+                        Demander d aller plus vite
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
                   onClick={() => { StudentFishtank.askSpeedDown(fishtankId); }}
                 >
-                    Demander d aller moins vite
+                        Demander d aller moins vite
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
                   onClick={() => { StudentFishtank.notUnderstand(fishtankId); }}
                 >
-                    Je ne comprends plus rien
+                        Je ne comprends plus rien
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
                   onClick={() => { StudentFishtank.askStop(fishtankId); }}
                 >
-                    Demander une pause
+                        Demander une pause
                 </button>
               </div>
             </div>
-
-
-            <div className="dropdown">
-              <button type="button" className="dropbtn">
-                Précision
-              </button>
+            <div className="column is-3 dropdown">
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  className="button is-info is-inverted  is-fullwidth"
+                  type="button"
+                  name="button"
+                >
+                    Précision
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-plus-circle" />
+                </span>
+              </p>
               <div className="dropdown-content">
                 <button
                   type="button"
-                  className="buttonList"
-                  onClick={this.speedUp}
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => { StudentFishtank.askSpeedUp(fishtankId); }}
                 >
-                    Demander d aller plus vite 2
+                        Demander d aller plus vite
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
-                  onClick={this.speedDown}
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => { StudentFishtank.askSpeedDown(fishtankId); }}
                 >
-                    Demander d aller moins vite 2
+                        Demander d aller moins vite
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
-                  onClick={this.dontUnderstand}
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => { StudentFishtank.notUnderstand(fishtankId); }}
                 >
-                    Je ne comprends plus rien 2
+                        Je ne comprends plus rien
                 </button>
                 <button
                   type="button"
-                  className="buttonList"
-                  onClick={this.plsStop}
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => { StudentFishtank.askStop(fishtankId); }}
                 >
-                    Demander une pause 2
+                        Demander une pause
                 </button>
               </div>
             </div>
+            <div className="column is-2">
+              <p className="control has-icons-left has-icons-right">
+                <button className="button is-danger is-fullwidth" type="button" name="button">
+                    Arrêt d'urgence
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="far fa-stop-circle" />
+                </span>
+              </p>
+            </div>
 
+
+            <div id="clean" />
           </div>
-          <div id="clean" />
         </div>
       );
     }

@@ -33,7 +33,9 @@ class FishtankAdmin extends React.PureComponent {
       const userJSON = cookies.get('userJSON');
       if (userJSON === undefined
           || userJSON.shoalId !== undefined
-          || infoFishtank === undefined) {
+          || infoFishtank === undefined
+          || infoFishtank.body === undefined
+          || infoFishtank.body.fishtankId === undefined) {
         const { history } = this.props;
         history.push('/');
       } else {
@@ -84,21 +86,21 @@ class FishtankAdmin extends React.PureComponent {
       } = this.state;
       const { infoFishtank } = this.props;
       return (
-        <>
+        <div className="bg-img bg-color">
           <FishtankHeader
             subject="EBM example"
             date="some date"
             my="Mon"
           />
-          <ButtonLayout />
-          <div id="container">
+          <ButtonLayout
+            fishtankId={infoFishtank.body.fishtankId}
+          />
+          <div className="columns">
             <Command
-              id="firstColumn"
               fishtankId={infoFishtank.body.fishtankId}
             />
 
             <Preview
-              id="secondColumn"
               fishtankId={infoFishtank.body.fishtankId}
             />
 
@@ -112,7 +114,7 @@ class FishtankAdmin extends React.PureComponent {
             />
 
           </div>
-        </>
+        </div>
       );
     }
 }

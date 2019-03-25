@@ -4,6 +4,8 @@ import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import { getUserFixture, getUserTokenFixture } from '../../service/API/requests';
 
+import './Home.css';
+
 class Home extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
@@ -60,20 +62,57 @@ class Home extends React.PureComponent {
 
     render() {
       return (
-        <>
-          wwww Home
-          <a href="/"> lien </a>
-          <div>
-            Se connecter en tant que :
-            <input id="name" type="text" />
-            <button type="button" onClick={this.todoConnection}>
-                Connexion
-            </button>
+        <section className="hero is-fullheight bg-img">
+          <div className="hero-body">
+            <div className="container has-text-right">
+              <div className="columns">
+                <div className="column is-4 is-offset-3 ">
+
+                  <h1 className="title">
+                    <span className="tenu">Tenu</span>
+                    <span className="GUI">GUI</span>
+                  </h1>
+
+                  <h2 className="title is-5 is-h2">
+                      Pour rendre vos cours et vos séminaires super interactifs
+                  </h2>
+
+                </div>
+                <div className="column is-2">
+                  <figure className="image is-1by1">
+                    <img src="logokoinobori.png" alt="logo1TenuGUI" />
+                  </figure>
+                </div>
+                <div className="column is-4" />
+              </div>
+              <div className="columns">
+                <div className="column" />
+              </div>
+              <div className="columns is-tablet is-multiline">
+                <div className="column is-2 is-offset-4 is-center has-text-centered">
+                  <p className="is-6">Intervenant</p>
+                </div>
+                <div className="column is-2 is-center has-text-centered">
+                  <p className="is-6">Apprenant</p>
+                </div>
+              </div>
+              <div className="columns is-multiline">
+                <div className="column is-4 is-offset-4">
+                  <div className="field">
+                    <input className="input" id="name" type="text" name="" placeholder="Choisi ton ID" />
+                  </div>
+                </div>
+                <div className="column is-2 is-offset-6">
+                  <button className="button is-info is-focus is-fullwidth" onClick={this.todoConnection}>
+                                  C'est parti !
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </>
+        </section>
       );
     }
 }
-
 
 export default withCookies(Home);

@@ -11,32 +11,33 @@ class Command extends React.PureComponent {
     render() {
       const { fishtankId } = this.props;
       return (
-        <div>
-          <div id="title"> Mon fils rouge </div>
+        <div className="column add-margin-left add15-margin-top is-3">
+          <h2 className="is-h2">Mon fil d'Arianne</h2>
 
-          <div id="ButtonLayoutContainer">
-            <button
-              type="button"
-              id="Start"
-              onClick={() => { CommandFishtankAdmin.startActivity(fishtankId); }}
-            >
+          <button
+            className="button"
+            type="button"
+            id="Start"
+            onClick={() => { CommandFishtankAdmin.startActivity(fishtankId); }}
+          >
         Ouverture
-            </button>
-            <button
-              type="button"
-              id="AskSummary"
-              onClick={() => { CommandFishtankAdmin.askSummary(fishtankId); }}
-            >
+          </button>
+          <button
+            className="button"
+            type="button"
+            id="AskSummary"
+            onClick={() => { CommandFishtankAdmin.askSummary(fishtankId); }}
+          >
         Faites un résumé
-            </button>
-            <button
-              type="button"
-              id="AskFeedback"
-              onClick={() => { CommandFishtankAdmin.askFeedback(fishtankId); }}
-            >
+          </button>
+          <button
+            className="button"
+            type="button"
+            id="AskFeedback"
+            onClick={() => { CommandFishtankAdmin.askFeedback(fishtankId); }}
+          >
         Feedback
-            </button>
-          </div>
+          </button>
         </div>
       );
     }

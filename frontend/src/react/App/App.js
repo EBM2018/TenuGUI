@@ -4,17 +4,17 @@ import {
 } from 'react-router-dom';
 import { CookiesProvider, withCookies } from 'react-cookie';
 
-import './App.css';
-
 import Layout from '../Layout/Layout';
 
 import Machin from '../../machin';
 import Dashboard from '../Dashboard/Dashboard';
 import Fishtank from '../Fishtank/Fishtank';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin';
+import FishtankEditor from '../FishtankEditor/FishtankEditor';
 import Home from '../Home/Home';
 
 import '../../service/Websockets';
+import '../bulma.min.css';
 
 
 class App extends React.PureComponent {
@@ -120,10 +120,20 @@ class App extends React.PureComponent {
                 path="/FishtankAdmin"
 
                 render={props => (
-                    <FishtankAdmin
-                        infoFishtank={infoFishtank}
-                        {...props}
-                    />
+                  <FishtankAdmin
+                    infoFishtank={infoFishtank}
+                    {...props}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/FishtankEditor"
+
+                render={props => (
+                  <FishtankEditor
+                    {...props}
+                  />
                 )}
               />
             </Switch>

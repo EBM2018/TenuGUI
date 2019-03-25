@@ -2,8 +2,6 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
-import './Dashboard.css';
-
 import PropTypes from 'prop-types';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
@@ -37,10 +35,13 @@ class Dashboard extends React.PureComponent {
 
     render() {
       return (
-        <>
+        <div className="bg-img bg-color">
           <div>
-            <> Ma Bibliothèque </>
-            <button type="button" onClick={this.todoStartFishtank}>
+            <h2 className="is-h2">Ma Bibliothèque</h2>
+            <button
+              type="button"
+              onClick={this.todoStartFishtank}
+            >
                 Start Fishtank
             </button>
           </div>
@@ -53,7 +54,7 @@ class Dashboard extends React.PureComponent {
               <MyDescription id="flex" />
             </p>
           </div>
-        </>
+        </div>
       );
     }
 }
