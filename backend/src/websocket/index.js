@@ -5,6 +5,8 @@ let io;
 
 // Fonction qui ajoute les evenement sur un socket Student
 const addStudentEvent = (socket, socketUser) => {
+  let fishtankId = socketUser.fishtank;
+  io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('setToOwnerRoom');
   socket.on('stopButton', () => {
     // TODO : Faire une fonction qui renvoi le nombre de personne ayant appuyé sur le stop button
     const stopNumber = 1;
@@ -15,21 +17,18 @@ const addStudentEvent = (socket, socketUser) => {
 
 // Fonction qui ajoute les evenement sur un socket Owner
 const addOwnerEvent = (socket, socketUser) => {
-  socket.on('startActivity', (activity) => {
-    console.log(activity, socketUser);
-    // TODO Ajout des valeurs propres a l'activité
-    // TODO Ajout des events propre à l'activité
-  });
+  let fishtankId = socketUser.fishtank;
+  io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('setToOwnerRoom');
 };
 
 // Assign specific room to user
 const matchUserWithRoom = (socket, socketUser) => {
   if (socketUser.userType === 'owner') {
     socket.join('ownerRoom');
-    addOwnerEvent(socket, socketUser);
+    addOwnerEvent(socketUser);
   } else if (socketUser.userType === 'student') {
     socket.join('studentRoom');
-    addStudentEvent(socket, socketUser);
+    addStudentEvent(socketUser);
   } else {
     socket.join('spectateRoom');
   }
