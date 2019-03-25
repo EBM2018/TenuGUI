@@ -11,7 +11,7 @@ const addStudentEvent = (socket, socketUser) => {
     // TODO : Faire une fonction qui renvoi le nombre de personne ayant appuyé sur le stop button
     const stopNumber = 1;
     // envoyer une alert via le socket du prof/admin
-    io.of(socketUser).in('ownerRoom').emit('alertButton', stopNumber);
+    io.of(`/fishtank-${fishtankId}`).in('ownerRoom').emit('alertButton', stopNumber);
   });
 };
 
@@ -19,6 +19,15 @@ const addStudentEvent = (socket, socketUser) => {
 const addOwnerEvent = (socket, socketUser) => {
   const fishtankId = socketUser.fishtank;
   io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('setToOwnerRoom');
+  socket.on('VousAvezComprisPushed', () => {
+    io.of(`/fishtank-${fishtankId}`).in('studentRoom').emit('VousAvezCompris');
+  });
+  socket.on('faitesResumePushed', () => {
+    io.of(`/fishtank-${fishtankId}`).in('studentRoom').emit('faitesResume');
+  });
+  socket.on('vousEnEtesOuPushed', () => {
+    io.of(`/fishtank-${fishtankId}`).in('studentRoom').emit('vousEnEtesOu');
+  });
 };
 
 // Assign specific room to user
