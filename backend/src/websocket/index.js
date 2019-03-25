@@ -6,7 +6,7 @@ let io;
 // Fonction qui ajoute les evenement sur un socket Student
 const addStudentEvent = (socket, socketUser) => {
   let fishtankId = socketUser.fishtank;
-  io.of(`/fishtank-${fishtankId}`).to('ownerRoom').emit('setToOwnerRoom');
+  io.of(`/fishtank-${fishtankId}`).to('studentRoom').emit('setToStudentRoom');
   socket.on('stopButton', () => {
     // TODO : Faire une fonction qui renvoi le nombre de personne ayant appuyé sur le stop button
     const stopNumber = 1;
