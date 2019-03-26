@@ -21,11 +21,18 @@ class FishtankAdmin extends React.PureComponent {
     }
 
     state = {
+      nbStudent: 24,
       nbAskQuestion: 0,
       nbAskSpeedUp: 0,
       nbAskSpeedDown: 0,
       nbNotUnderstand: 0,
       nbAskStop: 0,
+      nbAskReexplain: 0,
+      nbAskDetails: 0,
+      nbAskExample: 0,
+      nbAskAnecdote: 0,
+      nbAskReference: 0,
+      nbAskExercice: 0,
     }
 
     componentWillMount() {
@@ -78,11 +85,18 @@ class FishtankAdmin extends React.PureComponent {
 
     render() {
       const {
+        nbStudent,
         nbAskQuestion,
         nbAskSpeedUp,
         nbAskSpeedDown,
         nbNotUnderstand,
         nbAskStop,
+        nbAskReexplain,
+        nbAskDetails,
+        nbAskExample,
+        nbAskAnecdote,
+        nbAskReference,
+        nbAskExercice,
       } = this.state;
       const { infoFishtank } = this.props;
       return (
@@ -105,11 +119,18 @@ class FishtankAdmin extends React.PureComponent {
             />
 
             <Notification
+              nbStudent={nbStudent}
               nbAskQuestion={nbAskQuestion}
               nbAskSpeedUp={nbAskSpeedUp}
               nbAskSpeedDown={nbAskSpeedDown}
               nbNotUnderstand={nbNotUnderstand}
               nbAskStop={nbAskStop}
+              nbAskReexplain={nbAskReexplain}
+              nbAskDetails={nbAskDetails}
+              nbAskExample={nbAskExample}
+              nbAskAnecdote={nbAskAnecdote}
+              nbAskReference={nbAskReference}
+              nbAskExercice={nbAskExercice}
               changeNbAlert={this.changeNbAlert}
             />
 

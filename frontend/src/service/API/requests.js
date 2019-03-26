@@ -25,12 +25,17 @@ export const sendNewInteractionEmission = (fishtankId, type, payload) => {
     .post(`/api/fishtanks/${fishtankId}/interactions`)
     .query({
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
+      type,
+      payload,
     })
     .set('Accept', 'application/json')
-    .set('type', type)
-    .set('payload', payload)
     .then(res => res.body);
 };
+/*
+
+    .set('type', type)
+    .set('payload', payload)
+ */
 
 export const createFishtank = () => request
   .post('/api/fishtanks')

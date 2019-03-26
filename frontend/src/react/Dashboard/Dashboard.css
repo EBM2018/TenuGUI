@@ -1,0 +1,73 @@
+.bg-color {
+         background-color: #73A4CD;
+ }
+ /*     font-family: 'Nunito', sans-serif;
+        font-family: 'Dosis', sans-serif; */
+
+.up-body{
+  position:relative; bottom:60px
+}
+
+.title {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem !important;
+}
+.is-h1 {
+  font-family: 'Nunito';
+  font-size: 37px;
+  font-weight: bold;
+  color: #14171C
+}
+
+.is-h2 {
+  font-family: 'Dosis';
+  font-size: 26px;
+  font-weight: bold;
+  color: #14171C
+}
+.is-h3{
+  font-family: 'Dosis';
+  font-size: 20px;
+  font-weight: bold;
+  color: #14171C
+}
+
+.is-body{
+  font-family: 'Dosis';
+  font-size: 18px;
+  font-weight: normal;
+  color: #14171C
+}
+
+.is-6 {
+  margin-top: 1.0rem !important;
+  margin-bottom: 0.5rem !important;
+  font-family: 'Dosis';
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.add-margin {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.add-margin-top{
+  margin-top: 20px;
+}
+
+.add-margin-left  {
+  margin-left: 30px;
+}
+.add15-margin-top {
+  margin-top: 15px ;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.bottom-align {
+  position : absolute;
+  bottom : 150px
+}
