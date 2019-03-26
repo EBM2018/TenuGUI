@@ -9,7 +9,7 @@ const addStudentEventListener = (currentSocket) => {
     alert(`${stopNumber} personne${s} ont appuyé sur le bouton stop !!`); // une alerte est envoyé sur le
   });
 
-  currentSocket.on('VousAvezCompris', () => {
+  currentSocket.on('vousAvezCompris', () => {
     // TODO fonction pour gerer cette event
   });
 
@@ -51,5 +51,7 @@ export const moveSocketToFishtankNamespace = (fishtankId) => {
   authenticateSocket();
   return socket;
 };
+
+export const vousAvezComprisButton =
 
 export default {};
