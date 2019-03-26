@@ -41,8 +41,8 @@ class ButtonLayout extends React.PureComponent {
               <div className="field">
                 <p className="control has-icons-left has-icons-right">
                   <input className="input" type="text" placeholder="Posez votre question" />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-hand-point-up" />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-hand-point-up"></i>
                   </span>
                 </p>
               </div>
@@ -152,3 +152,8 @@ class ButtonLayout extends React.PureComponent {
 }
 
 export default ButtonLayout;
+/*
+<span className="icon is-small is-left">
+                      <i className="fas fa-hand-point-up"></i>
+                  </span>
+ */
