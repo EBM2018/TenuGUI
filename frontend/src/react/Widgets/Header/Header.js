@@ -1,6 +1,8 @@
 import React from 'react';
 import UserAccountWidget from '../UserAccountWidget/UserAccountWidget';
 
+import logoAndName from '../../../images/LogoTenuGUI.png';
+
 const Header = () => (
   <header>
     <div className="columns add-margin">
@@ -10,7 +12,7 @@ const Header = () => (
 
       <div className="column is-2">
         <figure className="image">
-          <img src="../../../images/LogoTenuGUI.png" alt="TenuGUI" />
+          <img src={logoAndName} alt="TenuGUI" />
         </figure>
       </div>
 

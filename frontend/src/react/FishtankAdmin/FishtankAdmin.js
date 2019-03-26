@@ -86,7 +86,7 @@ class FishtankAdmin extends React.PureComponent {
       } = this.state;
       const { infoFishtank } = this.props;
       return (
-        <div className="bg-img bg-color">
+        <div className="bg-color">
           <FishtankHeader
             subject="EBM example"
             date="some date"

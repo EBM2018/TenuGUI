@@ -28,10 +28,13 @@ export class CommandFishtankAdmin {
 
 export class ActionsFishtankAdmin {
     static askUnderstanding = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 2, '');
+      /*
       if (sendNewInteractionEmission(fishtankId, 6, '') === 'HTTP/1.1 201 OK') {
         return 'send';
       }
       return 'fail';
+      */
       // alert('Open "Ask if they understand".');
     };
 

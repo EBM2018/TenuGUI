@@ -89,7 +89,7 @@ class Fishtank extends React.PureComponent {
     render() {
       const { connected, fishtankId } = this.state;
       return (
-        <div className="bg-img bg-color">
+        <div className="bg-color">
           <FishtankHeader
             subject="EBM example"
             date="some date"

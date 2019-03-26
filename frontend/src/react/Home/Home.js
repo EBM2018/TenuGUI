@@ -5,6 +5,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { getUserFixture, getUserTokenFixture } from '../../service/API/requests';
 
 import './Home.css';
+import logo from '../../images/logokoinobori.png';
 
 class Home extends React.PureComponent {
     static propTypes = {
@@ -62,7 +63,7 @@ class Home extends React.PureComponent {
 
     render() {
       return (
-        <section className="hero is-fullheight bg-img">
+        <section className="hero is-fullheight">
           <div className="hero-body">
             <div className="container has-text-right">
               <div className="columns">
@@ -80,7 +81,7 @@ class Home extends React.PureComponent {
                 </div>
                 <div className="column is-2">
                   <figure className="image is-1by1">
-                    <img src="logokoinobori.png" alt="logo1TenuGUI" />
+                    <img src={logo} alt="logo1TenuGUI" />
                   </figure>
                 </div>
                 <div className="column is-4" />

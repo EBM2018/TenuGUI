@@ -35,7 +35,7 @@ class Dashboard extends React.PureComponent {
 
     render() {
       return (
-        <div className="bg-img bg-color">
+        <div className="bg-color">
           <div>
             <h2 className="is-h2">Ma Bibliothèque</h2>
             <button
