@@ -52,6 +52,4 @@ export const moveSocketToFishtankNamespace = (fishtankId) => {
   return socket;
 };
 
-export const vousAvezComprisButton =
-
 export default {};
