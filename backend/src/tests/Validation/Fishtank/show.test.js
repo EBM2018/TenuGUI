@@ -23,7 +23,7 @@ describe('Fishtank retrieval validation', () => {
 
   beforeEach(() => {
     requestLoader = require('../../../middlewares/requestLoading/');
-    mockTeamy = require('../../../__mock_teamy__');
+    mockTeamy = require('../../../services/teamy.js');
     sinon.stub(requestLoader, 'addUser')
       .callsFake(faker.addUser(validUsers));
     sinon.stub(mockTeamy, 'isUserPartOfShoal')

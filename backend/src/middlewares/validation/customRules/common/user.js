@@ -1,6 +1,6 @@
 const { check } = require('express-validator/check');
 const requestLoader = require('../../../requestLoading');
-const { isUserPartOfShoal } = require('../../../../__mock_teamy__');
+const { isUserPartOfShoal } = require('../../../../services/teamy.js');
 
 const isOwner = (value, { req }) => req.locals.fishtank.ownerId === req.locals.user.id;
 

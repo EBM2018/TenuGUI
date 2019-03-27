@@ -1,5 +1,5 @@
 const { Fishtank, FishtankInteractionType } = require('../../database/models');
-const { getUser, getUserToken } = require('../../__mock_teamy__');
+const { getUser, getUserToken } = require('../../services/teamy.js');
 
 const loadRequestWith = (req, key, value) => {
   if (req.locals == null) req.locals = {};
