@@ -1,3 +1,8 @@
+const request = require('superagent');
+const { formatUser } = require('./formatter.js');
+
+const BASE_URL = 'https://teamy.ebm.nymous.io/api/';
+
 const teamyUsers = [{
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
   name: 'BDH',
@@ -22,7 +27,7 @@ module.exports = {
     }
     return null;
   },
-  getUserToken: async (id) => { // sent after valid "authentication"
+  getUserToken: async (id) => {
     for (let i = 0; i < teamyUsers.length; i += 1) {
       const user = teamyUsers[i];
       if (user.id === id) return user.token;
@@ -30,18 +35,8 @@ module.exports = {
     return null;
   },
   getUsers: async () => {
-    const users = [];
-    for (let i = 0; i < teamyUsers.length; i += 1) {
-      const user = teamyUsers[i];
-      const userKeys = Object.keys(user);
-      const userInfo = {};
-      for (let j = 0; j < userKeys.length; j += 1) {
-        const userKey = userKeys[j];
-        if (userKey !== 'token') userInfo[userKey] = user[userKey];
-      }
-      users.push(userInfo);
-    }
-    return users;
+    const users = await request.get(`${BASE_URL}/users`).then(res => res.body);
+    return users.map(formatUser);
   },
   isValidShoal: async () => true,
   isUserPartOfShoal: async (userId, shoalId) => {
