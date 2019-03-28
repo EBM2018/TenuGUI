@@ -7,7 +7,7 @@
     "prod": "dotenv node src/index.js",
     "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\"",
     "lint": "eslint src/",
-    "test": "dotenv -e .env.testing jest --runInBand",
+    "test": "dotenv -e .env.testing -- jest --runInBand",
     "apidoc": "apidoc -i src/ -o doc/"
   },
   "apidoc": {
