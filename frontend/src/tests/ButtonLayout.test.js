@@ -1,13 +1,13 @@
-import ButtonLayout from '../react/Fishtank/ButtonLayout/ButtonLayout';
 import renderer from 'react-test-renderer';
 import React from 'react';
+import ButtonLayout from '../react/Fishtank/ButtonLayout/ButtonLayout';
 
-test ('derp',()=>{
-    expect('True').toBeTruthy;
+test('derp', () => {
+  expect('True').toBeTruthy;
 });
-test('renders correctly', ()=>{
-    const component=renderer
-        .create(<ButtonLayout/>);
-    let tree=component.toJSON();
-    expect(tree).toMatchSnapshot();
+test('renders correctly', () => {
+  const component = renderer
+    .create(<ButtonLayout />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });

@@ -1,3 +1,3 @@
-test ('derp',()=>{
-    expect('True').toBeTruthy;
+test('derp', () => {
+  expect('True').toBeTruthy;
 });
