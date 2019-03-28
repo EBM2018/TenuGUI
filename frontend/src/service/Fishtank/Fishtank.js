@@ -1,92 +1,52 @@
 import { sendNewInteractionEmission } from '../API/requests';
 
 class StudentFishtank {
-    static askQuestion = (fishtankId) => {
-      if (sendNewInteractionEmission(fishtankId, 1, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
-      // alert('Student ask a question.');
+    static askQuestion = (fishtankId, text) => {
+      sendNewInteractionEmission(fishtankId, 2, text);
     };
 
     static askSpeedUp = (fishtankId) => {
-      // alert('Student want to accelerate.');
-      if (sendNewInteractionEmission(fishtankId, 2, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 3, '');
     };
 
     static askSpeedDown = (fishtankId) => {
-      // alert('Student want to slow down.');
-      if (sendNewInteractionEmission(fishtankId, 3, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 4, '');
     };
 
     static notUnderstand = (fishtankId) => {
-      // alert('Student do not understand.');
-      if (sendNewInteractionEmission(fishtankId, 4, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 5, '');
     };
 
-    static askStop = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+    static askPause = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 6, '');
     };
 
     static askReexplain = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 7, '');
     };
 
     static askDetails = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 8, '');
     };
 
     static askExample = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 9, '');
     };
 
     static askAnecdote = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 10, '');
     };
 
     static askReference = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 11, '');
     };
 
     static askExercice = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 12, '');
+    };
+
+    static askStop = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 1, '');
     };
 }
 

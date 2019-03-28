@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StudentFishtank from '../../../service/Fishtank/Fishtank';
 
 class Notification extends React.PureComponent {
     static propTypes = {
+      fishtankId: PropTypes.number.isRequired,
       nbStudent: PropTypes.number.isRequired,
       nbAskQuestion: PropTypes.number.isRequired,
       nbAskSpeedUp: PropTypes.number.isRequired,
@@ -32,6 +34,7 @@ class Notification extends React.PureComponent {
 
     render() {
       const {
+        fishtankId,
         nbStudent,
         nbAskQuestion,
         nbAskSpeedUp,
@@ -62,6 +65,12 @@ class Notification extends React.PureComponent {
           <progress value={nbAskExercice} max={nbStudent} data-label="Exercice :" />
           <button type="button" onClick={this.add} hidden> +1 </button>
           <button type="button" onClick={this.reset} hidden> reset </button>
+          <button
+            type="button"
+            onClick={() => { StudentFishtank.askStop(fishtankId); }}
+          >
+                    add
+          </button>
         </div>
       );
     }

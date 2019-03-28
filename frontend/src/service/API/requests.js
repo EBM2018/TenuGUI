@@ -11,7 +11,7 @@ shoalId = nb du groupe
 token = token de connection
  */
 
-const handleNewInteractionEmission = fishtankId => request
+export const handleNewInteractionEmission = fishtankId => request
   .get(`/api/fishtanks/${fishtankId}/interactions`)
   .query({
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
@@ -20,12 +20,11 @@ const handleNewInteractionEmission = fishtankId => request
   .then(res => res.body);
 
 export const sendNewInteractionEmission = (fishtankId, type, payload) => {
-  console.log({ fishtankId, type, payload });
   request
     .post(`/api/fishtanks/${fishtankId}/interactions`)
-    .query({
+    .send({
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
-      type,
+      type: parseInt(type),
       payload,
     })
     .set('Accept', 'application/json')

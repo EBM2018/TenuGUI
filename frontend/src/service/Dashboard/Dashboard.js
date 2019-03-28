@@ -9,8 +9,8 @@ export class DashboardMyActivity {
       // alert('Open an activity.');
     };
 
-    static openFeedbackActivity = () => {
-      // alert('Open "Feedback".');
+    static openFeedbackActivity = (fishtankId) => {
+      //
     };
 }
 /*

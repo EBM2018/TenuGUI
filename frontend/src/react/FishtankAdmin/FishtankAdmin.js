@@ -11,7 +11,7 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
-import { sendNewInteractionEmission, createSocketFishtank } from '../../service/API/requests';
+import { handleNewInteractionEmission, createSocketFishtank } from '../../service/API/requests';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
@@ -51,37 +51,22 @@ class FishtankAdmin extends React.PureComponent {
       }
     }
 
-    fishtankInteractionsTeacher = (socket) => {
+    fishtankInteractionsTeacher = async (socket) => {
+      const { infoFishtank } = this.props;
       if (socket.type === 991) {
         let { nbAskQuestion } = this.state;
         nbAskQuestion += 1;
         this.setState({ nbAskQuestion });
       }
-      if (socket.type === 992) {
-        let { nbAskSpeedUp } = this.state;
-        nbAskSpeedUp += 1;
-        this.setState({ nbAskSpeedUp });
-      }
-      if (socket.type === 4) {
-        let { nbAskSpeedDown } = this.state;
-        nbAskSpeedDown += 1;
-        this.setState({ nbAskSpeedDown });
-      }
-      if (socket.type === 994) {
-        let { nbNotUnderstand } = this.state;
-        nbNotUnderstand += 1;
-        this.setState({ nbNotUnderstand });
-      }
-      if (socket.type === 2) {
-        let { nbAskStop } = this.state;
-        nbAskStop += 1;
-        this.setState({ nbAskStop });
-      }
-    }
+      const interactions = await handleNewInteractionEmission(infoFishtank.body.fishtankId);
+      console.log(interactions);
+      this.setState({ nbAskStop: interactions.emergencyPresses });
+
+    };
 
     changeNbAlert = (newNb) => {
       this.setState({ nbAskStop: newNb });
-    }
+    };
 
     render() {
       const {
@@ -119,6 +104,7 @@ class FishtankAdmin extends React.PureComponent {
             />
 
             <Notification
+              fishtankId={infoFishtank.body.fishtankId}
               nbStudent={nbStudent}
               nbAskQuestion={nbAskQuestion}
               nbAskSpeedUp={nbAskSpeedUp}

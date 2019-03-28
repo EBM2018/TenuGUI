@@ -4,33 +4,18 @@ import PropTypes from 'prop-types';
 import './ButtonLayout.css';
 
 import StudentFishtank from '../../../service/Fishtank/Fishtank';
-// import ListSpeed from './ListSpeed/ListSpeed.js';
-// import ListAccuracy from './ListAccuracy/ListAccuracy.js';
-
-import { sendNewInteractionEmission } from '../../../service/API/requests';
 
 class ButtonLayout extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
     }
 
-    speedUp = () => {
-      // console.log(1);
-      const { fishtankId } = this.props;
-      sendNewInteractionEmission(fishtankId, 2, 'speedUp');
-    };
-
-    speedDown = () => {
-      // console.log(2);
-    };
-
-    dontUnderstand = () => {
-      // console.log(3);
-    };
-
-    plsStop = () => {
-      // console.log(4);
-    };
+    sendQuestion = (event) => {
+      if (event.keyCode === 13) {
+        const { fishtankId } = this.props;
+        StudentFishtank.askQuestion(fishtankId, event.target.value);
+      }
+    }
 
     render() {
       const { fishtankId } = this.props;
@@ -40,7 +25,12 @@ class ButtonLayout extends React.PureComponent {
             <div className="column is-3">
               <div className="field">
                 <p className="control has-icons-left has-icons-right">
-                  <input className="input" type="text" placeholder="Posez votre question" />
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Posez votre question"
+                    onKeyUp={this.sendQuestion}
+                  />
                   <span className="icon is-small is-left">
                     <i className="fas fa-hand-point-up" />
                   </span>
@@ -98,7 +88,7 @@ class ButtonLayout extends React.PureComponent {
                   <button
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => { StudentFishtank.askStop(fishtankId); }}
+                    onClick={() => { StudentFishtank.askPause(fishtankId); }}
                   >
                         Demander une pause
                   </button>
@@ -204,7 +194,12 @@ class ButtonLayout extends React.PureComponent {
             </div>
             <div className="column is-2">
               <p className="control has-icons-left has-icons-right">
-                <button className="button is-danger is-fullwidth" type="button" name="button">
+                <button
+                  type="button"
+                  className="button is-danger is-fullwidth"
+                  type="button"
+                  onClick={() => { StudentFishtank.askStop(fishtankId); }}
+                >
                     Arrêt d'urgence
                 </button>
                 <span className="icon is-small is-left">
