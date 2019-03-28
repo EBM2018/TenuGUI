@@ -23,8 +23,8 @@ before_script:
   - sequelize db:seed:all
   - cd ../frontend
   - npm ci
-  - npm i codecov
   - cd ..
+  - npm i codecov
 
 script:
   - set -e
