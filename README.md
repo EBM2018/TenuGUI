@@ -1,4 +1,4 @@
-# TenuGUI
+# TenuGUI &middot; [![Build Status](https://travis-ci.com/EBM2018/TenuGUI.svg?branch=master)](https://travis-ci.com/EBM2018/TenuGUI)
 
 TenuGUI est une application web cherchant à dynamiser le déroulement d'un enseignement ou d'une formation.  
 Cette application propose :
@@ -16,11 +16,14 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 * Exécuter `git clone https://github.com/EBM2018/TenuGUI.git`
 * Installer `npm`
 * Exécuter `npm install` à la racine pour installer les dépendances front-end et back-end
+* Installer `MariaDB` dans une version supérieure ou égale à 10.2.7
 * Mettre en place une base de données `MariaDB` s'appelant `TenuGUI` hébergée localement
 * Créer un fichier `.env` dans le dossier `backend`
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
 * Exécuter `npm start` à la racine pour servir le front-end et le back-end
+
+* Un fichier `insomnia.json` est disponible dans le dossier `backend` pour rapidement explorer les différentes routes.
 
 # Tests
 
@@ -31,7 +34,6 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
 
 ## Back-end
 
-* Installer `MariaDB` dans une version supérieure ou égale à 10.2.7
 * Mettre en place une base de données `MariaDB` s'appelant `TenuGUI-test` hébergée localement
 * Créer un fichier `.env.testing` dans le dossier `backend`
     * Utiliser le fichier `.env.example` comme template
