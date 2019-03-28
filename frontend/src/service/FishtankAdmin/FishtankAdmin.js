@@ -1,31 +1,35 @@
-export const fct_Action_ask_understanding = () => {
-  console.log('Ask if they understand.');
-};
+export class CommandFishtankAdmin {
+    static startActivity = () => {
+      // alert('Start an activity.');
+    };
 
-export const fct_Action_ask_attention = () => {
-  console.log('Ask for attention.');
-};
+    static askSummary = () => {
+      // alert('Ask for a summary.');
+    };
 
-export const fct_Action_ask_summary = () => {
-  console.log('Ask for a summary.');
-};
+    static askFeedback = () => {
+      // alert('Ask for a feedback.');
+    };
+}
 
-export const fct_Action_reboot = () => {
-  console.log('Reboot.');
-};
+export class ActionsFishtankAdmin {
+    static askUnderstanding = () => {
+      // alert('Open "Ask if they understand".');
+    };
 
-export const fct_Action_ask_position = () => {
-  console.log('Ask where they are.');
-};
+    static askAttention = () => {
+      // alert('Open "Ask for attention".');
+    };
 
-export const fct_Start_Activity = () => {
-  console.log('Start an activity.');
-};
+    static askSummary = () => {
+      // alert('Open "Ask for a summary".');
+    };
 
-export const fct_Ask_Summary = () => {
-  console.log('Ask for a summary.');
-};
+    static askReboot = () => {
+      // alert('Open "Reboot".');
+    };
 
-export const fct_Ask_Feedback = () => {
-  console.log('Ask for a feedback.');
-};
+    static askPosition = () => {
+      // alert('Open "Ask where ther are".');
+    };
+}

@@ -1,12 +1,9 @@
 import React from 'react';
 
-export default class MyDescription extends React.PureComponent {
+const MyDescription = () => (
+  <>
+    MyDescription
+  </>
+);
 
-    render() {
-        return (
-            <>
-                MyDescription
-            </>
-        );
-    }
-}
+export default MyDescription;

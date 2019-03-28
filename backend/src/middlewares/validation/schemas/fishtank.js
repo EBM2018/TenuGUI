@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   show: {
-    id: {
+    fishtankId: {
       in: ['params'],
       isInt: {
         options: { min: 1 },
@@ -22,7 +22,7 @@ module.exports = {
     },
   },
   update: {
-    id: {
+    fishtankId: {
       in: ['params'],
       isInt: {
         options: { min: 1 },

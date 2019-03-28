@@ -1,38 +1,40 @@
 import React from 'react';
 
 import './Activity.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
+import ActTextCheckMult from './ActTextCheckMult';
+// import index from '../../../service/Websockets';
 
 const dataJson = {
   name: 'Questionnaire_name',
   Question: [
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '1',
       text: "Qu'est ce que tu as appris ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '2',
       text: "Qu'est ce qui t'as étonné ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '3',
       text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
     },
     {
       type: 'field',
-      id_question: '0',
+      idQuestion: '4',
       text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
     },
     {
       type: 'check',
-      id_question: '0',
+      idQuestion: '5',
       text: 'Cb tu notes ce cour ?',
-      reponse: [
+      response: [
         { rep: '1' },
         { rep: '2' },
         { rep: '3' },
@@ -42,126 +44,93 @@ const dataJson = {
     },
   ],
 };
-/* ,
-            {
-                "type": "check",
-                "text": "Cb tu notes ce cour ?",
-                "reponse":[
-                    {"rep": "1"},
-                    {"rep": "2"},
-                    {"rep": "3"},
-                    {"rep": "4"},
-                    {"rep": "5"}
-                ],
-                "user_reponse": ""
-            }
-        ]
-    }
-*/
-
-const dataJson2 = {
-  name: 'Questionnaire_name_2',
-  Question: [
-    {
-      type: 'field',
-      id_question: '0',
-      text: "Qu'est ce que tu as appris ?",
-    },
-    {
-      type: 'check',
-      id_question: '0',
-      text: 'Cb tu notes ce cour ?',
-      reponse: [
-        { rep: '1' },
-        { rep: '2' },
-        { rep: '3' },
-      ],
-    },
-  ],
-};
-
-const dataJsonNull = {
-  name: 'No_activity',
-  Question: [
-  ],
-};
-
 
 export default class Activity extends React.PureComponent {
     state = {
       data: dataJson,
+      userReponse: {
+        Question: [
+        ],
+      },
     };
 
-    send = () => { // pour des test à la con
-      const object = this.refs.Progress1;
+    componentWillMount() {
+      this.genereateJSONUserResponse();
+    }
 
-      var stringToJSON = '{ userReponse: [';
-
-      for (let i = 0; i < object.childElementCount - 2; i++) {
-        const arg = this.refs[`element${i}`];
-        stringToJSON += ' { id: ';
-
-        stringToJSON += (this.state.data.Question[i].id_question);
-
-        stringToJSON += ' { reponse: ';
-
-        stringToJSON += (arg.state.user_reponse);
-
-        stringToJSON += ' }';
+    genereateJSONUserResponse = () => {
+      const newUserResponse = {
+        Question: [
+        ],
+      };
+      const { data } = this.state;
+      for (let i = 0; i < data.Question.length; i += 1) {
+        const modDataOneResponse = {
+          id: 0,
+          response: '',
+        };
+        modDataOneResponse.id = data.Question[i].idQuestion;
+        newUserResponse.Question.push(modDataOneResponse);
       }
-      stringToJSON += '] };';
-      /*
-      console.log(stringToJSON);
-      var newJSON = JSON.(stringToJSON);
-        console.log(newJSON);
-        console.log(newJSON.userReponse[2].reponse);
-      */
-      /*
-        this.props.children.forEach(
-            this.props.children,
-            x => x
-        )
-        */
-      /*
-        this.setState({
-                data: dataJsonNull
-        });
-        */
+      this.setState({ userReponse: newUserResponse });
+    }
+
+    send = () => { // pour des test à la con
+      // const { userReponse } = this.state;
+      // alert(userReponse.Question);
+    };
+
+    editResponse = (indexQuestion, newResponse) => {
+      const { userReponse } = this.state;
+      userReponse.Question[indexQuestion].response = newResponse;
+      this.setState({ userReponse });
+      this.forceUpdate();
     };
 
     render() {
+      const { data } = this.state;
       return (
-        <div ref="Progress1">
-          <a>
-            {' '}
-            {this.state.data.name}
-            {' '}
-          </a>
-          {this.state.data.Question.map((ques, index) => {
+        <div>
+          {data.name}
+          {data.Question.map((ques, index) => {
             if (ques.type === 'field') {
               return (
                 <ActTextField
-                  ref={`element${index}`}
-                  key={index}
+                  key={ques.idQuestion}
                   id={index}
                   text={ques.text}
+                  editResponse={this.editResponse}
                 />
               );
             }
             if (ques.type === 'check') {
               return (
                 <ActTextCheck
-                  ref={`element${index}`}
-                  key={index}
+                  key={ques.idQuestion}
+                  id={index}
                   text={ques.text}
-                  list_reponse={ques.reponse}
+                  listTextResponse={ques.response}
+                  editResponse={this.editResponse}
                 />
               );
             }
+            if (ques.type === 'checkMult') {
+              return (
+                <ActTextCheckMult
+                  key={ques.idQuestion}
+                  id={index}
+                  text={ques.text}
+                  listTextResponse={ques.response}
+                  editResponse={this.editResponse}
+                />
+              );
+            }
+            return (<></>);
           })}
+
           <div>
-            <button onClick={this.send}>
-              Send
+            <button type="submit" onClick={this.send}>
+                    Send
             </button>
           </div>
         </div>

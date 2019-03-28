@@ -1,17 +1,24 @@
 import React from 'react';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default class Home extends React.PureComponent {
-    connectionFixture = () => {
-      console.log(document.getElementById('name').value);
-
+const ButtonChange = withRouter(({ history }) => (
+  <button
+    type="button"
+    onClick={() => {
       if (document.getElementById('name').value === 'BDH') {
-        this.props.history.push('/Dashboard');
+        history.push('/Dashboard');
       }
       if (document.getElementById('name').value === 'Batou') {
-        this.props.history.push('/Fishtank');
+        history.push('/Fishtank');
       }
-    };
+    }}
+  >
+        Connexion
+  </button>
+));
+
+export default class Home extends React.PureComponent {
+    uselessFct = () => {} // TODO : change this, logic for new connection
 
     render() {
       return (
@@ -21,7 +28,7 @@ export default class Home extends React.PureComponent {
           <div>
             Se connecter en tant que :
             <input id="name" type="text" />
-            <button onClick={this.connectionFixture}> Connexion </button>
+            <ButtonChange />
           </div>
         </>
       );

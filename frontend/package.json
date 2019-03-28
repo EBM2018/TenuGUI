@@ -7,7 +7,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/"
   },
   "browserslist": [
     ">0.2%",
@@ -17,25 +18,29 @@
   ],
   "devDependencies": {
     "@types/classnames": "^2.2.7",
-    "@types/jest": "^24.0.9",
-    "@types/prop-types": "^15.5.9",
-    "@types/react": "^16.8.4",
+    "@types/jest": "^24.0.11",
+    "@types/prop-types": "^15.7.0",
+    "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
-    "@types/react-router": "^4.4.4",
+    "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.1",
+    "@types/socket.io-client": "^1.4.32",
     "eslint-config-airbnb": "^17.1.0",
-    "react-test-renderer": "^16.8.3"
+    "react-test-renderer": "^16.8.3",
+    "react-testing-library": "^6.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
     "bulma": "^0.7.4",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
-    "react-testing-library": "^6.0.0",
+    "react-router-prop-types": "^1.0.4",
+    "react-scripts": "^2.1.8",
+    "socket.io-client": "^2.0.2",
+    "socket.io-json-parser": "^2.1.0",
     "superagent": "^4.1.0"
   }
 }

@@ -1,32 +1,46 @@
 import React from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import './Dashboard.css';
 
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
+import { createFishtank } from '../../service/API/requests';
 
 export default class Dashboard extends React.PureComponent {
-    todoStartFishtank = () => { // TODO : change this shit
-      this.props.history.push('/FishtankAdmin');
+    static propTypes = {
+      history: ReactRouterPropTypes.history.isRequired,
+    }
+
+    // TODO : change this, logic for new fishtank
+    todoStartFishtank = async () => { // TODO : change this shit
+      const { history } = this.props;
+      createFishtank(() => history.push('/FishtankAdmin'));
     };
 
     render() {
       return (
         <>
           <div>
-            <> Ma Bibliothéque </>
-            <button id="buttonStartFishtank" onClick={this.todoStartFishtank}> Démarrer une séance </button>
+            <> Ma Bibliothèque </>
+            <button type="button" onClick={this.todoStartFishtank}>
+                Start Fishtank
+            </button>
           </div>
           <div id="dashboardContainer">
-            <a id="firstColumn">
+            <p id="firstColumn">
               <MyActivity />
               <MyActions />
-            </a>
-            <a id="C" />
-            <MyDescription id="flex" />
+            </p>
+            <p id="secondColumn">
+              <MyDescription id="flex" />
+            </p>
           </div>
         </>
       );
     }
 }
+// <button type="button" id="buttonStartFishtank"
+// onClick={() => {history.push('/FishtankAdmin')}}>
+// Démarrer une séance </button>

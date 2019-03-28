@@ -1,55 +1,86 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CheckBox from './CheckBox.js';
-import ActTextField from './ActTextField';
+import CheckBox from './CheckBox';
 
 export default class ActTextCheck extends React.PureComponent {
     static propTypes = {
+      id: PropTypes.number.isRequired,
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      list_reponse: PropTypes.arrayOf([
+      listTextResponse: PropTypes.arrayOf([
         PropTypes.string,
         PropTypes.number,
-      ]).isRequired
+      ]).isRequired,
+      editResponse: PropTypes.func.isRequired,
     };
 
     state = {
-        user_reponse: '',
-    };
+      checkState: [],
+    }
 
-    fctChecked = (index_checked, reponse_checked) => {
-      const object = this.refs.checkContainer;
-      for (let i = 0; i < (object.childElementCount - 1)/2; i++) {
-        if (i == index_checked-1) {
-          this.setState({ user_reponse: reponse_checked });
-        } else {
-            var checkrefered = this.refs[`elementCheck${i}`];
-            checkrefered.unCheck();
+    constructor() {
+      super();
+      this.activityContainer = React.createRef();
+    }
+
+    componentWillMount() {
+      const newCheckState = [];
+      const { listTextResponse } = this.props;
+      for (let i = 0; i < listTextResponse.length; i += 1) {
+        newCheckState.push(false);
+      }
+      this.setState({ checkState: newCheckState });
+    }
+
+    fctChecked = (index) => {
+      const { checkState } = this.state;
+      const { editResponse, id } = this.props;
+      if (checkState[index] === true) {
+        checkState[index] = false;
+      } else {
+        checkState[index] = true;
+        for (let i = 0; i < checkState.length; i += 1) {
+          if (i !== index) {
+            checkState[i] = false;
+          }
         }
       }
+      this.setState({ checkState });
+      editResponse(id, this.findResponseUnique());
+      this.forceUpdate();
     };
 
+    findResponseUnique = () => {
+      const { checkState } = this.state;
+      const { listTextResponse } = this.props;
+      for (let i = 0; i < checkState.length; i += 1) {
+        if (checkState[i] === true) {
+          return listTextResponse[i].rep;
+        }
+      }
+      return '';
+    }
+
     render() {
-      var inputs = [];
-      for (let i = 0; i < this.props.list_reponse.length; i++) {
-        inputs.push(this.props.list_reponse[i].rep);
+      const inputs = [];
+      const { listTextResponse, text } = this.props;
+      for (let i = 0; i < listTextResponse.length; i += 1) {
+        inputs.push(listTextResponse[i].rep);
       }
 
+      const { checkState } = this.state;
       return (
-        <div id="container reponse" ref="checkContainer">
+        <div id="container reponse" ref={this.activityContainer}>
           <div>
-            {' '}
-            {this.props.text}
-            {' '}
+            {text}
           </div>
-          {inputs.map((reponse, index) => (
+          {inputs.map((response, index) => (
             <CheckBox
-              ref={`elementCheck${index}`}
-              key={index}
               id={index}
-              reponse={reponse}
+              response={response}
+              check={checkState[index]}
               fctChecked={this.fctChecked}
             />
           ))}

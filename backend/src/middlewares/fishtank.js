@@ -8,7 +8,7 @@ const bail = require('./validation/errorHandler.js');
 module.exports = {
   create: [
     User.isAuthenticated,
-    bail(403),
+    bail(401),
     checkSchema(ValidationSchema.create),
     bail(422),
     Shoal.isValid,
@@ -16,22 +16,24 @@ module.exports = {
   ],
   show: [
     User.isAuthenticated,
-    bail(403),
+    bail(401),
     checkSchema(ValidationSchema.show),
     bail(422),
     CustomRules.show,
     bail(422),
     User.hasAccess,
-    bail(403),
+    bail(401),
   ],
   update: [
     User.isAuthenticated,
-    bail(403),
+    bail(401),
     checkSchema(ValidationSchema.update),
     bail(422),
     CustomRules.update,
     bail(422),
     User.isOwner,
-    bail(403),
+    bail(401),
   ],
 };
+
+// TODO: Add translation strings for validation error messages

@@ -4,32 +4,25 @@ import PropTypes from 'prop-types';
 export default class CheckBox extends React.PureComponent {
     static propTypes = {
       id: PropTypes.PropTypes.number.isRequired,
-      reponse: PropTypes.oneOfType([
+      response: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
+      check: PropTypes.bool.isRequired,
       fctChecked: PropTypes.func.isRequired,
     };
 
     fctCheckedLoc = () => {
-      if (this.refs.checkbox.checked) {
-        this.props.fctChecked(this.props.id + 1, this.props.reponse);
-      }
-    }
-
-    unCheck = () => {
-      this.refs.checkbox.checked = false;
-    }
+      const { id, fctChecked } = this.props;
+      fctChecked(id);
+    };
 
     render() {
+      const { response, check } = this.props;
       return (
         <>
-          <input ref="checkbox" type="checkbox" onChange={this.fctCheckedLoc} />
-          <label>
-            {' '}
-            {this.props.reponse}
-            {' '}
-          </label>
+          <input type="checkbox" onChange={this.fctCheckedLoc} checked={check} />
+          {response}
         </>
       );
     }

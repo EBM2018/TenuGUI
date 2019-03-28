@@ -1,7 +1,20 @@
+const { loadRequestWith } = require('../../middlewares/requestLoading');
+
 const addUser = (validUsers = []) => async (value, { req }) => {
   for (let i = 0; i < validUsers.length; i += 1) {
     if (value === validUsers[i].token) {
-      req.user = validUsers[i];
+      loadRequestWith(req, 'user', validUsers[i]);
+      return true;
+    }
+  }
+  return false;
+};
+
+
+const addUserById = (validUsers = []) => async (value, { req }) => {
+  for (let i = 0; i < validUsers.length; i += 1) {
+    if (value === validUsers[i].id) {
+      loadRequestWith(req, 'user', { token: validUsers[i].token });
       return true;
     }
   }
@@ -23,5 +36,5 @@ const isUserPartOfShoal = (shoalUsers = []) => async (userId) => {
 };
 
 module.exports = {
-  addUser, isValidShoal, isUserPartOfShoal,
+  addUser, addUserById, isValidShoal, isUserPartOfShoal,
 };
