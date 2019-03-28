@@ -1,13 +1,13 @@
-import MyActivity from '../react/Dashboard/MyActivity/MyActivity';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import MyActivity from '../react/Dashboard/MyActivity/MyActivity';
 
-test ('derp',()=>{
-    expect('True').toBeTruthy;
+test('derp', () => {
+  expect('True').toBeTruthy;
 });
-test('does this render', ()=> {
-    const component=renderer
-        .create(<MyActivity/>);
-    let tree=component.toJSON();
-    expect(tree).toMatchSnapshot();
+test('does this render', () => {
+  const component = renderer
+    .create(<MyActivity />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });

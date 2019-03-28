@@ -18,7 +18,7 @@ export default class ActTextCheck extends React.PureComponent {
 
     state = {
       checkState: [],
-    }
+    };
 
     constructor() {
       super();
