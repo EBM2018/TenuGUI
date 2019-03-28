@@ -15,6 +15,10 @@ const validUsers = [{
   id: 1,
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im11cmFzYWlzZ3JlYXR0aG8ifQ.p4PpEK6QQukfVrSQdsJsY1QIrQzY7OEFtmdN_JPrRgY', // A valid user who is always part of the fishtank's shoal
 }];
+const invalidUsers = [{
+  id: 2,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6Im1hcmlzYWJlc3RnaXJsIn0.nlo6R0RtfL9J7UClyJjianLucJK8705WI8zATLsTKXg', // An invalid user according to Teamy
+}];
 
 describe('Fishtank creation validation', () => {
   let app;
@@ -60,5 +64,93 @@ describe('Fishtank creation validation', () => {
       .expect((res) => {
         expect(res.body).toEqual({});
       });
+  });
+
+  test('It should reject an emergency press on a finished fishtank', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.FINISHED,
+      closedAt: null,
+    });
+
+    return request(app)
+      .post(`/api/fishtanks/${fishtank.id}/interactions`)
+      .send({
+        type: FishtankInteractionType.EMERGENCY_PRESS,
+        token: validUsers[1].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(422);
+  });
+
+  test('It should reject an emergency press on an expired fishtank', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.EXPIRED,
+      closedAt: null,
+    });
+
+    return request(app)
+      .post(`/api/fishtanks/${fishtank.id}/interactions`)
+      .send({
+        type: FishtankInteractionType.EMERGENCY_PRESS,
+        token: validUsers[1].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(422);
+  });
+
+  test('It should reject an emergency press without a token', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+
+    return request(app)
+      .post(`/api/fishtanks/${fishtank.id}/interactions`)
+      .send({
+        type: FishtankInteractionType.EMERGENCY_PRESS,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(401);
+  });
+
+  test('It should reject an emergency press with an invalid token', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+
+    return request(app)
+      .post(`/api/fishtanks/${fishtank.id}/interactions`)
+      .send({
+        type: FishtankInteractionType.EMERGENCY_PRESS,
+        token: invalidUsers[0].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(401);
+  });
+
+  test('It should reject an interaction without a type', async () => {
+    const fishtank = await Fishtank.create({
+      ownerId: validUsers[0].id,
+      shoalId: 0,
+      statusId: FishtankStatus.ONGOING,
+      closedAt: null,
+    });
+
+    return request(app)
+      .post(`/api/fishtanks/${fishtank.id}/interactions`)
+      .send({
+        token: validUsers[1].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(422);
   });
 });

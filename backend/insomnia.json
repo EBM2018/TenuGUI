@@ -1,0 +1,372 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2019-03-27T05:45:19.802Z",
+	"__export_source": "insomnia.desktop.app:v6.3.2",
+	"resources": [
+		{
+			"_id": "wrk_78397cb687834f11949b218e6946ec48",
+			"created": 1550419524541,
+			"description": "",
+			"modified": 1553658824313,
+			"name": "TenuGUI",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_ce73dd01e1d347cb8ec80ad2d60218d9",
+			"color": null,
+			"created": 1550419524582,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1550419524582,
+			"modified": 1550419524582,
+			"name": "New Environment",
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_4b4737759c8e499cbf9bcd74a8363e8a",
+			"cookies": [],
+			"created": 1550419524584,
+			"modified": 1550419524584,
+			"name": "Default Jar",
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_e7e5ff0d4de24169b05f1e9dce7f5622",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"token\": \"{{ users.BDH.token }}\"\n}"
+			},
+			"created": 1550420103290,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07a8a7b63a44498abac94d59be377d19",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1550420103290,
+			"method": "GET",
+			"modified": 1553665432037,
+			"name": "Fishtank",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks/{% response 'body', 'req_f53ccedadf18448fb2efc13a2eb6da18', '$.fishtankId' %}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f53ccedadf18448fb2efc13a2eb6da18",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"shoalId\": \"{{ users.Hamza.shoalId }}\",\n\t\"token\": \"{{ users.BDH.token }}\"\n}\n"
+			},
+			"created": 1550423864289,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_ebda3b1eec7e423ba46f8bbc85419a87",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1550420103240,
+			"method": "POST",
+			"modified": 1553665423885,
+			"name": "Fishtanks",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks",
+			"_type": "request"
+		},
+		{
+			"_id": "req_988ff147bd214595880710990963c1f7",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"type\": \"{{ fishtankEditionTypes.FINISH  }}\",\n\t\"token\": \"{{ users.BDH.token }}\"\n}"
+			},
+			"created": 1550440302856,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_3fbb4579b68c4737b01fc19184537a2d",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1550420103190,
+			"method": "PATCH",
+			"modified": 1553665408039,
+			"name": "Fishtanks",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks/{% response 'body', 'req_f53ccedadf18448fb2efc13a2eb6da18', '$.fishtankId' %}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4b8d672c3c7b442a8916d1a38928008f",
+			"authentication": {},
+			"body": {},
+			"created": 1550538508684,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1550766500862.75,
+			"method": "GET",
+			"modified": 1551735943458,
+			"name": "Root",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ead93520e8bb4cc389b291e7562153ba",
+			"authentication": {},
+			"body": {},
+			"created": 1551685007938,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1550420103140,
+			"method": "GET",
+			"modified": 1551685110877,
+			"name": "Users",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": " {{ base_url  }}/users",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d4caea3cae114a73bd4dcd325c99881e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"type\": \"{{ interactionTypes.EMERGENCY_PRESS  }}\",\n  \"token\": \"{{ users.Hamza.token }}\",\n\t\"payload\": \"{\\\"texte\\\":\\\"bonjour\\\"}\"\n}"
+			},
+			"created": 1551687288187,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c43993f60f954ec1ac03095a3d7b859d",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1551687288187,
+			"method": "POST",
+			"modified": 1553665453540,
+			"name": "FishtankInteractions",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks/{% response 'body', 'req_f53ccedadf18448fb2efc13a2eb6da18', '$.fishtankId' %}/interactions",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cb3d55f0c5d445f9883a298be0e524ca",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"token\": \"{{ users.BDH.token }}\"\n}"
+			},
+			"created": 1551702777440,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c43993f60f954ec1ac03095a3d7b859d",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1551400093311.25,
+			"method": "GET",
+			"modified": 1553665448828,
+			"name": "FishtankInteractions",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks/{% response 'body', 'req_f53ccedadf18448fb2efc13a2eb6da18', '$.fishtankId' %}/interactions",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5c368c6d159e49d694b10965a759049f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"id\": \"{{ users.BDH.id  }}\"\n}"
+			},
+			"created": 1552853684178,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_897a4443f4af421c9366d7694eee710a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1550420103090,
+			"method": "POST",
+			"modified": 1553665383199,
+			"name": "Login",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": " {{ base_url  }}/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_07909655e4d74aeb91ad5b2cb89b5b2b",
+			"authentication": {},
+			"body": {},
+			"created": 1552899170920,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1550939699649.125,
+			"method": "GET",
+			"modified": 1553665442101,
+			"name": "FishtankInteractionsTypes",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks/interactions/types",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ab3f54453e40408599acd36826f94efb",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"token\": \"{{ users.Hamza.token }}\"\n}"
+			},
+			"created": 1553029332810,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_07a8a7b63a44498abac94d59be377d19",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1550420103265,
+			"method": "GET",
+			"modified": 1553665428527,
+			"name": "Fishtanks",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/fishtanks",
+			"_type": "request"
+		},
+		{
+			"_id": "env_880136b31fbf46208d5329bcd75bf745",
+			"color": "#5e39ee",
+			"created": 1550419756596,
+			"data": {
+				"base_url": "localhost:4000/api",
+				"fishtankEditionTypes": {
+					"CHANGE_SETTINGS": 0,
+					"FINISH": 1
+				},
+				"interactionTypes": {
+					"ACTIVITY_CHANGE": 1,
+					"COOL_PRESS": 4,
+					"EMERGENCY_PRESS": 2,
+					"FEEDBACK_SUBMIT": 3,
+					"PERIOD_CHANGE": 5
+				},
+				"users": {
+					"BDH": {
+						"id": 5,
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc"
+					},
+					"Batou": {
+						"id": 2,
+						"shoalId": 99999,
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlUmFuZG9tIn0.RhXPI2fUIfjgFQR4JIxeM9ElQsRVagT_XgonQbd5uvk"
+					},
+					"Hamza": {
+						"id": 1,
+						"shoalId": 5,
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlQ2libGUifQ.nXJYbTIvyYaT_Xh6eO6fU0fIsjGuXNv31T4KQB9dIog"
+					}
+				}
+			},
+			"isPrivate": false,
+			"metaSortKey": 1550419756596,
+			"modified": 1553665272983,
+			"name": "TenuGUI",
+			"parentId": "env_ce73dd01e1d347cb8ec80ad2d60218d9",
+			"_type": "environment"
+		}
+	]
+}
