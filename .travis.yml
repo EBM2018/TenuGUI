@@ -35,7 +35,7 @@ script:
   # Backend
   - cd backend
   - npm run lint
-  - npm test
+  - npm test -- --coverage
   - npm run apidoc
   - cd ..
 
