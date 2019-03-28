@@ -1,16 +1,6 @@
 import { sendNewInteractionEmission } from '../API/requests';
 
 export class CommandFishtankAdmin {
-    static startActivity = (fishtankId) => {
-
-      // alert('Start an activity.');
-    };
-
-    static askSummary = (fishtankId) => {
-
-      // alert('Ask for a summary.');
-    };
-
     static askFeedback = (fishtankId) => {
       sendNewInteractionEmission(fishtankId, 18, '');
     };

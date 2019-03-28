@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { instanceOf } from 'prop-types';
@@ -104,7 +105,11 @@ class Home extends React.PureComponent {
                   </div>
                 </div>
                 <div className="column is-2 is-offset-6">
-                  <button className="button is-info is-focus is-fullwidth" onClick={this.todoConnection}>
+                  <button
+                    type="button"
+                    className="button is-info is-focus is-fullwidth"
+                    onClick={this.todoConnection}
+                  >
                                   C'est parti !
                   </button>
                 </div>

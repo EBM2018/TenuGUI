@@ -1,6 +1,6 @@
 import React from 'react';
 import { instanceOf } from 'prop-types';
-import {Cookies, withCookies} from 'react-cookie';
+import { Cookies, withCookies } from 'react-cookie';
 
 class UserAccountWidget extends React.PureComponent {
     static propTypes = {

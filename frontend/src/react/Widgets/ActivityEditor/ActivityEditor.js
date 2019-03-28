@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ActTextFieldEditor from './ActTextFieldEditor';
 import ActTextCheckEditor from './ActTextCheckEditor';
 import ActTextCheckMultEditor from './ActTextCheckMultEditor';
-
+/*
 const dataJson = {
   name: 'Questionnaire_name',
   Question: [
@@ -43,7 +43,7 @@ const dataJson = {
     },
   ],
 };
-
+*/
 const dataField = {
   type: 'field',
   idQuestion: '',

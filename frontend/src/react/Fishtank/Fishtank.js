@@ -5,10 +5,8 @@ import { withCookies, Cookies } from 'react-cookie';
 
 import './Fishtank.css';
 
-import PropTypes from 'prop-types';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
-//import ActivityContainer from './ActivityContainer/ActivityContainer';
 import Activity from '../Widgets/Activity/Activity';
 import { createSocketFishtank, getFishtank } from '../../service/API/requests';
 
@@ -26,10 +24,8 @@ class Fishtank extends React.PureComponent {
     componentWillMount() {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
-      console.log(userJSON);
       if (userJSON === undefined) {
         const { history } = this.props;
-        console.log('retour');
         history.push('/');
       } else {
         try {

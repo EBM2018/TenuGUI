@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 import './FishtankAdmin.css';
 
-import PropTypes from 'prop-types';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
@@ -16,7 +15,7 @@ import { handleNewInteractionEmission, createSocketFishtank } from '../../servic
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
-      cookies: instanceOf(Cookies).isRequired,
+      cookies: PropTypes.instanceOf(Cookies).isRequired,
       infoFishtank: PropTypes.func.isRequired,
     }
 
@@ -61,7 +60,6 @@ class FishtankAdmin extends React.PureComponent {
       const interactions = await handleNewInteractionEmission(infoFishtank.body.fishtankId);
       console.log(interactions);
       this.setState({ nbAskStop: interactions.emergencyPresses });
-
     };
 
     changeNbAlert = (newNb) => {

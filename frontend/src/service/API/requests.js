@@ -24,7 +24,7 @@ export const sendNewInteractionEmission = (fishtankId, type, payload) => {
     .post(`/api/fishtanks/${fishtankId}/interactions`)
     .send({
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
-      type: parseInt(type),
+      type: parseInt(type, 10),
       payload,
     })
     .set('Accept', 'application/json')

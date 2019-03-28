@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -197,7 +198,6 @@ class ButtonLayout extends React.PureComponent {
                 <button
                   type="button"
                   className="button is-danger is-fullwidth"
-                  type="button"
                   onClick={() => { StudentFishtank.askStop(fishtankId); }}
                 >
                     Arrêt d'urgence

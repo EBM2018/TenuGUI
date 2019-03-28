@@ -1,4 +1,3 @@
-import { sendNewInteractionEmission } from '../API/requests';
 
 export const StartNewFishtank = () => {
   // alert('Fishtank starting.');
@@ -9,7 +8,7 @@ export class DashboardMyActivity {
       // alert('Open an activity.');
     };
 
-    static openFeedbackActivity = (fishtankId) => {
+    static openFeedbackActivity = () => {
       //
     };
 }

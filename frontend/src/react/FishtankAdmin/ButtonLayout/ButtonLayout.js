@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ActionsFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
-import { StudentFishtank } from '../../../service/Fishtank/Fishtank';
 
 // import ListSpeed from './ListSpeed/ListSpeed.js';
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js';
