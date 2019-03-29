@@ -23,7 +23,6 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
 * Exécuter `npm start` à la racine pour servir le front-end et le back-end
-
 * Un fichier `insomnia.json` est disponible dans le dossier `backend` pour rapidement explorer les différentes routes.
 
 # Tests
