@@ -1,4 +1,5 @@
-# TenuGUI &middot; [![Build Status](https://travis-ci.com/EBM2018/TenuGUI.svg?branch=master)](https://travis-ci.com/EBM2018/TenuGUI)
+# TenuGUI &middot; [![Build Status](https://travis-ci.com/EBM2018/TenuGUI.svg?branch=master)](https://travis-ci.com/EBM2018/TenuGUI) [![codecov](https://codecov.io/gh/EBM2018/TenuGUI/branch/master/graph/badge.svg)](https://codecov.io/gh/EBM2018/TenuGUI)
+
 
 TenuGUI est une application web cherchant à dynamiser le déroulement d'un enseignement ou d'une formation.  
 Cette application propose :
