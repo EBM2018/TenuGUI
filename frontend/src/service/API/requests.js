@@ -36,11 +36,11 @@ export const sendNewInteractionEmission = (fishtankId, type, payload) => {
     .set('payload', payload)
  */
 
-export const createFishtank = () => request
+export const createFishtank = shoalId => request
   .post('/api/fishtanks')
   .send({
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc',
-    shoalId: 1,
+    shoalId,
   })
   .set('Accept', 'application/json')
   .then(res => res);
