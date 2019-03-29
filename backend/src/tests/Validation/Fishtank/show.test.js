@@ -155,7 +155,7 @@ describe('Fishtank retrieval validation', () => {
   test('It should reject a request with an invalid fishtank id', async () => {
     const maxFishtankId = await Fishtank.max('id');
     return request(app)
-      .get(`/api/fishtanks/${maxFishtankId + 1000}`)
+      .get(`/api/fishtanks/${maxFishtankId + 1}`)
       .send({
         token: validUsers[0].token,
       })

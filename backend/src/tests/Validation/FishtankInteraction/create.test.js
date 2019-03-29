@@ -66,6 +66,19 @@ describe('Fishtank creation validation', () => {
       });
   });
 
+  test('It should reject an emergency press on an invalid fishtank', async () => {
+    const maxFishtankId = await Fishtank.max('id');
+
+    return request(app)
+      .post(`/api/fishtanks/${maxFishtankId.id + 1}/interactions`)
+      .send({
+        type: FishtankInteractionType.EMERGENCY_PRESS,
+        token: validUsers[1].token,
+      })
+      .set('Content-Type', 'application/json')
+      .expect(422);
+  });
+
   test('It should reject an emergency press on a finished fishtank', async () => {
     const fishtank = await Fishtank.create({
       ownerId: validUsers[0].id,

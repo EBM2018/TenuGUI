@@ -17,13 +17,13 @@ describe('Login validation', () => {
 
   beforeEach(() => {
     requestLoader = require('../../../middlewares/requestLoading/');
-    sinon.stub(requestLoader, 'addUserById')
-      .callsFake(faker.addUserById(validUsers));
+    sinon.stub(requestLoader, 'addUserToken')
+      .callsFake(faker.addUserToken(validUsers));
     app = require('../../../');
   });
 
   afterEach(() => {
-    requestLoader.addUserById.restore();
+    requestLoader.addUserToken.restore();
   });
 
   afterAll(async (done) => {
