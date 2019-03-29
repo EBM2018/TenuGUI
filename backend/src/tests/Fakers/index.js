@@ -48,5 +48,5 @@ const isUserPartOfShoal = (shoalUsers = []) => async (userId) => {
 };
 
 module.exports = {
-  addUser, addUserToken, isValidShoal, isUserPartOfShoal,
+  addUser, addUserToken, isValidShoal, isUserPartOfShoal, getUser, getUserToken,
 };
