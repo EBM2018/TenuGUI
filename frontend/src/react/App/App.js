@@ -19,9 +19,6 @@ import './App.css';
 
 
 class App extends React.PureComponent {
-  state = {
-    infoFishtank: undefined,
-  }
 
   /*
   constuctor(props) {
@@ -67,21 +64,8 @@ class App extends React.PureComponent {
     // localStorage.setItem('rootState', JSON.stringify(this.state));
   }
 */
-  changeInfoFishtank = (res) => {
-    this.setState({ infoFishtank: res });
-    // localStorage.setItem('rootState', JSON.stringify(res));
-    console.log(res);
-    // console.log(JSON.parse(localStorage.getItem('rootState')));
-    /*
-    this.setState({ infoFishtank: res });
-    const { infoFishtank } = this.state;
-    console.log(infoFishtank);
-    this.forceUpdate();
-    */
-  };
 
   render() {
-    const { infoFishtank } = this.state;
     return (
       <div className="bg-img">
         <CookiesProvider>
@@ -97,7 +81,6 @@ class App extends React.PureComponent {
                   path="/Dashboard"
                   render={props => (
                     <Dashboard
-                      changeInfo={this.changeInfoFishtank}
                       {...props}
                     />
                   )}
@@ -106,8 +89,6 @@ class App extends React.PureComponent {
                   path="/Fishtank"
                   render={props => (
                     <Fishtank
-                      changeInfo={this.changeInfoFishtank}
-                      infoFishtank={infoFishtank}
                       {...props}
                     />
                   )}
@@ -123,7 +104,6 @@ class App extends React.PureComponent {
 
                   render={props => (
                     <FishtankAdmin
-                      infoFishtank={infoFishtank}
                       {...props}
                     />
                   )}

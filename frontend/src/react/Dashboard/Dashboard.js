@@ -12,7 +12,6 @@ class Dashboard extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
       cookies: PropTypes.instanceOf(Cookies).isRequired,
-      changeInfo: PropTypes.func.isRequired,
     }
 
     componentWillMount() {
@@ -26,9 +25,10 @@ class Dashboard extends React.PureComponent {
 
     // TODO : change this, logic for new fishtank
     todoStartFishtank = async () => {
-      const { history, changeInfo } = this.props;
+      const { history, cookies } = this.props;
       await createFishtank().then((res) => {
-        changeInfo(res);
+        cookies.set('fishtankId', res.body.fishtankId);
+        console.log(cookies.get('fishtankId'));
         history.push('/FishtankAdmin');
       });
     };

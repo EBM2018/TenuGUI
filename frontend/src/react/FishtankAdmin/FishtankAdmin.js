@@ -16,7 +16,6 @@ class FishtankAdmin extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
       cookies: PropTypes.instanceOf(Cookies).isRequired,
-      infoFishtank: PropTypes.func.isRequired,
     }
 
     state = {
@@ -35,29 +34,29 @@ class FishtankAdmin extends React.PureComponent {
     }
 
     componentWillMount() {
-      const { cookies, infoFishtank } = this.props;
+      const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
+      const fishtankId = cookies.get('fishtankId');
+      console.log(`connexion? : ${fishtankId}`);
       if (userJSON === undefined
           || userJSON.shoalId !== undefined
-          || infoFishtank === undefined
-          || infoFishtank.body === undefined
-          || infoFishtank.body.fishtankId === undefined) {
+          || fishtankId === undefined) {
         const { history } = this.props;
         history.push('/');
       } else {
-        createSocketFishtank(infoFishtank.body.fishtankId, this.fishtankInteractionsTeacher);
-        console.log(`connexion : ${infoFishtank.body.fishtankId}`);
+        createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
+        console.log(`connexion : ${fishtankId}`);
       }
     }
 
     fishtankInteractionsTeacher = async (socket) => {
-      const { infoFishtank } = this.props;
+      const { fishtankId } = this.state;
       if (socket.type === 991) {
         let { nbAskQuestion } = this.state;
         nbAskQuestion += 1;
         this.setState({ nbAskQuestion });
       }
-      const interactions = await handleNewInteractionEmission(infoFishtank.body.fishtankId);
+      const interactions = await handleNewInteractionEmission(fishtankId);
       console.log(interactions);
       this.setState({ nbAskStop: interactions.emergencyPresses });
     };
@@ -81,7 +80,8 @@ class FishtankAdmin extends React.PureComponent {
         nbAskReference,
         nbAskExercice,
       } = this.state;
-      const { infoFishtank } = this.props;
+      const { cookies } = this.props;
+      const fishtankId = cookies.get('fishtankId')
       return (
         <div className="bg-color">
           <FishtankHeader
@@ -90,19 +90,19 @@ class FishtankAdmin extends React.PureComponent {
             my="Mon"
           />
           <ButtonLayout
-            fishtankId={infoFishtank.body.fishtankId}
+            fishtankId={fishtankId}
           />
           <div className="columns">
             <Command
-              fishtankId={infoFishtank.body.fishtankId}
+              fishtankId={fishtankId}
             />
 
             <Preview
-              fishtankId={infoFishtank.body.fishtankId}
+              fishtankId={fishtankId}
             />
 
             <Notification
-              fishtankId={infoFishtank.body.fishtankId}
+              fishtankId={fishtankId}
               nbStudent={nbStudent}
               nbAskQuestion={nbAskQuestion}
               nbAskSpeedUp={nbAskSpeedUp}

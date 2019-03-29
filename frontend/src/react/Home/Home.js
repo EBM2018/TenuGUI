@@ -22,6 +22,7 @@ class Home extends React.PureComponent {
       cookies.set(
         'userJSON', userJSON,
         'token', token,
+        'fishtankId', undefined,
         { maxAge: 2 * 3600 },
       );
     };
