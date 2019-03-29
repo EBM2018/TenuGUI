@@ -5,6 +5,10 @@ import StudentFishtank from '../../../service/Fishtank/Fishtank';
 class Notification extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
       nbStudent: PropTypes.number.isRequired,
       nbAskQuestion: PropTypes.number.isRequired,
       nbAskSpeedUp: PropTypes.number.isRequired,

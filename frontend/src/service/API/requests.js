@@ -84,7 +84,7 @@ export const getUserTokenFixture = id => request
 
 
 export const getIdInteractions = () => request
-  .get('/api/users')
+  .get('/api/fishtanks/interactions/types')
   .set('Accept', 'application/json')
   .then(res => res.body);
 

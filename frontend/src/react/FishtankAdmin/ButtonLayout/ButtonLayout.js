@@ -10,6 +10,10 @@ import { ActionsFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdm
 class ButtonLayout extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
     }
 
     render() {

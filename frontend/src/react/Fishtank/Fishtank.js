@@ -8,7 +8,7 @@ import './Fishtank.css';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Activity from '../Widgets/Activity/Activity';
-import { createSocketFishtank, getFishtank } from '../../service/API/requests';
+import { createSocketFishtank, getFishtank, getIdInteractions } from '../../service/API/requests';
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -19,6 +19,7 @@ class Fishtank extends React.PureComponent {
     state = {
       connected: false,
       fishtankId: undefined,
+      idInteractions: undefined,
     }
 
     componentWillMount() {
@@ -31,6 +32,8 @@ class Fishtank extends React.PureComponent {
         try {
           this.connectToFishtank();
           this.setState({ connected: true });
+          const idInteractions = getIdInteractions();
+          this.setState({ idInteractions });
         } catch {
           console.log('pas de Fishtank');
         }

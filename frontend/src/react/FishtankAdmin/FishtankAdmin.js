@@ -10,7 +10,7 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
-import { handleNewInteractionEmission, createSocketFishtank } from '../../service/API/requests';
+import { handleNewInteractionEmission, createSocketFishtank, getIdInteractions } from '../../service/API/requests';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
@@ -20,6 +20,7 @@ class FishtankAdmin extends React.PureComponent {
 
     state = {
       fishtankId: undefined,
+      idInteractions: undefined,
       nbStudent: 24,
       nbAskQuestion: 0,
       nbAskSpeedUp: 0,
@@ -46,20 +47,16 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
+        const idInteractions = getIdInteractions();
         console.log(`connexion : ${fishtankId}`);
         this.setState({ fishtankId });
+        this.setState({ idInteractions });
       }
     }
 
-    fishtankInteractionsTeacher = async (socket) => {
+    fishtankInteractionsTeacher = async () => {
       const { fishtankId } = this.state;
-      if (socket.type === 991) {
-        let { nbAskQuestion } = this.state;
-        nbAskQuestion += 1;
-        this.setState({ nbAskQuestion });
-      }
       const interactions = await handleNewInteractionEmission(fishtankId);
-      console.log(interactions);
       this.setState({ nbAskStop: interactions.emergencyPresses });
     };
 
@@ -70,6 +67,7 @@ class FishtankAdmin extends React.PureComponent {
     render() {
       const {
         fishtankId,
+        idInteractions,
         nbStudent,
         nbAskQuestion,
         nbAskSpeedUp,
@@ -97,18 +95,22 @@ class FishtankAdmin extends React.PureComponent {
           />
           <ButtonLayout
             fishtankId={fishtankId}
+            idInteractions={idInteractions}
           />
           <div className="columns">
             <Command
               fishtankId={fishtankId}
+              idInteractions={idInteractions}
             />
 
             <Preview
               fishtankId={fishtankId}
+              idInteractions={idInteractions}
             />
 
             <Notification
               fishtankId={fishtankId}
+              idInteractions={idInteractions}
               nbStudent={nbStudent}
               nbAskQuestion={nbAskQuestion}
               nbAskSpeedUp={nbAskSpeedUp}
