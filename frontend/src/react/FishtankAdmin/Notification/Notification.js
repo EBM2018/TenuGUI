@@ -49,7 +49,8 @@ class Notification extends React.PureComponent {
           <button
             type="button"
             onClick={() => {
-              console.log(idInteractions.EMERGENCY_PRESS);
+                console.log(idInteractions.EMERGENCY_PRESS);
+                console.log(fishtankId);
               sendNewInteractionEmission(fishtankId, idInteractions.EMERGENCY_PRESS, '');
             }}
           >
