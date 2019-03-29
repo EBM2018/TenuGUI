@@ -1,4 +1,9 @@
-const { loadRequestWith } = require('../../middlewares/requestLoading');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const rewire = require('rewire');
+
+const requestLoading = rewire('../../middlewares/requestLoading');
+// eslint-disable-next-line no-underscore-dangle
+const loadRequestWith = requestLoading.__get__('loadRequestWith');
 
 const addUser = (validUsers = []) => async (value, { req }) => {
   for (let i = 0; i < validUsers.length; i += 1) {
@@ -9,7 +14,6 @@ const addUser = (validUsers = []) => async (value, { req }) => {
   }
   return false;
 };
-
 
 const addUserById = (validUsers = []) => async (value, { req }) => {
   for (let i = 0; i < validUsers.length; i += 1) {

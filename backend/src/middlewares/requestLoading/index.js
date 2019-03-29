@@ -31,5 +31,4 @@ module.exports = {
     loadRequestWith(req, 'fishtankInteractionType', fishtankInteractionType);
     return true;
   },
-  loadRequestWith,
 };
