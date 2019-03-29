@@ -1,6 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   const FishtankInteractionType = sequelize.define('FishtankInteractionType', {
     name: DataTypes.STRING,
+    emittableByAdmin: DataTypes.BOOLEAN,
+    emittableByParticipant: DataTypes.BOOLEAN,
   }, {
     timestamps: false,
   });
