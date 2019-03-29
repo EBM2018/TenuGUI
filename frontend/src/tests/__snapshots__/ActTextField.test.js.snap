@@ -2,11 +2,7 @@
 
 exports[`ActTextField behaves as expected 1`] = `
 <div>
-  <a>
-     
-    This is a test
-     
-  </a>
+  This is a test
   <div>
     <input
       id="input_response"

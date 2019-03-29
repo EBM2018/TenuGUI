@@ -10,26 +10,30 @@ Array [
   >
     <button
       onClick={[Function]}
+      type="button"
     >
       Vous avez Compris ?
     </button>
     <button
       onClick={[Function]}
+      type="button"
     >
       Votre attention svp !
     </button>
     <button
       onClick={[Function]}
+      type="button"
     >
       Faites un résumé
     </button>
     <button
-      onClick={[Function]}
+      type="button"
     >
       Reboot
     </button>
     <button
       onClick={[Function]}
+      type="button"
     >
       Vous en êtes où ?
     </button>

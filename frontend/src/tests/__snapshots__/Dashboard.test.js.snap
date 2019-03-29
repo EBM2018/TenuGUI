@@ -3,18 +3,18 @@
 exports[`does this render 1`] = `
 Array [
   <div>
-     Ma Bibliothéque 
+     Ma Bibliothèque 
     <button
-      id="buttonStartFishtank"
       onClick={[Function]}
+      type="button"
     >
-       Démarrer une séance 
+      Start Fishtank
     </button>
   </div>,
   <div
     id="dashboardContainer"
   >
-    <a
+    <p
       id="firstColumn"
     >
       <div>
@@ -25,11 +25,13 @@ Array [
       >
         <button
           onClick={[Function]}
+          type="button"
         >
           Ouverture
         </button>
         <button
           onClick={[Function]}
+          type="button"
         >
           FeedBack
         </button>
@@ -42,35 +44,40 @@ Array [
       >
         <button
           onClick={[Function]}
+          type="button"
         >
           Vous avez Compris ?
         </button>
         <button
           onClick={[Function]}
+          type="button"
         >
           Votre attention svp !
         </button>
         <button
           onClick={[Function]}
+          type="button"
         >
           Faites un résumé
         </button>
         <button
-          onClick={[Function]}
+          type="button"
         >
           Reboot
         </button>
         <button
           onClick={[Function]}
+          type="button"
         >
           Vous en êtes où ?
         </button>
       </div>
-    </a>
-    <a
-      id="C"
-    />
-    MyDescription
+    </p>
+    <p
+      id="secondColumn"
+    >
+      MyDescription
+    </p>
   </div>,
 ]
 `;

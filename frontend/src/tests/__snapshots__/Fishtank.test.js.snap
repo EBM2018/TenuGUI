@@ -6,6 +6,7 @@ Array [
     id="NameHeader"
   >
     <div>
+      
        
       Aquarium :
       EBM example
@@ -16,110 +17,119 @@ Array [
       some date
     </div>
   </div>,
-  <a>
+  <div>
     <div
       id="ButtonLayoutContainer"
     >
       <button
         id="AskQuestion"
         onClick={[Function]}
+        type="button"
       >
         Posez votre question
       </button>
-      <b
+      <div
         className="dropdown"
       >
         <button
           className="dropbtn"
+          type="button"
         >
-           Changement de Rythme
+          Changement de Rythme
         </button>
-        <b
+        <div
           className="dropdown-content"
         >
-          <b
-            href="#"
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander d aller plus vite
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander d aller moins vite
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Je ne comprends plus rien
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander une pause
-          </b>
-        </b>
-      </b>
-      <b
+          </button>
+        </div>
+      </div>
+      <div
         className="dropdown"
       >
         <button
           className="dropbtn"
+          type="button"
         >
-           
           Précision
         </button>
-        <b
+        <div
           className="dropdown-content"
         >
-          <b
-            href="#"
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander d aller plus vite 2
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander d aller moins vite 2
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Je ne comprends plus rien 2
-          </b>
-          <b
-            href="#"
+          </button>
+          <button
+            className="buttonList"
             onClick={[Function]}
+            type="button"
           >
             Demander une pause 2
-          </b>
-        </b>
-      </b>
+          </button>
+        </div>
+      </div>
     </div>
     <div
       id="clean"
     />
-  </a>,
+  </div>,
+  <button
+    hidden={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Chercher un Fishtank
+  </button>,
   <div>
     ActivityContainer
     <div>
-      <a>
-         
-        Questionnaire_name
-         
-      </a>
+      Questionnaire_name
       <div>
-        <a>
-           
-          Qu'est ce que tu as appris ?
-           
-        </a>
+        Qu'est ce que tu as appris ?
         <div>
           <input
             id="input_response"
@@ -129,11 +139,7 @@ Array [
         </div>
       </div>
       <div>
-        <a>
-           
-          Qu'est ce qui t'as étonné ?
-           
-        </a>
+        Qu'est ce qui t'as étonné ?
         <div>
           <input
             id="input_response"
@@ -143,11 +149,7 @@ Array [
         </div>
       </div>
       <div>
-        <a>
-           
-          Qu'est ce que tu voudrais avoir plus ou en plus ?
-           
-        </a>
+        Qu'est ce que tu voudrais avoir plus ou en plus ?
         <div>
           <input
             id="input_response"
@@ -157,11 +159,7 @@ Array [
         </div>
       </div>
       <div>
-        <a>
-           
-          Qu'est ce que tu voudrais avoir moins ou en moins ?
-           
-        </a>
+        Qu'est ce que tu voudrais avoir moins ou en moins ?
         <div>
           <input
             id="input_response"
@@ -174,59 +172,43 @@ Array [
         id="container reponse"
       >
         <div>
-           
           Cb tu notes ce cour ?
-           
         </div>
         <input
+          checked={false}
           onChange={[Function]}
           type="checkbox"
         />
-        <label>
-           
-          1
-           
-        </label>
+        1
         <input
+          checked={false}
           onChange={[Function]}
           type="checkbox"
         />
-        <label>
-           
-          2
-           
-        </label>
+        2
         <input
+          checked={false}
           onChange={[Function]}
           type="checkbox"
         />
-        <label>
-           
-          3
-           
-        </label>
+        3
         <input
+          checked={false}
           onChange={[Function]}
           type="checkbox"
         />
-        <label>
-           
-          4
-           
-        </label>
+        4
         <input
+          checked={false}
           onChange={[Function]}
           type="checkbox"
         />
-        <label>
-           
-          5
-           
-        </label>
+        5
       </div>
       <div>
         <button
           onClick={[Function]}
+          type="submit"
         >
           Send
         </button>

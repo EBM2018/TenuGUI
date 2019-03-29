@@ -5,6 +5,7 @@ exports[`does this render 1`] = `
   id="NameHeader"
 >
   <div>
+    
      
     Aquarium :
     Testing in JS

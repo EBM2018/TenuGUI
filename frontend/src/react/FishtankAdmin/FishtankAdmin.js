@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { instanceOf } from 'prop-types';
+import { instanceOf, PropTypes } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 import './FishtankAdmin.css';
 
-import PropTypes from 'prop-types';
+
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';

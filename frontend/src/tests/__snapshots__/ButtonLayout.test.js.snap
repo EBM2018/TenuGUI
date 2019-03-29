@@ -1,94 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<a>
+<div>
   <div
     id="ButtonLayoutContainer"
   >
     <button
       id="AskQuestion"
       onClick={[Function]}
+      type="button"
     >
       Posez votre question
     </button>
-    <b
+    <div
       className="dropdown"
     >
       <button
         className="dropbtn"
+        type="button"
       >
-         Changement de Rythme
+        Changement de Rythme
       </button>
-      <b
+      <div
         className="dropdown-content"
       >
-        <b
-          href="#"
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander d aller plus vite
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander d aller moins vite
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Je ne comprends plus rien
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander une pause
-        </b>
-      </b>
-    </b>
-    <b
+        </button>
+      </div>
+    </div>
+    <div
       className="dropdown"
     >
       <button
         className="dropbtn"
+        type="button"
       >
-         
         Précision
       </button>
-      <b
+      <div
         className="dropdown-content"
       >
-        <b
-          href="#"
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander d aller plus vite 2
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander d aller moins vite 2
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Je ne comprends plus rien 2
-        </b>
-        <b
-          href="#"
+        </button>
+        <button
+          className="buttonList"
           onClick={[Function]}
+          type="button"
         >
           Demander une pause 2
-        </b>
-      </b>
-    </b>
+        </button>
+      </div>
+    </div>
   </div>
   <div
     id="clean"
   />
-</a>
+</div>
 `;

@@ -13,18 +13,21 @@ exports[`does this render 1`] = `
     <button
       id="Start"
       onClick={[Function]}
+      type="button"
     >
       Ouverture
     </button>
     <button
       id="AskSummary"
       onClick={[Function]}
+      type="button"
     >
       Faites un résumé
     </button>
     <button
       id="AskFeedback"
       onClick={[Function]}
+      type="button"
     >
       Feedback
     </button>

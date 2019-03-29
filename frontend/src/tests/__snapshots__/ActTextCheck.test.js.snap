@@ -5,25 +5,7 @@ exports[`does this render 1`] = `
   id="container reponse"
 >
   <div>
-     
     maybe
-     
   </div>
-  <input
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <label>
-     
-     
-  </label>
-  <input
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <label>
-     
-     
-  </label>
 </div>
 `;

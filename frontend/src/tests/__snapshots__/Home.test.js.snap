@@ -16,8 +16,9 @@ Array [
     />
     <button
       onClick={[Function]}
+      type="button"
     >
-       Connexion 
+      Connexion
     </button>
   </div>,
 ]

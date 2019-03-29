@@ -5,23 +5,20 @@ exports[`Layout renders correctly 1`] = `
   <div
     id="header"
   >
-    <a>
+    <p>
       Header
-    </a>
-    <a>
+    </p>
+    <p>
       UserAccountWidget
-    </a>
+    </p>
   </div>
   <main>
     <input
+      checked={true}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      42
-       
-    </label>
+    42
   </main>
   <footer>
     footer

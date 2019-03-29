@@ -3,13 +3,10 @@
 exports[`CheckBox renders correctly 1`] = `
 Array [
   <input
+    checked={true}
     onChange={[Function]}
     type="checkbox"
   />,
-  <label>
-     
-    test
-     
-  </label>,
+  "42",
 ]
 `;

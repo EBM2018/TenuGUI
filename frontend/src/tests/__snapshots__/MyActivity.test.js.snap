@@ -10,11 +10,13 @@ Array [
   >
     <button
       onClick={[Function]}
+      type="button"
     >
       Ouverture
     </button>
     <button
       onClick={[Function]}
+      type="button"
     >
       FeedBack
     </button>

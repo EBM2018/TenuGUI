@@ -120,10 +120,10 @@ class App extends React.PureComponent {
                 path="/FishtankAdmin"
 
                 render={props => (
-                    <FishtankAdmin
-                        infoFishtank={infoFishtank}
-                        {...props}
-                    />
+                  <FishtankAdmin
+                    infoFishtank={infoFishtank}
+                    {...props}
+                  />
                 )}
               />
             </Switch>

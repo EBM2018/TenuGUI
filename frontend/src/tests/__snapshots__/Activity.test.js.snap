@@ -2,17 +2,9 @@
 
 exports[`does this render 1`] = `
 <div>
-  <a>
-     
-    Questionnaire_name
-     
-  </a>
+  Questionnaire_name
   <div>
-    <a>
-       
-      Qu'est ce que tu as appris ?
-       
-    </a>
+    Qu'est ce que tu as appris ?
     <div>
       <input
         id="input_response"
@@ -22,11 +14,7 @@ exports[`does this render 1`] = `
     </div>
   </div>
   <div>
-    <a>
-       
-      Qu'est ce qui t'as étonné ?
-       
-    </a>
+    Qu'est ce qui t'as étonné ?
     <div>
       <input
         id="input_response"
@@ -36,11 +24,7 @@ exports[`does this render 1`] = `
     </div>
   </div>
   <div>
-    <a>
-       
-      Qu'est ce que tu voudrais avoir plus ou en plus ?
-       
-    </a>
+    Qu'est ce que tu voudrais avoir plus ou en plus ?
     <div>
       <input
         id="input_response"
@@ -50,11 +34,7 @@ exports[`does this render 1`] = `
     </div>
   </div>
   <div>
-    <a>
-       
-      Qu'est ce que tu voudrais avoir moins ou en moins ?
-       
-    </a>
+    Qu'est ce que tu voudrais avoir moins ou en moins ?
     <div>
       <input
         id="input_response"
@@ -67,59 +47,43 @@ exports[`does this render 1`] = `
     id="container reponse"
   >
     <div>
-       
       Cb tu notes ce cour ?
-       
     </div>
     <input
+      checked={false}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      1
-       
-    </label>
+    1
     <input
+      checked={false}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      2
-       
-    </label>
+    2
     <input
+      checked={false}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      3
-       
-    </label>
+    3
     <input
+      checked={false}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      4
-       
-    </label>
+    4
     <input
+      checked={false}
       onChange={[Function]}
       type="checkbox"
     />
-    <label>
-       
-      5
-       
-    </label>
+    5
   </div>
   <div>
     <button
       onClick={[Function]}
+      type="submit"
     >
       Send
     </button>
