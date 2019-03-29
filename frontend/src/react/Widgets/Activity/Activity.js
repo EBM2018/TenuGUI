@@ -1,11 +1,13 @@
 import React from 'react';
 
 // import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
 // import index from '../../../service/Websockets';
 
+/*
 const dataJson = {
   name: 'Questionnaire_name',
   Question: [
@@ -43,10 +45,24 @@ const dataJson = {
     },
   ],
 };
+*/
+const dataNull = {
+  name: '',
+  Question: [
+  ],
+};
 
 export default class Activity extends React.PureComponent {
+    static propTypes = {
+      fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+    }
+
     state = {
-      data: dataJson,
+      data: dataNull,
       userReponse: {
         Question: [
         ],

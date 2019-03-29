@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StudentFishtank from '../../../service/Fishtank/Fishtank';
+import { sendNewInteractionEmission } from '../../../service/API/requests';
+
 
 class Notification extends React.PureComponent {
     static propTypes = {
@@ -9,26 +10,11 @@ class Notification extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      nbStudent: PropTypes.number.isRequired,
-      nbAskQuestion: PropTypes.number.isRequired,
-      nbAskSpeedUp: PropTypes.number.isRequired,
-      nbAskSpeedDown: PropTypes.number.isRequired,
-      nbNotUnderstand: PropTypes.number.isRequired,
-      nbAskStop: PropTypes.number.isRequired,
-      nbAskReexplain: PropTypes.number.isRequired,
-      nbAskDetails: PropTypes.number.isRequired,
-      nbAskExample: PropTypes.number.isRequired,
-      nbAskAnecdote: PropTypes.number.isRequired,
-      nbAskReference: PropTypes.number.isRequired,
-      nbAskExercice: PropTypes.number.isRequired,
+      nbInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
       changeNbAlert: PropTypes.func.isRequired,
-    }
-
-    add = () => {
-      let { nbAskStop } = this.props;
-      const { changeNbAlert } = this.props;
-      nbAskStop += 1;
-      changeNbAlert(nbAskStop);
     }
 
     reset = () => {
@@ -39,39 +25,33 @@ class Notification extends React.PureComponent {
     render() {
       const {
         fishtankId,
-        nbStudent,
-        nbAskQuestion,
-        nbAskSpeedUp,
-        nbAskSpeedDown,
-        nbNotUnderstand,
-        nbAskStop,
-        nbAskReexplain,
-        nbAskDetails,
-        nbAskExample,
-        nbAskAnecdote,
-        nbAskReference,
-        nbAskExercice,
+        idInteractions,
+        nbInteractions,
       } = this.props;
+      const nbStudent = 10;
       return (
         <div className="column is-3">
           <h2 className="is-h2 add15-margin-top">Notification élèves</h2>
 
-          <progress value={nbAskQuestion} max={nbStudent} data-label="Question :" />
-          <progress value={nbAskSpeedUp} max={nbStudent} data-label="Plus vite :" />
-          <progress value={nbAskSpeedDown} max={nbStudent} data-label="Moins vite :" />
-          <progress value={nbNotUnderstand} max={nbStudent} data-label="Ne comprends pas :" />
-          <progress value={nbAskStop} max={nbStudent} data-label="STOP :" />
-          <progress value={nbAskReexplain} max={nbStudent} data-label="Reexplication :" />
-          <progress value={nbAskDetails} max={nbStudent} data-label="Details :" />
-          <progress value={nbAskExample} max={nbStudent} data-label="Exemple :" />
-          <progress value={nbAskAnecdote} max={nbStudent} data-label="Anecdote :" />
-          <progress value={nbAskReference} max={nbStudent} data-label="Reference :" />
-          <progress value={nbAskExercice} max={nbStudent} data-label="Exercice :" />
+          <progress value={0} max={nbStudent} data-label="Question :" />
+          <progress value={0} max={nbStudent} data-label="Plus vite :" />
+          <progress value={0} max={nbStudent} data-label="Moins vite :" />
+          <progress value={0} max={nbStudent} data-label="Ne comprends pas :" />
+          <progress value={nbInteractions.emergencyPressesCount} max={nbStudent} data-label="STOP :" />
+          <progress value={0} max={nbStudent} data-label="Reexplication :" />
+          <progress value={0} max={nbStudent} data-label="Details :" />
+          <progress value={0} max={nbStudent} data-label="Exemple :" />
+          <progress value={0} max={nbStudent} data-label="Anecdote :" />
+          <progress value={0} max={nbStudent} data-label="Reference :" />
+          <progress value={0} max={nbStudent} data-label="Exercice :" />
           <button type="button" onClick={this.add} hidden> +1 </button>
           <button type="button" onClick={this.reset} hidden> reset </button>
           <button
             type="button"
-            onClick={() => { StudentFishtank.askStop(fishtankId); }}
+            onClick={() => {
+              console.log(idInteractions.EMERGENCY_PRESS);
+              sendNewInteractionEmission(fishtankId, idInteractions.EMERGENCY_PRESS, '');
+            }}
           >
                     add
           </button>

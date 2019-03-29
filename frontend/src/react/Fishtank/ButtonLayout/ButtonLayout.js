@@ -9,6 +9,10 @@ import StudentFishtank from '../../../service/Fishtank/Fishtank';
 class ButtonLayout extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
     }
 
     sendQuestion = (event) => {

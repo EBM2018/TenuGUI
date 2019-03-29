@@ -32,8 +32,7 @@ class Fishtank extends React.PureComponent {
         try {
           this.connectToFishtank();
           this.setState({ connected: true });
-          const idInteractions = getIdInteractions();
-          this.setState({ idInteractions });
+          this.getFishtankIdInteractions();
         } catch {
           console.log('pas de Fishtank');
         }
@@ -57,35 +56,18 @@ class Fishtank extends React.PureComponent {
       }
     }
 
-    fishtankInteractionsStudent = (socket) => {
-      if (socket.type === 11) {
-        console.log('start new activity');
-      }
-      if (socket.type === 12) {
-        console.log('demand a summary');
-      }
-      if (socket.type === 13) {
-        console.log('demand feed back');
-      }
-      if (socket.type === 6) {
-        console.log('demand if you understand');
-      }
-      if (socket.type === 7) {
-        console.log('ask attention');
-      }
-      if (socket.type === 8) {
-        console.log('demand a summary');
-      }
-      if (socket.type === 9) {
-        console.log('ask for a reboost');
-      }
-      if (socket.type === 10) {
-        console.log('demand position');
-      }
+    getFishtankIdInteractions = async () => {
+      const idInteractions = await getIdInteractions();
+      this.setState({ idInteractions });
+      console.log(idInteractions);
+    };
+
+    fishtankInteractionsStudent = () => {
+      console.log('interaction reçue');
     }
 
     render() {
-      const { connected, fishtankId } = this.state;
+      const { connected, fishtankId, idInteractions } = this.state;
       return (
         <div className="bg-color">
           <FishtankHeader
@@ -94,6 +76,7 @@ class Fishtank extends React.PureComponent {
           />
           <ButtonLayout
             fishtankId={fishtankId}
+            idInteractions={idInteractions}
           />
           <button
             type="button"
@@ -104,6 +87,7 @@ class Fishtank extends React.PureComponent {
           </button>
           <Activity
             fishtankId={fishtankId}
+            idInteractions={idInteractions}
           />
         </div>
       );

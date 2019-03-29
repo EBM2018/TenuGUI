@@ -21,25 +21,13 @@ class FishtankAdmin extends React.PureComponent {
     state = {
       fishtankId: undefined,
       idInteractions: undefined,
-      nbStudent: 24,
-      nbAskQuestion: 0,
-      nbAskSpeedUp: 0,
-      nbAskSpeedDown: 0,
-      nbNotUnderstand: 0,
-      nbAskStop: 0,
-      nbAskReexplain: 0,
-      nbAskDetails: 0,
-      nbAskExample: 0,
-      nbAskAnecdote: 0,
-      nbAskReference: 0,
-      nbAskExercice: 0,
+      nbInteractions: { emergencyPressesCount: 0 },
     }
 
     componentWillMount() {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
       const fishtankId = cookies.get('fishtankId');
-      console.log(`connexion? : ${fishtankId}`);
       if (userJSON === undefined
           || userJSON.shoalId !== undefined
           || fishtankId === undefined) {
@@ -47,39 +35,31 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
-        const idInteractions = getIdInteractions();
-        console.log(`connexion : ${fishtankId}`);
-        this.setState({ fishtankId });
-        this.setState({ idInteractions });
+        this.getFishtankIdInteractions();
       }
     }
 
     fishtankInteractionsTeacher = async () => {
       const { fishtankId } = this.state;
       const interactions = await handleNewInteractionEmission(fishtankId);
-      this.setState({ nbAskStop: interactions.emergencyPresses });
+      this.setState({ nbInteractions: interactions });
     };
 
-    changeNbAlert = (newNb) => {
-      this.setState({ nbAskStop: newNb });
+    getFishtankIdInteractions = async () => {
+      const idInteractions = await getIdInteractions();
+      this.setState({ idInteractions });
+      console.log(idInteractions);
+    };
+
+    changeNbAlert = () => {
+      this.setState({ nbInteractions: {} });
     };
 
     render() {
       const {
         fishtankId,
         idInteractions,
-        nbStudent,
-        nbAskQuestion,
-        nbAskSpeedUp,
-        nbAskSpeedDown,
-        nbNotUnderstand,
-        nbAskStop,
-        nbAskReexplain,
-        nbAskDetails,
-        nbAskExample,
-        nbAskAnecdote,
-        nbAskReference,
-        nbAskExercice,
+        nbInteractions,
       } = this.state;
       /*
       const { cookies } = this.props;
@@ -111,18 +91,7 @@ class FishtankAdmin extends React.PureComponent {
             <Notification
               fishtankId={fishtankId}
               idInteractions={idInteractions}
-              nbStudent={nbStudent}
-              nbAskQuestion={nbAskQuestion}
-              nbAskSpeedUp={nbAskSpeedUp}
-              nbAskSpeedDown={nbAskSpeedDown}
-              nbNotUnderstand={nbNotUnderstand}
-              nbAskStop={nbAskStop}
-              nbAskReexplain={nbAskReexplain}
-              nbAskDetails={nbAskDetails}
-              nbAskExample={nbAskExample}
-              nbAskAnecdote={nbAskAnecdote}
-              nbAskReference={nbAskReference}
-              nbAskExercice={nbAskExercice}
+              nbInteractions={nbInteractions}
               changeNbAlert={this.changeNbAlert}
             />
 
