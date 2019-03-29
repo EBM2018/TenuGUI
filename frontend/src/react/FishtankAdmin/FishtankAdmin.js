@@ -81,7 +81,7 @@ class FishtankAdmin extends React.PureComponent {
         nbAskExercice,
       } = this.state;
       const { cookies } = this.props;
-      const fishtankId = cookies.get('fishtankId')
+      const fishtankId = cookies.get('fishtankId');
       return (
         <div className="bg-color">
           <FishtankHeader
