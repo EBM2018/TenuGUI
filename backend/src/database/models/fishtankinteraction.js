@@ -41,16 +41,34 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  FishtankInteraction.getFormattedInteractions = async fishtankId => ({
-    emergencyPressesCount: await FishtankInteraction.count(
-      {
-        where: {
-          fishtankId,
-          typeId: sequelize.models.FishtankInteractionType.EMERGENCY_PRESS,
+  FishtankInteraction.getFormattedInteractions = (fishtankId) => {
+    const { FishtankInteractionType } = sequelize.models;
+    const { Op } = sequelize;
+    const countsKeys = {
+      [FishtankInteractionType.EMERGENCY_PRESS]: 'emergencyPressesCount',
+      [FishtankInteractionType.COOL_PRESS]: 'coolPressesCount',
+    };
+
+    const counts = FishtankInteraction.findAll({
+      where: {
+        fishtankId,
+        typeId: {
+          [Op.in]: [
+            FishtankInteractionType.EMERGENCY_PRESS,
+            FishtankInteractionType.COOL_PRESS,
+          ],
         },
       },
-    ),
-  });
+      group: ['typeId'],
+      attributes: ['typeId', [sequelize.fn('COUNT', 'typeId'), 'count']],
+    })
+      .then(groups => (groups.reduce((acc, group) => {
+        const { count, typeId } = group.dataValues;
+        acc[countsKeys[typeId]] = count;
+        return acc;
+      }, {})));
+    return counts;
+  };
 
   return FishtankInteraction;
 };
