@@ -46,7 +46,7 @@ class StudentFishtank {
     };
 
     static askStop = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 1, '');
+      sendNewInteractionEmission(fishtankId, 2, '');
     };
 }
 

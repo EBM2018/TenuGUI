@@ -52,13 +52,13 @@ class Dashboard extends React.PureComponent {
             </div>
           </div>
           <div className="columns">
-            <p className="column add-margin-left add15-margin-top is-5">
+            <div className="column add-margin-left add15-margin-top is-5">
               <MyActivity />
               <MyActions />
-            </p>
-            <p id="secondColumn">
+            </div>
+            <div id="secondColumn">
               <MyDescription id="flex" />
-            </p>
+            </div>
           </div>
         </div>
       );

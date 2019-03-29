@@ -19,6 +19,7 @@ class FishtankAdmin extends React.PureComponent {
     }
 
     state = {
+      fishtankId: undefined,
       nbStudent: 24,
       nbAskQuestion: 0,
       nbAskSpeedUp: 0,
@@ -46,6 +47,7 @@ class FishtankAdmin extends React.PureComponent {
       } else {
         createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
         console.log(`connexion : ${fishtankId}`);
+        this.setState({ fishtankId });
       }
     }
 
@@ -67,6 +69,7 @@ class FishtankAdmin extends React.PureComponent {
 
     render() {
       const {
+        fishtankId,
         nbStudent,
         nbAskQuestion,
         nbAskSpeedUp,
@@ -80,8 +83,11 @@ class FishtankAdmin extends React.PureComponent {
         nbAskReference,
         nbAskExercice,
       } = this.state;
+      /*
       const { cookies } = this.props;
       const fishtankId = cookies.get('fishtankId');
+      console.log(`fishtankId : ${{ fishtankId }}`);
+      */
       return (
         <div className="bg-color">
           <FishtankHeader

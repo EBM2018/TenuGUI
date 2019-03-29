@@ -83,4 +83,10 @@ export const getUserTokenFixture = id => request
   .then(res => res.body);
 
 
+export const getIdInteractions = () => request
+  .get('/api/users')
+  .set('Accept', 'application/json')
+  .then(res => res.body);
+
+
 export default {};

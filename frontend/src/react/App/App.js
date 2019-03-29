@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter, Route, Switch,
 } from 'react-router-dom';
-import { CookiesProvider, withCookies } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie';
 
 import Layout from '../Layout/Layout';
 
@@ -26,27 +26,47 @@ const App = () => (
             <Route
               exact
               path="/"
-              component={Home}
+              render={props => (
+                <Home
+                  {...props}
+                />
+              )}
             />
             <Route
               exact
               path="/Dashboard"
-              component={Dashboard}
+              render={props => (
+                <Dashboard
+                  {...props}
+                />
+              )}
             />
             <Route
               exact
               path="/Fishtank"
-              component={Fishtank}
+              render={props => (
+                <Fishtank
+                  {...props}
+                />
+              )}
             />
             <Route
               exact
               path="/FishtankAdmin"
-              component={FishtankAdmin}
+              render={props => (
+                <FishtankAdmin
+                  {...props}
+                />
+              )}
             />
             <Route
               exact
               path="/FishtankEditor"
-              component={FishtankEditor}
+              render={props => (
+                <FishtankEditor
+                  {...props}
+                />
+              )}
             />
           </Switch>
         </BrowserRouter>
@@ -57,8 +77,9 @@ const App = () => (
 
 
 );
+export default App;
 
-export default withCookies(App);
+// export default withCookies(App);
 /*
 
                 <Route
