@@ -66,7 +66,16 @@ module.exports = (sequelize, DataTypes) => {
         const { count, typeId } = group.dataValues;
         acc[countsKeys[typeId]] = count;
         return acc;
-      }, {})));
+      }, {})))
+      .then((groups) => {
+        const completeGroups = {};
+        const countsKeysKeys = Object.keys(countsKeys);
+        for (let i = 0; i < countsKeysKeys.length; i += 1) {
+          const countKey = countsKeys[countsKeysKeys[i]];
+          completeGroups[countKey] = groups[countKey] == null ? 0 : groups[countKey];
+        }
+        return completeGroups;
+      });
     return counts;
   };
 
