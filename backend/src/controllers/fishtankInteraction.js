@@ -6,8 +6,8 @@ module.exports = {
     FishtankInteraction.create({
       fishtankId: req.locals.fishtank.id,
       userId: req.locals.user.id,
-      typeId: req.body.type,
-      payload: {},
+      typeId: req.locals.fishtankInteractionType.id,
+      payload: req.locals.fishtankInteractionPayload,
     })
       .then((fishtankInteraction) => {
         res.status(201).send();
