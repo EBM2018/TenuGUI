@@ -48,6 +48,7 @@ class FishtankAdmin extends React.PureComponent {
 
     getFishtankIdInteractions = async () => {
       const idInteractions = await getIdInteractions();
+      console.log(idInteractions);
       this.setState({ idInteractions });
     };
 
