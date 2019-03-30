@@ -16,7 +16,6 @@ const Header = () => (
         </figure>
       </div>
 
-
       <div className="column is-8" />
       <div className="column">
         <UserAccountWidget />

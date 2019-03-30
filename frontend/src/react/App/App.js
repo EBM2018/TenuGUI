@@ -4,8 +4,6 @@ import {
 } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
-import Layout from '../Layout/Layout';
-
 import Dashboard from '../Dashboard/Dashboard';
 import Fishtank from '../Fishtank/Fishtank';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin';
@@ -15,13 +13,15 @@ import Home from '../Home/Home';
 import '../../service/Websockets';
 import '../bulma.min.css';
 import './App.css';
+import Header from '../Widgets/Header/Header';
 
 
 const App = () => (
   <div className="bg-img">
     <CookiesProvider>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <Header />
           <Switch>
             <Route
               exact
@@ -69,9 +69,8 @@ const App = () => (
               )}
             />
           </Switch>
-        </BrowserRouter>
-      </Layout>
-
+        </div>
+      </BrowserRouter>
     </CookiesProvider>
   </div>
 

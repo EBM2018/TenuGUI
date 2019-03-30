@@ -81,6 +81,7 @@ class Dashboard extends React.PureComponent {
 
               <Popup
                 open={isOpen}
+                onClose={this.handleClose}
               >
                 <span> Choix du groupe </span>
                 <div className="columns">
