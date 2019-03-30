@@ -1,5 +1,14 @@
-const { FishtankInteraction } = require('../database/models');
-const { emitNewInteraction } = require('../websocket');
+const { FishtankInteraction, FishtankInteractionType } = require('../database/models');
+const { emitNewInteraction, emitFeedback } = require('../websocket');
+
+const socketCreateJob = interactionTypeId => (fishtankId, id) => {
+  switch (interactionTypeId) {
+    case FishtankInteractionType.ADMIN.FEEDBACK_ASK:
+      return emitFeedback(fishtankId, id);
+    default:
+      return emitNewInteraction(fishtankId);
+  }
+};
 
 module.exports = {
   create: (req, res) => {
@@ -13,7 +22,7 @@ module.exports = {
         res.status(201).send();
         return fishtankInteraction;
       })
-      .then(fishtankInteraction => emitNewInteraction(fishtankInteraction.fishtankId))
+      .then(({ id, typeId, fishtankId }) => socketCreateJob(typeId)(fishtankId, id))
       .catch(() => res.status(500).send());
   },
   show: (req, res) => {
