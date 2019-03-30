@@ -34,7 +34,7 @@ class FishtankAdmin extends React.PureComponent {
         const { history } = this.props;
         history.push('/');
       } else {
-        this.setState({fishtankId})
+        this.setState({ fishtankId });
         createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
         this.getFishtankIdInteractions();
       }
