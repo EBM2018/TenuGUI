@@ -41,16 +41,61 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  FishtankInteraction.getFormattedInteractions = async fishtankId => ({
-    emergencyPressesCount: await FishtankInteraction.count(
-      {
-        where: {
-          fishtankId,
-          typeId: sequelize.models.FishtankInteractionType.EMERGENCY_PRESS,
+  FishtankInteraction.getFormattedInteractions = async (fishtankId) => {
+    const { FishtankInteractionType } = sequelize.models;
+    const { Op } = sequelize;
+    const countsKeys = {
+      [FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS]: 'emergencyPresses',
+      [FishtankInteractionType.PARTICIPANT.COOL_PRESS]: 'coolPresses',
+      [FishtankInteractionType.PARTICIPANT.FASTER_RHYTHM_ASK]: 'fasterRhythmRequests',
+      [FishtankInteractionType.PARTICIPANT.SLOWER_RHYTHM_ASK]: 'slowerRhythmRequests',
+      [FishtankInteractionType.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY]: 'lowUnderstandingNotifications',
+      [FishtankInteractionType.PARTICIPANT.PAUSE_ASK]: 'pauseRequests',
+      [FishtankInteractionType.PARTICIPANT.EXPLANATIONS_ASK]: 'explanationsRequests',
+      [FishtankInteractionType.PARTICIPANT.DETAILS_ASK]: 'detailsRequests',
+      [FishtankInteractionType.PARTICIPANT.EXAMPLES_ASK]: 'examplesRequests',
+      [FishtankInteractionType.PARTICIPANT.TRIVIA_ASK]: 'triviaRequests',
+      [FishtankInteractionType.PARTICIPANT.REFERENCE_ASK]: 'referenceRequests',
+    };
+
+    const counts = await FishtankInteraction.findAll({
+      where: {
+        fishtankId,
+        typeId: {
+          [Op.in]: [
+            FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
+            FishtankInteractionType.PARTICIPANT.COOL_PRESS,
+            FishtankInteractionType.PARTICIPANT.FASTER_RHYTHM_ASK,
+            FishtankInteractionType.PARTICIPANT.SLOWER_RHYTHM_ASK,
+            FishtankInteractionType.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY,
+            FishtankInteractionType.PARTICIPANT.PAUSE_ASK,
+            FishtankInteractionType.PARTICIPANT.EXPLANATIONS_ASK,
+            FishtankInteractionType.PARTICIPANT.DETAILS_ASK,
+            FishtankInteractionType.PARTICIPANT.EXAMPLES_ASK,
+            FishtankInteractionType.PARTICIPANT.TRIVIA_ASK,
+            FishtankInteractionType.PARTICIPANT.REFERENCE_ASK,
+          ],
         },
       },
-    ),
-  });
+      group: ['typeId'],
+      attributes: ['typeId', [sequelize.fn('COUNT', 'typeId'), 'count']],
+    })
+      .then(groups => (groups.reduce((acc, group) => {
+        const { count, typeId } = group.dataValues;
+        acc[countsKeys[typeId]] = count;
+        return acc;
+      }, {})))
+      .then((groups) => {
+        const completeGroups = {};
+        const countsKeysKeys = Object.keys(countsKeys);
+        for (let i = 0; i < countsKeysKeys.length; i += 1) {
+          const countKey = countsKeys[countsKeysKeys[i]];
+          completeGroups[countKey] = groups[countKey] == null ? 0 : groups[countKey];
+        }
+        return completeGroups;
+      });
+    return { counts };
+  };
 
   return FishtankInteraction;
 };
