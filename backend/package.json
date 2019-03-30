@@ -7,7 +7,7 @@
     "prod": "dotenv node src/index.js",
     "setup-env": "node -e \"(fs => fs.existsSync('.env') || fs.copyFileSync('.env.example', '.env'))(require('fs'))\"",
     "lint": "eslint src/",
-    "test": "dotenv -e .env.testing jest --runInBand",
+    "test": "dotenv -e .env.testing -- jest --runInBand",
     "apidoc": "apidoc -i src/ -o doc/"
   },
   "apidoc": {
@@ -44,6 +44,7 @@
     "eslint-plugin-import": "^2.16.0",
     "jest": "^24.1.0",
     "nodemon": "^1.18.10",
+    "rewire": "^4.0.1",
     "sequelize-cli": "^5.4.0",
     "sinon": "^7.2.4",
     "supertest": "^3.4.2"

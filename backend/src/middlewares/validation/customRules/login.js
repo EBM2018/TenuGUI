@@ -3,7 +3,7 @@ const requestLoader = require('../../requestLoading');
 
 module.exports = {
   post: [
-    body('id').custom(requestLoader.addUserById)
+    body('id').custom(requestLoader.addUserToken)
       .withMessage('must be a valid user id'),
   ],
 };

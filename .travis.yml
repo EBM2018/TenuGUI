@@ -23,8 +23,8 @@ before_script:
   - sequelize db:seed:all
   - cd ../frontend
   - npm ci
-  - npm i codecov
   - cd ..
+  - npm i codecov
 
 script:
   - set -e
@@ -35,19 +35,21 @@ script:
   # Backend
   - cd backend
   - npm run lint
-  - npm test
+  - npm test -- --coverage
   - npm run apidoc
   - cd ..
 
   # Frontend
   - cd frontend
   - npm test -- --coverage
-  - ./node_modules/.bin/codecov
   - npm run lint
   - npm run build
   - cd ..
+  
+  # Codecov
+  - ./node_modules/.bin/codecov
 
-   # Build Docker
+  # Build Docker
   - docker build -t ebm2018/$REPO_NAME:latest .
   - |
     if [[ $TRAVIS_BRANCH == 'master' ]] && [[ $TRAVIS_PULL_REQUEST == 'false' ]];

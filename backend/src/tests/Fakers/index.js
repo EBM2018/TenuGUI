@@ -1,24 +1,36 @@
-const { loadRequestWith } = require('../../middlewares/requestLoading');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const rewire = require('rewire');
 
-const addUser = (validUsers = []) => async (value, { req }) => {
+const requestLoading = rewire('../../middlewares/requestLoading');
+// eslint-disable-next-line no-underscore-dangle
+const loadRequestWith = requestLoading.__get__('loadRequestWith');
+
+const getUser = (validUsers = []) => async (token) => {
   for (let i = 0; i < validUsers.length; i += 1) {
-    if (value === validUsers[i].token) {
-      loadRequestWith(req, 'user', validUsers[i]);
-      return true;
-    }
+    if (token === validUsers[i].token) return validUsers[i];
   }
-  return false;
+  return null;
 };
 
-
-const addUserById = (validUsers = []) => async (value, { req }) => {
+const getUserToken = (validUsers = []) => async (id) => {
   for (let i = 0; i < validUsers.length; i += 1) {
-    if (value === validUsers[i].id) {
-      loadRequestWith(req, 'user', { token: validUsers[i].token });
-      return true;
-    }
+    if (id === validUsers[i].id) return validUsers[i].token;
   }
-  return false;
+  return null;
+};
+
+const addUser = (validUsers = []) => async (value, { req }) => {
+  const user = await getUser(validUsers)(value);
+  if (user == null) return false;
+  loadRequestWith(req, 'user', user);
+  return true;
+};
+
+const addUserToken = (validUsers = []) => async (value, { req }) => {
+  const token = await getUserToken(validUsers)(value);
+  if (token == null) return false;
+  loadRequestWith(req, 'user', { token });
+  return true;
 };
 
 const isValidShoal = (validShoals = []) => async (shoalId) => {
@@ -36,5 +48,5 @@ const isUserPartOfShoal = (shoalUsers = []) => async (userId) => {
 };
 
 module.exports = {
-  addUser, addUserById, isValidShoal, isUserPartOfShoal,
+  addUser, addUserToken, isValidShoal, isUserPartOfShoal, getUser, getUserToken,
 };
