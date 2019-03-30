@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ActionsFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
+import { sendNewInteractionEmission } from '../../../service/API/requests';
 
-// import ListSpeed from './ListSpeed/ListSpeed.js';
-// import ListAccuracy from './ListAccuracy/ListAccuracy.js';
-
+// import ListSpeed from './ListSpeed/ListSpeed.js'; PERIOD_CHANGE: 5
+// import ListAccuracy from './ListAccuracy/ListAccuracy.js'; UNDERSTANDING_ASK: 18
 
 class ButtonLayout extends React.PureComponent {
     static propTypes = {
@@ -17,7 +16,7 @@ class ButtonLayout extends React.PureComponent {
     }
 
     render() {
-      const { fishtankId } = this.props;
+      const { fishtankId, idInteractions } = this.props;
       return (
         <div className="bg-color">
           <div className="columns add-margin ">
@@ -27,7 +26,9 @@ class ButtonLayout extends React.PureComponent {
                   className="button is-info is-inverted is-fullwidth"
                   type="button"
                   name="button"
-                  onClick={() => { ActionsFishtankAdmin.askUnderstanding(fishtankId); }}
+                  onClick={() => {
+                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.PROGRESSION_ASK, '');
+                  }}
                 >
                     Vous avez compris ?
                 </button>
@@ -43,7 +44,9 @@ class ButtonLayout extends React.PureComponent {
                   className="button is-info is-inverted is-fullwidth"
                   type="button"
                   name="button"
-                  onClick={() => { ActionsFishtankAdmin.askSummary(fishtankId); }}
+                  onClick={() => {
+                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.SUMMARY_ASK, '');
+                  }}
                 >
                     Faites un résumé
                 </button>
@@ -59,7 +62,9 @@ class ButtonLayout extends React.PureComponent {
                   className="button is-info is-inverted is-fullwidth"
                   type="button"
                   name="button"
-                  onClick={() => { ActionsFishtankAdmin.askPosition(fishtankId); }}
+                  onClick={() => {
+                    console.log('TODO');
+                  }}
                 >
                           Vous en êtes où ?
                 </button>
@@ -75,7 +80,9 @@ class ButtonLayout extends React.PureComponent {
                   className="button is-info is-inverted is-fullwidth"
                   type="button"
                   name="button"
-                  onClick={() => { ActionsFishtankAdmin.askAttention(fishtankId); }}
+                  onClick={() => {
+                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.ATTENTION_ASK, '');
+                  }}
                 >
                           Votre attention svp !
                 </button>

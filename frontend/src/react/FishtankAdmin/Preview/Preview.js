@@ -2,7 +2,7 @@
 import React from 'react';
 
 const Preview = () => (
-  <div className="column is-6">
+  <>
     <h2 className="is-h2">Prévisualisation de l'activité</h2>
     <h3 className="is-h3">Fonctionnement</h3>
     <p className="is-body">
@@ -29,7 +29,7 @@ const Preview = () => (
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
     <button className="button is-info add-margin-top" type="button" name="button">Lancer l'activité</button>
-  </div>
+  </>
 );
 
 export default Preview;

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { CommandFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
+import { sendNewInteractionEmission } from '../../../service/API/requests';
 
 class Command extends React.PureComponent {
     static propTypes = {
@@ -11,10 +11,13 @@ class Command extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
+      activeActivityObserver: PropTypes.func.isRequired,
     }
 
     render() {
-      const { fishtankId } = this.props;
+      const {
+        fishtankId, idInteractions, activeActivityObserver,
+      } = this.props;
       return (
         <div className="column add-margin-left add15-margin-top is-3">
           <h2 className="is-h2">Mon fil d'Arianne</h2>
@@ -23,23 +26,21 @@ class Command extends React.PureComponent {
             className="button"
             type="button"
             id="Start"
-            onClick={() => { CommandFishtankAdmin.startActivity(fishtankId); }}
+            onClick={() => {
+              activeActivityObserver();
+              sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.ACTIVITY_CHANGE, '');
+            }}
           >
         Ouverture
           </button>
           <button
             className="button"
             type="button"
-            id="AskSummary"
-            onClick={() => { CommandFishtankAdmin.askSummary(fishtankId); }}
-          >
-        Faites un résumé
-          </button>
-          <button
-            className="button"
-            type="button"
             id="AskFeedback"
-            onClick={() => { CommandFishtankAdmin.askFeedback(fishtankId); }}
+            onClick={() => {
+              activeActivityObserver();
+              sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.FEEDBACK_ASK, '');
+            }}
           >
         Feedback
           </button>

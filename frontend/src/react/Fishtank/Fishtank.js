@@ -42,9 +42,11 @@ class Fishtank extends React.PureComponent {
     connectToFishtank = async () => {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
-      const FishtankId = await getFishtank(userJSON.token);
-      createSocketFishtank(FishtankId, this.fishtankInteractionsStudent);
-      this.setState({ fishtankId: FishtankId });
+      const fishtankIds = await getFishtank(userJSON.token);
+      const FishtankIdList = fishtankIds.fishtankIds;
+      const fishtankId = FishtankIdList[FishtankIdList.length - 1];
+      createSocketFishtank(fishtankId, this.fishtankInteractionsStudent);
+      this.setState({ fishtankId });
     }
 
     tryConnexion = () => {

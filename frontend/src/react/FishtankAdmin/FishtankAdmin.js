@@ -11,6 +11,7 @@ import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
 import { handleNewInteractionEmission, createSocketFishtank, getIdInteractions } from '../../service/API/requests';
+import ActivityObserver from './ActivityObserver/ActivityObserver';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
@@ -21,7 +22,10 @@ class FishtankAdmin extends React.PureComponent {
     state = {
       fishtankId: undefined,
       idInteractions: undefined,
-      nbInteractions: { emergencyPressesCount: 0 },
+      nbInteractions: {},
+      nbStudent: 15,
+      activityWaiting: false,
+      nbFinished: 0,
     }
 
     componentWillMount() {
@@ -35,15 +39,21 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         this.setState({ fishtankId });
-        createSocketFishtank(fishtankId, this.fishtankInteractionsTeacher);
+        createSocketFishtank(fishtankId, this.getFishtankNbInteractions);
         this.getFishtankIdInteractions();
+        this.getFishtankNbInteractionsStart(fishtankId);
       }
     }
 
-    fishtankInteractionsTeacher = async () => {
+    getFishtankNbInteractions = async () => {
       const { fishtankId } = this.state;
       const interactions = await handleNewInteractionEmission(fishtankId);
-      this.setState({ nbInteractions: interactions });
+      this.setState({ nbInteractions: interactions.counts });
+    };
+
+    getFishtankNbInteractionsStart = async (fishtankId) => {
+      const interactions = await handleNewInteractionEmission(fishtankId);
+      this.setState({ nbInteractions: interactions.counts });
     };
 
     getFishtankIdInteractions = async () => {
@@ -52,8 +62,12 @@ class FishtankAdmin extends React.PureComponent {
       this.setState({ idInteractions });
     };
 
-    changeNbAlert = () => {
-      this.setState({ nbInteractions: {} });
+    activeActivityObserver = () => {
+      this.setState({ activityWaiting: true });
+    };
+
+    disableActivityObserver = () => {
+      this.setState({ activityWaiting: false });
     };
 
     render() {
@@ -61,12 +75,29 @@ class FishtankAdmin extends React.PureComponent {
         fishtankId,
         idInteractions,
         nbInteractions,
+        nbStudent,
+        activityWaiting,
+        nbFinished,
       } = this.state;
       /*
       const { cookies } = this.props;
       const fishtankId = cookies.get('fishtankId');
       console.log(`fishtankId : ${{ fishtankId }}`);
       */
+      let middleScreen;
+      if (activityWaiting) {
+        middleScreen = (
+          <ActivityObserver
+            nameActivity="Feedback"
+            fishtankId={fishtankId}
+            nbFinished={nbFinished}
+            nbStudent={nbStudent}
+            disableActivityObserver={this.disableActivityObserver}
+          />
+        );
+      } else {
+        middleScreen = <Preview />;
+      }
       return (
         <div className="bg-color">
           <FishtankHeader
@@ -82,18 +113,19 @@ class FishtankAdmin extends React.PureComponent {
             <Command
               fishtankId={fishtankId}
               idInteractions={idInteractions}
+              activeActivityObserver={this.activeActivityObserver}
+              disableActivityObserver={this.disableActivityObserver}
             />
 
-            <Preview
-              fishtankId={fishtankId}
-              idInteractions={idInteractions}
-            />
+            <div className="column is-6">
+              {middleScreen}
+            </div>
 
             <Notification
               fishtankId={fishtankId}
               idInteractions={idInteractions}
               nbInteractions={nbInteractions}
-              changeNbAlert={this.changeNbAlert}
+              nbStudent={nbStudent}
             />
 
           </div>

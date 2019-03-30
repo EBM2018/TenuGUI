@@ -14,12 +14,7 @@ class Notification extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
-      changeNbAlert: PropTypes.func.isRequired,
-    }
-
-    reset = () => {
-      const { changeNbAlert } = this.props;
-      changeNbAlert(0);
+      nbStudent: PropTypes.number.isRequired,
     }
 
     render() {
@@ -27,33 +22,49 @@ class Notification extends React.PureComponent {
         fishtankId,
         idInteractions,
         nbInteractions,
+        nbStudent,
       } = this.props;
-      const nbStudent = 10;
       return (
         <div className="column is-3">
           <h2 className="is-h2 add15-margin-top">Notification élèves</h2>
+          <div className="columns">
+            <div className="column">
+              <p> Arret d'urgence : </p>
+              <p> Pause : </p>
+              <p> Ralentir : </p>
+              <p> Accelerer : </p>
+              <p> Bien :  </p>
+              <p> Details :  </p>
+              <p> Exemples : </p>
+              <p> Anecdote : </p>
+              <p> References: </p>
+              <p> Explication :  </p>
+              <p> Incompréhension : </p>
+            </div>
 
-          <progress value={0} max={nbStudent} data-label="Question :" />
-          <progress value={0} max={nbStudent} data-label="Plus vite :" />
-          <progress value={0} max={nbStudent} data-label="Moins vite :" />
-          <progress value={0} max={nbStudent} data-label="Ne comprends pas :" />
-          <progress value={nbInteractions.emergencyPressesCount} max={nbStudent} data-label="STOP :" />
-          <progress value={0} max={nbStudent} data-label="Reexplication :" />
-          <progress value={0} max={nbStudent} data-label="Details :" />
-          <progress value={0} max={nbStudent} data-label="Exemple :" />
-          <progress value={0} max={nbStudent} data-label="Anecdote :" />
-          <progress value={0} max={nbStudent} data-label="Reference :" />
-          <progress value={0} max={nbStudent} data-label="Exercice :" />
-          <button type="button" onClick={this.add} hidden> +1 </button>
-          <button type="button" onClick={this.reset} hidden> reset </button>
-          <button
-            type="button"
-            onClick={() => {
-              sendNewInteractionEmission(fishtankId, idInteractions.EMERGENCY_PRESS, '');
-            }}
-          >
+            <div className="column">
+              <progress value={nbInteractions.emergencyPresses} max={nbStudent} />
+              <progress value={nbInteractions.pauseRequests} max={nbStudent} />
+              <progress value={nbInteractions.slowerRhythmRequests} max={nbStudent} />
+              <progress value={nbInteractions.fasterRhythmRequests} max={nbStudent} />
+              <progress value={nbInteractions.coolPresses} max={nbStudent} />
+              <progress value={nbInteractions.detailsRequests} max={nbStudent} />
+              <progress value={nbInteractions.examplesRequests} max={nbStudent} />
+              <progress value={nbInteractions.triviaRequests} max={nbStudent} />
+              <progress value={nbInteractions.referenceRequests} max={nbStudent} />
+              <progress value={nbInteractions.explanationsRequests} max={nbStudent} />
+              <progress value={nbInteractions.lowUnderstandingNotifications} max={nbStudent} />
+              <button
+                type="button"
+                onClick={() => {
+                  sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
+                }}
+              >
                     add
-          </button>
+              </button>
+
+            </div>
+          </div>
         </div>
       );
     }
