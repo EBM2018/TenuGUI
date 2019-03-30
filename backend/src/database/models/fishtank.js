@@ -40,11 +40,12 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Fishtank.getShoalFishtanks = async (shoalId) => {
+  Fishtank.getOngoingShoalFishtanks = async (shoalId) => {
     const fishtanks = await Fishtank.findAll({
       attributes: ['id'],
       where: {
         shoalId,
+        statusId: sequelize.models.FishtankStatus.ONGOING,
       },
     });
 

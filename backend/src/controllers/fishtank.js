@@ -40,7 +40,7 @@ module.exports = {
   },
 
   index: (req, res) => {
-    Fishtank.getShoalFishtanks(req.locals.user.shoalId)
+    Fishtank.getOngoingShoalFishtanks(req.locals.user.shoalId)
       .then((fishtanks) => {
         res.status(200).send(fishtanks);
       });

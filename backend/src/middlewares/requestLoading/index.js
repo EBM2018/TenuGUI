@@ -19,7 +19,7 @@ module.exports = {
     loadRequestWith(req, 'user', user);
     return true;
   },
-  addUserById: async (id, { req }) => {
+  addUserToken: async (id, { req }) => {
     const token = await getUserToken(id);
     if (token == null) return false;
     loadRequestWith(req, 'user', { token });
@@ -31,5 +31,4 @@ module.exports = {
     loadRequestWith(req, 'fishtankInteractionType', fishtankInteractionType);
     return true;
   },
-  loadRequestWith,
 };
