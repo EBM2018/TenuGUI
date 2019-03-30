@@ -112,10 +112,10 @@ describe('Request loading', () => {
     };
 
     const fishtankInteractionTypeAddedToRequest = await addFishtankInteractionType(
-      FishtankInteractionType.EMERGENCY_PRESS, { req },
+      FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS, { req },
     );
     const retrievedFishtankInteractionType = await FishtankInteractionType.findByPk(
-      FishtankInteractionType.EMERGENCY_PRESS,
+      FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
     );
 
     expect(fishtankInteractionTypeAddedToRequest).toBe(true);

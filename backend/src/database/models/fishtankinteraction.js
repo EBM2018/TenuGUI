@@ -45,8 +45,8 @@ module.exports = (sequelize, DataTypes) => {
     const { FishtankInteractionType } = sequelize.models;
     const { Op } = sequelize;
     const countsKeys = {
-      [FishtankInteractionType.EMERGENCY_PRESS]: 'emergencyPressesCount',
-      [FishtankInteractionType.COOL_PRESS]: 'coolPressesCount',
+      [FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS]: 'emergencyPressesCount',
+      [FishtankInteractionType.PARTICIPANT.COOL_PRESS]: 'coolPressesCount',
     };
 
     const counts = FishtankInteraction.findAll({
@@ -54,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
         fishtankId,
         typeId: {
           [Op.in]: [
-            FishtankInteractionType.EMERGENCY_PRESS,
-            FishtankInteractionType.COOL_PRESS,
+            FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
+            FishtankInteractionType.PARTICIPANT.COOL_PRESS,
           ],
         },
       },

@@ -56,7 +56,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${fishtank.id}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
@@ -72,7 +72,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${maxFishtankId.id + 1}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
@@ -90,7 +90,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${fishtank.id}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
@@ -108,7 +108,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${fishtank.id}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
@@ -126,7 +126,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${fishtank.id}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
       })
       .set('Content-Type', 'application/json')
       .expect(401);
@@ -143,7 +143,7 @@ describe('Fishtank creation validation', () => {
     return request(app)
       .post(`/api/fishtanks/${fishtank.id}/interactions`)
       .send({
-        type: FishtankInteractionType.EMERGENCY_PRESS,
+        type: FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
         token: invalidUsers[0].token,
       })
       .set('Content-Type', 'application/json')
