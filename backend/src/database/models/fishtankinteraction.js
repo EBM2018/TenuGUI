@@ -41,21 +41,39 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  FishtankInteraction.getFormattedInteractions = (fishtankId) => {
+  FishtankInteraction.getFormattedInteractions = async (fishtankId) => {
     const { FishtankInteractionType } = sequelize.models;
     const { Op } = sequelize;
     const countsKeys = {
-      [FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS]: 'emergencyPressesCount',
-      [FishtankInteractionType.PARTICIPANT.COOL_PRESS]: 'coolPressesCount',
+      [FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS]: 'emergencyPresses',
+      [FishtankInteractionType.PARTICIPANT.COOL_PRESS]: 'coolPresses',
+      [FishtankInteractionType.PARTICIPANT.FASTER_RHYTHM_ASK]: 'fasterRhythmRequests',
+      [FishtankInteractionType.PARTICIPANT.SLOWER_RHYTHM_ASK]: 'slowerRhythmRequests',
+      [FishtankInteractionType.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY]: 'lowUnderstandingNotifications',
+      [FishtankInteractionType.PARTICIPANT.PAUSE_ASK]: 'pauseRequests',
+      [FishtankInteractionType.PARTICIPANT.EXPLANATIONS_ASK]: 'explanationsRequests',
+      [FishtankInteractionType.PARTICIPANT.DETAILS_ASK]: 'detailsRequests',
+      [FishtankInteractionType.PARTICIPANT.EXAMPLES_ASK]: 'examplesRequests',
+      [FishtankInteractionType.PARTICIPANT.TRIVIA_ASK]: 'triviaRequests',
+      [FishtankInteractionType.PARTICIPANT.REFERENCE_ASK]: 'referenceRequests',
     };
 
-    const counts = FishtankInteraction.findAll({
+    const counts = await FishtankInteraction.findAll({
       where: {
         fishtankId,
         typeId: {
           [Op.in]: [
             FishtankInteractionType.PARTICIPANT.EMERGENCY_PRESS,
             FishtankInteractionType.PARTICIPANT.COOL_PRESS,
+            FishtankInteractionType.PARTICIPANT.FASTER_RHYTHM_ASK,
+            FishtankInteractionType.PARTICIPANT.SLOWER_RHYTHM_ASK,
+            FishtankInteractionType.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY,
+            FishtankInteractionType.PARTICIPANT.PAUSE_ASK,
+            FishtankInteractionType.PARTICIPANT.EXPLANATIONS_ASK,
+            FishtankInteractionType.PARTICIPANT.DETAILS_ASK,
+            FishtankInteractionType.PARTICIPANT.EXAMPLES_ASK,
+            FishtankInteractionType.PARTICIPANT.TRIVIA_ASK,
+            FishtankInteractionType.PARTICIPANT.REFERENCE_ASK,
           ],
         },
       },
@@ -76,7 +94,7 @@ module.exports = (sequelize, DataTypes) => {
         }
         return completeGroups;
       });
-    return counts;
+    return { counts };
   };
 
   return FishtankInteraction;
