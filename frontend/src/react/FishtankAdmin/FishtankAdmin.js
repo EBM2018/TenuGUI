@@ -40,7 +40,7 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         this.setState({ fishtankId });
-        handleFishtankCreation(fishtankId, this.getFishtankNbInteractions);
+        handleFishtankCreation(fishtankId, this.getFishtankNbInteractions, () => {});
         this.getFishtankIdInteractions();
         this.getFishtankNbInteractionsStart(fishtankId);
       }

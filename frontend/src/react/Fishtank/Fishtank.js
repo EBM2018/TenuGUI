@@ -12,6 +12,50 @@ import { handleFishtankCreation } from '../../service/Websockets/handlers';
 import { getFishtank } from '../../service/API/fishtanks';
 import { getIdInteractions } from '../../service/API/interactions';
 
+
+const dataJson = {
+  name: 'Questionnaire_name',
+  Question: [
+    {
+      type: 'field',
+      idQuestion: '1',
+      text: "Qu'est ce que tu as appris ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '2',
+      text: "Qu'est ce qui t'as étonné ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '3',
+      text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '4',
+      text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
+    },
+    {
+      type: 'check',
+      idQuestion: '5',
+      text: 'Cb tu notes ce cour ?',
+      response: [
+        { rep: '1' },
+        { rep: '2' },
+        { rep: '3' },
+        { rep: '4' },
+        { rep: '5' },
+      ],
+    },
+  ],
+};
+const dataNull = {
+  name: '',
+  Question: [
+  ],
+};
+
 class Fishtank extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
@@ -22,6 +66,7 @@ class Fishtank extends React.PureComponent {
       connected: false,
       fishtankId: undefined,
       idInteractions: undefined,
+      activityJSON: dataNull,
     }
 
     componentWillMount() {
@@ -47,7 +92,7 @@ class Fishtank extends React.PureComponent {
       const fishtankIds = await getFishtank(userJSON.token);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
-      handleFishtankCreation(fishtankId, this.fishtankInteractionsStudent);
+      handleFishtankCreation(fishtankId, () => {}, this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
     }
 
@@ -67,11 +112,15 @@ class Fishtank extends React.PureComponent {
     };
 
     fishtankInteractionsStudent = () => {
-      console.log('interaction reçue');
+      this.setState({ activityJSON: dataJson });
+    }
+
+    deleteActivityJSON = () => {
+      this.setState({ activityJSON: dataNull });
     }
 
     render() {
-      const { connected, fishtankId, idInteractions } = this.state;
+      const { connected, fishtankId, idInteractions, activityJSON } = this.state;
       return (
         <div className="bg-color">
           <FishtankHeader
@@ -92,6 +141,8 @@ class Fishtank extends React.PureComponent {
           <Activity
             fishtankId={fishtankId}
             idInteractions={idInteractions}
+            data={activityJSON}
+            deleteData={this.deleteActivityJSON}
           />
         </div>
       );
