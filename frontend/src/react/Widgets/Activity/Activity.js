@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './Activity.css';
 // import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
@@ -76,8 +75,9 @@ export default class Activity extends React.PureComponent {
     }
 
     send = () => { // pour des test à la con
-      // const { userReponse } = this.state;
+      const { userReponse } = this.state;
       // alert(userReponse.Question);
+      console.log(userReponse);
     };
 
     editResponse = (indexQuestion, newResponse) => {
@@ -90,48 +90,50 @@ export default class Activity extends React.PureComponent {
     render() {
       const { data } = this.state;
       return (
-        <div>
-          {data.name}
-          {data.Question.map((ques, index) => {
-            if (ques.type === 'field') {
-              return (
-                <ActTextField
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            if (ques.type === 'check') {
-              return (
-                <ActTextCheck
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  listTextResponse={ques.response}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            if (ques.type === 'checkMult') {
-              return (
-                <ActTextCheckMult
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  listTextResponse={ques.response}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            return (<></>);
-          })}
+        <div className="columns is-mobile">
+          <div className="column is-9 is-offset-1">
+            <h1 className="title is-t1">{data.name}</h1>
+            {data.Question.map((ques, index) => {
+              if (ques.type === 'field') {
+                return (
+                  <ActTextField
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              if (ques.type === 'check') {
+                return (
+                  <ActTextCheck
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    listTextResponse={ques.response}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              if (ques.type === 'checkMult') {
+                return (
+                  <ActTextCheckMult
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    listTextResponse={ques.response}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              return (<></>);
+            })}
 
-          <div>
-            <button type="submit" onClick={this.send}>
+            <div>
+              <button type="submit" onClick={this.send}>
                     Send
-            </button>
+              </button>
+            </div>
           </div>
         </div>
       );

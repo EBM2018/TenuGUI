@@ -4,17 +4,18 @@ import {
 } from 'react-router-dom';
 import { CookiesProvider, withCookies } from 'react-cookie';
 
-import './App.css';
-
 import Layout from '../Layout/Layout';
 
 import Machin from '../../machin';
 import Dashboard from '../Dashboard/Dashboard';
 import Fishtank from '../Fishtank/Fishtank';
 import FishtankAdmin from '../FishtankAdmin/FishtankAdmin';
+import FishtankEditor from '../FishtankEditor/FishtankEditor';
 import Home from '../Home/Home';
 
 import '../../service/Websockets';
+import '../bulma.min.css';
+import './App.css';
 
 
 class App extends React.PureComponent {
@@ -82,55 +83,67 @@ class App extends React.PureComponent {
   render() {
     const { infoFishtank } = this.state;
     return (
-      <CookiesProvider>
-        <Layout>
-          <BrowserRouter>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                component={Home}
-              />
-              <Route
-                path="/Dashboard"
-                render={props => (
-                  <Dashboard
-                    changeInfo={this.changeInfoFishtank}
-                    {...props}
-                  />
-                )}
-              />
-              <Route
-                path="/Fishtank"
-                render={props => (
-                  <Fishtank
-                    changeInfo={this.changeInfoFishtank}
-                    infoFishtank={infoFishtank}
-                    {...props}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/Test"
-                component={Machin}
-              />
-              <Route
-                exact
-                path="/FishtankAdmin"
+      <div className="bg-img">
+        <CookiesProvider>
+          <Layout>
+            <BrowserRouter>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  component={Home}
+                />
+                <Route
+                  path="/Dashboard"
+                  render={props => (
+                    <Dashboard
+                      changeInfo={this.changeInfoFishtank}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  path="/Fishtank"
+                  render={props => (
+                    <Fishtank
+                      changeInfo={this.changeInfoFishtank}
+                      infoFishtank={infoFishtank}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/Test"
+                  component={Machin}
+                />
+                <Route
+                  exact
+                  path="/FishtankAdmin"
 
-                render={props => (
-                  <FishtankAdmin
-                    infoFishtank={infoFishtank}
-                    {...props}
-                  />
-                )}
-              />
-            </Switch>
-          </BrowserRouter>
-        </Layout>
+                  render={props => (
+                    <FishtankAdmin
+                      infoFishtank={infoFishtank}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/FishtankEditor"
 
-      </CookiesProvider>
+                  render={props => (
+                    <FishtankEditor
+                      {...props}
+                    />
+                  )}
+                />
+              </Switch>
+            </BrowserRouter>
+          </Layout>
+
+        </CookiesProvider>
+      </div>
     );
   }
 }

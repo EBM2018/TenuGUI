@@ -2,8 +2,6 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
-import './Dashboard.css';
-
 import PropTypes from 'prop-types';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
@@ -37,10 +35,45 @@ class Dashboard extends React.PureComponent {
 
     render() {
       return (
-        <>
+        <div className="bg-color">
+          <div className="columns">
+            <div className="column is-3">
+              <h1 className="title is-h1 add-margin-left">Ma bibliothèque</h1>
+            </div>
+            <div className="column is-full">
+              <button
+                className="button is-link"
+                type="button"
+                name="button"
+                onClick={this.todoStartFishtank}
+              >
+                      Démarrer une séance
+              </button>
+            </div>
+          </div>
+          <div className="columns">
+            <p className="column add-margin-left add15-margin-top is-5">
+              <MyActivity />
+              <MyActions />
+            </p>
+            <p id="secondColumn">
+              <MyDescription id="flex" />
+            </p>
+          </div>
+        </div>
+      );
+    }
+}
+
+export default withCookies(Dashboard);
+/*
+<div className="bg-color">
           <div>
-            <> Ma Bibliothèque </>
-            <button type="button" onClick={this.todoStartFishtank}>
+            <h2 className="is-h2">Ma Bibliothèque</h2>
+            <button
+              type="button"
+              onClick={this.todoStartFishtank}
+            >
                 Start Fishtank
             </button>
           </div>
@@ -53,9 +86,5 @@ class Dashboard extends React.PureComponent {
               <MyDescription id="flex" />
             </p>
           </div>
-        </>
-      );
-    }
-}
-
-export default withCookies(Dashboard);
+        </div>
+ */

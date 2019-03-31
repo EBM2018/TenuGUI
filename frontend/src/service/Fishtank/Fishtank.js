@@ -1,49 +1,53 @@
 import { sendNewInteractionEmission } from '../API/requests';
 
-export class StudentFishtank {
-    static askQuestion = (fishtankId) => {
-      if (sendNewInteractionEmission(fishtankId, 1, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
-      // alert('Student ask a question.');
+class StudentFishtank {
+    static askQuestion = (fishtankId, text) => {
+      sendNewInteractionEmission(fishtankId, 2, text);
     };
 
     static askSpeedUp = (fishtankId) => {
-      // alert('Student want to accelerate.');
-      if (sendNewInteractionEmission(fishtankId, 2, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 3, '');
     };
 
     static askSpeedDown = (fishtankId) => {
-      // alert('Student want to slow down.');
-      if (sendNewInteractionEmission(fishtankId, 3, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 4, '');
     };
 
     static notUnderstand = (fishtankId) => {
-      // alert('Student do not understand.');
-      if (sendNewInteractionEmission(fishtankId, 4, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 5, '');
+    };
+
+    static askPause = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 6, '');
+    };
+
+    static askReexplain = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 7, '');
+    };
+
+    static askDetails = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 8, '');
+    };
+
+    static askExample = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 9, '');
+    };
+
+    static askAnecdote = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 10, '');
+    };
+
+    static askReference = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 11, '');
+    };
+
+    static askExercice = (fishtankId) => {
+      sendNewInteractionEmission(fishtankId, 12, '');
     };
 
     static askStop = (fishtankId) => {
-      // alert('Student want to stop.');
-      if (sendNewInteractionEmission(fishtankId, 5, '') === 'HTTP/1.1 201 OK') {
-        return 'send';
-      }
-      return 'fail';
+      sendNewInteractionEmission(fishtankId, 1, '');
     };
 }
 
-export class futurFct { // TODO: get rid of this
-    static something = () => {
-      // alert('tochange');
-    };
-}
+export default StudentFishtank;

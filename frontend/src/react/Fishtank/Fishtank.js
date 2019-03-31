@@ -7,11 +7,8 @@ import './Fishtank.css';
 
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
-import ActivityContainer from './ActivityContainer/ActivityContainer';
+import Activity from '../Widgets/Activity/Activity';
 import { createSocketFishtank, getFishtank } from '../../service/API/requests';
-import ActTextField from '../Widgets/Activity/Activity';
-
-const fixtureFishtankId = 130;
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -27,10 +24,8 @@ class Fishtank extends React.PureComponent {
     componentWillMount() {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
-      console.log(userJSON);
       if (userJSON === undefined) {
         const { history } = this.props;
-        console.log('retour');
         history.push('/');
       } else {
         try {
@@ -48,7 +43,6 @@ class Fishtank extends React.PureComponent {
       const FishtankId = await getFishtank(userJSON.token);
       createSocketFishtank(FishtankId, this.fishtankInteractionsStudent);
       this.setState({ fishtankId: FishtankId });
-      console.log(`connexion : ${FishtankId}`);
     }
 
     tryConnexion = () => {
@@ -90,7 +84,30 @@ class Fishtank extends React.PureComponent {
     render() {
       const { connected, fishtankId } = this.state;
       return (
-        <>
+        <div className="bg-color">
+          <FishtankHeader
+            subject="EBM example"
+            date="some date"
+          />
+          <ButtonLayout
+            fishtankId={fishtankId}
+          />
+          <button
+            type="button"
+            onClick={this.tryConnexion}
+            hidden={connected}
+          >
+                  Chercher un Fishtank
+          </button>
+          <Activity
+            fishtankId={fishtankId}
+          />
+        </div>
+      );
+    }
+}
+/*
+<>
           <FishtankHeader
             subject="EBM example"
             date="some date"
@@ -109,8 +126,5 @@ class Fishtank extends React.PureComponent {
             fishtankId={fishtankId}
           />
         </>
-      );
-    }
-}
-
+ */
 export default withCookies(Fishtank);
