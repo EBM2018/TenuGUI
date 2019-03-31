@@ -94,7 +94,19 @@ module.exports = (sequelize, DataTypes) => {
         }
         return completeGroups;
       });
-    return { counts };
+    const currentPeriod = await FishtankInteraction.findOne({
+      where: {
+        fishtankId,
+        typeId: FishtankInteractionType.ADMIN.PERIOD_CHANGE,
+      },
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+    });
+    return {
+      counts,
+      currentPeriod: currentPeriod == null ? null : currentPeriod.payload,
+    };
   };
 
   return FishtankInteraction;
