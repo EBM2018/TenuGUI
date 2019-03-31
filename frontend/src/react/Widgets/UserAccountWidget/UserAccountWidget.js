@@ -51,6 +51,7 @@ class UserAccountWidget extends React.PureComponent {
             </div>
             <shan>{userJSON.name}</shan>
             <Popup
+              className="modal-card"
               open={infoDisplayed}
               onClose={this.handleClose}
             >

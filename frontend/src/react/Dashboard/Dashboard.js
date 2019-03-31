@@ -80,6 +80,7 @@ class Dashboard extends React.PureComponent {
             <div className="column is-full">
 
               <Popup
+                className="modal-background"
                 open={isOpen}
                 onClose={this.handleClose}
               >

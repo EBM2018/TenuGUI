@@ -109,7 +109,7 @@ class FishtankAdmin extends React.PureComponent {
             fishtankId={fishtankId}
             idInteractions={idInteractions}
           />
-          <div className="columns">
+          <div className="columns add-margin">
             <Command
               fishtankId={fishtankId}
               idInteractions={idInteractions}
@@ -117,7 +117,7 @@ class FishtankAdmin extends React.PureComponent {
               disableActivityObserver={this.disableActivityObserver}
             />
 
-            <div className="column is-6">
+            <div className="column is-5">
               {middleScreen}
             </div>
 
