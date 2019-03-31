@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sendNewInteractionEmission } from '../../../service/API/requests';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 
 
 class Notification extends React.PureComponent {
@@ -57,10 +57,10 @@ class Notification extends React.PureComponent {
           <button
             type="button"
             onClick={() => {
-              sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
+              postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
             }}
           >
-                    add
+                  add
           </button>
         </div>
       );

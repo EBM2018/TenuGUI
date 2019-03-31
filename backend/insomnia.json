@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-03-27T05:45:19.802Z",
+	"__export_date": "2019-03-30T19:42:46.855Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -71,7 +71,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"shoalId\": \"{{ users.Hamza.shoalId }}\",\n\t\"token\": \"{{ users.BDH.token }}\"\n}\n"
+				"text": "{\n\t\"shoalId\": \"{{ shoals.EBM.id }}\",\n\t\"token\": \"{{ users.BDH.token }}\"\n}\n"
 			},
 			"created": 1550423864289,
 			"description": "",
@@ -85,7 +85,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1550420103240,
 			"method": "POST",
-			"modified": 1553665423885,
+			"modified": 1553970855903,
 			"name": "Fishtanks",
 			"parameters": [],
 			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
@@ -181,7 +181,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"type\": \"{{ interactionTypes.EMERGENCY_PRESS  }}\",\n  \"token\": \"{{ users.Hamza.token }}\",\n\t\"payload\": \"{\\\"texte\\\":\\\"bonjour\\\"}\"\n}"
+				"text": "{\n\t\"type\": \"{{ interactionTypes.PARTICIPANT.FEEDBACK_SUBMIT }}\",\n  \"token\": \"{{ users.Batou.token }}\",\n\t\"payload\": \"{\\\"texte\\\":\\\"bonjour\\\"}\"\n}"
 			},
 			"created": 1551687288187,
 			"description": "",
@@ -195,7 +195,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1551687288187,
 			"method": "POST",
-			"modified": 1553665453540,
+			"modified": 1553972436689,
 			"name": "FishtankInteractions",
 			"parameters": [],
 			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
@@ -328,6 +328,29 @@
 			"_type": "request"
 		},
 		{
+			"_id": "req_1e459f8b025b4f7d8eb6486e0324ef99",
+			"authentication": {},
+			"body": {},
+			"created": 1553966599666,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1553966599666,
+			"method": "GET",
+			"modified": 1553966610605,
+			"name": "Shoals",
+			"parameters": [],
+			"parentId": "wrk_78397cb687834f11949b218e6946ec48",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/shoals",
+			"_type": "request"
+		},
+		{
 			"_id": "env_880136b31fbf46208d5329bcd75bf745",
 			"color": "#5e39ee",
 			"created": 1550419756596,
@@ -338,32 +361,71 @@
 					"FINISH": 1
 				},
 				"interactionTypes": {
-					"ACTIVITY_CHANGE": 1,
-					"COOL_PRESS": 4,
-					"EMERGENCY_PRESS": 2,
-					"FEEDBACK_SUBMIT": 3,
-					"PERIOD_CHANGE": 5
+					"ADMIN": {
+						"ACTIVITY_CHANGE": 1,
+						"ATTENTION_ASK": 17,
+						"FEEDBACK_ASK": 19,
+						"PERIOD_CHANGE": 5,
+						"PROGRESSION_ASK": 21,
+						"SUMMARY_ASK": 20,
+						"UNDERSTANDING_ASK": 18
+					},
+					"PARTICIPANT": {
+						"COOL_PRESS": 4,
+						"DETAILS_ASK": 12,
+						"EMERGENCY_PRESS": 2,
+						"EXAMPLES_ASK": 13,
+						"EXERCISE_ASK": 16,
+						"EXPLANATIONS_ASK": 11,
+						"FASTER_RHYTHM_ASK": 7,
+						"FEEDBACK_SUBMIT": 3,
+						"LOW_UNDERSTANDING_NOTIFY": 9,
+						"PAUSE_ASK": 10,
+						"QUESTION_ASK": 6,
+						"REFERENCE_ASK": 15,
+						"SLOWER_RHYTHM_ASK": 8,
+						"TRIVIA_ASK": 14
+					}
+				},
+				"shoals": {
+					"EBM": {
+						"id": 1,
+						"name": "EBM"
+					},
+					"Maestro": {
+						"id": 2,
+						"name": "Maestro"
+					}
 				},
 				"users": {
 					"BDH": {
 						"id": 5,
+						"name": "BDH",
 						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6InByb2YifQ.DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc"
 					},
 					"Batou": {
 						"id": 2,
-						"shoalId": 99999,
+						"name": "Baptiste Lalanne",
+						"shoalId": 1,
 						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlUmFuZG9tIn0.RhXPI2fUIfjgFQR4JIxeM9ElQsRVagT_XgonQbd5uvk"
 					},
 					"Hamza": {
 						"id": 1,
-						"shoalId": 5,
+						"name": "Hamza Oussaine",
+						"shoalId": 1,
 						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlQ2libGUifQ.nXJYbTIvyYaT_Xh6eO6fU0fIsjGuXNv31T4KQB9dIog"
+					},
+					"Ludo": {
+						"id": 3,
+						"name": "Ludovic Guillemin",
+						"shoalId": 2,
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlQ2libGUyIn0.WSHds0DhoDLGNnPjL8VSNQjJEuA9by0NflqKgz5ZU1A"
 					}
 				}
 			},
 			"isPrivate": false,
 			"metaSortKey": 1550419756596,
-			"modified": 1553665272983,
+			"modified": 1553972291301,
 			"name": "TenuGUI",
 			"parentId": "env_ce73dd01e1d347cb8ec80ad2d60218d9",
 			"_type": "environment"

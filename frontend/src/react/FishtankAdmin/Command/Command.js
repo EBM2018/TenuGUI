@@ -2,7 +2,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { sendNewInteractionEmission } from '../../../service/API/requests';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 
 class Command extends React.PureComponent {
     static propTypes = {
@@ -28,7 +28,7 @@ class Command extends React.PureComponent {
             id="Start"
             onClick={() => {
               activeActivityObserver();
-              sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.ACTIVITY_CHANGE, '');
+              postFishtankInteraction(fishtankId, idInteractions.ADMIN.ACTIVITY_CHANGE, '');
             }}
           >
         Ouverture
@@ -39,7 +39,7 @@ class Command extends React.PureComponent {
             id="AskFeedback"
             onClick={() => {
               activeActivityObserver();
-              sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.FEEDBACK_ASK, '');
+              postFishtankInteraction(fishtankId, idInteractions.ADMIN.FEEDBACK_ASK, '');
             }}
           >
         Feedback
