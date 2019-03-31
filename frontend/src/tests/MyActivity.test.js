@@ -2,9 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MyActivity from '../react/Dashboard/MyActivity/MyActivity';
 
-test('derp', () => {
-  expect('True').toBeTruthy;
-});
+
 test('does this render', () => {
   const component = renderer
     .create(<MyActivity />);

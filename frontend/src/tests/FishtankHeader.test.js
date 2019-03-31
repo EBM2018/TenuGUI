@@ -3,9 +3,6 @@ import renderer from 'react-test-renderer';
 import FishtankHeader from '../react/Widgets/FishtankHeader/FishtankHeader';
 
 
-test('derp', () => {
-  expect('True').toBeTruthy;
-});
 test('does this render', () => {
   const component = renderer
     .create(<FishtankHeader date="12/03/2019" subject="Testing in JS" />);
