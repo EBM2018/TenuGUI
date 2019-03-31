@@ -18,12 +18,13 @@ class ButtonLayout extends React.PureComponent {
     sendQuestion = (event) => {
       const { fishtankId, idInteractions } = this.props;
       if (event.keyCode === 13) {
+        const object = event.target;
         postFishtankInteraction(
           fishtankId,
           idInteractions.PARTICIPANT.QUESTION_ASK,
-          event.target.value,
+          object.value,
         );
-        event.target.value='';
+        object.value = '';
       }
     }
 

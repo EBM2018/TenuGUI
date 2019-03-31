@@ -1,6 +1,6 @@
 import React from 'react';
 import { instanceOf } from 'prop-types';
-import {Cookies, withCookies} from 'react-cookie';
+import { Cookies, withCookies } from 'react-cookie';
 import UserAccountWidget from '../UserAccountWidget/UserAccountWidget';
 
 import logoAndName from '../../../images/LogoTenuGUI.png';
