@@ -130,7 +130,7 @@ class Dashboard extends React.PureComponent {
                 name="button"
                 onClick={this.handleOpen}
               >
-                    Démarrer une séance
+                    Démarrer un aquarium
               </button>
             </div>
           </div>
