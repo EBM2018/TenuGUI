@@ -1,3 +1,4 @@
+
 export const StartNewFishtank = () => {
   // alert('Fishtank starting.');
 };
@@ -8,7 +9,7 @@ export class DashboardMyActivity {
     };
 
     static openFeedbackActivity = () => {
-      // alert('Open "Feedback".');
+      //
     };
 }
 /*
