@@ -374,6 +374,31 @@
   },
   {
     "type": "get",
+    "url": "/shoals",
+    "title": "",
+    "name": "GetShoals",
+    "group": "Shoals",
+    "description": "<p>Returns a JSON containing the list of Teamy shoals</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n  {\n    id: 1,\n    name: 'EBM'\n  }, {\n    id: 2,\n    name: 'Maestro'\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/shoals/index.js",
+    "groupTitle": "Shoals",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/shoals"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/users",
     "title": "",
     "name": "GetUsers",
