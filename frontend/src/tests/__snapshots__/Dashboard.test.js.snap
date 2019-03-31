@@ -1,83 +1,198 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-Array [
-  <div>
-     Ma Bibliothèque 
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Start Fishtank
-    </button>
-  </div>,
+<div
+  className="bg-color"
+>
   <div
-    id="dashboardContainer"
+    className="columns"
+  >
+    <div
+      className="column is-3"
+    >
+      <h1
+        className="title is-h1 add-margin-left"
+      >
+        Ma bibliothèque
+      </h1>
+    </div>
+    <div
+      className="column is-full"
+    >
+      <button
+        className="button is-link"
+        name="button"
+        onClick={[Function]}
+        type="button"
+      >
+        Démarrer une séance
+      </button>
+    </div>
+  </div>
+  <div
+    className="columns"
   >
     <p
-      id="firstColumn"
+      className="column add-margin-left add15-margin-top is-5"
     >
-      <div>
+      <h2
+        className="is-h2"
+      >
         Mes Activités
-      </div>
-      <div
-        id="activityContainer"
+      </h2>
+      <button
+        className="button is-info is-inverted"
+        name="button"
+        onClick={[Function]}
+        type="button"
       >
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          Ouverture
-        </button>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          FeedBack
-        </button>
-      </div>
-      <div>
+        Ouverture
+      </button>
+      <button
+        className="button is-info is-inverted"
+        name="button"
+        onClick={[Function]}
+        type="button"
+      >
+        Feedback
+      </button>
+      <h2
+        className="is-h2"
+      >
         Mes Actions
+      </h2>
+      <div
+        className="column is-5 has-text-left"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
+        >
+          <button
+            className="button is-info is-inverted is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Vous avez compris ?
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-brain"
+            />
+          </span>
+        </p>
       </div>
       <div
-        id="actionsContainer"
+        className="column is-5 has-text-left"
       >
-        <button
-          onClick={[Function]}
-          type="button"
+        <p
+          className="control has-icons-left has-icons-right"
         >
-          Vous avez Compris ?
-        </button>
-        <button
-          onClick={[Function]}
-          type="button"
+          <button
+            className="button is-info is-inverted is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Faites un résumé ?
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-file"
+            />
+          </span>
+        </p>
+      </div>
+      <div
+        className="column is-5 has-text-left"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
         >
-          Votre attention svp !
-        </button>
-        <button
-          onClick={[Function]}
-          type="button"
+          <button
+            className="button is-info is-inverted is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Vous en êtes où ?
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-clipboard-list"
+            />
+          </span>
+        </p>
+      </div>
+      <div
+        className="column is-5 has-text-left"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
         >
-          Faites un résumé
-        </button>
-        <button
-          type="button"
-        >
-          Reboot
-        </button>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          Vous en êtes où ?
-        </button>
+          <button
+            className="button is-info is-inverted is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Reboost
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-flushed"
+            />
+          </span>
+        </p>
       </div>
     </p>
     <p
       id="secondColumn"
     >
-      MyDescription
+      <div
+        className="column is-6 add-margin-right"
+      >
+        <h2
+          className="is-h2"
+        >
+          Prévisualisation de l'activité
+        </h2>
+        <h3
+          className="is-h3"
+        >
+          Fonctionnement
+        </h3>
+        <p
+          className="is-body"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3
+          className="is-h3"
+        >
+          Effet
+        </h3>
+        <p
+          className="is-body"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3
+          className="is-h3"
+        >
+          Affichage
+        </h3>
+        <p
+          className="is-body"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     </p>
-  </div>,
-]
+  </div>
+</div>
 `;

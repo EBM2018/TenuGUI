@@ -2,18 +2,26 @@
 
 exports[`does this render 1`] = `
 <div
-  id="NameHeader"
+  className="columns add-margin"
 >
-  <div>
-    
-     
-    Aquarium :
-    Testing in JS
-  </div>
-  <div>
-    Séance ouverte le
-     
-    12/03/2019
+  <div
+    className="column is-6"
+  >
+    <h1
+      className="title is-2"
+    >
+      
+       
+      Aquarium :
+      Testing in JS
+    </h1>
+    <p
+      className="is-4"
+    >
+      Séance ouverte le
+       
+      12/03/2019
+    </p>
   </div>
 </div>
 `;

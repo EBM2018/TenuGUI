@@ -2,41 +2,98 @@
 
 exports[`does this render 1`] = `
 Array [
-  <div>
+  <h2
+    className="is-h2"
+  >
     Mes Actions
+  </h2>,
+  <div
+    className="column is-5 has-text-left"
+  >
+    <p
+      className="control has-icons-left has-icons-right"
+    >
+      <button
+        className="button is-info is-inverted is-fullwidth"
+        name="button"
+        type="button"
+      >
+        Vous avez compris ?
+      </button>
+      <span
+        className="icon is-small is-left"
+      >
+        <i
+          className="fas fa-brain"
+        />
+      </span>
+    </p>
   </div>,
   <div
-    id="actionsContainer"
+    className="column is-5 has-text-left"
   >
-    <button
-      onClick={[Function]}
-      type="button"
+    <p
+      className="control has-icons-left has-icons-right"
     >
-      Vous avez Compris ?
-    </button>
-    <button
-      onClick={[Function]}
-      type="button"
+      <button
+        className="button is-info is-inverted is-fullwidth"
+        name="button"
+        type="button"
+      >
+        Faites un résumé ?
+      </button>
+      <span
+        className="icon is-small is-left"
+      >
+        <i
+          className="fas fa-file"
+        />
+      </span>
+    </p>
+  </div>,
+  <div
+    className="column is-5 has-text-left"
+  >
+    <p
+      className="control has-icons-left has-icons-right"
     >
-      Votre attention svp !
-    </button>
-    <button
-      onClick={[Function]}
-      type="button"
+      <button
+        className="button is-info is-inverted is-fullwidth"
+        name="button"
+        type="button"
+      >
+        Vous en êtes où ?
+      </button>
+      <span
+        className="icon is-small is-left"
+      >
+        <i
+          className="fas fa-clipboard-list"
+        />
+      </span>
+    </p>
+  </div>,
+  <div
+    className="column is-5 has-text-left"
+  >
+    <p
+      className="control has-icons-left has-icons-right"
     >
-      Faites un résumé
-    </button>
-    <button
-      type="button"
-    >
-      Reboot
-    </button>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Vous en êtes où ?
-    </button>
+      <button
+        className="button is-info is-inverted is-fullwidth"
+        name="button"
+        type="button"
+      >
+        Reboost
+      </button>
+      <span
+        className="icon is-small is-left"
+      >
+        <i
+          className="fas fa-flushed"
+        />
+      </span>
+    </p>
   </div>,
 ]
 `;

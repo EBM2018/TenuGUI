@@ -1,7 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<p>
-  Header
-</p>
+<header>
+  <div
+    className="columns add-margin"
+  >
+    <div
+      className="column"
+    />
+  </div>
+  <div
+    className="columns add-margin"
+  >
+    <div
+      className="column is-2"
+    >
+      <figure
+        className="image"
+      >
+        <img
+          alt="TenuGUI"
+          src="LogoTenuGUI.png"
+        />
+      </figure>
+    </div>
+    <div
+      className="column is-8"
+    />
+    <div
+      className="column"
+    >
+      <figure
+        className="image is-64x64"
+      >
+        <img
+          alt="MonProfil"
+          src="../../../images/PhotoProfil.png"
+        />
+        <p>
+          
+        </p>
+      </figure>
+    </div>
+  </div>
+</header>
 `;

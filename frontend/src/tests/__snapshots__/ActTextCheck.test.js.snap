@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<div
-  id="container reponse"
->
-  <div>
+<div>
+  <h1
+    className="title is-6"
+  >
     maybe
-  </div>
+  </h1>
 </div>
 `;

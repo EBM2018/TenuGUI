@@ -1,179 +1,402 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-Array [
+<div
+  className="bg-color"
+>
   <div
-    id="NameHeader"
+    className="columns add-margin"
   >
-    <div>
-      
-       
-      Aquarium :
-      EBM example
-    </div>
-    <div>
-      Séance ouverte le
-       
-      some date
-    </div>
-  </div>,
-  <div>
     <div
-      id="ButtonLayoutContainer"
+      className="column is-6"
     >
-      <button
-        id="AskQuestion"
-        onClick={[Function]}
-        type="button"
+      <h1
+        className="title is-2"
       >
-        Posez votre question
-      </button>
-      <div
-        className="dropdown"
+        
+         
+        Aquarium :
+        EBM example
+      </h1>
+      <p
+        className="is-4"
       >
-        <button
-          className="dropbtn"
-          type="button"
-        >
-          Changement de Rythme
-        </button>
-        <div
-          className="dropdown-content"
-        >
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander d aller plus vite
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander d aller moins vite
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Je ne comprends plus rien
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander une pause
-          </button>
-        </div>
-      </div>
-      <div
-        className="dropdown"
-      >
-        <button
-          className="dropbtn"
-          type="button"
-        >
-          Précision
-        </button>
-        <div
-          className="dropdown-content"
-        >
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander d aller plus vite 2
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander d aller moins vite 2
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Je ne comprends plus rien 2
-          </button>
-          <button
-            className="buttonList"
-            onClick={[Function]}
-            type="button"
-          >
-            Demander une pause 2
-          </button>
-        </div>
-      </div>
+        Séance ouverte le
+         
+        some date
+      </p>
     </div>
+  </div>
+  <div
+    className="bg-color"
+  >
     <div
-      id="clean"
-    />
-  </div>,
+      className="columns add-margin "
+    >
+      <div
+        className="column is-3"
+      >
+        <div
+          className="field"
+        >
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <input
+              className="input"
+              onKeyUp={[Function]}
+              placeholder="Posez votre question"
+              type="text"
+            />
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-hand-point-up"
+              />
+            </span>
+          </p>
+        </div>
+      </div>
+      <div
+        className="column is-3 has-text-left dropdown"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
+        >
+          <button
+            className="button is-info is-inverted is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Changement de rythme
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-question-circle"
+            />
+          </span>
+        </p>
+        <div
+          className="dropdown-content"
+        >
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander d aller plus vite
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander d aller moins vite
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Je ne comprends plus rien
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander une pause
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+        </div>
+      </div>
+      <div
+        className="column is-3 dropdown"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
+        >
+          <button
+            className="button is-info is-inverted  is-fullwidth"
+            name="button"
+            type="button"
+          >
+            Précision
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="fas fa-plus-circle"
+            />
+          </span>
+        </p>
+        <div
+          className="dropdown-content"
+        >
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander de réexpliquer
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander de détailler
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander un exemple
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander une anecdote
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander une référence
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+          <p
+            className="control has-icons-left has-icons-right"
+          >
+            <button
+              className="button is-info is-inverted  is-fullwidth buttonList"
+              onClick={[Function]}
+              type="button"
+            >
+              Demander un exercice
+            </button>
+            <span
+              className="icon is-small is-left"
+            >
+              <i
+                className="fas fa-question-circle"
+              />
+            </span>
+          </p>
+        </div>
+      </div>
+      <div
+        className="column is-2"
+      >
+        <p
+          className="control has-icons-left has-icons-right"
+        >
+          <button
+            className="button is-danger is-fullwidth"
+            onClick={[Function]}
+            type="button"
+          >
+            Arrêt d'urgence
+          </button>
+          <span
+            className="icon is-small is-left"
+          >
+            <i
+              className="far fa-stop-circle"
+            />
+          </span>
+        </p>
+      </div>
+      <div
+        id="clean"
+      />
+    </div>
+  </div>
   <button
     hidden={false}
     onClick={[Function]}
     type="button"
   >
     Chercher un Fishtank
-  </button>,
-  <div>
-    ActivityContainer
-    <div>
-      Questionnaire_name
-      <div>
-        Qu'est ce que tu as appris ?
-        <div>
-          <input
-            id="input_response"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-      </div>
-      <div>
-        Qu'est ce qui t'as étonné ?
-        <div>
-          <input
-            id="input_response"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-      </div>
-      <div>
-        Qu'est ce que tu voudrais avoir plus ou en plus ?
-        <div>
-          <input
-            id="input_response"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-      </div>
-      <div>
-        Qu'est ce que tu voudrais avoir moins ou en moins ?
-        <div>
-          <input
-            id="input_response"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-      </div>
-      <div
-        id="container reponse"
+  </button>
+  <div
+    className="columns is-mobile"
+  >
+    <div
+      className="column is-9 is-offset-1"
+    >
+      <h1
+        className="title is-t1"
       >
+        Questionnaire_name
+      </h1>
+      <div>
+        <h1
+          className="title is-6"
+        >
+          Qu'est ce que tu as appris ?
+        </h1>
         <div>
-          Cb tu notes ce cour ?
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
         </div>
+      </div>
+      <div>
+        <h1
+          className="title is-6"
+        >
+          Qu'est ce qui t'as étonné ?
+        </h1>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <h1
+          className="title is-6"
+        >
+          Qu'est ce que tu voudrais avoir plus ou en plus ?
+        </h1>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <h1
+          className="title is-6"
+        >
+          Qu'est ce que tu voudrais avoir moins ou en moins ?
+        </h1>
+        <div>
+          <input
+            id="input_response"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <h1
+          className="title is-6"
+        >
+          Cb tu notes ce cour ?
+        </h1>
         <input
           checked={false}
           onChange={[Function]}
@@ -214,7 +437,6 @@ Array [
         </button>
       </div>
     </div>
-    End
-  </div>,
-]
+  </div>
+</div>
 `;

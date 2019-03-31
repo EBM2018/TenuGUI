@@ -1,44 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<d>
-  <div
-    id="title"
+<div
+  className="column is-6"
+>
+  <h2
+    className="is-h2"
   >
     Prévisualisation de l'activité
-  </div>
-  <div
-    id="subtitle"
+  </h2>
+  <h3
+    className="is-h3"
   >
-    Description
-  </div>
-  <div
-    className="paragraphe"
-    id="description"
+    Fonctionnement
+  </h3>
+  <p
+    className="is-body"
   >
-    blabla
-  </div>
-  <div
-    id="subtitle"
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <h3
+    className="is-h3"
   >
     Effet
-  </div>
-  <div
-    className="paragraphe"
-    id="effect"
+  </h3>
+  <p
+    className="is-body"
   >
-    blabla
-  </div>
-  <div
-    id="subtitle"
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <h3
+    className="is-h3"
   >
     Affichage
-  </div>
-  <div
-    className="paragraphe"
-    id="display"
+  </h3>
+  <p
+    className="is-body"
   >
-    blabla
-  </div>
-</d>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <button
+    className="button is-info add-margin-top"
+    name="button"
+    type="button"
+  >
+    Lancer l'activité
+  </button>
+</div>
 `;

@@ -5,12 +5,49 @@ exports[`Layout renders correctly 1`] = `
   <div
     id="header"
   >
-    <p>
-      Header
-    </p>
-    <p>
-      UserAccountWidget
-    </p>
+    <header>
+      <div
+        className="columns add-margin"
+      >
+        <div
+          className="column"
+        />
+      </div>
+      <div
+        className="columns add-margin"
+      >
+        <div
+          className="column is-2"
+        >
+          <figure
+            className="image"
+          >
+            <img
+              alt="TenuGUI"
+              src="LogoTenuGUI.png"
+            />
+          </figure>
+        </div>
+        <div
+          className="column is-8"
+        />
+        <div
+          className="column"
+        >
+          <figure
+            className="image is-64x64"
+          >
+            <img
+              alt="MonProfil"
+              src="../../../images/PhotoProfil.png"
+            />
+            <p>
+              
+            </p>
+          </figure>
+        </div>
+      </div>
+    </header>
   </div>
   <main>
     <input
@@ -20,8 +57,5 @@ exports[`Layout renders correctly 1`] = `
     />
     42
   </main>
-  <footer>
-    footer
-  </footer>
 </div>
 `;

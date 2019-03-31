@@ -1,36 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<div>
-  <div
-    id="title"
+<div
+  className="column add-margin-left add15-margin-top is-3"
+>
+  <h2
+    className="is-h2"
   >
-     Mon fils rouge 
-  </div>
-  <div
-    id="ButtonLayoutContainer"
+    Mon fil d'Arianne
+  </h2>
+  <button
+    className="button"
+    id="Start"
+    onClick={[Function]}
+    type="button"
   >
-    <button
-      id="Start"
-      onClick={[Function]}
-      type="button"
-    >
-      Ouverture
-    </button>
-    <button
-      id="AskSummary"
-      onClick={[Function]}
-      type="button"
-    >
-      Faites un résumé
-    </button>
-    <button
-      id="AskFeedback"
-      onClick={[Function]}
-      type="button"
-    >
-      Feedback
-    </button>
-  </div>
+    Ouverture
+  </button>
+  <button
+    className="button"
+    id="AskSummary"
+    onClick={[Function]}
+    type="button"
+  >
+    Faites un résumé
+  </button>
+  <button
+    className="button"
+    id="AskFeedback"
+    onClick={[Function]}
+    type="button"
+  >
+    Feedback
+  </button>
 </div>
 `;

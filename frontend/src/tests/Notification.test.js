@@ -12,6 +12,14 @@ test('does this render', () => {
       nbAskSpeedUp={2}
       nbAskStop={4}
       nbNotUnderstand={1}
+      fishtankId={130}
+      nbAskAnecdote={2}
+      nbAskDetails={1}
+      nbAskExample={0}
+      nbAskExercice={3}
+      nbAskReexplain={1}
+      nbAskReference={2}
+      nbStudent={10}
     />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

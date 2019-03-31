@@ -2,24 +2,26 @@
 
 exports[`does this render 1`] = `
 Array [
-  <div>
-    Mes Activités
-  </div>,
-  <div
-    id="activityContainer"
+  <h2
+    className="is-h2"
   >
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      Ouverture
-    </button>
-    <button
-      onClick={[Function]}
-      type="button"
-    >
-      FeedBack
-    </button>
-  </div>,
+    Mes Activités
+  </h2>,
+  <button
+    className="button is-info is-inverted"
+    name="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Ouverture
+  </button>,
+  <button
+    className="button is-info is-inverted"
+    name="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Feedback
+  </button>,
 ]
 `;

@@ -1,25 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home renders as expected 1`] = `
-Array [
-  "wwww Home",
-  <a
-    href="/"
+<section
+  className="hero is-fullheight"
+>
+  <div
+    className="hero-body"
   >
-     lien 
-  </a>,
-  <div>
-    Se connecter en tant que :
-    <input
-      id="name"
-      type="text"
-    />
-    <button
-      onClick={[Function]}
-      type="button"
+    <div
+      className="container has-text-right"
     >
-      Connexion
-    </button>
-  </div>,
-]
+      <div
+        className="columns"
+      >
+        <div
+          className="column is-4 is-offset-3 "
+        >
+          <h1
+            className="title"
+          >
+            <span
+              className="tenu"
+            >
+              Tenu
+            </span>
+            <span
+              className="GUI"
+            >
+              GUI
+            </span>
+          </h1>
+          <h2
+            className="title is-5 is-h2"
+          >
+            Pour rendre vos cours et vos séminaires super interactifs
+          </h2>
+        </div>
+        <div
+          className="column is-2"
+        >
+          <figure
+            className="image is-1by1"
+          >
+            <img
+              alt="logo1TenuGUI"
+              src="logokoinobori.png"
+            />
+          </figure>
+        </div>
+        <div
+          className="column is-4"
+        />
+      </div>
+      <div
+        className="columns"
+      >
+        <div
+          className="column"
+        />
+      </div>
+      <div
+        className="columns is-tablet is-multiline"
+      >
+        <div
+          className="column is-2 is-offset-4 is-center has-text-centered"
+        >
+          <p
+            className="is-6"
+          >
+            Intervenant
+          </p>
+        </div>
+        <div
+          className="column is-2 is-center has-text-centered"
+        >
+          <p
+            className="is-6"
+          >
+            Apprenant
+          </p>
+        </div>
+      </div>
+      <div
+        className="columns is-multiline"
+      >
+        <div
+          className="column is-4 is-offset-4"
+        >
+          <div
+            className="field"
+          >
+            <input
+              className="input"
+              id="name"
+              name=""
+              placeholder="Choisi ton ID"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="column is-2 is-offset-6"
+        >
+          <button
+            className="button is-info is-focus is-fullwidth"
+            onClick={[Function]}
+            type="button"
+          >
+            C'est parti !
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 `;

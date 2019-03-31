@@ -1,92 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<div>
-  Questionnaire_name
-  <div>
-    Qu'est ce que tu as appris ?
-    <div>
-      <input
-        id="input_response"
-        onChange={[Function]}
-        type="text"
-      />
-    </div>
-  </div>
-  <div>
-    Qu'est ce qui t'as étonné ?
-    <div>
-      <input
-        id="input_response"
-        onChange={[Function]}
-        type="text"
-      />
-    </div>
-  </div>
-  <div>
-    Qu'est ce que tu voudrais avoir plus ou en plus ?
-    <div>
-      <input
-        id="input_response"
-        onChange={[Function]}
-        type="text"
-      />
-    </div>
-  </div>
-  <div>
-    Qu'est ce que tu voudrais avoir moins ou en moins ?
-    <div>
-      <input
-        id="input_response"
-        onChange={[Function]}
-        type="text"
-      />
-    </div>
-  </div>
+<div
+  className="columns is-mobile"
+>
   <div
-    id="container reponse"
+    className="column is-9 is-offset-1"
   >
-    <div>
-      Cb tu notes ce cour ?
-    </div>
-    <input
-      checked={false}
-      onChange={[Function]}
-      type="checkbox"
-    />
-    1
-    <input
-      checked={false}
-      onChange={[Function]}
-      type="checkbox"
-    />
-    2
-    <input
-      checked={false}
-      onChange={[Function]}
-      type="checkbox"
-    />
-    3
-    <input
-      checked={false}
-      onChange={[Function]}
-      type="checkbox"
-    />
-    4
-    <input
-      checked={false}
-      onChange={[Function]}
-      type="checkbox"
-    />
-    5
-  </div>
-  <div>
-    <button
-      onClick={[Function]}
-      type="submit"
+    <h1
+      className="title is-t1"
     >
-      Send
-    </button>
+      Questionnaire_name
+    </h1>
+    <div>
+      <h1
+        className="title is-6"
+      >
+        Qu'est ce que tu as appris ?
+      </h1>
+      <div>
+        <input
+          id="input_response"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+    <div>
+      <h1
+        className="title is-6"
+      >
+        Qu'est ce qui t'as étonné ?
+      </h1>
+      <div>
+        <input
+          id="input_response"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+    <div>
+      <h1
+        className="title is-6"
+      >
+        Qu'est ce que tu voudrais avoir plus ou en plus ?
+      </h1>
+      <div>
+        <input
+          id="input_response"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+    <div>
+      <h1
+        className="title is-6"
+      >
+        Qu'est ce que tu voudrais avoir moins ou en moins ?
+      </h1>
+      <div>
+        <input
+          id="input_response"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+    <div>
+      <h1
+        className="title is-6"
+      >
+        Cb tu notes ce cour ?
+      </h1>
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      1
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      3
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      4
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      5
+    </div>
+    <div>
+      <button
+        onClick={[Function]}
+        type="submit"
+      >
+        Send
+      </button>
+    </div>
   </div>
 </div>
 `;

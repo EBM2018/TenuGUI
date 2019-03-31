@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does this render 1`] = `
-<p>
-  UserAccountWidget
-</p>
+<figure
+  className="image is-64x64"
+>
+  <img
+    alt="MonProfil"
+    src="../../../images/PhotoProfil.png"
+  />
+  <p>
+    
+  </p>
+</figure>
 `;
