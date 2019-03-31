@@ -8,6 +8,8 @@ import './Home.css';
 import logo from '../../images/logokoinobori.png';
 import { getUserTokenFixture, getUserFixture } from '../../service/API/users';
 
+const listPerso = ['BDH', 'Hamza Oussaine', 'Baptiste Lalanne', 'Ludovic Guillemin'];
+
 class Home extends React.PureComponent {
     static propTypes = {
       history: ReactRouterPropTypes.history.isRequired,
@@ -37,28 +39,29 @@ class Home extends React.PureComponent {
     };
 
     // TODO : change this, logic for new fishtank
-    todoConnection = async () => { // TODO : change this shit
-      const dataUser = await getUserFixture();
+    todoConnection = () => { // TODO : change this shit
       const nameInput = document.getElementById('name').value;
+      this.connect(nameInput);
+    };
+
+    todoConnection2 = () => { // TODO : change this shit
+      const nameInput = document.getElementById('name2').value;
+      this.connect(nameInput);
+    };
+
+    connect = async (nameInput) => {
+      console.log(nameInput);
+      const dataUser = await getUserFixture();
       const userJSON = this.getUserInJSON(nameInput, dataUser);
       const { history } = this.props;
-      // const token =
-      // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-      // .eyJ0b2tlbiI6InByb2YifQ
-      // .DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
-
       const repToken = await getUserTokenFixture(userJSON.id);
-      console.log(repToken);
-      console.log(repToken.token);
       userJSON.token = repToken.token;
 
       this.setCookie(userJSON);
 
       if (userJSON.shoalId === undefined) {
-        // this.setCookie(userJSON, repToken.token);
         history.push('/Dashboard');
       } else {
-        // this.setCookie(userJSON, repToken.token);
         history.push('/Fishtank');
       }
     };
@@ -112,6 +115,31 @@ class Home extends React.PureComponent {
                     onClick={this.todoConnection}
                   >
                                   C'est parti !
+                  </button>
+                </div>
+                <div className="column is-2 is-offset-6">
+                  <select
+                    className="select"
+                    id="name2"
+                  >
+                    {listPerso.map(nb => (
+                      <option
+                        className="buttonList"
+                        value={nb}
+                      >
+                        {nb}
+                      </option>
+                    ))
+                  }
+                  </select>
+                </div>
+                <div className="column is-2 is-offset-6">
+                  <button
+                    type="button"
+                    className="button is-info is-focus is-fullwidth"
+                    onClick={this.todoConnection2}
+                  >
+                    C'est parti !
                   </button>
                 </div>
               </div>

@@ -10,7 +10,7 @@ import MyDescription from './MyDescription/MyDescription';
 import { createFishtank } from '../../service/API/fishtanks';
 
 
-const listGroupeTest = [0, 1, 5, 99999];
+const listGroupeTest = [0, 1, 2, 5, 99999];
 
 class Dashboard extends React.PureComponent {
     static propTypes = {
@@ -80,6 +80,7 @@ class Dashboard extends React.PureComponent {
             <div className="column is-full">
 
               <Popup
+                className="modal-background"
                 open={isOpen}
                 onClose={this.handleClose}
               >
