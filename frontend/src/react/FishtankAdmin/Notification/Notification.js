@@ -24,12 +24,17 @@ class Notification extends React.PureComponent {
         nbInteractions,
         nbStudent,
       } = this.props;
+      const stopString = "Arret d'urgence : ";
       return (
         <div className="column is-3">
           <h2 className="is-h2 add15-margin-top">Notification élèves</h2>
           <div className="columns">
             <div className="column">
-              <p> Arret d'urgence : </p>
+              <p>
+                {' '}
+                {stopString}
+                {' '}
+              </p>
               <p> Pause : </p>
               <p> Ralentir : </p>
               <p> Accelerer : </p>

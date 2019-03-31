@@ -16,6 +16,16 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  FishtankInteractionType.ACTIVITY_CHANGE = 1;
+  FishtankInteractionType.EMERGENCY_PRESS = 2;
+  FishtankInteractionType.FEEDBACK_SUBMIT = 3;
+  FishtankInteractionType.COOL_PRESS = 4;
+  FishtankInteractionType.PERIOD_CHANGE = 5;
+=======
+>>>>>>> develop
   FishtankInteractionType.ADMIN = {
     ACTIVITY_CHANGE: 1,
     PERIOD_CHANGE: 5,
@@ -42,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
     REFERENCE_ASK: 15,
     EXERCISE_ASK: 16,
   };
+<<<<<<< HEAD
+=======
+>>>>>>> 98bd6ca4052945b6d2356f4dfd9e5e21519afc8e
+>>>>>>> develop
 
   return FishtankInteractionType;
 };

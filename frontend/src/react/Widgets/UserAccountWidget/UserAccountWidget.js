@@ -38,11 +38,17 @@ class UserAccountWidget extends React.PureComponent {
       if (userJSON !== undefined) {
         return (
           <figure className="image is-64x64">
-            <img
-              src={photoProfil}
-              alt="MonProfil"
+            <div
               onClick={this.handleOpen}
-            />
+              onKeyPress={() => {}}
+              role="button"
+              tabIndex="0"
+            >
+              <img
+                src={photoProfil}
+                alt="MonProfil"
+              />
+            </div>
             <shan>{userJSON.name}</shan>
             <Popup
               open={infoDisplayed}

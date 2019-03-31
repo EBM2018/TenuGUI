@@ -164,6 +164,17 @@ describe('Fishtank creation validation', () => {
         token: validUsers[1].token,
       })
       .set('Content-Type', 'application/json')
+<<<<<<< HEAD
       .expect(422);
+=======
+<<<<<<< HEAD
+      .expect(201)
+      .expect((res) => {
+        expect(res.body).toEqual({});
+      });
+=======
+      .expect(422);
+>>>>>>> 98bd6ca4052945b6d2356f4dfd9e5e21519afc8e
+>>>>>>> develop
   });
 });

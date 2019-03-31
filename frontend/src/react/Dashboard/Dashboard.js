@@ -132,14 +132,6 @@ class Dashboard extends React.PureComponent {
               >
                     Démarrer une séance
               </button>
-              <button
-                className="button is-link"
-                type="button"
-                name="button"
-                onClick={this.todoStartFishtank}
-              >
-                    Démarrer une séance (old)
-              </button>
             </div>
           </div>
           <div className="columns">

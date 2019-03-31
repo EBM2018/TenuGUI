@@ -17,10 +17,12 @@ class ActivityObserver extends React.PureComponent {
         nbStudent,
         disableActivityObserver,
       } = this.props;
+      const progressString = "Progression sur l'activité :";
+      const stopString = "Arrêter d'observer";
       return (
         <>
           <h2 className="is-h2 add15-margin-top">
-            Progression sur l'activité :
+            {progressString}
             {nameActivity}
           </h2>
           <progress value={nbFinished} max={nbStudent} />
@@ -30,7 +32,7 @@ class ActivityObserver extends React.PureComponent {
               className="button"
               onClick={disableActivityObserver}
             >
-            Arrêter d'observer
+              {stopString}
             </button>
           </div>
         </>
