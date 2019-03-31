@@ -49,7 +49,7 @@ class UserAccountWidget extends React.PureComponent {
                 alt="MonProfil"
               />
             </div>
-            <shan>{userJSON.name}</shan>
+            <span>{userJSON.name}</span>
             <Popup
               open={infoDisplayed}
               onClose={this.handleClose}

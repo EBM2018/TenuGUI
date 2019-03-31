@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { sendNewInteractionEmission } from '../../../service/API/requests';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 
 // import ListSpeed from './ListSpeed/ListSpeed.js'; PERIOD_CHANGE: 5
 // import ListAccuracy from './ListAccuracy/ListAccuracy.js'; UNDERSTANDING_ASK: 18
@@ -27,7 +27,7 @@ class ButtonLayout extends React.PureComponent {
                   type="button"
                   name="button"
                   onClick={() => {
-                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.PROGRESSION_ASK, '');
+                    postFishtankInteraction(fishtankId, idInteractions.ADMIN.PROGRESSION_ASK, '');
                   }}
                 >
                     Vous avez compris ?
@@ -45,7 +45,7 @@ class ButtonLayout extends React.PureComponent {
                   type="button"
                   name="button"
                   onClick={() => {
-                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.SUMMARY_ASK, '');
+                    postFishtankInteraction(fishtankId, idInteractions.ADMIN.SUMMARY_ASK, '');
                   }}
                 >
                     Faites un résumé
@@ -81,7 +81,7 @@ class ButtonLayout extends React.PureComponent {
                   type="button"
                   name="button"
                   onClick={() => {
-                    sendNewInteractionEmission(fishtankId, idInteractions.ADMIN.ATTENTION_ASK, '');
+                    postFishtankInteraction(fishtankId, idInteractions.ADMIN.ATTENTION_ASK, '');
                   }}
                 >
                           Votre attention svp !

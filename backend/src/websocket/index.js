@@ -32,6 +32,11 @@ const emitNewInteraction = (fishtankId) => {
   io.of(`/fishtank-${fishtankId}`).emit('newInteraction');
 };
 
+const emitFeedback = (fishtankId, id) => {
+  console.log('I want feedback');
+  io.of(`/fishtank-${fishtankId}`).emit('newFeedback', id);
+};
+
 module.exports = {
-  init, createSocketsNameSpaceForFishtank, emitNewInteraction,
+  init, createSocketsNameSpaceForFishtank, emitNewInteraction, emitFeedback,
 };

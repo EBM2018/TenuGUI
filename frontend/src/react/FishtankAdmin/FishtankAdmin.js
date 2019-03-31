@@ -10,8 +10,9 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Command from './Command/Command';
 import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
-import { handleNewInteractionEmission, createSocketFishtank, getIdInteractions } from '../../service/API/requests';
+import { handleFishtankCreation } from '../../service/Websockets/handlers';
 import ActivityObserver from './ActivityObserver/ActivityObserver';
+import { getFishtankInteractions, getIdInteractions } from '../../service/API/interactions';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
@@ -39,7 +40,7 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         this.setState({ fishtankId });
-        createSocketFishtank(fishtankId, this.getFishtankNbInteractions);
+        handleFishtankCreation(fishtankId, this.getFishtankNbInteractions);
         this.getFishtankIdInteractions();
         this.getFishtankNbInteractionsStart(fishtankId);
       }
@@ -47,12 +48,12 @@ class FishtankAdmin extends React.PureComponent {
 
     getFishtankNbInteractions = async () => {
       const { fishtankId } = this.state;
-      const interactions = await handleNewInteractionEmission(fishtankId);
+      const interactions = await getFishtankInteractions(fishtankId);
       this.setState({ nbInteractions: interactions.counts });
     };
 
     getFishtankNbInteractionsStart = async (fishtankId) => {
-      const interactions = await handleNewInteractionEmission(fishtankId);
+      const interactions = await getFishtankInteractions(fishtankId);
       this.setState({ nbInteractions: interactions.counts });
     };
 

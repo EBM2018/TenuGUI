@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
-import { sendNewInteractionEmission } from '../../../service/API/requests';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 // import index from '../../../service/Websockets';
 
 /*
@@ -94,7 +94,7 @@ export default class Activity extends React.PureComponent {
     send = () => { // pour des test à la con
       const { userReponse } = this.state;
       const { fishtankId, idInteractions } = this.props;
-      sendNewInteractionEmission(
+      postFishtankInteraction(
         fishtankId,
         idInteractions.PARTICIPANT.FEEDBACK_SUBMIT,
         userReponse,

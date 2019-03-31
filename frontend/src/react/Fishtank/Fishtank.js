@@ -8,7 +8,9 @@ import './Fishtank.css';
 import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Activity from '../Widgets/Activity/Activity';
-import { createSocketFishtank, getFishtank, getIdInteractions } from '../../service/API/requests';
+import { handleFishtankCreation } from '../../service/Websockets/handlers';
+import { getFishtank } from '../../service/API/fishtanks';
+import { getIdInteractions } from '../../service/API/interactions';
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -45,7 +47,7 @@ class Fishtank extends React.PureComponent {
       const fishtankIds = await getFishtank(userJSON.token);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
-      createSocketFishtank(fishtankId, this.fishtankInteractionsStudent);
+      handleFishtankCreation(fishtankId, this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
     }
 

@@ -1,52 +1,52 @@
-import { sendNewInteractionEmission } from '../API/requests';
+import { postFishtankInteraction } from '../API/interactions';
 
 class StudentFishtank {
     static askQuestion = (fishtankId, text) => {
-      sendNewInteractionEmission(fishtankId, 2, text);
+      postFishtankInteraction(fishtankId, 2, text);
     };
 
     static askSpeedUp = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 3, '');
+      postFishtankInteraction(fishtankId, 3, '');
     };
 
     static askSpeedDown = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 4, '');
+      postFishtankInteraction(fishtankId, 4, '');
     };
 
     static notUnderstand = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 5, '');
+      postFishtankInteraction(fishtankId, 5, '');
     };
 
     static askPause = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 6, '');
+      postFishtankInteraction(fishtankId, 6, '');
     };
 
     static askReexplain = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 7, '');
+      postFishtankInteraction(fishtankId, 7, '');
     };
 
     static askDetails = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 8, '');
+      postFishtankInteraction(fishtankId, 8, '');
     };
 
     static askExample = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 9, '');
+      postFishtankInteraction(fishtankId, 9, '');
     };
 
     static askAnecdote = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 10, '');
+      postFishtankInteraction(fishtankId, 10, '');
     };
 
     static askReference = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 11, '');
+      postFishtankInteraction(fishtankId, 11, '');
     };
 
     static askExercice = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 12, '');
+      postFishtankInteraction(fishtankId, 12, '');
     };
 
     static askStop = (fishtankId) => {
-      sendNewInteractionEmission(fishtankId, 2, '');
+      postFishtankInteraction(fishtankId, 2, '');
     };
 }
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './ButtonLayout.css';
 
-import { sendNewInteractionEmission } from '../../../service/API/requests';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 
 class ButtonLayout extends React.PureComponent {
     static propTypes = {
@@ -18,7 +18,7 @@ class ButtonLayout extends React.PureComponent {
     sendQuestion = (event) => {
       const { fishtankId, idInteractions } = this.props;
       if (event.keyCode === 13) {
-        sendNewInteractionEmission(
+        postFishtankInteraction(
           fishtankId,
           idInteractions.PARTICIPANT.QUESTION_ASK,
           event.target.value,
@@ -53,7 +53,7 @@ class ButtonLayout extends React.PureComponent {
                   type="button"
                   name="button"
                   onClick={() => {
-                    sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.COOL_PRESS, '');
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.COOL_PRESS, '');
                   }}
                 >
                 Liker
@@ -79,7 +79,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.FASTER_RHYTHM_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.FASTER_RHYTHM_ASK, '');
                     }}
                   >
                         Demander d aller plus vite
@@ -93,7 +93,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.SLOWER_RHYTHM_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.SLOWER_RHYTHM_ASK, '');
                     }}
                   >
                         Demander d aller moins vite
@@ -107,7 +107,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY, '');
                     }}
                   >
                         Je ne comprends plus rien
@@ -121,7 +121,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.PAUSE_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.PAUSE_ASK, '');
                     }}
                   >
                         Demander une pause
@@ -152,7 +152,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EXPLANATIONS_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXPLANATIONS_ASK, '');
                     }}
                   >
                           Demander de réexpliquer
@@ -167,7 +167,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.DETAILS_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.DETAILS_ASK, '');
                     }}
                   >
                           Demander de détailler
@@ -182,7 +182,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EXAMPLES_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXAMPLES_ASK, '');
                     }}
                   >
                           Demander un exemple
@@ -197,7 +197,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.TRIVIA_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.TRIVIA_ASK, '');
                     }}
                   >
                           Demander une anecdote
@@ -212,7 +212,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.REFERENCE_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.REFERENCE_ASK, '');
                     }}
                   >
                           Demander une référence
@@ -227,7 +227,7 @@ class ButtonLayout extends React.PureComponent {
                     type="button"
                     className="button is-info is-inverted  is-fullwidth buttonList"
                     onClick={() => {
-                      sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EXERCISE_ASK, '');
+                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXERCISE_ASK, '');
                     }}
                   >
                           Demander un exercice
@@ -244,7 +244,7 @@ class ButtonLayout extends React.PureComponent {
                   type="button"
                   className="button is-danger is-fullwidth"
                   onClick={() => {
-                    sendNewInteractionEmission(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
                   }}
                 >
                     Arrêt d'urgence

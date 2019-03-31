@@ -3,10 +3,10 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-import { getUserFixture, getUserTokenFixture } from '../../service/API/requests';
 
 import './Home.css';
 import logo from '../../images/logokoinobori.png';
+import { getUserTokenFixture, getUserFixture } from '../../service/API/users';
 
 class Home extends React.PureComponent {
     static propTypes = {

@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup';
 import MyActivity from './MyActivity/MyActivity';
 import MyActions from './MyActions/MyActions';
 import MyDescription from './MyDescription/MyDescription';
-import { createFishtank } from '../../service/API/requests';
+import { createFishtank } from '../../service/API/fishtanks';
 
 
 const listGroupeTest = [0, 1, 5, 99999];
