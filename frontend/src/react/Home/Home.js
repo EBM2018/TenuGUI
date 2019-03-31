@@ -39,7 +39,9 @@ class Home extends React.PureComponent {
     // TODO : change this, logic for new fishtank
     todoConnection = async () => { // TODO : change this shit
       const dataUser = await getUserFixture();
+      console.log(dataUser);
       const nameInput = document.getElementById('name').value;
+      console.log(nameInput);
       const userJSON = this.getUserInJSON(nameInput, dataUser);
       const { history } = this.props;
       // const token =
@@ -48,8 +50,6 @@ class Home extends React.PureComponent {
       // .DeurWESF3J4QGtrQrlJ2pR4cxxJI1RBAKbTnqQqcZlc';
 
       const repToken = await getUserTokenFixture(userJSON.id);
-      console.log(repToken);
-      console.log(repToken.token);
       userJSON.token = repToken.token;
 
       this.setCookie(userJSON);

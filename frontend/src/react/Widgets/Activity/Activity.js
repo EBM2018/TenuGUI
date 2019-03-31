@@ -8,7 +8,6 @@ import ActTextCheckMult from './ActTextCheckMult';
 import { postFishtankInteraction } from '../../../service/API/interactions';
 // import index from '../../../service/Websockets';
 
-
 export default class Activity extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
@@ -25,7 +24,8 @@ export default class Activity extends React.PureComponent {
 
     state = {
       userReponse: {
-        Question: [
+        referenceInteractionId: 0,
+        content: [
         ],
       },
     };
@@ -42,18 +42,20 @@ export default class Activity extends React.PureComponent {
     }
 
     genereateJSONUserResponse = () => {
+      const { data, fishtankId } = this.props;
       const newUserResponse = {
-        Question: [
+        referenceInteractionId: 0,
+        content: [
         ],
       };
-      const { data } = this.props;
+      newUserResponse.referenceInteractionId = fishtankId;
       for (let i = 0; i < data.Question.length; i += 1) {
         const modDataOneResponse = {
           id: 0,
-          response: '',
+          answer: '',
         };
         modDataOneResponse.id = data.Question[i].idQuestion;
-        newUserResponse.Question.push(modDataOneResponse);
+        newUserResponse.content.push(modDataOneResponse);
       }
       this.setState({ userReponse: newUserResponse });
     }
@@ -72,9 +74,9 @@ export default class Activity extends React.PureComponent {
 
     editResponse = (indexQuestion, newResponse) => {
       const { userReponse } = this.state;
-      userReponse.Question[indexQuestion].response = newResponse;
+      userReponse.content[indexQuestion].answer = newResponse;
       this.setState({ userReponse });
-      this.forceUpdate();
+      // this.forceUpdate();
     };
 
     render() {

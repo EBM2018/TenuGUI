@@ -78,8 +78,8 @@ class Fishtank extends React.PureComponent {
       } else {
         try {
           this.connectToFishtank();
-          this.setState({ connected: true });
           this.getFishtankIdInteractions();
+          this.setState({ connected: true });
         } catch {
           console.log('pas de Fishtank');
         }
@@ -89,9 +89,12 @@ class Fishtank extends React.PureComponent {
     connectToFishtank = async () => {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
+      console.log(userJSON.token);
       const fishtankIds = await getFishtank(userJSON.token);
+      console.log(fishtankIds);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
+      console.log(fishtankId);
       handleFishtankCreation(fishtankId, () => {}, this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
     }
