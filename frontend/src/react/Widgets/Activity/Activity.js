@@ -1,12 +1,14 @@
 import React from 'react';
 
-import './Activity.css';
 // import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ActTextField from './ActTextField';
 import ActTextCheck from './ActTextCheck';
 import ActTextCheckMult from './ActTextCheckMult';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 // import index from '../../../service/Websockets';
 
+/*
 const dataJson = {
   name: 'Questionnaire_name',
   Question: [
@@ -44,10 +46,24 @@ const dataJson = {
     },
   ],
 };
+*/
+const dataNull = {
+  name: '',
+  Question: [
+  ],
+};
 
 export default class Activity extends React.PureComponent {
+    static propTypes = {
+      fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+    }
+
     state = {
-      data: dataJson,
+      data: dataNull,
       userReponse: {
         Question: [
         ],
@@ -76,8 +92,13 @@ export default class Activity extends React.PureComponent {
     }
 
     send = () => { // pour des test à la con
-      // const { userReponse } = this.state;
-      // alert(userReponse.Question);
+      const { userReponse } = this.state;
+      const { fishtankId, idInteractions } = this.props;
+      postFishtankInteraction(
+        fishtankId,
+        idInteractions.PARTICIPANT.FEEDBACK_SUBMIT,
+        userReponse,
+      );
     };
 
     editResponse = (indexQuestion, newResponse) => {
@@ -90,48 +111,50 @@ export default class Activity extends React.PureComponent {
     render() {
       const { data } = this.state;
       return (
-        <div>
-          {data.name}
-          {data.Question.map((ques, index) => {
-            if (ques.type === 'field') {
-              return (
-                <ActTextField
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            if (ques.type === 'check') {
-              return (
-                <ActTextCheck
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  listTextResponse={ques.response}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            if (ques.type === 'checkMult') {
-              return (
-                <ActTextCheckMult
-                  key={ques.idQuestion}
-                  id={index}
-                  text={ques.text}
-                  listTextResponse={ques.response}
-                  editResponse={this.editResponse}
-                />
-              );
-            }
-            return (<></>);
-          })}
+        <div className="columns is-mobile">
+          <div className="column is-9 is-offset-1">
+            <h1 className="title is-t1">{data.name}</h1>
+            {data.Question.map((ques, index) => {
+              if (ques.type === 'field') {
+                return (
+                  <ActTextField
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              if (ques.type === 'check') {
+                return (
+                  <ActTextCheck
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    listTextResponse={ques.response}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              if (ques.type === 'checkMult') {
+                return (
+                  <ActTextCheckMult
+                    key={ques.idQuestion}
+                    id={index}
+                    text={ques.text}
+                    listTextResponse={ques.response}
+                    editResponse={this.editResponse}
+                  />
+                );
+              }
+              return (<></>);
+            })}
 
-          <div>
-            <button type="submit" onClick={this.send}>
+            <div>
+              <button type="submit" onClick={this.send}>
                     Send
-            </button>
+              </button>
+            </div>
           </div>
         </div>
       );

@@ -1,3 +1,48 @@
-.ActivityContainer {
-    overflow:hidden;
+ .bg-color {
+         background-color: #73A4CD;
+         opacity: 0.85;
+ }
+ /*     font-family: 'Nunito', sans-serif;
+        font-family: 'Dosis', sans-serif; */
+
+
+
+.title {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem !important;
+}
+
+.is-2 {
+        font-family: 'Nunito', sans-serif;
+        font-size:37px !important;
+        color:#14171C !important;
+        font-weight: bold !important;
+}
+
+.is-4 {
+        font-family: 'Dosis';
+        font-size: 24px;
+        font-weight: normal !important;
+}
+
+.is-t1{
+  font-family: 'Dosis';
+  font-size: 30px;
+  font-weight: 800 !important;
+}
+
+.is-6 {
+  margin-top: 1.0rem !important;
+  margin-bottom: 0.5rem !important;
+  font-family: 'Dosis';
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.add-margin{
+  margin-left: 30px;
+}
+
+.add-margin-top{
+  margin-top: 20px;
 }

@@ -1,4 +1,5 @@
-# TenuGUI &middot; [![Build Status](https://travis-ci.com/EBM2018/TenuGUI.svg?branch=master)](https://travis-ci.com/EBM2018/TenuGUI)
+# TenuGUI &middot; [![Build Status](https://travis-ci.com/EBM2018/TenuGUI.svg?branch=master)](https://travis-ci.com/EBM2018/TenuGUI) [![codecov](https://codecov.io/gh/EBM2018/TenuGUI/branch/master/graph/badge.svg)](https://codecov.io/gh/EBM2018/TenuGUI)
+
 
 TenuGUI est une application web cherchant à dynamiser le déroulement d'un enseignement ou d'une formation.  
 Cette application propose :
@@ -22,7 +23,6 @@ Ce projet est développé dans le cadre du fil rouge EBM et utilise donc l'archi
     * Utiliser le fichier `.env.example` comme template
     * Le remplir avec ses propres paramètres
 * Exécuter `npm start` à la racine pour servir le front-end et le back-end
-
 * Un fichier `insomnia.json` est disponible dans le dossier `backend` pour rapidement explorer les différentes routes.
 
 # Tests

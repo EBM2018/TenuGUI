@@ -20,7 +20,9 @@ export default class ActTextFieldEditor extends React.PureComponent {
       const { text } = this.props;
       return (
         <div>
-          {text}
+          <h1 className="title is-6">
+            {text}
+          </h1>
           <div>
             <input id="input_response" type="text" onChange={this.updateInputValue} />
           </div>
