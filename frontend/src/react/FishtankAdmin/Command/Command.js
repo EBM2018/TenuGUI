@@ -1,23 +1,52 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import { CommandFishtankAdmin } from '../../../service/FishtankAdmin/FishtankAdmin';
+import PropTypes from 'prop-types';
+import { postFishtankInteraction } from '../../../service/API/interactions';
 
-const Command = () => (
-  <div>
-    <div id="title"> Mon fils rouge </div>
+class Command extends React.PureComponent {
+    static propTypes = {
+      fishtankId: PropTypes.number.isRequired,
+      idInteractions: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      activeActivityObserver: PropTypes.func.isRequired,
+    }
 
-    <div id="ButtonLayoutContainer">
-      <button type="button" id="Start" onClick={CommandFishtankAdmin.startActivity}>
+    render() {
+      const {
+        fishtankId, idInteractions, activeActivityObserver,
+      } = this.props;
+      return (
+        <div className="column add-margin-left add15-margin-top is-3">
+          <h2 className="is-h2">Mon fil d'Arianne</h2>
+
+          <button
+            className="button"
+            type="button"
+            id="Start"
+            onClick={() => {
+              activeActivityObserver();
+              postFishtankInteraction(fishtankId, idInteractions.ADMIN.ACTIVITY_CHANGE, '');
+            }}
+          >
         Ouverture
-      </button>
-      <button type="button" id="AskSummary" onClick={CommandFishtankAdmin.askSummary}>
-        Faites un résumé
-      </button>
-      <button type="button" id="AskFeedback" onClick={CommandFishtankAdmin.askFeedback}>
+          </button>
+          <button
+            className="button"
+            type="button"
+            id="AskFeedback"
+            onClick={() => {
+              activeActivityObserver();
+              postFishtankInteraction(fishtankId, idInteractions.ADMIN.FEEDBACK_ASK, '');
+            }}
+          >
         Feedback
-      </button>
-    </div>
-  </div>
-);
+          </button>
+        </div>
+      );
+    }
+}
 
 export default Command;

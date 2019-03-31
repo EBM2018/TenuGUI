@@ -9,7 +9,10 @@ module.exports = {
       .custom(isFishtankOngoing)
       .withMessage('must be an ongoing fishtank'),
     body('type').custom(requestLoader.addFishtankInteractionType)
-      .withMessage('must be a valid fishtank interaction type')],
+      .withMessage('must be a valid fishtank interaction type'),
+    body('payload').custom(requestLoader.addFishtankInteractionPayload)
+      .withMessage('must be a valid payload for selected fishtank interaction type'),
+  ],
   show: [
     param('fishtankId').custom(requestLoader.addFishtank)
       .withMessage('must be a valid fishtank id'),

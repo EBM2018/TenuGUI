@@ -4,14 +4,27 @@ const teamyUsers = [{
   id: 5,
 }, {
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlQ2libGUifQ.nXJYbTIvyYaT_Xh6eO6fU0fIsjGuXNv31T4KQB9dIog',
-  name: 'Hamza',
+  name: 'Hamza Oussaine',
   id: 1,
-  shoalId: 5,
+  shoalId: 1,
 }, {
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlUmFuZG9tIn0.RhXPI2fUIfjgFQR4JIxeM9ElQsRVagT_XgonQbd5uvk',
-  name: 'Batou',
+  name: 'Baptiste Lalanne',
   id: 2,
-  shoalId: 99999,
+  shoalId: 1,
+}, {
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVsZXZlQ2libGUyIn0.WSHds0DhoDLGNnPjL8VSNQjJEuA9by0NflqKgz5ZU1A',
+  name: 'Ludovic Guillemin',
+  id: 3,
+  shoalId: 2,
+}];
+
+const teamyShoals = [{
+  id: 1,
+  name: 'EBM',
+}, {
+  id: 2,
+  name: 'Maestro',
 }];
 
 module.exports = {
@@ -43,6 +56,7 @@ module.exports = {
     }
     return users;
   },
+  getShoals: async () => teamyShoals,
   isValidShoal: async () => true,
   isUserPartOfShoal: async (userId, shoalId) => {
     for (let i = 0; i < teamyUsers.length; i += 1) {

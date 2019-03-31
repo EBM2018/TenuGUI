@@ -1,27 +1,53 @@
-export class StudentFishtank {
-    static askQuestion = () => {
-      // alert('Student ask a question.');
+import { postFishtankInteraction } from '../API/interactions';
+
+class StudentFishtank {
+    static askQuestion = (fishtankId, text) => {
+      postFishtankInteraction(fishtankId, 2, text);
     };
 
-    static askSpeedUp = () => {
-      // alert('Student want to accelerate.');
+    static askSpeedUp = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 3, '');
     };
 
-    static askSpeedDown = () => {
-      // alert('Student want to slow down.');
+    static askSpeedDown = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 4, '');
     };
 
-    static notUnderstand = () => {
-      // alert('Student do not understand.');
+    static notUnderstand = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 5, '');
     };
 
-    static askStop = () => {
-      // alert('Student want to stop.');
+    static askPause = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 6, '');
+    };
+
+    static askReexplain = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 7, '');
+    };
+
+    static askDetails = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 8, '');
+    };
+
+    static askExample = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 9, '');
+    };
+
+    static askAnecdote = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 10, '');
+    };
+
+    static askReference = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 11, '');
+    };
+
+    static askExercice = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 12, '');
+    };
+
+    static askStop = (fishtankId) => {
+      postFishtankInteraction(fishtankId, 2, '');
     };
 }
 
-export class futurFct { // TODO: get rid of this
-    static something = () => {
-      // alert('tochange');
-    };
-}
+export default StudentFishtank;

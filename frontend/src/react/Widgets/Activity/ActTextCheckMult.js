@@ -68,9 +68,9 @@ export default class ActTextCheck extends React.PureComponent {
       const { checkState } = this.state;
       return (
         <div id="container reponse" ref={this.activityContainer}>
-          <div>
+          <h1 className="title is-6">
             {text}
-          </div>
+          </h1>
           {inputs.map((response, index) => (
             <CheckBox
               id={index}

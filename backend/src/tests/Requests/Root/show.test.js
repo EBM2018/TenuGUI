@@ -16,6 +16,7 @@ describe('Routes retrieval', () => {
       expect(res.body).toEqual({
         fishtanks: `${getRequestUrlInTests(res)}/api/fishtanks`,
         users: `${getRequestUrlInTests(res)}/api/users`,
+        shoals: `${getRequestUrlInTests(res)}/api/shoals`,
         login: `${getRequestUrlInTests(res)}/api/login`,
       });
     }));

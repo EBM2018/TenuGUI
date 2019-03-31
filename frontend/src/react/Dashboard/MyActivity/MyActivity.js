@@ -1,16 +1,25 @@
 import React from 'react';
-
-import './MyActivity.css';
-
 import { DashboardMyActivity } from '../../../service/Dashboard/Dashboard';
 
 const MyActivity = () => (
   <>
-    <div>Mes Activités</div>
-    <div id="activityContainer">
-      <button type="button" onClick={DashboardMyActivity.openActivity}>Ouverture</button>
-      <button type="button" onClick={DashboardMyActivity.openFeedbackActivity}>FeedBack</button>
-    </div>
+    <h2 className="is-h2">Mes Activités</h2>
+    <button
+      className="button is-info is-inverted"
+      type="button"
+      name="button"
+      onClick={DashboardMyActivity.openActivity}
+    >
+          Ouverture
+    </button>
+    <button
+      className="button is-info is-inverted"
+      type="button"
+      name="button"
+      onClick={DashboardMyActivity.openFeedbackActivity}
+    >
+          Feedback
+    </button>
   </>
 );
 

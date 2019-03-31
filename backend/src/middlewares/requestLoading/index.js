@@ -31,4 +31,18 @@ module.exports = {
     loadRequestWith(req, 'fishtankInteractionType', fishtankInteractionType);
     return true;
   },
+  addFishtankInteractionPayload: (payload, { req }) => {
+    if (req.locals.fishtankInteractionType != null) {
+      switch (req.locals.fishtankInteractionType.id) {
+        case (FishtankInteractionType.PARTICIPANT.FEEDBACK_SUBMIT):
+        case (FishtankInteractionType.ADMIN.PERIOD_CHANGE):
+          loadRequestWith(req, 'fishtankInteractionPayload', payload);
+          break;
+        default:
+          loadRequestWith(req, 'fishtankInteractionPayload', {});
+      }
+      return true;
+    }
+    return false;
+  },
 };
