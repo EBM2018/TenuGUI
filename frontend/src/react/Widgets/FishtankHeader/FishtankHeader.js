@@ -7,6 +7,7 @@ export default class FishtankHeader extends React.PureComponent {
       subject: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       my: PropTypes.string,
+      chapitre: PropTypes.string.isRequired,
     };
 
     static defaultProps = {
@@ -14,7 +15,9 @@ export default class FishtankHeader extends React.PureComponent {
     };
 
     render() {
-      const { my, subject, date } = this.props;
+      const {
+        my, subject, date, chapitre,
+      } = this.props;
       return (
         <div className="columns add-margin">
           <div className="column is-6">
@@ -25,9 +28,14 @@ export default class FishtankHeader extends React.PureComponent {
               {subject}
             </h1>
             <p className="is-4">
-                    Séance ouverte le
+                  Séance ouverte le
               {' '}
               {date}
+            </p>
+            <p className="is-4">
+                  Chapitre
+              {': '}
+              {chapitre}
             </p>
           </div>
         </div>

@@ -23,6 +23,7 @@ class ButtonLayout extends React.PureComponent {
           idInteractions.PARTICIPANT.QUESTION_ASK,
           event.target.value,
         );
+        event.target.value='';
       }
     }
 

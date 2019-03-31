@@ -120,10 +120,9 @@ export default class Activity extends React.PureComponent {
               }
               return (<></>);
             })}
-
             <div>
               <button type="submit" onClick={this.send}>
-                    Send
+                      Send
               </button>
             </div>
           </div>

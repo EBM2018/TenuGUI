@@ -9,7 +9,7 @@ import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Activity from '../Widgets/Activity/Activity';
 import { handleFishtankCreation } from '../../service/Websockets/handlers';
-import { getFishtank } from '../../service/API/fishtanks';
+import { getFishtank, showFishtank } from '../../service/API/fishtanks';
 import { getIdInteractions } from '../../service/API/interactions';
 
 
@@ -65,6 +65,9 @@ class Fishtank extends React.PureComponent {
     state = {
       connected: false,
       fishtankId: undefined,
+      nameFishtank: 'EBM',
+      date: '',
+      chapitre: '',
       idInteractions: undefined,
       activityJSON: dataNull,
     }
@@ -89,14 +92,13 @@ class Fishtank extends React.PureComponent {
     connectToFishtank = async () => {
       const { cookies } = this.props;
       const userJSON = cookies.get('userJSON');
-      console.log(userJSON.token);
       const fishtankIds = await getFishtank(userJSON.token);
-      console.log(fishtankIds);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
-      console.log(fishtankId);
       handleFishtankCreation(fishtankId, () => {}, this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
+      const infoFishtank = await showFishtank(fishtankId, userJSON.token);
+      this.setState({ date: infoFishtank.fishtank.createdAt });
     }
 
     tryConnexion = () => {
@@ -124,13 +126,20 @@ class Fishtank extends React.PureComponent {
 
     render() {
       const {
-        connected, fishtankId, idInteractions, activityJSON,
+        connected,
+        fishtankId,
+        nameFishtank,
+        date,
+        chapitre,
+        idInteractions,
+        activityJSON,
       } = this.state;
       return (
         <div className="bg-color">
           <FishtankHeader
-            subject="EBM example"
-            date="some date"
+            subject={nameFishtank}
+            date={date}
+            chapitre={chapitre}
           />
           <ButtonLayout
             fishtankId={fishtankId}

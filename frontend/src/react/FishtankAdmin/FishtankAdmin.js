@@ -22,6 +22,9 @@ class FishtankAdmin extends React.PureComponent {
 
     state = {
       fishtankId: undefined,
+      nameFishtank: 'EBM',
+      date: '',
+      chapitre: '',
       idInteractions: undefined,
       nbInteractions: {},
       nbStudent: 15,
@@ -41,8 +44,7 @@ class FishtankAdmin extends React.PureComponent {
       } else {
         this.setState({ fishtankId });
         handleFishtankCreation(fishtankId, this.getFishtankNbInteractions, () => {});
-        this.getFishtankIdInteractions();
-        this.getFishtankNbInteractionsStart(fishtankId);
+        this.getFishtankStart(fishtankId);
       }
     }
 
@@ -52,7 +54,8 @@ class FishtankAdmin extends React.PureComponent {
       this.setState({ nbInteractions: interactions.counts });
     };
 
-    getFishtankNbInteractionsStart = async (fishtankId) => {
+    getFishtankStart = async (fishtankId) => {
+      this.getFishtankIdInteractions();
       const interactions = await getFishtankInteractions(fishtankId);
       this.setState({ nbInteractions: interactions.counts });
     };
@@ -74,6 +77,9 @@ class FishtankAdmin extends React.PureComponent {
     render() {
       const {
         fishtankId,
+        nameFishtank,
+        date,
+        chapitre,
         idInteractions,
         nbInteractions,
         nbStudent,
@@ -102,9 +108,10 @@ class FishtankAdmin extends React.PureComponent {
       return (
         <div className="bg-color">
           <FishtankHeader
-            subject="EBM example"
-            date="some date"
+            subject={nameFishtank}
+            date={date}
             my="Mon"
+            chapitre={chapitre}
           />
           <ButtonLayout
             fishtankId={fishtankId}
