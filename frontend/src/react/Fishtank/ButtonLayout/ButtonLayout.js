@@ -31,235 +31,233 @@ class ButtonLayout extends React.PureComponent {
     render() {
       const { fishtankId, idInteractions } = this.props;
       return (
-        <div className="bg-color">
-          <div className="columns add-margin ">
-            <div className="column is-3">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Posez votre question"
-                    onKeyUp={this.sendQuestion}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-hand-point-up" />
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="column is-3">
+        <div className="bg-color columns">
+          <div className="column is-3 add-margin-left">
+            <div className="field">
               <p className="control has-icons-left has-icons-right">
-                <button
-                  className="button is-info is-inverted is-fullwidth"
-                  type="button"
-                  name="button"
-                  onClick={() => {
-                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.COOL_PRESS, '');
-                  }}
-                >
-                Liker
-                </button>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Posez votre question"
+                  onKeyUp={this.sendQuestion}
+                />
                 <span className="icon is-small is-left">
-                  <i className="fas fa-thumbs-up" />
+                  <i className="fas fa-hand-point-up" />
                 </span>
               </p>
             </div>
+          </div>
+          <div className="column is-1">
+            <p className="control has-icons-left has-icons-right">
+              <button
+                className="button is-info is-inverted is-fullwidth"
+                type="button"
+                name="button"
+                onClick={() => {
+                  postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.COOL_PRESS, '');
+                }}
+              >
+                Liker
+              </button>
+              <span className="icon is-small is-left">
+                <i className="fas fa-thumbs-up" />
+              </span>
+            </p>
+          </div>
 
-            <div className="column is-3 has-text-left dropdown">
-              <p className="control has-icons-left has-icons-right">
-                <button className="button is-info is-inverted is-fullwidth" type="button" name="button">
+          <div className="column is-2 has-text-left dropdown">
+            <p className="control has-icons-left has-icons-right">
+              <button className="button is-info is-inverted is-fullwidth" type="button" name="button">
                         Changement de rythme
+              </button>
+              <span className="icon is-small is-left">
+                <i className="fas fa-question-circle" />
+              </span>
+            </p>
+            <div className="dropdown-content">
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.FASTER_RHYTHM_ASK, '');
+                  }}
+                >
+                        Demander d aller plus vite
                 </button>
                 <span className="icon is-small is-left">
                   <i className="fas fa-question-circle" />
                 </span>
               </p>
-              <div className="dropdown-content">
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.FASTER_RHYTHM_ASK, '');
-                    }}
-                  >
-                        Demander d aller plus vite
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.SLOWER_RHYTHM_ASK, '');
-                    }}
-                  >
-                        Demander d aller moins vite
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY, '');
-                    }}
-                  >
-                        Je ne comprends plus rien
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.PAUSE_ASK, '');
-                    }}
-                  >
-                        Demander une pause
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="column is-3 dropdown">
-              <p className="control has-icons-left has-icons-right">
-                <button
-                  className="button is-info is-inverted  is-fullwidth"
-                  type="button"
-                  name="button"
-                >
-                    Précision
-                </button>
-                <span className="icon is-small is-left">
-                  <i className="fas fa-plus-circle" />
-                </span>
-              </p>
-              <div className="dropdown-content">
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXPLANATIONS_ASK, '');
-                    }}
-                  >
-                          Demander de réexpliquer
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.DETAILS_ASK, '');
-                    }}
-                  >
-                          Demander de détailler
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXAMPLES_ASK, '');
-                    }}
-                  >
-                          Demander un exemple
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.TRIVIA_ASK, '');
-                    }}
-                  >
-                          Demander une anecdote
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.REFERENCE_ASK, '');
-                    }}
-                  >
-                          Demander une référence
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-
-                <p className="control has-icons-left has-icons-right">
-                  <button
-                    type="button"
-                    className="button is-info is-inverted  is-fullwidth buttonList"
-                    onClick={() => {
-                      postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXERCISE_ASK, '');
-                    }}
-                  >
-                          Demander un exercice
-                  </button>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-question-circle" />
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="column is-2">
               <p className="control has-icons-left has-icons-right">
                 <button
                   type="button"
-                  className="button is-danger is-fullwidth"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
                   onClick={() => {
-                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.SLOWER_RHYTHM_ASK, '');
                   }}
                 >
-                    Arrêt d'urgence
+                        Demander d aller moins vite
                 </button>
                 <span className="icon is-small is-left">
-                  <i className="far fa-stop-circle" />
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.LOW_UNDERSTANDING_NOTIFY, '');
+                  }}
+                >
+                        Je ne comprends plus rien
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.PAUSE_ASK, '');
+                  }}
+                >
+                        Demander une pause
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
                 </span>
               </p>
             </div>
-
-
-            <div id="clean" />
           </div>
+          <div className="column is-2 dropdown">
+            <p className="control has-icons-left has-icons-right">
+              <button
+                className="button is-info is-inverted  is-fullwidth"
+                type="button"
+                name="button"
+              >
+                    Précision
+              </button>
+              <span className="icon is-small is-left">
+                <i className="fas fa-plus-circle" />
+              </span>
+            </p>
+            <div className="dropdown-content">
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXPLANATIONS_ASK, '');
+                  }}
+                >
+                          Demander de réexpliquer
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.DETAILS_ASK, '');
+                  }}
+                >
+                          Demander de détailler
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXAMPLES_ASK, '');
+                  }}
+                >
+                          Demander un exemple
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.TRIVIA_ASK, '');
+                  }}
+                >
+                          Demander une anecdote
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.REFERENCE_ASK, '');
+                  }}
+                >
+                          Demander une référence
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+
+              <p className="control has-icons-left has-icons-right">
+                <button
+                  type="button"
+                  className="button is-info is-inverted  is-fullwidth buttonList"
+                  onClick={() => {
+                    postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EXERCISE_ASK, '');
+                  }}
+                >
+                          Demander un exercice
+                </button>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-question-circle" />
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="column is-2">
+            <p className="control has-icons-left has-icons-right">
+              <button
+                type="button"
+                className="button is-danger is-fullwidth"
+                onClick={() => {
+                  postFishtankInteraction(fishtankId, idInteractions.PARTICIPANT.EMERGENCY_PRESS, '');
+                }}
+              >
+                    Arrêt d'urgence
+              </button>
+              <span className="icon is-small is-left">
+                <i className="far fa-stop-circle" />
+              </span>
+            </p>
+          </div>
+
+
+          <div id="clean" />
         </div>
       );
     }

@@ -10,7 +10,7 @@ import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Activity from '../Widgets/Activity/Activity';
 import { handleFishtankCreation } from '../../service/Websockets/handlers';
 import { getFishtank, showFishtank } from '../../service/API/fishtanks';
-import { getIdInteractions } from '../../service/API/interactions';
+import { getFishtankInteractions, getIdInteractions } from '../../service/API/interactions';
 
 
 const dataJson = {
@@ -95,7 +95,9 @@ class Fishtank extends React.PureComponent {
       const fishtankIds = await getFishtank(userJSON.token);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
-      handleFishtankCreation(fishtankId, () => {}, this.fishtankInteractionsStudent);
+      handleFishtankCreation(fishtankId,
+        this.getFishtankNbInteractions,
+        this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
       const infoFishtank = await showFishtank(fishtankId, userJSON.token);
       this.setState({ date: infoFishtank.fishtank.createdAt });
@@ -114,6 +116,13 @@ class Fishtank extends React.PureComponent {
       const idInteractions = await getIdInteractions();
       this.setState({ idInteractions });
       console.log(idInteractions);
+    };
+
+
+    getFishtankNbInteractions = async () => {
+      const { fishtankId } = this.state;
+      const interactions = await getFishtankInteractions(fishtankId);
+      this.setState({ chapitre: interactions.currentPeriod });
     };
 
     fishtankInteractionsStudent = () => {

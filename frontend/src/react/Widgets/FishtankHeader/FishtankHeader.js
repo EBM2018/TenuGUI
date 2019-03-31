@@ -24,7 +24,8 @@ export default class FishtankHeader extends React.PureComponent {
             <h1 className="title is-2">
               {my}
               {' '}
-                    Aquarium :
+              Aquarium :
+              {' '}
               {subject}
             </h1>
             <p className="is-4">
@@ -33,8 +34,8 @@ export default class FishtankHeader extends React.PureComponent {
               {date}
             </p>
             <p className="is-4">
-                  Chapitre
-              {': '}
+                  Chapitre :
+              {' '}
               {chapitre}
             </p>
           </div>
