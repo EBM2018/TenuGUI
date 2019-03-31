@@ -1,14 +1,15 @@
 import { moveSocketToFishtankNamespace } from './index';
 import { getFishtankInteractions } from '../API/interactions';
 
-export const handleFishtankCreation = (fishtankId, interactionCallback) => {
+export const handleFishtankCreation = (fishtankId, fctHandleInteractions, fctHandleFeedback) => {
   const socket = moveSocketToFishtankNamespace(fishtankId);
   socket.on('newInteraction', async () => {
     const fishtankInteractions = await getFishtankInteractions(fishtankId);
-    interactionCallback(fishtankInteractions);
+    fctHandleInteractions(fishtankInteractions);
   });
-  socket.on('newFeedback', (feedbackId) => {
-    console.log(feedbackId);
+  socket.on('newFeedback', async () => {
+    const fishtankInteractions = await getFishtankInteractions(fishtankId);
+    fctHandleFeedback(fishtankInteractions);
   });
 };
 

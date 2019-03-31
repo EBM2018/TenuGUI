@@ -12,7 +12,8 @@ import Preview from './Preview/Preview';
 import Notification from './Notification/Notification';
 import { handleFishtankCreation } from '../../service/Websockets/handlers';
 import ActivityObserver from './ActivityObserver/ActivityObserver';
-import { getFishtankInteractions, getIdInteractions } from '../../service/API/interactions';
+import { getFishtankInteractions, getIdInteractions, postFishtankInteraction } from '../../service/API/interactions';
+import { showFishtank } from '../../service/API/fishtanks';
 
 class FishtankAdmin extends React.PureComponent {
     static propTypes = {
@@ -22,6 +23,9 @@ class FishtankAdmin extends React.PureComponent {
 
     state = {
       fishtankId: undefined,
+      nameFishtank: 'EBM',
+      date: '',
+      chapitre: '',
       idInteractions: undefined,
       nbInteractions: {},
       nbStudent: 15,
@@ -40,9 +44,8 @@ class FishtankAdmin extends React.PureComponent {
         history.push('/');
       } else {
         this.setState({ fishtankId });
-        handleFishtankCreation(fishtankId, this.getFishtankNbInteractions);
-        this.getFishtankIdInteractions();
-        this.getFishtankNbInteractionsStart(fishtankId);
+        handleFishtankCreation(fishtankId, this.getFishtankNbInteractions, () => {});
+        this.getFishtankStart(fishtankId, userJSON);
       }
     }
 
@@ -50,11 +53,16 @@ class FishtankAdmin extends React.PureComponent {
       const { fishtankId } = this.state;
       const interactions = await getFishtankInteractions(fishtankId);
       this.setState({ nbInteractions: interactions.counts });
+      this.setState({ chapitre: interactions.currentPeriod });
     };
 
-    getFishtankNbInteractionsStart = async (fishtankId) => {
+    getFishtankStart = async (fishtankId, userJSON) => {
+      this.getFishtankIdInteractions();
       const interactions = await getFishtankInteractions(fishtankId);
       this.setState({ nbInteractions: interactions.counts });
+      this.setState({ chapitre: interactions.currentPeriod });
+      const infoFishtank = await showFishtank(fishtankId, userJSON.token);
+      this.setState({ date: infoFishtank.fishtank.createdAt });
     };
 
     getFishtankIdInteractions = async () => {
@@ -71,68 +79,92 @@ class FishtankAdmin extends React.PureComponent {
       this.setState({ activityWaiting: false });
     };
 
-    render() {
-      const {
-        fishtankId,
-        idInteractions,
-        nbInteractions,
-        nbStudent,
-        activityWaiting,
-        nbFinished,
-      } = this.state;
-      /*
+        sendNewChapitre = (event) => {
+          const { fishtankId, idInteractions } = this.state;
+          if (event.keyCode === 13) {
+            const object = event.target;
+            postFishtankInteraction(
+              fishtankId,
+              idInteractions.ADMIN.PERIOD_CHANGE,
+              object.value,
+            );
+          }
+        }
+
+        render() {
+          const {
+            fishtankId,
+            nameFishtank,
+            date,
+            chapitre,
+            idInteractions,
+            nbInteractions,
+            nbStudent,
+            activityWaiting,
+            nbFinished,
+          } = this.state;
+          /*
       const { cookies } = this.props;
       const fishtankId = cookies.get('fishtankId');
       console.log(`fishtankId : ${{ fishtankId }}`);
       */
-      let middleScreen;
-      if (activityWaiting) {
-        middleScreen = (
-          <ActivityObserver
-            nameActivity="Feedback"
-            fishtankId={fishtankId}
-            nbFinished={nbFinished}
-            nbStudent={nbStudent}
-            disableActivityObserver={this.disableActivityObserver}
-          />
-        );
-      } else {
-        middleScreen = <Preview />;
-      }
-      return (
-        <div className="bg-color">
-          <FishtankHeader
-            subject="EBM example"
-            date="some date"
-            my="Mon"
-          />
-          <ButtonLayout
-            fishtankId={fishtankId}
-            idInteractions={idInteractions}
-          />
-          <div className="columns">
-            <Command
-              fishtankId={fishtankId}
-              idInteractions={idInteractions}
-              activeActivityObserver={this.activeActivityObserver}
-              disableActivityObserver={this.disableActivityObserver}
-            />
+          let middleScreen;
+          if (activityWaiting) {
+            middleScreen = (
+              <ActivityObserver
+                nameActivity="Feedback"
+                fishtankId={fishtankId}
+                nbFinished={nbFinished}
+                nbStudent={nbStudent}
+                disableActivityObserver={
+                    this.disableActivityObserver
+                }
+              />
+            );
+          } else {
+            middleScreen = <Preview />;
+          }
+          return (
+            <div className="bg-color">
+              <FishtankHeader
+                subject={nameFishtank}
+                date={date}
+                my="Mon"
+                chapitre={chapitre}
+              />
+              <input
+                className="input"
+                type="text"
+                placeholder="nom du chapitre"
+                onKeyUp={this.sendNewChapitre}
+              />
+              <ButtonLayout
+                fishtankId={fishtankId}
+                idInteractions={idInteractions}
+              />
+              <div className="columns add-margin">
+                <Command
+                  fishtankId={fishtankId}
+                  idInteractions={idInteractions}
+                  activeActivityObserver={this.activeActivityObserver}
+                  disableActivityObserver={this.disableActivityObserver}
+                />
 
-            <div className="column is-6">
-              {middleScreen}
+                <div className="column is-5">
+                  {middleScreen}
+                </div>
+
+                <Notification
+                  fishtankId={fishtankId}
+                  idInteractions={idInteractions}
+                  nbInteractions={nbInteractions}
+                  nbStudent={nbStudent}
+                />
+
+              </div>
             </div>
-
-            <Notification
-              fishtankId={fishtankId}
-              idInteractions={idInteractions}
-              nbInteractions={nbInteractions}
-              nbStudent={nbStudent}
-            />
-
-          </div>
-        </div>
-      );
-    }
+          );
+        }
 }
 
 export default withCookies(FishtankAdmin);

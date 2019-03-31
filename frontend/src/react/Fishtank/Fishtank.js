@@ -9,8 +9,52 @@ import FishtankHeader from '../Widgets/FishtankHeader/FishtankHeader';
 import ButtonLayout from './ButtonLayout/ButtonLayout';
 import Activity from '../Widgets/Activity/Activity';
 import { handleFishtankCreation } from '../../service/Websockets/handlers';
-import { getFishtank } from '../../service/API/fishtanks';
-import { getIdInteractions } from '../../service/API/interactions';
+import { getFishtank, showFishtank } from '../../service/API/fishtanks';
+import { getFishtankInteractions, getIdInteractions } from '../../service/API/interactions';
+
+
+const dataJson = {
+  name: 'Questionnaire_name',
+  Question: [
+    {
+      type: 'field',
+      idQuestion: '1',
+      text: "Qu'est ce que tu as appris ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '2',
+      text: "Qu'est ce qui t'as étonné ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '3',
+      text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
+    },
+    {
+      type: 'field',
+      idQuestion: '4',
+      text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
+    },
+    {
+      type: 'check',
+      idQuestion: '5',
+      text: 'Cb tu notes ce cour ?',
+      response: [
+        { rep: '1' },
+        { rep: '2' },
+        { rep: '3' },
+        { rep: '4' },
+        { rep: '5' },
+      ],
+    },
+  ],
+};
+const dataNull = {
+  name: '',
+  Question: [
+  ],
+};
 
 class Fishtank extends React.PureComponent {
     static propTypes = {
@@ -21,7 +65,11 @@ class Fishtank extends React.PureComponent {
     state = {
       connected: false,
       fishtankId: undefined,
+      nameFishtank: 'EBM',
+      date: '',
+      chapitre: '',
       idInteractions: undefined,
+      activityJSON: dataNull,
     }
 
     componentWillMount() {
@@ -33,8 +81,8 @@ class Fishtank extends React.PureComponent {
       } else {
         try {
           this.connectToFishtank();
-          this.setState({ connected: true });
           this.getFishtankIdInteractions();
+          this.setState({ connected: true });
         } catch {
           console.log('pas de Fishtank');
         }
@@ -47,8 +95,12 @@ class Fishtank extends React.PureComponent {
       const fishtankIds = await getFishtank(userJSON.token);
       const FishtankIdList = fishtankIds.fishtankIds;
       const fishtankId = FishtankIdList[FishtankIdList.length - 1];
-      handleFishtankCreation(fishtankId, this.fishtankInteractionsStudent);
+      handleFishtankCreation(fishtankId,
+        this.getFishtankNbInteractions,
+        this.fishtankInteractionsStudent);
       this.setState({ fishtankId });
+      const infoFishtank = await showFishtank(fishtankId, userJSON.token);
+      this.setState({ date: infoFishtank.fishtank.createdAt });
     }
 
     tryConnexion = () => {
@@ -66,17 +118,37 @@ class Fishtank extends React.PureComponent {
       console.log(idInteractions);
     };
 
+
+    getFishtankNbInteractions = async () => {
+      const { fishtankId } = this.state;
+      const interactions = await getFishtankInteractions(fishtankId);
+      this.setState({ chapitre: interactions.currentPeriod });
+    };
+
     fishtankInteractionsStudent = () => {
-      console.log('interaction reçue');
+      this.setState({ activityJSON: dataJson });
+    }
+
+    deleteActivityJSON = () => {
+      this.setState({ activityJSON: dataNull });
     }
 
     render() {
-      const { connected, fishtankId, idInteractions } = this.state;
+      const {
+        connected,
+        fishtankId,
+        nameFishtank,
+        date,
+        chapitre,
+        idInteractions,
+        activityJSON,
+      } = this.state;
       return (
         <div className="bg-color">
           <FishtankHeader
-            subject="EBM example"
-            date="some date"
+            subject={nameFishtank}
+            date={date}
+            chapitre={chapitre}
           />
           <ButtonLayout
             fishtankId={fishtankId}
@@ -92,7 +164,15 @@ class Fishtank extends React.PureComponent {
           <Activity
             fishtankId={fishtankId}
             idInteractions={idInteractions}
+            data={activityJSON}
+            deleteData={this.deleteActivityJSON}
           />
+          <button
+            type="button"
+            onClick={this.fishtankInteractionsStudent}
+          >
+              test
+          </button>
         </div>
       );
     }

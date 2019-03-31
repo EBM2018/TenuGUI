@@ -8,51 +8,6 @@ import ActTextCheckMult from './ActTextCheckMult';
 import { postFishtankInteraction } from '../../../service/API/interactions';
 // import index from '../../../service/Websockets';
 
-/*
-const dataJson = {
-  name: 'Questionnaire_name',
-  Question: [
-    {
-      type: 'field',
-      idQuestion: '1',
-      text: "Qu'est ce que tu as appris ?",
-    },
-    {
-      type: 'field',
-      idQuestion: '2',
-      text: "Qu'est ce qui t'as étonné ?",
-    },
-    {
-      type: 'field',
-      idQuestion: '3',
-      text: "Qu'est ce que tu voudrais avoir plus ou en plus ?",
-    },
-    {
-      type: 'field',
-      idQuestion: '4',
-      text: "Qu'est ce que tu voudrais avoir moins ou en moins ?",
-    },
-    {
-      type: 'check',
-      idQuestion: '5',
-      text: 'Cb tu notes ce cour ?',
-      response: [
-        { rep: '1' },
-        { rep: '2' },
-        { rep: '3' },
-        { rep: '4' },
-        { rep: '5' },
-      ],
-    },
-  ],
-};
-*/
-const dataNull = {
-  name: '',
-  Question: [
-  ],
-};
-
 export default class Activity extends React.PureComponent {
     static propTypes = {
       fishtankId: PropTypes.number.isRequired,
@@ -60,12 +15,17 @@ export default class Activity extends React.PureComponent {
         PropTypes.string,
         PropTypes.number,
       ]).isRequired,
+      data: PropTypes.arrayOf([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      deleteData: PropTypes.func.isRequired,
     }
 
     state = {
-      data: dataNull,
       userReponse: {
-        Question: [
+        referenceInteractionId: 0,
+        content: [
         ],
       },
     };
@@ -74,42 +34,53 @@ export default class Activity extends React.PureComponent {
       this.genereateJSONUserResponse();
     }
 
+    componentDidUpdate(oldProps) {
+      const newProps = this.props;
+      if (oldProps.data !== newProps.data) {
+        this.genereateJSONUserResponse();
+      }
+    }
+
     genereateJSONUserResponse = () => {
+      const { data, fishtankId } = this.props;
       const newUserResponse = {
-        Question: [
+        referenceInteractionId: 0,
+        content: [
         ],
       };
-      const { data } = this.state;
+      newUserResponse.referenceInteractionId = fishtankId;
       for (let i = 0; i < data.Question.length; i += 1) {
         const modDataOneResponse = {
           id: 0,
-          response: '',
+          answer: '',
         };
         modDataOneResponse.id = data.Question[i].idQuestion;
-        newUserResponse.Question.push(modDataOneResponse);
+        newUserResponse.content.push(modDataOneResponse);
       }
       this.setState({ userReponse: newUserResponse });
     }
 
     send = () => { // pour des test à la con
       const { userReponse } = this.state;
-      const { fishtankId, idInteractions } = this.props;
+      const { fishtankId, idInteractions, deleteData } = this.props;
+      console.log(userReponse);
       postFishtankInteraction(
         fishtankId,
         idInteractions.PARTICIPANT.FEEDBACK_SUBMIT,
         userReponse,
       );
+      deleteData();
     };
 
     editResponse = (indexQuestion, newResponse) => {
       const { userReponse } = this.state;
-      userReponse.Question[indexQuestion].response = newResponse;
+      userReponse.content[indexQuestion].answer = newResponse;
       this.setState({ userReponse });
-      this.forceUpdate();
+      // this.forceUpdate();
     };
 
     render() {
-      const { data } = this.state;
+      const { data } = this.props;
       return (
         <div className="columns is-mobile">
           <div className="column is-9 is-offset-1">
@@ -149,10 +120,9 @@ export default class Activity extends React.PureComponent {
               }
               return (<></>);
             })}
-
             <div>
               <button type="submit" onClick={this.send}>
-                    Send
+                      Send
               </button>
             </div>
           </div>
