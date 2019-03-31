@@ -120,7 +120,9 @@ class Fishtank extends React.PureComponent {
     }
 
     render() {
-      const { connected, fishtankId, idInteractions, activityJSON } = this.state;
+      const {
+        connected, fishtankId, idInteractions, activityJSON,
+      } = this.state;
       return (
         <div className="bg-color">
           <FishtankHeader
