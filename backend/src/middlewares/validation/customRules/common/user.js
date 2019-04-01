@@ -4,6 +4,11 @@ const { isUserPartOfShoal } = require('../../../../__mock_teamy__');
 
 const isOwner = (value, { req }) => req.locals.fishtank.ownerId === req.locals.user.id;
 
+const isParticipant = (value, { req }) => isUserPartOfShoal(
+  req.locals.user.id,
+  req.locals.fishtank.shoalId,
+);
+
 const hasAccess = (value, { req }) => req.locals.user.id === req.locals.fishtank.ownerId
   || isUserPartOfShoal(req.locals.user.id, req.locals.fishtank.shoalId);
 
@@ -18,4 +23,6 @@ module.exports = {
     .withMessage('must be the owner'),
   hasAccess: check('token').custom(hasAccess)
     .withMessage('must have access to the desired fishtank'),
+  isParticipant: check('token').custom(isParticipant)
+    .withMessage('must be a participant'),
 };
