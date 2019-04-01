@@ -14,7 +14,7 @@ import { getFishtankInteractions, getIdInteractions } from '../../service/API/in
 
 
 const dataJson = {
-  name: 'Questionnaire_name',
+  name: 'Feedback',
   Question: [
     {
       type: 'field',
